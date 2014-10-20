@@ -28,7 +28,7 @@ namespace AlgoTeacher.Logic.Quest
 
         public string Question
         {
-            get { return _Question}
+            get { return _Question; }
         }
 
         public bool CheckAnswer(string answer)
