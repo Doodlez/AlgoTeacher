@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\Matrix.cs" />
     <Compile Include="Logic\Quest\DoubleValueQuest.cs" />
     <Compile Include="Logic\Quest\IntegerValueQuest.cs" />
     <Compile Include="Logic\Quest\StringQuest.cs" />
@@ -63,6 +64,10 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MatrixMultiplyForm.cs" />
+    <Compile Include="MatrixMultiplyForm.Designer.cs">
+      <DependentUpon>MatrixMultiplyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
