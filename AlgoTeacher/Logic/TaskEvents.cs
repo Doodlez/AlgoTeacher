@@ -21,8 +21,8 @@ namespace AlgoTeacher.Logic
     public class QuestEventArgs
     {
         public IQuest Quest { get; private set; } 
-        public List<int> Coord { get; private set;}
-        QuestEventArgs(IQuest quest, List<int> coord)
+        public Coordinate Coord { get; private set;}
+        QuestEventArgs(IQuest quest, Coordinate coord)
         {
             this.Quest = quest;
             this.Coord = coord;
@@ -31,8 +31,8 @@ namespace AlgoTeacher.Logic
 
     public class FillEventArgs
     {
-        public List<int> Coord { get; private set;}
-        FillEventArgs(List<int> coord)
+        public Coordinate Coord { get; private set;}
+        FillEventArgs(Coordinate coord)
         {
             this.Coord = coord;
         }
