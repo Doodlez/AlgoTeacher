@@ -29,6 +29,8 @@ namespace AlgoTeacher
 
             var result = Matrix.MatrixMult(matrix1, matrix2);
 
+            var b = Matrix.GetRandomCoords(4, 6);
+
             var a = 1;
         }
     }
