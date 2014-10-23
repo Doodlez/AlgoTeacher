@@ -62,7 +62,7 @@ namespace AlgoTeacher
                         if (Coordinate.DoesCoordinateExist(new Coordinate(i, j), coords))
                         {
                             var question = new IntegerValueQuest("MatrixQuestion",
-                                "Чему равен этот элемент матрицы?", resultMatrix.Values[i][j]);
+                                QuestionGenerator.MatrixMultQuestion(i, j), resultMatrix.Values[i][j]);
                         }
                     }
                 }
