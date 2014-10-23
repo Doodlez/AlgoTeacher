@@ -60,6 +60,7 @@
             this.StartButton.Size = new System.Drawing.Size(100, 30);
             this.StartButton.TabIndex = 2;
             this.StartButton.Text = "Старт";
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // MainForm
             // 
@@ -71,6 +72,7 @@
             this.Controls.Add(this.TaskComboBox);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TaskComboBox.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
