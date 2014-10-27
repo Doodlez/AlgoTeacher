@@ -10,8 +10,6 @@ namespace AlgoTeacher
 {
     public class Matrix
     {
-       
-
         public int Rows
         {
             get;
@@ -34,6 +32,12 @@ namespace AlgoTeacher
         {
             Rows = rows;
             Columns = columns;
+        }
+
+        public Matrix(int rows, int columns, IList<int[]> values)
+        {
+            Rows = rows;
+            Columns = columns;
             Values = new int[rows + 1][];
 
             for (var i = 1; i <= rows; i++)
@@ -41,7 +45,7 @@ namespace AlgoTeacher
                 Values[i] = new int[columns + 1];
                 for (var j = 1; j <= columns; j++)
                 {
-                    Values[i][j] = 2;
+                    Values[i][j] = values[i - 1][j - 1];
                 }
             }
         }
