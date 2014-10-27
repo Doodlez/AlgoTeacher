@@ -69,7 +69,6 @@ namespace AlgoTeacher
             this.questionControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.questionControl.MinimumSize = new System.Drawing.Size(429, 65);
             this.questionControl.Name = "questionControl";
-            this.questionControl.QuestionLabelText = "Вопрос";
             this.questionControl.Size = new System.Drawing.Size(1003, 65);
             this.questionControl.TabIndex = 2;
             // 

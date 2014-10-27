@@ -28,8 +28,8 @@ namespace AlgoTeacher
             var calculateClickHandler = new QuestionControl.CalculateClickedHandler(CalculateButton_Clicked);
             questionControl.CalculateClicked += calculateClickHandler;
 
-            int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
-            int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
+            int[][] values1 = { new[] { 0, 0, 0, 0 }, new[] { 0, 1, 2, 3 }, new[] { 0, 4, 5, 6 }, new[] { 0, 7, 8, 9 } };
+            int[][] values2 = { new[] { 0, 0, 0, 0 }, new[] { 0, 9, 8, 7 }, new[] { 0, 6, 5, 4 }, new[] { 0, 3, 2, 1 } };
 
             workbookView1.GetLock();
             var cells = workbookView1.ActiveWorkbook.Worksheets[0].Cells;
@@ -101,17 +101,17 @@ namespace AlgoTeacher
 
         private void FillSheetWithStartMatrixes(int[][] values1, int[][] values2, SpreadsheetGear.IRange range)
         {
-            for ( var i = 1; i <= values1.Length; i++ )
+            for ( var i = 1; i < values1.Length; i++ )
             {
-                for ( var j = 1; j <= values1[i].Length; j++ )
+                for ( var j = 1; j < values1[i].Length; j++ )
                 {
                     range[i - 1, j - 1].Value = values1[i][j];
                 }
             }
 
-            for ( var i = 1; i <= values2.Length; i++ )
+            for ( var i = 1; i < values2.Length; i++ )
             {
-                for ( var j = 1; j <= values2[i].Length; j++ )
+                for ( var j = 1; j < values2[i].Length; j++ )
                 {
                     range[i - 1, j + values1[0].Length].Value = values2[i][j];
                 }
