@@ -1,4 +1,4 @@
-﻿namespace AlgoTeacher.User_Controls
+﻿namespace UserControls
 {
     partial class QuestionControl
     {

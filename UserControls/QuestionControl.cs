@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
-namespace AlgoTeacher.User_Controls
+namespace UserControls
 {
     public partial class QuestionControl : DevExpress.XtraEditors.XtraUserControl
     {
@@ -19,11 +11,7 @@ namespace AlgoTeacher.User_Controls
         public delegate void CalculateClickedHandler(object sender, EventArgs e);
         public event CalculateClickedHandler CalculateClicked;
 
-        //public delegate void AnswerButtonEnabledChangeHandler(object sender, EventArgs e);
-        //public event AnswerButtonEnabledChangeHandler AnswerButtonEnabledChange;
-
-        //public delegate void CalculateButtonEnabledChangeHandler(object sender, EventArgs e);
-        //public event CalculateButtonEnabledChangeHandler CalculateButtonEnabledChange;
+        private delegate void SetTextCallback(string text1);
 
         public bool AnswerButtonEnabled
         {
@@ -37,15 +25,27 @@ namespace AlgoTeacher.User_Controls
             set { CalculateButton.Enabled = value; }
         }
 
-        public string QuestionLabelText
+        public void SetQuestionLabel(string value)
         {
-            get { return QuestionLabel.Text; }
-            set { QuestionLabel.Text = value; }
+            if (this.QuestionLabel.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetQuestionLabel);
+                this.Invoke(d, new object[] {value});
+            }
+            else
+            {
+                QuestionLabel.Text = value;
+            }
         }
 
-        public string AnswerText
+        public string GetQuestion()
         {
-            get { return AnswerTextEdit.Text; }
+            return QuestionLabel.Text;
+        }
+
+        public string GetAnswer()
+        {
+            return AnswerTextEdit.Text; 
         }
 
         public QuestionControl()
