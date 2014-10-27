@@ -1,4 +1,6 @@
-﻿namespace AlgoTeacher
+﻿using UserControls;
+
+namespace AlgoTeacher
 {
     partial class MatrixMultiplyForm
     {
@@ -32,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatrixMultiplyForm));
             this.ViewPanel = new DevExpress.XtraEditors.PanelControl();
             this.workbookView1 = new SpreadsheetGear.Windows.Forms.WorkbookView();
-            this.questionControl = new AlgoTeacher.User_Controls.QuestionControl();
+            this.questionControl = new QuestionControl();
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).BeginInit();
             this.ViewPanel.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +90,7 @@
         #endregion
 
         private DevExpress.XtraEditors.PanelControl ViewPanel;
-        private User_Controls.QuestionControl questionControl;
+        private QuestionControl questionControl;
         private SpreadsheetGear.Windows.Forms.WorkbookView workbookView1;
     }
 }
