@@ -41,7 +41,7 @@ namespace AlgoTeacher
                 Values[i] = new int[columns];
                 for (var j = 0; j < columns; j++)
                 {
-                    Values[i][j] = 0;
+                    Values[i][j] = 2;
                 }
             }
         }

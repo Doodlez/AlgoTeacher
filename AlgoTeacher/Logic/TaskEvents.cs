@@ -11,7 +11,6 @@ namespace AlgoTeacher.Logic
     public class QuestEvents
     {
         public delegate void QuestEventHandler(object sender, QuestEventArgs e);
-        public event QuestEventHandler QuestEvent;
 
         public class QuestEventArgs : EventArgs
         {
@@ -36,7 +35,6 @@ namespace AlgoTeacher.Logic
     public class FillEvents
     {
         public delegate void FillEventHandler(object sender, FillEventArgs e);
-        public event FillEventHandler FillEvent;
         // Вызов FillEvent(this, e), как построить e смотри ниже
         public class FillEventArgs : EventArgs
         {

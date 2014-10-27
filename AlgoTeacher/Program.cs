@@ -27,9 +27,9 @@ namespace AlgoTeacher
             matrix1.Values = values1;
             matrix2.Values = values2;
 
-            var result = Matrix.MatrixMult();
+            //var result = Matrix.MatrixMult();
 
-            var b = Matrix.GetRandomCoords(4, 6);
+            //var b = Matrix.GetRandomCoords(4, 6);
 
             var a = 1;
         }

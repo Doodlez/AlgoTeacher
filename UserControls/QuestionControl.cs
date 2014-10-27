@@ -37,6 +37,17 @@ namespace AlgoTeacher.User_Controls
             set { CalculateButton.Enabled = value; }
         }
 
+        public string QuestionLabelText
+        {
+            get { return QuestionLabel.Text; }
+            set { QuestionLabel.Text = value; }
+        }
+
+        public string AnswerText
+        {
+            get { return AnswerTextEdit.Text; }
+        }
+
         public QuestionControl()
         {
             InitializeComponent();

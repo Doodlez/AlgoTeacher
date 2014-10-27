@@ -9,6 +9,5 @@
 
 *.suo
 AlgoTeacher.v11.suo
-AlgoTeacher\obj\Debug*/
-AlgoTeacher.v11.suo
-UserControls\bin\Debug*/
+AlgoTeacher/obj/Debug*/
+UserControls/bin/Debug*/
