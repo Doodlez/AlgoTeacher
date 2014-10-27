@@ -34,12 +34,12 @@ namespace AlgoTeacher
         {
             Rows = rows;
             Columns = columns;
-            Values = new int[rows][];
+            Values = new int[rows + 1][];
 
-            for (var i = 0; i < rows; i++)
+            for (var i = 1; i <= rows; i++)
             {
-                Values[i] = new int[columns];
-                for (var j = 0; j < columns; j++)
+                Values[i] = new int[columns + 1];
+                for (var j = 1; j <= columns; j++)
                 {
                     Values[i][j] = 2;
                 }

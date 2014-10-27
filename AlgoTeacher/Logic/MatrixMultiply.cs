@@ -20,23 +20,24 @@ namespace AlgoTeacher.Logic
             var coords = GetRandomCoords(matrix1.Rows, matrix2.Columns);
 
             var resultMatrix = new Matrix(matrix1.Rows, matrix2.Columns);
-            for ( var i = 0; i < matrix1.Rows; i++ )
+            for ( var i = 1; i <= matrix1.Rows; i++ )
             {
-                for ( var j = 0; j < matrix2.Columns; j++ )
+                for ( var j = 1; j <= matrix2.Columns; j++ )
                 {
-                    for ( var k = 0; k < matrix1.Columns; k++ )
+                    for ( var k = 1; k <= matrix1.Columns; k++ )
                     {
                         resultMatrix.Values[i][j] += matrix1.Values[i][k] * matrix2.Values[k][j];
-                        var currentCoord = new Coordinate(i, j);
-
-                        if ( Coordinate.DoesCoordinateExist(currentCoord, coords) )
-                        {
-                            var question = new IntegerValueQuest("MatrixQuestion",
-                                QuestionGenerator.MatrixMultQuestion(i, j), resultMatrix.Values[i][j]);
-                            questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
-                        }
-                        fillEvent(null, new FillEvents.FillEventArgs(currentCoord));
                     }
+
+                    var currentCoord = new Coordinate(i, j);
+
+                    if ( Coordinate.DoesCoordinateExist(currentCoord, coords) )
+                    {
+                        var question = new IntegerValueQuest("MatrixQuestion",
+                            QuestionGenerator.MatrixMultQuestion(i, j), resultMatrix.Values[i][j]);
+                        questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
+                    }
+                    fillEvent(null, new FillEvents.FillEventArgs(currentCoord));
                 }
             }
 
