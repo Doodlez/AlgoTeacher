@@ -34,7 +34,7 @@ namespace AlgoTeacher
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatrixMultiplyForm));
             this.ViewPanel = new DevExpress.XtraEditors.PanelControl();
             this.workbookView1 = new SpreadsheetGear.Windows.Forms.WorkbookView();
-            this.questionControl = new QuestionControl();
+            this.questionControl = new UserControls.QuestionControl();
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).BeginInit();
             this.ViewPanel.SuspendLayout();
             this.SuspendLayout();

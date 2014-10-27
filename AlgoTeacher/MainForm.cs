@@ -33,6 +33,11 @@ namespace AlgoTeacher
             if (TaskComboBox.Properties.Items.Count != 0)
             {
                 MyTask selectTask = (MyTask)TaskComboBox.EditValue;
+                if (selectTask.Name == "Test")
+                {
+                    MatrixSizeForm sizeForm = new MatrixSizeForm();
+                    sizeForm.Show();
+                }
                 selectTask.TaskForm.Show();
             }
         }
