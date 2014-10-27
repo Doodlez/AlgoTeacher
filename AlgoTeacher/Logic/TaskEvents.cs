@@ -8,33 +8,50 @@ using AlgoTeacher.Interface;
 
 namespace AlgoTeacher.Logic
 {
-    static class TaskEvents
+    public class QuestEvents
     {
         public delegate void QuestEventHandler(object sender, QuestEventArgs e);
-        public static event QuestEventHandler QuestEvent;
+        public event QuestEventHandler QuestEvent;
 
+        public class QuestEventArgs : EventArgs
+        {
+            public IQuest Quest
+            {
+                get;
+                private set;
+            }
+            public Coordinate Coord
+            {
+                get;
+                private set;
+            }
+            public QuestEventArgs(IQuest quest, Coordinate coord)
+            {
+                this.Quest = quest;
+                this.Coord = coord;
+            }
+        }
+    }
+    
+    public class FillEvents
+    {
         public delegate void FillEventHandler(object sender, FillEventArgs e);
-        public static event FillEventHandler FillEvent;
+        public event FillEventHandler FillEvent;
         // Вызов FillEvent(this, e), как построить e смотри ниже
-    }
-
-    public class QuestEventArgs
-    {
-        public IQuest Quest { get; private set; } 
-        public Coordinate Coord { get; private set;}
-        QuestEventArgs(IQuest quest, Coordinate coord)
+        public class FillEventArgs : EventArgs
         {
-            this.Quest = quest;
-            this.Coord = coord;
+            public Coordinate Coord
+            {
+                get;
+                private set;
+            }
+           public FillEventArgs(Coordinate coord)
+            {
+                this.Coord = coord;
+            }
         }
     }
 
-    public class FillEventArgs
-    {
-        public Coordinate Coord { get; private set;}
-        FillEventArgs(Coordinate coord)
-        {
-            this.Coord = coord;
-        }
-    }
+   
+   
 }
