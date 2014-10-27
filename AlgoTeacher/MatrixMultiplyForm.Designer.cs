@@ -77,7 +77,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MatrixMultiplyForm";
             this.Text = "MatrixMultiplyForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MatrixMultiplyForm_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MatrixMultiplyForm_FormClosing);
             this.Load += new System.EventHandler(this.MatrixMultiplyForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).EndInit();
             this.ViewPanel.ResumeLayout(false);

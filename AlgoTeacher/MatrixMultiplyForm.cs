@@ -38,9 +38,18 @@ namespace AlgoTeacher
             // Действия при нажатии ответ
         }
 
-        private void MatrixMultiplyForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void MatrixMultiplyForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Dispose();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+
+                e.Cancel = true;
+
+                Hide();
+
+            }
         }
+
+        
     }
 }
