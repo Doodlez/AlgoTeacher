@@ -22,22 +22,14 @@ namespace AlgoTeacher
         public MatrixMultiplyForm()
         {
             InitializeComponent();
+
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
             questionControl.AnswerClicked += answerClickHandler;
 
             var calculateClickHandler = new QuestionControl.CalculateClickedHandler(CalculateButton_Clicked);
             questionControl.CalculateClicked += calculateClickHandler;
 
-            int[][] values1 = { new[] { 0, 0, 0, 0 }, new[] { 0, 1, 2, 3 }, new[] { 0, 4, 5, 6 }, new[] { 0, 7, 8, 9 } };
-            int[][] values2 = { new[] { 0, 0, 0, 0 }, new[] { 0, 9, 8, 7 }, new[] { 0, 6, 5, 4 }, new[] { 0, 3, 2, 1 } };
-
-            workbookView1.GetLock();
-            var cells = workbookView1.ActiveWorkbook.Worksheets[0].Cells;
-            FillSheetWithStartMatrixes(values1, values2, cells);
-            workbookView1.ReleaseLock();
-
-            _matrix1 = new Matrix(3, 3, values1);
-            _matrix2 = new Matrix(3, 3, values2);
+            
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
 
@@ -49,6 +41,38 @@ namespace AlgoTeacher
         private void MatrixMultiplyForm_Load(object sender, EventArgs e)
         {
             // Действия при загрузке
+            // Ввод размеров
+            MatrixSizeForm sizeForm = new MatrixSizeForm();
+            sizeForm.ShowDialog();
+
+            int rows1 = 1;
+            int rows2 = 1;
+            int cols1 = 1;
+            int cols2 = 1;
+
+            if (sizeForm.DialogResult == DialogResult.OK)
+            {
+                rows1 = sizeForm.Rows1;
+                rows2 = sizeForm.Rows2;
+                cols1 = sizeForm.Columns1;
+                cols2 = sizeForm.Columns2;
+            }
+            else
+            {
+                Close();
+            }
+
+            int[][] values1 = { new[] { 0, 0, 0, 0 }, new[] { 0, 1, 2, 3 }, new[] { 0, 4, 5, 6 }, new[] { 0, 7, 8, 9 } };
+            int[][] values2 = { new[] { 0, 0, 0, 0 }, new[] { 0, 9, 8, 7 }, new[] { 0, 6, 5, 4 }, new[] { 0, 3, 2, 1 } };
+
+            workbookView1.GetLock();
+            var cells = workbookView1.ActiveWorkbook.Worksheets[0].Cells;
+            FillSheetWithStartMatrixes(values1, values2, cells);
+            workbookView1.ReleaseLock();
+
+            _matrix1 = new Matrix(rows1, cols1, values1);
+            _matrix2 = new Matrix(rows2, cols2, values2);
+
         }
 
         void Run()
@@ -67,14 +91,6 @@ namespace AlgoTeacher
 
         private void MatrixMultiplyForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-
-                e.Cancel = true;
-
-                Hide();
-
-            }
         }
 
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)

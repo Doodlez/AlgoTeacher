@@ -11,18 +11,25 @@ namespace AlgoTeacher.Logic
     {
         public string Name;
 
-        public Form TaskForm;
+        private Type FormType;
 
         public Help TaskHelp;
 
-        public MyTask(string name, Form form)
+        public MyTask(string name, Type formType)
         {
             Name = name;
-            TaskForm = form;
+            FormType = formType;
         }
         public override string ToString()
         {
             return Name;
+        }
+        // Временное решение
+        // TODO: переделать используя фабрику классов + ведел
+        public void ShowForm()
+        {
+            var TaskForm = (Form)Activator.CreateInstance(FormType);
+            TaskForm.Show();
         }
     }
 }

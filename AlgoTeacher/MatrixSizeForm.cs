@@ -13,6 +13,11 @@ namespace AlgoTeacher
 {
     public partial class MatrixSizeForm : DevExpress.XtraEditors.XtraForm
     {
+        public int Rows1;
+        public int Columns1;
+        public int Rows2;
+        public int Columns2;
+
         public MatrixSizeForm()
         {
             InitializeComponent();
@@ -31,15 +36,17 @@ namespace AlgoTeacher
 
         private void ReadyButton_Click(object sender, EventArgs e)
         {
-            var rows1 = (int) comboBoxRows1.EditValue;
-            var rows2 = (int) comboBoxRows2.EditValue;
-            var columns1 = (int) comboBoxColumns1.EditValue;
-            var columns2 = (int) comboBoxColumns2.EditValue;
+            Rows1 = (int) comboBoxRows1.EditValue;
+            Rows2 = (int) comboBoxRows2.EditValue;
+            Columns1 = (int) comboBoxColumns1.EditValue;
+            Columns2 = (int) comboBoxColumns2.EditValue;
 
-            if (columns2 != rows1)
+            if (Rows2 != Columns1)
             {
                 MessageBox.Show("Число столбцов первой матрицы должно соответствовать числу строк второй!");
+                return;
             }
+            DialogResult = DialogResult.OK;
         }
     }
 }

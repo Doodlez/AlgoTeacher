@@ -46,7 +46,7 @@ namespace AlgoTeacher
             this.ViewPanel.Location = new System.Drawing.Point(0, 0);
             this.ViewPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ViewPanel.Name = "ViewPanel";
-            this.ViewPanel.Size = new System.Drawing.Size(1003, 319);
+            this.ViewPanel.Size = new System.Drawing.Size(1170, 393);
             this.ViewPanel.TabIndex = 1;
             // 
             // workbookView1
@@ -56,7 +56,7 @@ namespace AlgoTeacher
             this.workbookView1.Location = new System.Drawing.Point(2, 2);
             this.workbookView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.workbookView1.Name = "workbookView1";
-            this.workbookView1.Size = new System.Drawing.Size(999, 315);
+            this.workbookView1.Size = new System.Drawing.Size(1166, 389);
             this.workbookView1.TabIndex = 0;
             this.workbookView1.WorkbookSetState = resources.GetString("workbookView1.WorkbookSetState");
             // 
@@ -65,21 +65,23 @@ namespace AlgoTeacher
             this.questionControl.AnswerButtonEnabled = false;
             this.questionControl.CalculateButtonEnabled = true;
             this.questionControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.questionControl.Location = new System.Drawing.Point(0, 319);
+            this.questionControl.Location = new System.Drawing.Point(0, 393);
             this.questionControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.questionControl.MinimumSize = new System.Drawing.Size(429, 65);
+            this.questionControl.MinimumSize = new System.Drawing.Size(500, 80);
             this.questionControl.Name = "questionControl";
-            this.questionControl.Size = new System.Drawing.Size(1003, 65);
+            this.questionControl.Size = new System.Drawing.Size(1170, 80);
             this.questionControl.TabIndex = 2;
             // 
             // MatrixMultiplyForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 384);
+            this.ClientSize = new System.Drawing.Size(1170, 473);
             this.Controls.Add(this.ViewPanel);
             this.Controls.Add(this.questionControl);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MatrixMultiplyForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MatrixMultiplyForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MatrixMultiplyForm_FormClosing);
             this.Load += new System.EventHandler(this.MatrixMultiplyForm_Load);
