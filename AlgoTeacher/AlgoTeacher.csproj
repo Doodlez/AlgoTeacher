@@ -60,6 +60,7 @@
     <Compile Include="Logic\MatrixMultiply.cs" />
     <Compile Include="Logic\Quest\DoubleValueQuest.cs" />
     <Compile Include="Logic\Quest\IntegerValueQuest.cs" />
+    <Compile Include="Logic\MatrixMultiplyAdapter.cs" />
     <Compile Include="Logic\Quest\QuestionGenerator.cs" />
     <Compile Include="Logic\Quest\StringQuest.cs" />
     <Compile Include="Logic\Quest\SelectFromRangeQuest.cs" />

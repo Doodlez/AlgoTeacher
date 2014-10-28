@@ -3,6 +3,7 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using AlgoTeacher.Logic;
+using SpreadsheetGear.Windows.Forms;
 using UserControls;
 
 namespace AlgoTeacher
@@ -19,9 +20,16 @@ namespace AlgoTeacher
         private Thread CaclThread;
         private bool pressed = false;
 
+        private readonly WorkbookView _workbookView;
+        private MatrixMultiplyAdapter _matrixMultiplyAdapter;
+
         public MatrixMultiplyForm()
         {
             InitializeComponent();
+            MatrixMultiplyWorkbookView.GetLock();
+            _workbookView = MatrixMultiplyWorkbookView;
+            _matrixMultiplyAdapter = new MatrixMultiplyAdapter(_workbookView);
+            MatrixMultiplyWorkbookView.ReleaseLock();
 
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
             questionControl.AnswerClicked += answerClickHandler;
@@ -62,17 +70,10 @@ namespace AlgoTeacher
                 Close();
             }
 
-            int[][] values1 = { new[] { 0, 0, 0, 0 }, new[] { 0, 1, 2, 3 }, new[] { 0, 4, 5, 6 }, new[] { 0, 7, 8, 9 } };
-            int[][] values2 = { new[] { 0, 0, 0, 0 }, new[] { 0, 9, 8, 7 }, new[] { 0, 6, 5, 4 }, new[] { 0, 3, 2, 1 } };
+            _matrixMultiplyAdapter.MakeBordersForInitialMatrixes(rows1, cols1, rows2, cols2);
 
-            workbookView1.GetLock();
-            var cells = workbookView1.ActiveWorkbook.Worksheets[0].Cells;
-            FillSheetWithStartMatrixes(values1, values2, cells);
-            workbookView1.ReleaseLock();
-
-            _matrix1 = new Matrix(rows1, cols1, values1);
-            _matrix2 = new Matrix(rows2, cols2, values2);
-
+            //_matrix1 = new Matrix(rows1, cols1, values1);
+            //_matrix2 = new Matrix(rows2, cols2, values2);
         }
 
         void Run()
@@ -115,23 +116,23 @@ namespace AlgoTeacher
             MessageBox.Show("Fill works");
         }
 
-        private void FillSheetWithStartMatrixes(int[][] values1, int[][] values2, SpreadsheetGear.IRange range)
-        {
-            for ( var i = 1; i < values1.Length; i++ )
-            {
-                for ( var j = 1; j < values1[i].Length; j++ )
-                {
-                    range[i - 1, j - 1].Value = values1[i][j];
-                }
-            }
+        //private void FillSheetWithStartMatrixes(int[][] values1, int[][] values2, SpreadsheetGear.IRange range)
+        //{
+        //    for ( var i = 1; i < values1.Length; i++ )
+        //    {
+        //        for ( var j = 1; j < values1[i].Length; j++ )
+        //        {
+        //            range[i - 1, j - 1].Value = values1[i][j];
+        //        }
+        //    }
 
-            for ( var i = 1; i < values2.Length; i++ )
-            {
-                for ( var j = 1; j < values2[i].Length; j++ )
-                {
-                    range[i - 1, j + values1[0].Length].Value = values2[i][j];
-                }
-            }
-        }
+        //    for ( var i = 1; i < values2.Length; i++ )
+        //    {
+        //        for ( var j = 1; j < values2[i].Length; j++ )
+        //        {
+        //            range[i - 1, j + values1[0].Length - 1].Value = values2[i][j];
+        //        }
+        //    }
+        //}
     }
 }
