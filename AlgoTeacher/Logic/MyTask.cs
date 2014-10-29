@@ -20,12 +20,13 @@ namespace AlgoTeacher.Logic
             Name = name;
             FormType = formType;
         }
+
         public override string ToString()
         {
             return Name;
         }
+
         // Временное решение
-        // TODO: переделать используя фабрику классов + ведел
         public void ShowForm()
         {
             var TaskForm = (Form)Activator.CreateInstance(FormType);

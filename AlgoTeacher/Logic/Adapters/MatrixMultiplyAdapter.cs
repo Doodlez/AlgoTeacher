@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SpreadsheetGear;
+﻿using SpreadsheetGear;
 using SpreadsheetGear.Windows.Forms;
 
-namespace AlgoTeacher.Logic
+namespace AlgoTeacher.Logic.Adapters
 {
     class MatrixMultiplyAdapter
     {
@@ -68,6 +63,8 @@ namespace AlgoTeacher.Logic
             {
                 _workbookView.GetLock();
             }
+
+            //TODO: сделать смещение таблиц вниз
 
             _cells[0, 0, rows1 - 1, cols1 - 1].Borders.LineStyle = LineStyle.Double;
             _cells[0, cols1 + 1, rows2 - 1, cols1 + cols2].Borders.LineStyle = LineStyle.Double;

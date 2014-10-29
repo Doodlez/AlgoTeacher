@@ -3,6 +3,7 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using AlgoTeacher.Logic;
+using AlgoTeacher.Logic.Adapters;
 using SpreadsheetGear.Windows.Forms;
 using UserControls;
 
@@ -72,6 +73,7 @@ namespace AlgoTeacher
 
             _matrixMultiplyAdapter.MakeBordersForInitialMatrixes(rows1, cols1, rows2, cols2);
 
+            // TODO: Чтение матриц
             //_matrix1 = new Matrix(rows1, cols1, values1);
             //_matrix2 = new Matrix(rows2, cols2, values2);
         }
@@ -83,6 +85,8 @@ namespace AlgoTeacher
 
         public void CalculateButton_Clicked(object sender, EventArgs e)
         {
+            if ( _matrix1 == null || _matrix2 == null) return;
+
             // Действия при нажатии посчитать
             MessageBox.Show("Hi");
             questionControl.AnswerButtonEnabled = true;
