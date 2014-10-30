@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,13 +32,18 @@ namespace AlgoTeacher.Logic
 
                     var currentCoord = new Coordinate(i, j);
 
-                    if ( Coordinate.DoesCoordinateExist(currentCoord, coords) )
+                    if (Coordinate.DoesCoordinateExist(currentCoord, coords))
                     {
                         var question = new IntegerValueQuest("MatrixQuestion",
-                            QuestionGenerator.MatrixMultQuestion(i, j), resultMatrix.Values[i][j]);
+                                                             QuestionGenerator.MatrixMultQuestion(i, j),
+                                                             resultMatrix.Values[i][j]);
                         questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
                     }
-                    fillEvent(null, new FillEvents.FillEventArgs(currentCoord));
+                    else
+                    {
+                        fillEvent(null, new FillEvents.FillEventArgs(currentCoord, resultMatrix.Values[i][j].ToString(CultureInfo.InvariantCulture)));
+                    }
+                    
                 }
             }
 

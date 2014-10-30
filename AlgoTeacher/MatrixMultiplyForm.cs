@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using AlgoTeacher.Interface;
 using AlgoTeacher.Logic;
 using AlgoTeacher.Logic.Adapters;
 using SpreadsheetGear.Windows.Forms;
@@ -23,6 +24,8 @@ namespace AlgoTeacher
 
         private readonly WorkbookView _workbookView;
         private MatrixMultiplyAdapter _matrixMultiplyAdapter;
+
+        private IQuest quest;
 
         public MatrixMultiplyForm()
         {
@@ -72,10 +75,12 @@ namespace AlgoTeacher
             }
 
             _matrixMultiplyAdapter.MakeBordersForInitialMatrixes(rows1, cols1, rows2, cols2);
-
+            
+            int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
+            int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
             // TODO: Чтение матриц
-            //_matrix1 = new Matrix(rows1, cols1, values1);
-            //_matrix2 = new Matrix(rows2, cols2, values2);
+            _matrix1 = new Matrix(rows1, cols1, values1);
+            _matrix2 = new Matrix(rows2, cols2, values2);
         }
 
         void Run()
@@ -88,7 +93,8 @@ namespace AlgoTeacher
             if ( _matrix1 == null || _matrix2 == null) return;
 
             // Действия при нажатии посчитать
-            MessageBox.Show("Hi");
+            //MessageBox.Show("Hi");
+            questionControl.CalculateButtonEnabled = false;
             questionControl.AnswerButtonEnabled = true;
             CaclThread  = new Thread(Run) {IsBackground = true};
             CaclThread.Start();
@@ -100,24 +106,42 @@ namespace AlgoTeacher
 
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
-            MessageBox.Show("Quest works");
-            this.questionControl.SetQuestionLabel(e.Quest.Question);
+            //MessageBox.Show("Quest works");
+            this.questionControl.SetQuestionLabel(e.Quest.Question + "Ответ: " + e.Quest.Answer);
+            quest = e.Quest;
             while (!pressed)
             {
                 System.Threading.Thread.Sleep(100);
             }
+
+            _matrixMultiplyAdapter.FillResultCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
+            questionControl.SetQuestionLabel("");
+            questionControl.CleanAnswer();
+            
             pressed = false;
         }
 
         public void AnswerButton_Clicked(object sender, EventArgs e)
         {
             // Действия при нажатии ответ
+            if (!quest.CheckAnswer(questionControl.GetAnswer()))
+            {
+                MessageBox.Show("не правильно!");
+                return;
+            }
             pressed = true;
         }
 
         public void FillEventHandler(object sender, FillEvents.FillEventArgs e)
         {
-            MessageBox.Show("Fill works");
+            // добавлено замедление заполнения
+            bool t = true;
+            while (t)
+            {
+                System.Threading.Thread.Sleep(200);
+                t = false;
+            }
+            _matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
         }
 
         //private void FillSheetWithStartMatrixes(int[][] values1, int[][] values2, SpreadsheetGear.IRange range)

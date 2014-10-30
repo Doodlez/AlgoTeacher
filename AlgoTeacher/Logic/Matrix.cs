@@ -32,6 +32,12 @@ namespace AlgoTeacher
         {
             Rows = rows;
             Columns = columns;
+            Values = new int[rows + 1][];
+
+            for (var i = 1; i <= rows; i++)
+            {
+                Values[i] = new int[columns + 1];
+            }
         }
 
         public Matrix(int rows, int columns, IList<int[]> values)

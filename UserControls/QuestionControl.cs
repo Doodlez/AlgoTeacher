@@ -12,6 +12,7 @@ namespace UserControls
         public event CalculateClickedHandler CalculateClicked;
 
         private delegate void SetTextCallback(string text1);
+        private delegate void SetCleanCallback();
 
         public bool AnswerButtonEnabled
         {
@@ -46,6 +47,20 @@ namespace UserControls
         public string GetAnswer()
         {
             return AnswerTextEdit.Text; 
+        }
+
+        public void CleanAnswer()
+        {
+            if (this.QuestionLabel.InvokeRequired)
+            {
+                SetCleanCallback d = new SetCleanCallback(CleanAnswer);
+                this.Invoke(d);
+            }
+            else
+            {
+                AnswerTextEdit.Text = string.Empty;
+            }
+           
         }
 
         public QuestionControl()

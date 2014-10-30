@@ -74,5 +74,22 @@ namespace AlgoTeacher.Logic.Adapters
                 _workbookView.ReleaseLock();
             }
         }
+
+        public void FillResultCell(int row, int col, string value)
+        {
+            int resultStartPositionRow = 3;
+            int resultStartPositionColumns = 10;
+
+            if (_workbookView != null)
+            {
+                _workbookView.GetLock();
+            }
+            _cells[resultStartPositionRow + row, resultStartPositionColumns + col].Value = value;
+
+            if (_workbookView != null)
+            {
+                _workbookView.ReleaseLock();
+            }
+        }
     }
 }

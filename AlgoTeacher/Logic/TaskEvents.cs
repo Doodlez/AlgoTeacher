@@ -43,9 +43,17 @@ namespace AlgoTeacher.Logic
                 get;
                 private set;
             }
-           public FillEventArgs(Coordinate coord)
+
+            public string Value
             {
-                this.Coord = coord;
+                get; 
+                private set; 
+            }
+
+           public FillEventArgs(Coordinate coord, string value)
+            {
+               Coord = coord;
+               Value = value;
             }
         }
     }
