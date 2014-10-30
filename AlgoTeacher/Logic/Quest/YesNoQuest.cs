@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,11 @@ namespace AlgoTeacher.Logic.Quest
         public string Question
         {
             get { return _Question; }
+        }
+
+        public string Answer
+        {
+            get { return _Answer.ToString(CultureInfo.InvariantCulture); }
         }
 
         public bool CheckAnswer(string answer)

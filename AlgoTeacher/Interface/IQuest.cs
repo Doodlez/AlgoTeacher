@@ -10,6 +10,7 @@ namespace AlgoTeacher.Interface
     {
         string Name { get;}
         string Question { get;}
+        string Answer { get; }
         Boolean CheckAnswer(string answer);
     }
 }
