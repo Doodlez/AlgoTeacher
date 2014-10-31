@@ -10,7 +10,12 @@ namespace AlgoTeacher.Logic.Adapters
         private readonly IWorksheet _worksheet;
         private readonly IRange _cells;
 
-        public MatrixMultiplyAdapter(WorkbookView workbookView)
+        private int _rows1;
+        private int _columns1;
+        private int _rows2;
+        private int _columns2;
+
+        public MatrixMultiplyAdapter(WorkbookView workbookView, int rows1, int columns1, int rows2, int columns2)
         {
             if (workbookView != null)
             {
@@ -21,6 +26,11 @@ namespace AlgoTeacher.Logic.Adapters
             _workbook = _workbookView.ActiveWorkbook;
             _worksheet = _workbook.Worksheets[0];
             _cells = _worksheet.Cells;
+
+            _rows1 = rows1;
+            _columns1 = columns1;
+            _rows2 = rows2;
+            _columns2 = columns2;
 
             if (workbookView != null)
             {
@@ -35,17 +45,17 @@ namespace AlgoTeacher.Logic.Adapters
                 _workbookView.GetLock();
             }
 
-            var values = new int[rows + 1][];
-            for (var i = 1; i <= rows; i++)
+            var values = new int[rows][];
+            for (var i = 0; i < rows; i++)
             {
-                values[i] = new int[columns + 1];
+                values[i] = new int[columns];
             }
 
             for ( var i = startRowCell; i <= startRowCell + rows - 1; i++ )
             {
                 for ( var j = startColumnCell; j <= startColumnCell + columns - 1; j++ )
                 {
-                    values[i][j] = (int) _cells[i, j].Value;
+                    values[i - startRowCell][j - startColumnCell] = int.Parse(_cells[i, j].Value.ToString());
                 }
             }
 
@@ -57,17 +67,14 @@ namespace AlgoTeacher.Logic.Adapters
             return values;
         }
 
-        public void MakeBordersForInitialMatrixes(int rows1, int cols1, int rows2, int cols2)
+        public void MakeBordersForMatrix(int startRow, int startColumn, int rows, int cols)
         {
             if ( _workbookView != null )
             {
                 _workbookView.GetLock();
             }
 
-            //TODO: сделать смещение таблиц вниз
-
-            _cells[0, 0, rows1 - 1, cols1 - 1].Borders.LineStyle = LineStyle.Double;
-            _cells[0, cols1 + 1, rows2 - 1, cols1 + cols2].Borders.LineStyle = LineStyle.Double;
+            _cells[startRow, startColumn, startRow + rows - 1, startColumn + cols - 1].Borders.LineStyle = LineStyle.Double;
 
             if ( _workbookView != null )
             {
@@ -77,8 +84,8 @@ namespace AlgoTeacher.Logic.Adapters
 
         public void FillResultCell(int row, int col, string value)
         {
-            int resultStartPositionRow = 3;
-            int resultStartPositionColumns = 10;
+            const int resultStartPositionRow = 0;
+            var resultStartPositionColumns = _columns1 + _columns2 + 2;
 
             if (_workbookView != null)
             {

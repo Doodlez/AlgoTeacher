@@ -22,18 +22,19 @@ namespace AlgoTeacher
         private Thread CaclThread;
         private bool pressed = false;
 
-        private readonly WorkbookView _workbookView;
+        private WorkbookView _workbookView;
         private MatrixMultiplyAdapter _matrixMultiplyAdapter;
 
         private IQuest quest;
 
+        private int _rows1;
+        private int _columns1;
+        private int _rows2;
+        private int _columns2;
+
         public MatrixMultiplyForm()
         {
             InitializeComponent();
-            MatrixMultiplyWorkbookView.GetLock();
-            _workbookView = MatrixMultiplyWorkbookView;
-            _matrixMultiplyAdapter = new MatrixMultiplyAdapter(_workbookView);
-            MatrixMultiplyWorkbookView.ReleaseLock();
 
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
             questionControl.AnswerClicked += answerClickHandler;
@@ -57,30 +58,32 @@ namespace AlgoTeacher
             MatrixSizeForm sizeForm = new MatrixSizeForm();
             sizeForm.ShowDialog();
 
-            int rows1 = 1;
-            int rows2 = 1;
-            int cols1 = 1;
-            int cols2 = 1;
-
             if (sizeForm.DialogResult == DialogResult.OK)
             {
-                rows1 = sizeForm.Rows1;
-                rows2 = sizeForm.Rows2;
-                cols1 = sizeForm.Columns1;
-                cols2 = sizeForm.Columns2;
+                _rows1 = sizeForm.Rows1;
+                _rows2 = sizeForm.Rows2;
+                _columns1 = sizeForm.Columns1;
+                _columns2 = sizeForm.Columns2;
             }
+
             else
             {
                 Close();
             }
 
-            _matrixMultiplyAdapter.MakeBordersForInitialMatrixes(rows1, cols1, rows2, cols2);
+            MatrixMultiplyWorkbookView.GetLock();
+            _workbookView = MatrixMultiplyWorkbookView;
+            _matrixMultiplyAdapter = new MatrixMultiplyAdapter(_workbookView, _rows1, _columns1, _rows2, _columns2);
+            MatrixMultiplyWorkbookView.ReleaseLock();
+
+            _matrixMultiplyAdapter.MakeBordersForMatrix(1, 1, _rows1, _columns1);
+            _matrixMultiplyAdapter.MakeBordersForMatrix(1, _columns1 + 2, _rows2, _columns2);
             
-            int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
-            int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
-            // TODO: Чтение матриц
-            _matrix1 = new Matrix(rows1, cols1, values1);
-            _matrix2 = new Matrix(rows2, cols2, values2);
+            //int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
+            //int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
+            //// TODO: Чтение матриц
+            //_matrix1 = new Matrix(rows1, cols1, values1);
+            //_matrix2 = new Matrix(rows2, cols2, values2);
         }
 
         void Run()
@@ -90,7 +93,15 @@ namespace AlgoTeacher
 
         public void CalculateButton_Clicked(object sender, EventArgs e)
         {
+            var matrix1_values = _matrixMultiplyAdapter.ReadInitialMatrixValues(1, 1, _rows1, _rows2);
+            var matrix2_values = _matrixMultiplyAdapter.ReadInitialMatrixValues(1, _columns1 + 2, _rows2, _columns2);
+
+            _matrix1 = new Matrix(_rows1, _columns1, matrix1_values);
+            _matrix2 = new Matrix(_rows2, _columns2, matrix2_values);
+
             if ( _matrix1 == null || _matrix2 == null) return;
+
+            _matrixMultiplyAdapter.MakeBordersForMatrix(1, _columns1 + _columns2 + 3, _rows1, _columns2);
 
             // Действия при нажатии посчитать
             //MessageBox.Show("Hi");
