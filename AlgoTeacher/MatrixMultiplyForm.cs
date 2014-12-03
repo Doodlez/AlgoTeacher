@@ -41,10 +41,10 @@ namespace AlgoTeacher
             InitializeComponent();
 
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
-            questionControl.AnswerClicked += answerClickHandler;
+            //questionControl.AnswerClicked += answerClickHandler;
 
             var calculateClickHandler = new QuestionControl.CalculateClickedHandler(CalculateButton_Clicked);
-            questionControl.CalculateClicked += calculateClickHandler;
+            //questionControl.CalculateClicked += calculateClickHandler;
 
             
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
@@ -73,15 +73,7 @@ namespace AlgoTeacher
             //else
             //{
             //    Close();
-            //}
-
-            //MatrixMultiplyWorkbookView.GetLock();
-            //_workbookView = MatrixMultiplyWorkbookView;
-            //_matrixMultiplyAdapter = new MatrixMultiplyAdapter(_workbookView, _rows1, _columns1, _rows2, _columns2);
-            //MatrixMultiplyWorkbookView.ReleaseLock();
-
-            //_matrixMultiplyAdapter.MakeBordersForMatrix(1, 1, _rows1, _columns1);
-            //_matrixMultiplyAdapter.MakeBordersForMatrix(1, _columns1 + 2, _rows2, _columns2);
+            //
 
             int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
             int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
@@ -153,17 +145,28 @@ namespace AlgoTeacher
 
             gridControl1.Size = new Size(_matrix1.ColumnsCount * 50,_matrix1.RowsCount * 50);
             gridControl2.Size = new Size(_matrix2.ColumnsCount * 50, _matrix2.RowsCount * 50);
+            
+            CaclThread = new Thread(Run) { IsBackground = true };
+            CaclThread.Start();
+           // gridView1.Columns[0];
+            //var matrix1_values = _matrixMultiplyAdapter.ReadInitialMatrixValues(1, 1, _rows1, _rows2);
+            //var matrix2_values = _matrixMultiplyAdapter.ReadInitialMatrixValues(1, _columns1 + 2, _rows2, _columns2);
 
-            gridView1.Columns[0]
+            //_matrix1 = new Matrix(_rows1, _columns1, matrix1_values);
+            //_matrix2 = new Matrix(_rows2, _columns2, matrix2_values);
+
+            //if (_matrix1 == null || _matrix2 == null) return;
+
+            //_matrixMultiplyAdapter.MakeBordersForMatrix(1, _columns1 + _columns2 + 3, _rows1, _columns2);
+
+            // Действия при нажатии посчитать
         }
 
         private void gridView1_RowCellDefaultAlignment(object sender, DevExpress.XtraGrid.Views.Base.RowCellAlignmentEventArgs e)
         {
-
             if (e.Column.ColumnEdit is DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit)
 
                 e.HorzAlignment = DevExpress.Utils.HorzAlignment.Center;
-
         }
 
         void Run()
@@ -173,22 +176,7 @@ namespace AlgoTeacher
 
         public void CalculateButton_Clicked(object sender, EventArgs e)
         {
-            var matrix1_values = _matrixMultiplyAdapter.ReadInitialMatrixValues(1, 1, _rows1, _rows2);
-            var matrix2_values = _matrixMultiplyAdapter.ReadInitialMatrixValues(1, _columns1 + 2, _rows2, _columns2);
-
-            _matrix1 = new Matrix(_rows1, _columns1, matrix1_values);
-            _matrix2 = new Matrix(_rows2, _columns2, matrix2_values);
-
-            if ( _matrix1 == null || _matrix2 == null) return;
-
-            _matrixMultiplyAdapter.MakeBordersForMatrix(1, _columns1 + _columns2 + 3, _rows1, _columns2);
-
-            // Действия при нажатии посчитать
-            //MessageBox.Show("Hi");
-            //questionControl.CalculateButtonEnabled = false;
-            questionControl.AnswerButtonEnabled = true;
-            CaclThread  = new Thread(Run) {IsBackground = true};
-            CaclThread.Start();
+            
         }
 
         private void MatrixMultiplyForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -198,7 +186,7 @@ namespace AlgoTeacher
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
             //MessageBox.Show("Quest works");
-            this.questionControl.SetQuestionLabel(e.Quest.Question + "Ответ: " + e.Quest.Answer);
+            QuestionLabel.Text = e.Quest.Question + "Ответ: " + e.Quest.Answer;
             quest = e.Quest;
             while (!pressed)
             {
@@ -206,8 +194,8 @@ namespace AlgoTeacher
             }
 
             _matrixMultiplyAdapter.FillResultCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
-            questionControl.SetQuestionLabel("");
-            questionControl.CleanAnswer();
+            QuestionLabel.Text = "";
+            this.questionControl1.CleanAnswer();
             
             pressed = false;
         }
@@ -215,7 +203,7 @@ namespace AlgoTeacher
         public void AnswerButton_Clicked(object sender, EventArgs e)
         {
             // Действия при нажатии ответ
-            if (!quest.CheckAnswer(questionControl.GetAnswer()))
+            if (!quest.CheckAnswer(questionControl1.GetAnswer()))
             {
                 MessageBox.Show("не правильно!");
                 return;

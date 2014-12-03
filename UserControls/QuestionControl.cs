@@ -26,32 +26,32 @@ namespace UserControls
         //    set { CalculateButton.Enabled = value; }
         //}
 
-        public void SetQuestionLabel(string value)
-        {
-            if (this.QuestionLabel.InvokeRequired)
-            {
-                SetTextCallback d = new SetTextCallback(SetQuestionLabel);
-                this.Invoke(d, new object[] {value});
-            }
-            else
-            {
-                QuestionLabel.Text = value;
-            }
-        }
+        //public void SetQuestionLabel(string value)
+        //{
+        //    if (this.QuestionLabel.InvokeRequired)
+        //    {
+        //        SetTextCallback d = new SetTextCallback(SetQuestionLabel);
+        //        this.Invoke(d, new object[] {value});
+        //    }
+        //    else
+        //    {
+        //        QuestionLabel.Text = value;
+        //    }
+        //}
 
-        public string GetQuestion()
-        {
-            return QuestionLabel.Text;
-        }
+        //public string GetQuestion()
+        //{
+        //    return QuestionLabel.Text;
+        //}
 
         public string GetAnswer()
         {
-            return AnswerTextEdit.Text; 
+            return AnswerTextEdit.Text;
         }
 
         public void CleanAnswer()
         {
-            if (this.QuestionLabel.InvokeRequired)
+            if (this.AnswerTextEdit.InvokeRequired)
             {
                 SetCleanCallback d = new SetCleanCallback(CleanAnswer);
                 this.Invoke(d);
@@ -59,8 +59,7 @@ namespace UserControls
             else
             {
                 AnswerTextEdit.Text = string.Empty;
-            }
-           
+            } 
         }
 
         public QuestionControl()
@@ -78,11 +77,6 @@ namespace UserControls
             {
                 OnAnswerClicked(sender, e);
             }
-        }
-
-        private void CalculateButton_Click(object sender, EventArgs e)
-        {
-            CalculateClicked(sender, e);
         }
         protected virtual void OnAnswerClicked(object sender, EventArgs e)
         {
