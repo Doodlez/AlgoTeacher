@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Data;
+using System.Drawing;
 using System.Threading;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using AlgoTeacher.Interface;
 using AlgoTeacher.Logic;
 using AlgoTeacher.Logic.Adapters;
+using DevExpress.Utils;
+using DevExpress.XtraGrid.Columns;
 using SpreadsheetGear.Windows.Forms;
 using UserControls;
 
@@ -27,10 +31,10 @@ namespace AlgoTeacher
 
         private IQuest quest;
 
-        private int _rows1;
-        private int _columns1;
-        private int _rows2;
-        private int _columns2;
+        private int _rows1 = 3;
+        private int _columns1 = 3;
+        private int _rows2 = 3;
+        private int _columns2 = 3;
 
         public MatrixMultiplyForm()
         {
@@ -55,35 +59,111 @@ namespace AlgoTeacher
         {
             // Действия при загрузке
             // Ввод размеров
-            MatrixSizeForm sizeForm = new MatrixSizeForm();
-            sizeForm.ShowDialog();
+            //MatrixSizeForm sizeForm = new MatrixSizeForm();
+            //sizeForm.ShowDialog();
 
-            if (sizeForm.DialogResult == DialogResult.OK)
+            //if (sizeForm.DialogResult == DialogResult.OK)
+            //{
+            //    _rows1 = sizeForm.Rows1;
+            //    _rows2 = sizeForm.Rows2;
+            //    _columns1 = sizeForm.Columns1;
+            //    _columns2 = sizeForm.Columns2;
+            //}
+
+            //else
+            //{
+            //    Close();
+            //}
+
+            //MatrixMultiplyWorkbookView.GetLock();
+            //_workbookView = MatrixMultiplyWorkbookView;
+            //_matrixMultiplyAdapter = new MatrixMultiplyAdapter(_workbookView, _rows1, _columns1, _rows2, _columns2);
+            //MatrixMultiplyWorkbookView.ReleaseLock();
+
+            //_matrixMultiplyAdapter.MakeBordersForMatrix(1, 1, _rows1, _columns1);
+            //_matrixMultiplyAdapter.MakeBordersForMatrix(1, _columns1 + 2, _rows2, _columns2);
+
+            int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
+            int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
+           // TODO: Чтение матриц
+            _matrix1 = new Matrix(_rows1, _columns1, values1);
+            _matrix2 = new Matrix(_rows2, _columns2, values2);
+
+            List<int[]> rowlist1 = new List<int[]>();
+            for (int i = 0; i < _matrix1.RowsCount ; i++ )
             {
-                _rows1 = sizeForm.Rows1;
-                _rows2 = sizeForm.Rows2;
-                _columns1 = sizeForm.Columns1;
-                _columns2 = sizeForm.Columns2;
+                rowlist1.Add(_matrix1.Values[i]);
             }
 
-            else
+            DataTable tab = new DataTable();
+            for (int i = 0; i < _matrix1.ColumnsCount; i++)
             {
-                Close();
+                DataColumn col = new DataColumn();
+                tab.Columns.Add(col);
             }
 
-            MatrixMultiplyWorkbookView.GetLock();
-            _workbookView = MatrixMultiplyWorkbookView;
-            _matrixMultiplyAdapter = new MatrixMultiplyAdapter(_workbookView, _rows1, _columns1, _rows2, _columns2);
-            MatrixMultiplyWorkbookView.ReleaseLock();
+            foreach (var intse in rowlist1)
+            {
+                DataRow row = tab.NewRow();
+                for (int i = 0; i < tab.Columns.Count; i++)
+                {
+                    row[i] = intse[i];
+                }
+                tab.Rows.Add(row);
+            }
 
-            _matrixMultiplyAdapter.MakeBordersForMatrix(1, 1, _rows1, _columns1);
-            _matrixMultiplyAdapter.MakeBordersForMatrix(1, _columns1 + 2, _rows2, _columns2);
-            
-            //int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
-            //int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
-            //// TODO: Чтение матриц
-            //_matrix1 = new Matrix(rows1, cols1, values1);
-            //_matrix2 = new Matrix(rows2, cols2, values2);
+            List<int[]> rowlist2 = new List<int[]>();
+            for (int i = 0; i < _matrix2.RowsCount; i++)
+            {
+                rowlist2.Add(_matrix2.Values[i]);
+            }
+
+            DataTable tab2 = new DataTable();
+            for (int i = 0; i < _matrix2.ColumnsCount; i++)
+            {
+                DataColumn col = new DataColumn();
+                tab2.Columns.Add(col);
+            }
+
+            foreach (var intse in rowlist2)
+            {
+                DataRow row = tab2.NewRow();
+                for (int i = 0; i < tab2.Columns.Count; i++)
+                {
+                    row[i] = intse[i];
+                }
+                tab2.Rows.Add(row);
+            }
+
+            gridControl1.DataSource = tab;
+            gridControl2.DataSource = tab2;
+            foreach (GridColumn col in gridView1.Columns)
+            {
+                col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
+                col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                col.AppearanceHeader.Options.UseTextOptions = true;
+            }
+
+            foreach (GridColumn col in gridView2.Columns)
+            {
+                col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
+                col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                col.AppearanceHeader.Options.UseTextOptions = true;
+            }
+
+            gridControl1.Size = new Size(_matrix1.ColumnsCount * 50,_matrix1.RowsCount * 50);
+            gridControl2.Size = new Size(_matrix2.ColumnsCount * 50, _matrix2.RowsCount * 50);
+
+            gridView1.Columns[0]
+        }
+
+        private void gridView1_RowCellDefaultAlignment(object sender, DevExpress.XtraGrid.Views.Base.RowCellAlignmentEventArgs e)
+        {
+
+            if (e.Column.ColumnEdit is DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit)
+
+                e.HorzAlignment = DevExpress.Utils.HorzAlignment.Center;
+
         }
 
         void Run()
@@ -105,7 +185,7 @@ namespace AlgoTeacher
 
             // Действия при нажатии посчитать
             //MessageBox.Show("Hi");
-            questionControl.CalculateButtonEnabled = false;
+            //questionControl.CalculateButtonEnabled = false;
             questionControl.AnswerButtonEnabled = true;
             CaclThread  = new Thread(Run) {IsBackground = true};
             CaclThread.Start();

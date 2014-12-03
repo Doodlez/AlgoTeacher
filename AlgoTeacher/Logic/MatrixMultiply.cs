@@ -15,17 +15,17 @@ namespace AlgoTeacher.Logic
 
         public Matrix MatrixMult(Matrix matrix1, Matrix matrix2)
         {
-            if ( matrix1.Columns != matrix2.Rows )
+            if ( matrix1.ColumnsCount != matrix2.RowsCount )
                 return null;
 
-            var coords = GetRandomCoords(matrix1.Rows, matrix2.Columns);
+            var coords = GetRandomCoords(matrix1.RowsCount, matrix2.ColumnsCount);
 
-            var resultMatrix = new Matrix(matrix1.Rows, matrix2.Columns);
-            for ( var i = 1; i <= matrix1.Rows; i++ )
+            var resultMatrix = new Matrix(matrix1.RowsCount, matrix2.ColumnsCount);
+            for ( var i = 1; i <= matrix1.RowsCount; i++ )
             {
-                for ( var j = 1; j <= matrix2.Columns; j++ )
+                for ( var j = 1; j <= matrix2.ColumnsCount; j++ )
                 {
-                    for ( var k = 1; k <= matrix1.Columns; k++ )
+                    for ( var k = 1; k <= matrix1.ColumnsCount; k++ )
                     {
                         resultMatrix.Values[i][j] += matrix1.Values[i][k] * matrix2.Values[k][j];
                     }

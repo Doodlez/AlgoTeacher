@@ -10,13 +10,13 @@ namespace AlgoTeacher
 {
     public class Matrix
     {
-        public int Rows
+        public int RowsCount
         {
             get;
             set;
         }
 
-        public int Columns
+        public int ColumnsCount
         {
             get;
             set;
@@ -30,28 +30,28 @@ namespace AlgoTeacher
 
         public Matrix(int rows, int columns)
         {
-            Rows = rows;
-            Columns = columns;
-            Values = new int[rows + 1][];
+            RowsCount = rows;
+            ColumnsCount = columns;
+            Values = new int[rows][];
 
-            for (var i = 1; i <= rows; i++)
+            for (var i = 0; i < rows; i++)
             {
-                Values[i] = new int[columns + 1];
+                Values[i] = new int[columns];
             }
         }
 
         public Matrix(int rows, int columns, IList<int[]> values)
         {
-            Rows = rows;
-            Columns = columns;
-            Values = new int[rows + 1][];
+            RowsCount = rows;
+            ColumnsCount = columns;
+            Values = new int[rows][];
 
-            for (var i = 1; i <= rows; i++)
+            for (var i = 0; i < rows; i++)
             {
-                Values[i] = new int[columns + 1];
-                for (var j = 1; j <= columns; j++)
+                Values[i] = new int[columns];
+                for (var j = 0; j < columns; j++)
                 {
-                    Values[i][j] = values[i - 1][j - 1];
+                    Values[i][j] = values[i][j];
                 }
             }
         }

@@ -20,11 +20,11 @@ namespace UserControls
             set { AnswerButton.Enabled = value;}
         }
 
-        public bool CalculateButtonEnabled
-        {
-            get { return CalculateButton.Enabled; }
-            set { CalculateButton.Enabled = value; }
-        }
+        //public bool CalculateButtonEnabled
+        //{
+        //    get { return CalculateButton.Enabled; }
+        //    set { CalculateButton.Enabled = value; }
+        //}
 
         public void SetQuestionLabel(string value)
         {
