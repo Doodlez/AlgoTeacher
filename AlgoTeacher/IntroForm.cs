@@ -17,30 +17,32 @@ namespace AlgoTeacher
         {
             InitializeComponent();
         }
+
         public IntroForm(string question)
         {
+            InitializeComponent();
             this.QuestionLabel.Text = question;
         }
-
 
         private void IntroForm_Load(object sender, EventArgs e)
         {
 
         }
+
         // TODO: Вызывай ShowDialog() и проверяй у него DialogResult по закрытию формы
         private void ButtonYes_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         private void ButtonNo_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.No;
+            DialogResult = DialogResult.No;
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

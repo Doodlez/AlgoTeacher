@@ -154,7 +154,7 @@ namespace AlgoTeacher
             gridControl1.Size = new Size(_matrix1.ColumnsCount * 50,_matrix1.RowsCount * 50);
             gridControl2.Size = new Size(_matrix2.ColumnsCount * 50, _matrix2.RowsCount * 50);
 
-            gridView1.Columns[0]
+            //gridView1.Columns[0]
         }
 
         private void gridView1_RowCellDefaultAlignment(object sender, DevExpress.XtraGrid.Views.Base.RowCellAlignmentEventArgs e)

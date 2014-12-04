@@ -17,5 +17,11 @@ namespace AlgoTeacher
         {
             InitializeComponent();
         }
+
+        public InformationForm(string tense)
+        {
+            InitializeComponent();
+            this.QuestionLabel.Text = tense;
+        }
     }
 }
