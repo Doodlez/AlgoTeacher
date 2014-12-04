@@ -186,7 +186,7 @@ namespace AlgoTeacher
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
             //MessageBox.Show("Quest works");
-            QuestionLabel.Text = e.Quest.Question + "Ответ: " + e.Quest.Answer;
+            //QuestionLabel.Text = e.Quest.Question + "Ответ: " + e.Quest.Answer;
             quest = e.Quest;
             while (!pressed)
             {
@@ -220,7 +220,7 @@ namespace AlgoTeacher
                 System.Threading.Thread.Sleep(200);
                 t = false;
             }
-            _matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
+            //_matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
         }
 
         //private void FillSheetWithStartMatrixes(int[][] values1, int[][] values2, SpreadsheetGear.IRange range)

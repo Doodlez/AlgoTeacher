@@ -14,6 +14,10 @@ namespace AlgoTeacher
 {
     public partial class MainForm : Form
     {
+        public IntroForm IntroForm;
+        public InformationForm InformationForm;
+        public MyTask MyTask;
+
         public MainForm()
         {
             InitializeComponent();
@@ -33,34 +37,14 @@ namespace AlgoTeacher
             if (TaskComboBox.Properties.Items.Count != 0)
             {
                 MyTask selectedTask = (MyTask) TaskComboBox.EditValue;
-                //selectTask.ShowForm();
+                //selectedTask.ShowForm();
 
                 if (selectedTask.Name == "Умножение матриц")
                 {
-                    var introForm = new IntroForm("Доброго времени суток, дружище! Не желаешь ли научиться перемножать матрицы?");
-                    this.Hide();
-                    introForm.ShowDialog();
+                    IntroForm = new IntroForm("Доброго времени суток, дружище! Не желаешь ли научиться перемножать матрицы?", selectedTask, this);
 
-                    InformationForm infoForm;
-
-                    switch ( introForm.DialogResult )
-                    {
-                        case DialogResult.OK:
-                            infoForm = new InformationForm("Две матрицы A и B размерами mxn и pxq можно перемножить только при том условии, что число столбцов первой матрицы равно числу строк второй, т.е. когда n = p");
-                            infoForm.Show();
-                            break;
-
-                        case DialogResult.No:
-                            selectedTask.ShowForm();
-                            //infoForm = new InformationForm("Ну раз ты понял, как это решается, попробуй решить следующий пример...");
-                            //infoForm.Show();
-                            break;
-
-                        case DialogResult.Cancel:
-                            //MessageBox.Show("Здесь будет комплекс показательныз задач");
-                            this.Show();
-                            break;
-                    }
+                    this.Visible = false;
+                    IntroForm.Show();
                 }
             }
         }

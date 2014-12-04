@@ -21,11 +21,11 @@ namespace AlgoTeacher.Logic
             var coords = GetRandomCoords(matrix1.RowsCount, matrix2.ColumnsCount);
 
             var resultMatrix = new Matrix(matrix1.RowsCount, matrix2.ColumnsCount);
-            for ( var i = 1; i <= matrix1.RowsCount; i++ )
+            for ( var i = 0; i < matrix1.RowsCount; i++ )
             {
-                for ( var j = 1; j <= matrix2.ColumnsCount; j++ )
+                for ( var j = 0; j < matrix2.ColumnsCount; j++ )
                 {
-                    for ( var k = 1; k <= matrix1.ColumnsCount; k++ )
+                    for ( var k = 0; k < matrix1.ColumnsCount; k++ )
                     {
                         resultMatrix.Values[i][j] += matrix1.Values[i][k] * matrix2.Values[k][j];
                     }

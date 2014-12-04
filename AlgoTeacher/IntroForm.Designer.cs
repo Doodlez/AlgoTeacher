@@ -93,13 +93,15 @@
             // 
             // ButtonNo
             // 
+            this.ButtonNo.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonNo.Appearance.Options.UseFont = true;
             this.ButtonNo.Location = new System.Drawing.Point(598, 263);
             this.ButtonNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonNo.Name = "ButtonNo";
             this.ButtonNo.Size = new System.Drawing.Size(100, 32);
             this.ButtonNo.StyleController = this.layoutControl1;
             this.ButtonNo.TabIndex = 7;
-            this.ButtonNo.Text = "Нет";
+            this.ButtonNo.Text = "Я всё умею";
             this.ButtonNo.Click += new System.EventHandler(this.ButtonNo_Click);
             // 
             // ButtonYes
@@ -110,7 +112,7 @@
             this.ButtonYes.Size = new System.Drawing.Size(100, 32);
             this.ButtonYes.StyleController = this.layoutControl1;
             this.ButtonYes.TabIndex = 6;
-            this.ButtonYes.Text = "Да";
+            this.ButtonYes.Text = "Да, конечно!";
             this.ButtonYes.Click += new System.EventHandler(this.ButtonYes_Click);
             // 
             // layoutControlGroup1
