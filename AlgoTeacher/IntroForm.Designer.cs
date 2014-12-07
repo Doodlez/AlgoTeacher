@@ -59,7 +59,7 @@
             this.QuestionLabel.Location = new System.Drawing.Point(12, 12);
             this.QuestionLabel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.QuestionLabel.Name = "QuestionLabel";
-            this.QuestionLabel.Size = new System.Drawing.Size(803, 235);
+            this.QuestionLabel.Size = new System.Drawing.Size(803, 309);
             this.QuestionLabel.StyleController = this.layoutControl1;
             this.QuestionLabel.TabIndex = 5;
             this.QuestionLabel.Text = "Вопрос";
@@ -76,13 +76,13 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(995, 228, 474, 437);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(827, 319);
+            this.layoutControl1.Size = new System.Drawing.Size(827, 393);
             this.layoutControl1.TabIndex = 6;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // ButtonBack
             // 
-            this.ButtonBack.Location = new System.Drawing.Point(702, 263);
+            this.ButtonBack.Location = new System.Drawing.Point(702, 337);
             this.ButtonBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonBack.Name = "ButtonBack";
             this.ButtonBack.Size = new System.Drawing.Size(100, 32);
@@ -95,7 +95,7 @@
             // 
             this.ButtonNo.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonNo.Appearance.Options.UseFont = true;
-            this.ButtonNo.Location = new System.Drawing.Point(598, 263);
+            this.ButtonNo.Location = new System.Drawing.Point(598, 337);
             this.ButtonNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonNo.Name = "ButtonNo";
             this.ButtonNo.Size = new System.Drawing.Size(100, 32);
@@ -106,7 +106,7 @@
             // 
             // ButtonYes
             // 
-            this.ButtonYes.Location = new System.Drawing.Point(494, 263);
+            this.ButtonYes.Location = new System.Drawing.Point(494, 337);
             this.ButtonYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonYes.Name = "ButtonYes";
             this.ButtonYes.Size = new System.Drawing.Size(100, 32);
@@ -125,7 +125,7 @@
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(827, 319);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(827, 393);
             this.layoutControlGroup1.Text = "Root";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -136,7 +136,7 @@
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(1, 1);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(807, 239);
+            this.layoutControlItem1.Size = new System.Drawing.Size(807, 313);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -151,7 +151,7 @@
             this.layoutControlItem3,
             this.layoutControlItem4,
             this.emptySpaceItem1});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 239);
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 313);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(807, 60);
             this.layoutControlGroup2.Text = "layoutControlGroup2";
@@ -217,12 +217,14 @@
             // 
             // IntroForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 319);
+            this.ClientSize = new System.Drawing.Size(827, 393);
             this.Controls.Add(this.layoutControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "IntroForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IntroForm";
             this.Load += new System.EventHandler(this.IntroForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

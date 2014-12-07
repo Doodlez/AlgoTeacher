@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AlgoTeacher.Interface
 {
-    public class Help
+    public class TaskHelp
     {
-        public Help(string name, List<string> content)
+        public TaskHelp(string name, List<string> content)
         {
             Name = name;
             Content = content;
