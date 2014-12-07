@@ -25,10 +25,10 @@ namespace AlgoTeacher
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string introText = "Доброго времени суток, дружище! Не желаешь ли научиться перемножать матрицы?";
+            string introText = "Доброго времени суток, дружище!\r\nНе желаешь ли научиться перемножать матрицы?";
             List<string> helpsText = new List<string>();
             helpsText.Add("Общая информация об алгоритме");
-            helpsText.Add("Две матрицы A и B можно перемножить тогда и только тогда, когда... Понятно?");
+            helpsText.Add("Две матрицы A и B можно перемножить тогда и только тогда, \r\nкогда... Понятно?");
             helpsText.Add("Пример");
 
             TaskHelp testHelp = new TaskHelp("test", helpsText);

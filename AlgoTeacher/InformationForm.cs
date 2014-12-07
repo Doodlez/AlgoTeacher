@@ -60,7 +60,7 @@ namespace AlgoTeacher
             {
                 this.QuestionLabel.Text = _help.Content[1];
                 //"Объясняю подробнее: надо просто сложить 2 + 2 и получить 4. Теперь-то понятно?"
-                this.ButtonNo.Text = "Нужен пример";
+                this.ButtonNo.Text = "Нет, нужен пример";
                 this.ModeFlag = 2;
             }
             else if (ModeFlag == 2)
@@ -101,14 +101,12 @@ namespace AlgoTeacher
         //            }
         //            else
         //            {
-        //                //TODO: здесь надо вернуться на главную форму вместо выхода из программы
         //                Application.Exit();
         //            }
         //            break;
 
         //        case DialogResult.No:
         //            this.Visible = true;
-        //            //TODO: почему-то этот Visible перестал работать - посмотри. Недавно работал, а сейчас нет - зараза
         //            this.ButtonNo.Visible = false;
         //            this.QuestionLabel.Text =
         //                "Объясняю подробнее: надо просто сложить 2 + 2 и получить 4. Теперь-то понятно?";
