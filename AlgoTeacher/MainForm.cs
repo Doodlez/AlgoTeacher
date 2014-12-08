@@ -43,9 +43,10 @@ namespace AlgoTeacher
         {
             if (TaskComboBox.Properties.Items.Count != 0)
             {
+                this.Hide();
                 MyTask selectedTask = (MyTask) TaskComboBox.EditValue;
                 selectedTask.ShowIntro();
-
+                this.Show();
                 //if (selectedTask.Name == "Умножение матриц")
                 //{
                 //    //IntroForm = new IntroForm("Доброго времени суток, дружище! Не желаешь ли научиться перемножать матрицы?", selectedTask, this);
