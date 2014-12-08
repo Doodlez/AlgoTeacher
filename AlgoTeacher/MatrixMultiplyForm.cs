@@ -42,8 +42,6 @@ namespace AlgoTeacher
 
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
             //questionControl.AnswerClicked += answerClickHandler;
-
-            var calculateClickHandler = new QuestionControl.CalculateClickedHandler(CalculateButton_Clicked);
             //questionControl.CalculateClicked += calculateClickHandler;
 
             
@@ -55,43 +53,42 @@ namespace AlgoTeacher
             _logic.fillEvent += _fillHandler;
         }
 
-        private void MatrixMultiplyForm_Load(object sender, EventArgs e)
+        private void SetupMatrix()
         {
-            // Действия при загрузке
-            // Ввод размеров
-            //MatrixSizeForm sizeForm = new MatrixSizeForm();
-            //sizeForm.ShowDialog();
-
-            //if (sizeForm.DialogResult == DialogResult.OK)
-            //{
-            //    _rows1 = sizeForm.Rows1;
-            //    _rows2 = sizeForm.Rows2;
-            //    _columns1 = sizeForm.Columns1;
-            //    _columns2 = sizeForm.Columns2;
-            //}
-
-            //else
-            //{
-            //    Close();
-            //
-
+            // генерация размерности и рандомная генерация значений матриц 
             int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
             int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
-           // TODO: Чтение матриц
+
+            // создание матриц
             _matrix1 = new Matrix(_rows1, _columns1, values1);
             _matrix2 = new Matrix(_rows2, _columns2, values2);
 
             List<int[]> rowlist1 = new List<int[]>();
-            for (int i = 0; i < _matrix1.RowsCount ; i++ )
+            List<int[]> rowlist2 = new List<int[]>();
+
+            for (int i = 0; i < _matrix1.RowsCount; i++)
             {
                 rowlist1.Add(_matrix1.Values[i]);
             }
 
+            for (int i = 0; i < _matrix2.RowsCount; i++)
+            {
+                rowlist2.Add(_matrix2.Values[i]);
+            }
+
             DataTable tab = new DataTable();
+            DataTable tab2 = new DataTable();
+            
             for (int i = 0; i < _matrix1.ColumnsCount; i++)
             {
                 DataColumn col = new DataColumn();
                 tab.Columns.Add(col);
+            }
+
+            for (int i = 0; i < _matrix2.ColumnsCount; i++)
+            {
+                DataColumn col = new DataColumn();
+                tab2.Columns.Add(col);
             }
 
             foreach (var intse in rowlist1)
@@ -102,19 +99,6 @@ namespace AlgoTeacher
                     row[i] = intse[i];
                 }
                 tab.Rows.Add(row);
-            }
-
-            List<int[]> rowlist2 = new List<int[]>();
-            for (int i = 0; i < _matrix2.RowsCount; i++)
-            {
-                rowlist2.Add(_matrix2.Values[i]);
-            }
-
-            DataTable tab2 = new DataTable();
-            for (int i = 0; i < _matrix2.ColumnsCount; i++)
-            {
-                DataColumn col = new DataColumn();
-                tab2.Columns.Add(col);
             }
 
             foreach (var intse in rowlist2)
@@ -129,6 +113,8 @@ namespace AlgoTeacher
 
             gridControl1.DataSource = tab;
             gridControl2.DataSource = tab2;
+
+            // настройка матриц
             foreach (GridColumn col in gridView1.Columns)
             {
                 col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
@@ -143,23 +129,32 @@ namespace AlgoTeacher
                 col.AppearanceHeader.Options.UseTextOptions = true;
             }
 
-            gridControl1.Size = new Size(_matrix1.ColumnsCount * 50,_matrix1.RowsCount * 50);
+            gridControl1.Size = new Size(_matrix1.ColumnsCount * 50, _matrix1.RowsCount * 50);
             gridControl2.Size = new Size(_matrix2.ColumnsCount * 50, _matrix2.RowsCount * 50);
-            
+        }
+
+        private bool FirstQuest()
+        {
+            return true;
+        }
+        private void ThirdQuest()
+        {
             CaclThread = new Thread(Run) { IsBackground = true };
             CaclThread.Start();
-           // gridView1.Columns[0];
-            //var matrix1_values = _matrixMultiplyAdapter.ReadInitialMatrixValues(1, 1, _rows1, _rows2);
-            //var matrix2_values = _matrixMultiplyAdapter.ReadInitialMatrixValues(1, _columns1 + 2, _rows2, _columns2);
+        }
 
-            //_matrix1 = new Matrix(_rows1, _columns1, matrix1_values);
-            //_matrix2 = new Matrix(_rows2, _columns2, matrix2_values);
+        private void MatrixMultiplyForm_Load(object sender, EventArgs e)
+        {
+            SetupMatrix();
 
-            //if (_matrix1 == null || _matrix2 == null) return;
+            // запуск квеста про возможность перемножения
+            if (!FirstQuest())
+            {
 
-            //_matrixMultiplyAdapter.MakeBordersForMatrix(1, _columns1 + _columns2 + 3, _rows1, _columns2);
+            }
 
-            // Действия при нажатии посчитать
+            // запуск квеста с решением матриц
+            ThirdQuest();
         }
 
         private void gridView1_RowCellDefaultAlignment(object sender, DevExpress.XtraGrid.Views.Base.RowCellAlignmentEventArgs e)
@@ -195,7 +190,7 @@ namespace AlgoTeacher
 
             _matrixMultiplyAdapter.FillResultCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             QuestionLabel.Text = "";
-            this.questionControl1.CleanAnswer();
+            this.questionControl.CleanAnswer();
             
             pressed = false;
         }
@@ -203,7 +198,7 @@ namespace AlgoTeacher
         public void AnswerButton_Clicked(object sender, EventArgs e)
         {
             // Действия при нажатии ответ
-            if (!quest.CheckAnswer(questionControl1.GetAnswer()))
+            if (!quest.CheckAnswer(questionControl.GetAnswer()))
             {
                 MessageBox.Show("не правильно!");
                 return;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace UserControls
 {
-    public partial class YesNoQuestionControl : UserControl
+    public partial class YesNoQuestionControl : DevExpress.XtraEditors.XtraUserControl
     {
         public YesNoQuestionControl()
         {

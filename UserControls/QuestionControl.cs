@@ -8,9 +8,6 @@ namespace UserControls
         public delegate void AnswerClickedHandler(object sender, EventArgs e);
         public event AnswerClickedHandler AnswerClicked;
 
-        public delegate void CalculateClickedHandler(object sender, EventArgs e);
-        public event CalculateClickedHandler CalculateClicked;
-
         private delegate void SetTextCallback(string text1);
         private delegate void SetCleanCallback();
 
@@ -19,30 +16,6 @@ namespace UserControls
             get { return AnswerButton.Enabled; }
             set { AnswerButton.Enabled = value;}
         }
-
-        //public bool CalculateButtonEnabled
-        //{
-        //    get { return CalculateButton.Enabled; }
-        //    set { CalculateButton.Enabled = value; }
-        //}
-
-        //public void SetQuestionLabel(string value)
-        //{
-        //    if (this.QuestionLabel.InvokeRequired)
-        //    {
-        //        SetTextCallback d = new SetTextCallback(SetQuestionLabel);
-        //        this.Invoke(d, new object[] {value});
-        //    }
-        //    else
-        //    {
-        //        QuestionLabel.Text = value;
-        //    }
-        //}
-
-        //public string GetQuestion()
-        //{
-        //    return QuestionLabel.Text;
-        //}
 
         public string GetAnswer()
         {

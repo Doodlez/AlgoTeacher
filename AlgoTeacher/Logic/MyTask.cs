@@ -36,7 +36,7 @@ namespace AlgoTeacher.Logic
         public void ShowForm()
         {
             var TaskForm = (Form)Activator.CreateInstance(_formType);
-            TaskForm.Show();
+            TaskForm.ShowDialog();
         }
 
         public void ShowIntro()
@@ -52,7 +52,7 @@ namespace AlgoTeacher.Logic
 
                 case DialogResult.No:
                     // перейти к заданиям
-                    ShowQuest();
+                    ShowForm();
                     break;
 
                 case DialogResult.Cancel:
@@ -70,7 +70,7 @@ namespace AlgoTeacher.Logic
             {
                 case DialogResult.OK:
                 // переход к заданиям
-                ShowQuest();
+                ShowForm();
                 break;
 
                 case DialogResult.Cancel:
