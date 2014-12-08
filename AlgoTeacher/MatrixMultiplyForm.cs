@@ -7,8 +7,10 @@ using System.Windows.Forms;
 using AlgoTeacher.Interface;
 using AlgoTeacher.Logic;
 using AlgoTeacher.Logic.Adapters;
+using AlgoTeacher.Logic.Quest;
 using DevExpress.Utils;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraLayout.Utils;
 using SpreadsheetGear.Windows.Forms;
 using UserControls;
 
@@ -16,14 +18,17 @@ namespace AlgoTeacher
 {
     public partial class MatrixMultiplyForm : DevExpress.XtraEditors.XtraForm
     {
+        private delegate void SetTextCallback(string text1);
+
         private readonly QuestEvents.QuestEventHandler _questHandler;
         private readonly FillEvents.FillEventHandler _fillHandler;
-        
+   
         private readonly MatrixMultiply _logic;
         private Matrix _matrix1;
         private Matrix _matrix2;
 
         private Thread CaclThread;
+        private Thread CaclThread1;
         private bool pressed = false;
 
         private WorkbookView _workbookView;
@@ -41,10 +46,14 @@ namespace AlgoTeacher
             InitializeComponent();
 
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
-            //questionControl.AnswerClicked += answerClickHandler;
-            //questionControl.CalculateClicked += calculateClickHandler;
+            questionControl.AnswerClicked += answerClickHandler;
 
-            
+            var yesClickHandler = new YesNoQuestionControl.YesClickedHandler(YesButton_Clicked);
+            yesNoQuestionControl.YesClicked += yesClickHandler;
+
+            var noClickHandler = new YesNoQuestionControl.NoClickedHandler(NoButton_Clicked);
+            yesNoQuestionControl.NoClicked += noClickHandler;
+          
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
 
@@ -52,6 +61,32 @@ namespace AlgoTeacher
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
         }
+
+       private void SetQuestionText(string text)
+       {
+           if (this.QuestionLabel.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetQuestionText);
+                this.Invoke(d);
+            }
+            else
+            {
+                QuestionLabel.Text = text;
+            } 
+       }
+
+       //private void SetYesNoLayoutVisible(bool value)
+       //{
+       //    if (this.)
+       //    {
+       //        SetTextCallback d = new SetTextCallback(SetQuestionText);
+       //        this.Invoke(d);
+       //    }
+       //    else
+       //    {
+       //        QuestionLabel.Text = text;
+       //    }
+       //}
 
         private void SetupMatrix()
         {
@@ -133,28 +168,34 @@ namespace AlgoTeacher
             gridControl2.Size = new Size(_matrix2.ColumnsCount * 50, _matrix2.RowsCount * 50);
         }
 
-        private bool FirstQuest()
+        private void FirstQuest(bool answ)
         {
-            return true;
+            pressed = false;
+            layoutQuest.Visibility = LayoutVisibility.Never;
+            layoutYesNo.Visibility = LayoutVisibility.Always;
+            quest = new YesNoQuest("first", "Можно ли перемножить данные матрицы?", answ);
+            QuestionLabel.Text = quest.Question;
+            CaclThread1 = new Thread(RunFirst) { IsBackground = true };
+            CaclThread1.Start();
         }
+        
         private void ThirdQuest()
         {
-            CaclThread = new Thread(Run) { IsBackground = true };
+            pressed = false;
+            layoutQuest.Visibility = LayoutVisibility.Always;
+            layoutYesNo.Visibility = LayoutVisibility.Never;
+            CaclThread = new Thread(RunThird) { IsBackground = true };
             CaclThread.Start();
         }
 
         private void MatrixMultiplyForm_Load(object sender, EventArgs e)
         {
             SetupMatrix();
-
+            
             // запуск квеста про возможность перемножения
-            if (!FirstQuest())
-            {
-
-            }
-
-            // запуск квеста с решением матриц
-            ThirdQuest();
+            // нужно передать ответ, можно ли создать.
+            bool answ = true;
+            FirstQuest(answ);   
         }
 
         private void gridView1_RowCellDefaultAlignment(object sender, DevExpress.XtraGrid.Views.Base.RowCellAlignmentEventArgs e)
@@ -164,14 +205,20 @@ namespace AlgoTeacher
                 e.HorzAlignment = DevExpress.Utils.HorzAlignment.Center;
         }
 
-        void Run()
+        void RunThird()
         {
             _logic.MatrixMult(_matrix1, _matrix2);
         }
 
-        public void CalculateButton_Clicked(object sender, EventArgs e)
+        void RunFirst()
         {
-            
+            // крутим цикл пока не ответим
+            while (!pressed)
+            {
+                System.Threading.Thread.Sleep(100);
+            }
+            // запуск квеста с решением матриц
+            ThirdQuest();
         }
 
         private void MatrixMultiplyForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -181,7 +228,8 @@ namespace AlgoTeacher
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
             //MessageBox.Show("Quest works");
-            //QuestionLabel.Text = e.Quest.Question + "Ответ: " + e.Quest.Answer;
+            
+            SetQuestionText(e.Quest.Question + "Ответ: " + e.Quest.Answer);
             quest = e.Quest;
             while (!pressed)
             {
@@ -189,10 +237,34 @@ namespace AlgoTeacher
             }
 
             _matrixMultiplyAdapter.FillResultCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
-            QuestionLabel.Text = "";
+             SetQuestionText("");
             this.questionControl.CleanAnswer();
             
             pressed = false;
+        }
+
+        public void YesButton_Clicked(object sender, EventArgs e)
+        {
+            if (quest.CheckAnswer("True"))
+            {
+                pressed = true;
+            }
+            else
+            {
+                MessageBox.Show("не правильно");
+            }
+        }
+
+        private void NoButton_Clicked(object sender, EventArgs e)
+        {
+            if (quest.CheckAnswer("false"))
+            {
+                pressed = true;
+            }
+            else
+            {
+                MessageBox.Show("не правильно");
+            }
         }
 
         public void AnswerButton_Clicked(object sender, EventArgs e)
@@ -218,23 +290,5 @@ namespace AlgoTeacher
             //_matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
         }
 
-        //private void FillSheetWithStartMatrixes(int[][] values1, int[][] values2, SpreadsheetGear.IRange range)
-        //{
-        //    for ( var i = 1; i < values1.Length; i++ )
-        //    {
-        //        for ( var j = 1; j < values1[i].Length; j++ )
-        //        {
-        //            range[i - 1, j - 1].Value = values1[i][j];
-        //        }
-        //    }
-
-        //    for ( var i = 1; i < values2.Length; i++ )
-        //    {
-        //        for ( var j = 1; j < values2[i].Length; j++ )
-        //        {
-        //            range[i - 1, j + values1[0].Length - 1].Value = values2[i][j];
-        //        }
-        //    }
-        //}
     }
 }

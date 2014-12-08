@@ -75,5 +75,39 @@ namespace UserControls
                 NoButton.Text = value;
             }
         }
+
+        protected virtual void OnYesClicked(object sender, EventArgs e)
+        {
+            // If an event has no subscribers registerd, it will
+            // evaluate to null. The test checks that the value is not
+            // null, ensuring that there are subsribers before
+            // calling the event itself.
+            if (YesClicked != null)
+            {
+                YesClicked(sender, e);
+            }
+        }
+
+        protected virtual void OnNoClicked(object sender, EventArgs e)
+        {
+            // If an event has no subscribers registerd, it will
+            // evaluate to null. The test checks that the value is not
+            // null, ensuring that there are subsribers before
+            // calling the event itself.
+            if (NoClicked != null)
+            {
+                NoClicked(sender, e);
+            }
+        }
+
+        private void YesButton_Click(object sender, EventArgs e)
+        {
+            OnYesClicked(sender, e);
+        }
+
+        private void NoButton_Click(object sender, EventArgs e)
+        {
+            OnNoClicked(sender, e);
+        }
     }
 }

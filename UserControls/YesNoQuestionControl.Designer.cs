@@ -54,7 +54,7 @@
             this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(292, 80);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(253, 80);
             this.layoutControlGroup1.Text = "Root";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -63,11 +63,11 @@
             this.layoutControlItem2.Control = this.NoButton;
             this.layoutControlItem2.ControlAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(136, 24);
+            this.layoutControlItem2.Location = new System.Drawing.Point(116, 24);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(150, 36);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(50, 36);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(136, 36);
+            this.layoutControlItem2.Size = new System.Drawing.Size(117, 36);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -78,24 +78,25 @@
             // 
             this.NoButton.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NoButton.Appearance.Options.UseFont = true;
-            this.NoButton.Location = new System.Drawing.Point(148, 36);
-            this.NoButton.MinimumSize = new System.Drawing.Size(32, 32);
+            this.NoButton.Location = new System.Drawing.Point(128, 36);
+            this.NoButton.MinimumSize = new System.Drawing.Size(28, 32);
             this.NoButton.Name = "NoButton";
-            this.NoButton.Size = new System.Drawing.Size(132, 32);
+            this.NoButton.Size = new System.Drawing.Size(113, 32);
             this.NoButton.StyleController = this.layoutControl1;
             this.NoButton.TabIndex = 6;
             this.NoButton.Text = "Нет";
+            this.NoButton.Click += new System.EventHandler(this.NoButton_Click);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.YesButton);
             this.layoutControl1.Controls.Add(this.NoButton);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.layoutControl1.Location = new System.Drawing.Point(-13, 0);
+            this.layoutControl1.Location = new System.Drawing.Point(-12, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(693, 197, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(313, 58);
+            this.layoutControl1.Size = new System.Drawing.Size(274, 58);
             this.layoutControl1.TabIndex = 9;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -104,12 +105,13 @@
             this.YesButton.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.YesButton.Appearance.Options.UseFont = true;
             this.YesButton.Location = new System.Drawing.Point(12, 36);
-            this.YesButton.MinimumSize = new System.Drawing.Size(32, 32);
+            this.YesButton.MinimumSize = new System.Drawing.Size(28, 32);
             this.YesButton.Name = "YesButton";
-            this.YesButton.Size = new System.Drawing.Size(132, 32);
+            this.YesButton.Size = new System.Drawing.Size(112, 32);
             this.YesButton.StyleController = this.layoutControl1;
             this.YesButton.TabIndex = 7;
             this.YesButton.Text = "Да";
+            this.YesButton.Click += new System.EventHandler(this.YesButton_Click);
             // 
             // emptySpaceItem1
             // 
@@ -118,7 +120,7 @@
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem1.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(272, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(233, 24);
             this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -132,7 +134,7 @@
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(150, 36);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(40, 36);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(136, 36);
+            this.layoutControlItem3.Size = new System.Drawing.Size(116, 36);
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.Text = "layoutControlItem3";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -141,14 +143,14 @@
             // 
             // YesNoQuestionControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.layoutControl1);
-            this.MaximumSize = new System.Drawing.Size(300, 300);
-            this.MinimumSize = new System.Drawing.Size(80, 58);
+            this.MaximumSize = new System.Drawing.Size(262, 300);
+            this.MinimumSize = new System.Drawing.Size(70, 58);
             this.Name = "YesNoQuestionControl";
-            this.Size = new System.Drawing.Size(300, 58);
+            this.Size = new System.Drawing.Size(262, 58);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
