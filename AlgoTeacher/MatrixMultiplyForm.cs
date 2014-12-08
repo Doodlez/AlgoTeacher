@@ -90,13 +90,17 @@ namespace AlgoTeacher
 
         private void SetupMatrix()
         {
-            // генерация размерности и рандомная генерация значений матриц 
-            int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
-            int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
+            // генерация размерности и рандомная генерация значений матриц
+            //int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
+            //int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
 
             // создание матриц
-            _matrix1 = new Matrix(_rows1, _columns1, values1);
-            _matrix2 = new Matrix(_rows2, _columns2, values2);
+            //_matrix1 = new Matrix(_rows1, _columns1, values1);
+            //_matrix2 = new Matrix(_rows2, _columns2, values2);
+
+            _matrix1 = new Matrix();
+            Thread.Sleep(100);
+            _matrix2 = new Matrix();
 
             List<int[]> rowlist1 = new List<int[]>();
             List<int[]> rowlist2 = new List<int[]>();

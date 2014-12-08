@@ -28,6 +28,11 @@ namespace AlgoTeacher
             set;
         }
 
+        public Matrix()
+        {
+            MakeRandomMatrix();
+        }
+
         public Matrix(int rows, int columns)
         {
             RowsCount = rows;
@@ -52,6 +57,25 @@ namespace AlgoTeacher
                 for (var j = 0; j < columns; j++)
                 {
                     Values[i][j] = values[i][j];
+                }
+            }
+        }
+
+        private void MakeRandomMatrix()
+        {
+            var random = new Random();
+
+            RowsCount = random.Next(2, 5);
+            ColumnsCount = random.Next(2, 5);
+
+            Values = new int[RowsCount][];
+
+            for (var i = 0; i < RowsCount; i++)
+            {
+                Values[i] = new int[ColumnsCount];
+                for (var j = 0; j < ColumnsCount; j++)
+                {
+                    Values[i][j] = random.Next(10);
                 }
             }
         }
