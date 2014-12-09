@@ -93,7 +93,7 @@ namespace AlgoTeacher
             // генерация размерности и рандомная генерация значений матриц
             //int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
             //int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
-
+ 
             // создание матриц
             //_matrix1 = new Matrix(_rows1, _columns1, values1);
             //_matrix2 = new Matrix(_rows2, _columns2, values2);
@@ -255,19 +255,21 @@ namespace AlgoTeacher
             }
             else
             {
-                MessageBox.Show("не правильно");
+                MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
+                SetupMatrix();
             }
         }
 
         private void NoButton_Clicked(object sender, EventArgs e)
         {
-            if (quest.CheckAnswer("false"))
+            if (quest.CheckAnswer("False"))
             {
                 pressed = true;
             }
             else
             {
-                MessageBox.Show("не правильно");
+                MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
+                SetupMatrix();
             }
         }
 

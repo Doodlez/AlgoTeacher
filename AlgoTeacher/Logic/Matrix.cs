@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AlgoTeacher.Logic;
 using AlgoTeacher.Logic.Quest;
@@ -66,6 +67,7 @@ namespace AlgoTeacher
             var random = new Random();
 
             RowsCount = random.Next(2, 5);
+            Thread.Sleep(100);
             ColumnsCount = random.Next(2, 5);
 
             Values = new int[RowsCount][];
