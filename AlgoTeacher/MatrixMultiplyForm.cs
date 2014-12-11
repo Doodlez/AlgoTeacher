@@ -215,6 +215,7 @@ namespace AlgoTeacher
 
         private void FirstQuest(bool answ)
         {
+            pressed = false;
             layoutQuest.Visibility = LayoutVisibility.Never;
             layoutYesNo.Visibility = LayoutVisibility.Always;
             quest = new YesNoQuest("first", "Можно ли перемножить данные матрицы?", answ);
@@ -223,6 +224,7 @@ namespace AlgoTeacher
 
         private void SecondQuest(string answ)
         {
+            pressed = false;
             layoutQuest.Visibility = LayoutVisibility.Never;
             layoutYesNo.Visibility = LayoutVisibility.Never;
             layoutSecondStage.Visibility = LayoutVisibility.Always;
@@ -238,6 +240,7 @@ namespace AlgoTeacher
             SetQuestionText(" ");
             layoutQuest.Visibility = LayoutVisibility.Always;
             layoutYesNo.Visibility = LayoutVisibility.Never;
+            layoutSecondStage.Visibility = LayoutVisibility.Never;
 
             CaclThread = new Thread(RunThird) { IsBackground = true };
             CaclThread.Start();
@@ -263,13 +266,6 @@ namespace AlgoTeacher
            // CaclThread1.Join();          
         }
 
-        //private void gridView1_RowCellDefaultAlignment(object sender, DevExpress.XtraGrid.Views.Base.RowCellAlignmentEventArgs e)
-        //{
-        //    if (e.Column.ColumnEdit is DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit)
-
-        //        e.HorzAlignment = DevExpress.Utils.HorzAlignment.Center;
-        //}
-        
         // запускает в потоке (собственно сам процесс перемножения)
         void RunThird()
         {
@@ -284,8 +280,6 @@ namespace AlgoTeacher
                 DialogResult = DialogResult.Cancel;
             }
         }
-
-
 
         // обработка вычисления.
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
@@ -312,7 +306,7 @@ namespace AlgoTeacher
         // TODO: Исправить заполнение матриц!
         private void ResultMatrFillCell(int row, int col, string value)
         {
-            gridView3.SetRowCellValue(row,gridView3.Columns[col],value);
+            gridView3.SetRowCellValue(row - 1,gridView3.Columns[col - 1],value);
         }
         
         public void YesButton_Clicked(object sender, EventArgs e)
