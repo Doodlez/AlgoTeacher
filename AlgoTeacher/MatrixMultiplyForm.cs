@@ -25,7 +25,7 @@ namespace AlgoTeacher
 {
     public partial class MatrixMultiplyForm : DevExpress.XtraEditors.XtraForm
     {
-        private delegate void SetTextCallback(string text1);
+        public delegate void SetQuestionCallback(string text);
 
         private readonly QuestEvents.QuestEventHandler _questHandler;
         private readonly FillEvents.FillEventHandler _fillHandler;
@@ -64,14 +64,14 @@ namespace AlgoTeacher
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
         }
-        // TODO: Исправить ошибку с несоответсвием числа параметров при установке нового значения QuestionLabel.Text
+
         // функция для установки вопроса из др потока
-        private void SetQuestionText(string text)
+        public void SetQuestionText(string text)
         {
             if (QuestionLabel.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback(SetQuestionText);
-                this.Invoke(d);
+                SetQuestionCallback deleg = new SetQuestionCallback(SetQuestionText);
+                this.Invoke(deleg,new object[]{text});
             }
             else
             {
@@ -230,6 +230,11 @@ namespace AlgoTeacher
            if (res == null)
             {
                 MessageBox.Show("Упс, ошибочка. Матрица не считается");
+            }
+            else
+            {
+                MessageBox.Show("Молодец, ты справился!");
+                DialogResult = DialogResult.Cancel;
             }
         }
 
