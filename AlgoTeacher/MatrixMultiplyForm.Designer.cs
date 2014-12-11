@@ -39,12 +39,14 @@ namespace AlgoTeacher
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.QuestionLabel = new DevExpress.XtraEditors.LabelControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.secondStageControl = new UserControls.SecondStageControl();
             this.yesNoQuestionControl = new UserControls.YesNoQuestionControl();
             this.questionControl = new UserControls.QuestionControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutQuest = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutYesNo = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutSecondStage = new DevExpress.XtraLayout.LayoutControlItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).BeginInit();
             this.ViewPanel.SuspendLayout();
@@ -60,6 +62,7 @@ namespace AlgoTeacher
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutQuest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutYesNo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutSecondStage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.SuspendLayout();
@@ -171,17 +174,27 @@ namespace AlgoTeacher
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.secondStageControl);
             this.layoutControl1.Controls.Add(this.yesNoQuestionControl);
             this.layoutControl1.Controls.Add(this.questionControl);
             this.layoutControl1.Controls.Add(this.QuestionLabel);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 2);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(268, 244, 381, 350);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(754, 333, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1166, 226);
+            this.layoutControl1.Size = new System.Drawing.Size(1166, 308);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // secondStageControl
+            // 
+            this.secondStageControl.AnswerButtonEnabled = true;
+            this.secondStageControl.Location = new System.Drawing.Point(12, 118);
+            this.secondStageControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.secondStageControl.Name = "secondStageControl";
+            this.secondStageControl.Size = new System.Drawing.Size(1142, 178);
+            this.secondStageControl.TabIndex = 6;
             // 
             // yesNoQuestionControl
             // 
@@ -190,7 +203,7 @@ namespace AlgoTeacher
             this.yesNoQuestionControl.MinimumSize = new System.Drawing.Size(70, 58);
             this.yesNoQuestionControl.Name = "yesNoQuestionControl";
             this.yesNoQuestionControl.NoButtonEnabled = true;
-            this.yesNoQuestionControl.Size = new System.Drawing.Size(70, 202);
+            this.yesNoQuestionControl.Size = new System.Drawing.Size(70, 102);
             this.yesNoQuestionControl.TabIndex = 5;
             this.yesNoQuestionControl.YesButtonEnabled = true;
             // 
@@ -198,10 +211,11 @@ namespace AlgoTeacher
             // 
             this.questionControl.AnswerButtonEnabled = true;
             this.questionControl.Location = new System.Drawing.Point(818, 12);
+            this.questionControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.questionControl.MaximumSize = new System.Drawing.Size(300, 300);
             this.questionControl.MinimumSize = new System.Drawing.Size(80, 102);
             this.questionControl.Name = "questionControl";
-            this.questionControl.Size = new System.Drawing.Size(262, 202);
+            this.questionControl.Size = new System.Drawing.Size(262, 102);
             this.questionControl.TabIndex = 4;
             // 
             // layoutControlGroup1
@@ -212,10 +226,11 @@ namespace AlgoTeacher
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutQuest,
-            this.layoutYesNo});
+            this.layoutYesNo,
+            this.layoutSecondStage});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1166, 226);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1166, 308);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -225,7 +240,7 @@ namespace AlgoTeacher
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(806, 206);
+            this.layoutControlItem1.Size = new System.Drawing.Size(806, 106);
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextToControlDistance = 0;
@@ -237,7 +252,7 @@ namespace AlgoTeacher
             this.layoutQuest.CustomizationFormText = "layoutQuest";
             this.layoutQuest.Location = new System.Drawing.Point(806, 0);
             this.layoutQuest.Name = "layoutQuest";
-            this.layoutQuest.Size = new System.Drawing.Size(266, 206);
+            this.layoutQuest.Size = new System.Drawing.Size(266, 106);
             this.layoutQuest.Text = "layoutQuest";
             this.layoutQuest.TextSize = new System.Drawing.Size(0, 0);
             this.layoutQuest.TextToControlDistance = 0;
@@ -249,12 +264,27 @@ namespace AlgoTeacher
             this.layoutYesNo.CustomizationFormText = "layoutYesNo";
             this.layoutYesNo.Location = new System.Drawing.Point(1072, 0);
             this.layoutYesNo.Name = "layoutYesNo";
-            this.layoutYesNo.Size = new System.Drawing.Size(74, 206);
+            this.layoutYesNo.Size = new System.Drawing.Size(74, 106);
             this.layoutYesNo.Text = "layoutYesNo";
             this.layoutYesNo.TextSize = new System.Drawing.Size(0, 0);
             this.layoutYesNo.TextToControlDistance = 0;
             this.layoutYesNo.TextVisible = false;
             this.layoutYesNo.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            // 
+            // layoutSecondStage
+            // 
+            this.layoutSecondStage.Control = this.secondStageControl;
+            this.layoutSecondStage.CustomizationFormText = "layoutSecondStage";
+            this.layoutSecondStage.Location = new System.Drawing.Point(0, 106);
+            this.layoutSecondStage.MinSize = new System.Drawing.Size(104, 24);
+            this.layoutSecondStage.Name = "layoutSecondStage";
+            this.layoutSecondStage.Size = new System.Drawing.Size(1146, 182);
+            this.layoutSecondStage.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutSecondStage.Text = "layoutSecondStage";
+            this.layoutSecondStage.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutSecondStage.TextToControlDistance = 0;
+            this.layoutSecondStage.TextVisible = false;
+            this.layoutSecondStage.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // panelControl1
             // 
@@ -262,14 +292,14 @@ namespace AlgoTeacher
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 243);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1170, 230);
+            this.panelControl1.Size = new System.Drawing.Size(1170, 312);
             this.panelControl1.TabIndex = 4;
             // 
             // MatrixMultiplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1170, 473);
+            this.ClientSize = new System.Drawing.Size(1170, 555);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.ViewPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -291,6 +321,7 @@ namespace AlgoTeacher
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutQuest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutYesNo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutSecondStage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -315,5 +346,7 @@ namespace AlgoTeacher
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutQuest;
         private DevExpress.XtraLayout.LayoutControlItem layoutYesNo;
+        private UserControls.SecondStageControl secondStageControl;
+        private DevExpress.XtraLayout.LayoutControlItem layoutSecondStage;
     }
 }

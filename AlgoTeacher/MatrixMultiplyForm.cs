@@ -48,14 +48,17 @@ namespace AlgoTeacher
             InitializeComponent();
 
             // добавление обработчиков
-            var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
-            questionControl.AnswerClicked += answerClickHandler;
+            //var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
+            //questionControl.AnswerClicked += answerClickHandler;
 
             var yesClickHandler = new YesNoQuestionControl.YesClickedHandler(YesButton_Clicked);
             yesNoQuestionControl.YesClicked += yesClickHandler;
 
             var noClickHandler = new YesNoQuestionControl.NoClickedHandler(NoButton_Clicked);
             yesNoQuestionControl.NoClicked += noClickHandler;
+
+            var answerClickHandler = new SecondStageControl.AnswerClickedHandler(AnswerButton_Clicked);
+            secondStageControl.AnswerClicked += answerClickHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -82,6 +85,15 @@ namespace AlgoTeacher
         private void SetupMatrix()
         {
             // генерация размерности и рандомная генерация значений матриц
+<<<<<<< HEAD
+=======
+            //int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
+            //int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
+ 
+            // создание матриц
+            //_matrix1 = new Matrix(_rows1, _columns1, values1);
+            //_matrix2 = new Matrix(_rows2, _columns2, values2);
+>>>>>>> 7612a1cb2c7f5f015ccced6158b37bc139bfc39f
 
             _matrix1 = new Matrix();
             Thread.Sleep(100);
@@ -217,11 +229,12 @@ namespace AlgoTeacher
         }
 
         //TODO: сделать 2-й тест
-        private void SecondQuest()
+        private void SecondQuest(string answ)
         {
-            layoutQuest.Visibility = LayoutVisibility.Always;
+            layoutQuest.Visibility = LayoutVisibility.Never;
             layoutYesNo.Visibility = LayoutVisibility.Never;
-            //quest = new IntegerValueQuest("first", "Можно ли перемножить данные матрицы?", answ);
+            layoutSecondStage.Visibility = LayoutVisibility.Always;
+            quest = new IntegerIntegerValueQuest("second", "Каковы будут размерности данной матрицы?", answ);
             QuestionLabel.Text = quest.Question;
         }
         
@@ -244,7 +257,17 @@ namespace AlgoTeacher
             SetupMatrix();   
             // запуск квеста про возможность перемножения
             // нужно передать ответ, можно ли создать.
-            bool answ = true;
+            bool answ;
+
+            if (_matrix1.ColumnsCount == _matrix2.RowsCount)
+            {
+                answ = true;
+            }
+            else
+            {
+                answ = false;
+            }
+
             FirstQuest(answ);
            // CaclThread1.Join();          
         }
@@ -260,8 +283,8 @@ namespace AlgoTeacher
         //TODO: Сейчас может вылетать, если матрицы не могут быть перемножены.Нужно выполнять только если матицы м.б. перемножены
         void RunThird()
         {
-           var res =  _logic.MatrixMult(_matrix1, _matrix2);
-            if (res == null)
+           var res = _logic.MatrixMult(_matrix1, _matrix2);
+           if (res == null)
             {
                 MessageBox.Show("Упс, ошибочка. Матрица не считается");
             }
@@ -290,7 +313,11 @@ namespace AlgoTeacher
             //_matrixMultiplyAdapter.FillResultCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             //MessageBox.Show("Правильно!")
+<<<<<<< HEAD
              SetQuestionText(" ");
+=======
+            SetQuestionText("");
+>>>>>>> 7612a1cb2c7f5f015ccced6158b37bc139bfc39f
             this.questionControl.CleanAnswer();
             
             pressed = false;
@@ -305,12 +332,13 @@ namespace AlgoTeacher
         {
             if (quest.CheckAnswer("True"))
             {
-                MessageBox.Show("Правильно");
-                ThirdQuest();
+                MessageBox.Show("Молодец, ты прав! Переходим к следующему заданию.");
+                SecondQuest(_matrix1.RowsCount + " " + _matrix2.ColumnsCount);
             }
             else
             {
-                MessageBox.Show("Не правильно");
+                MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
+                SetupMatrix();
             }
         }
 
@@ -318,24 +346,31 @@ namespace AlgoTeacher
         {
             if (quest.CheckAnswer("False"))
             {
-                MessageBox.Show("Правильно");
-                ThirdQuest();
+                MessageBox.Show("Молодец, ты прав! Переходим к следующему заданию.");
+                SetupMatrix();
+                while (_matrix1.ColumnsCount != _matrix2.RowsCount)
+                {
+                    SetupMatrix();
+                }
+                SecondQuest(_matrix1.RowsCount + " " + _matrix2.ColumnsCount);
             }
             else
             {
-                MessageBox.Show("Не правильно");
+                MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
+                SetupMatrix();
             }
         }
 
         public void AnswerButton_Clicked(object sender, EventArgs e)
         {
             // Действия при нажатии ответ
-            if (!quest.CheckAnswer(questionControl.GetAnswer()))
+            //if (!quest.CheckAnswer(questionControl.GetAnswer()))
+            if (!quest.CheckAnswer(secondStageControl.GetRowsAnswer() + " " + secondStageControl.GetColumnsAnswer()))
             {
                 MessageBox.Show("Не правильно!");
                 return;
             }
-            MessageBox.Show("Правильно!Молодец!");
+            MessageBox.Show("Правильно! Молодец!");
             pressed = true;
         }
 

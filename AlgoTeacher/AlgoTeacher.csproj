@@ -74,6 +74,7 @@
     <Compile Include="Logic\MatrixMultiply.cs" />
     <Compile Include="Logic\MyInformation.cs" />
     <Compile Include="Logic\Quest\DoubleValueQuest.cs" />
+    <Compile Include="Logic\Quest\IntegerIntegerValueQuest.cs" />
     <Compile Include="Logic\Quest\IntegerValueQuest.cs" />
     <Compile Include="Logic\Adapters\MatrixMultiplyAdapter.cs" />
     <Compile Include="Logic\Quest\QuestionGenerator.cs" />
