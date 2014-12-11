@@ -57,8 +57,11 @@ namespace AlgoTeacher
             var noClickHandler = new YesNoQuestionControl.NoClickedHandler(NoButton_Clicked);
             yesNoQuestionControl.NoClicked += noClickHandler;
 
-            var answerClickHandler = new SecondStageControl.AnswerClickedHandler(AnswerButton_Clicked);
-            secondStageControl.AnswerClicked += answerClickHandler;
+            var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
+           questionControl.AnswerClicked += answerClickHandler;
+
+           var secondStageClickHandler = new SecondStageControl.AnswerClickedHandler(SecondStageAnswer_Clicked);
+           secondStageControl.AnswerClicked += secondStageClickHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -85,15 +88,6 @@ namespace AlgoTeacher
         private void SetupMatrix()
         {
             // генерация размерности и рандомная генерация значений матриц
-<<<<<<< HEAD
-=======
-            //int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
-            //int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
- 
-            // создание матриц
-            //_matrix1 = new Matrix(_rows1, _columns1, values1);
-            //_matrix2 = new Matrix(_rows2, _columns2, values2);
->>>>>>> 7612a1cb2c7f5f015ccced6158b37bc139bfc39f
 
             _matrix1 = new Matrix();
             Thread.Sleep(100);
@@ -219,7 +213,6 @@ namespace AlgoTeacher
             
         }
 
-        //TODO: Проверка ответ (добавить корректный вопрос), если нельзя, то вывести вариант который можно.
         private void FirstQuest(bool answ)
         {
             layoutQuest.Visibility = LayoutVisibility.Never;
@@ -228,7 +221,6 @@ namespace AlgoTeacher
             QuestionLabel.Text = quest.Question;
         }
 
-        //TODO: сделать 2-й тест
         private void SecondQuest(string answ)
         {
             layoutQuest.Visibility = LayoutVisibility.Never;
@@ -251,7 +243,6 @@ namespace AlgoTeacher
             CaclThread.Start();
         }
 
-        //TODO: настройка инициализации матриц
         private void MatrixMultiplyForm_Load(object sender, EventArgs e)
         {
             SetupMatrix();   
@@ -280,7 +271,6 @@ namespace AlgoTeacher
         //}
         
         // запускает в потоке (собственно сам процесс перемножения)
-        //TODO: Сейчас может вылетать, если матрицы не могут быть перемножены.Нужно выполнять только если матицы м.б. перемножены
         void RunThird()
         {
            var res = _logic.MatrixMult(_matrix1, _matrix2);
@@ -308,21 +298,18 @@ namespace AlgoTeacher
             {
                 System.Threading.Thread.Sleep(100);
             }
-
-            // TODO: заполнение матрицы ответом (вместо закомментированого)
+        
             //_matrixMultiplyAdapter.FillResultCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             //MessageBox.Show("Правильно!")
-<<<<<<< HEAD
              SetQuestionText(" ");
-=======
-            SetQuestionText("");
->>>>>>> 7612a1cb2c7f5f015ccced6158b37bc139bfc39f
+
             this.questionControl.CleanAnswer();
             
             pressed = false;
         }
 
+        // TODO: Исправить заполнение матриц!
         private void ResultMatrFillCell(int row, int col, string value)
         {
             gridView3.SetRowCellValue(row,gridView3.Columns[col],value);
@@ -361,10 +348,24 @@ namespace AlgoTeacher
             }
         }
 
+        //TODO: Реализовать обработку кнопок secondStageControl
+
         public void AnswerButton_Clicked(object sender, EventArgs e)
         {
             // Действия при нажатии ответ
-            //if (!quest.CheckAnswer(questionControl.GetAnswer()))
+            if (!quest.CheckAnswer(questionControl.GetAnswer()))
+            //if (!quest.CheckAnswer(secondStageControl.GetRowsAnswer() + " " + secondStageControl.GetColumnsAnswer()))
+            {
+                MessageBox.Show("Не правильно!");
+                return;
+            }
+            MessageBox.Show("Правильно! Молодец!");
+            pressed = true;
+        }
+
+        public void SecondStageAnswer_Clicked(object sender, EventArgs e)
+        {
+            // Действия при нажатии ответ
             if (!quest.CheckAnswer(secondStageControl.GetRowsAnswer() + " " + secondStageControl.GetColumnsAnswer()))
             {
                 MessageBox.Show("Не правильно!");
@@ -372,6 +373,7 @@ namespace AlgoTeacher
             }
             MessageBox.Show("Правильно! Молодец!");
             pressed = true;
+            ThirdQuest();
         }
 
         public void FillEventHandler(object sender, FillEvents.FillEventArgs e)
@@ -383,7 +385,6 @@ namespace AlgoTeacher
                 System.Threading.Thread.Sleep(200);
                 t = false;
             }
-            //TODO: Добавить заполнение матрицы
             //_matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
         }

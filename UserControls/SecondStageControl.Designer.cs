@@ -103,7 +103,7 @@
             this.AnswerButton.StyleController = this.layoutControl1;
             this.AnswerButton.TabIndex = 6;
             this.AnswerButton.Text = "Ответ";
-            this.AnswerButton.Click += new System.EventHandler(this.AnswerButton_Click_1);
+            this.AnswerButton.Click += new System.EventHandler(this.AnswerButton_Click);
             // 
             // layoutControlGroup1
             // 

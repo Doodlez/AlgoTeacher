@@ -91,10 +91,5 @@ namespace UserControls
                 AnswerClicked(sender, e);  
             }
         }
-
-        private void AnswerButton_Click_1(object sender, EventArgs e)
-        {
-            OnAnswerClicked(sender, e);
-        }
     }
 }

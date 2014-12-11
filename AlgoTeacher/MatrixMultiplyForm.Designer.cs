@@ -167,7 +167,7 @@ namespace AlgoTeacher
             this.QuestionLabel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.QuestionLabel.Location = new System.Drawing.Point(12, 12);
             this.QuestionLabel.Name = "QuestionLabel";
-            this.QuestionLabel.Size = new System.Drawing.Size(802, 24);
+            this.QuestionLabel.Size = new System.Drawing.Size(735, 24);
             this.QuestionLabel.StyleController = this.layoutControl1;
             this.QuestionLabel.TabIndex = 3;
             this.QuestionLabel.Text = "Вопрос";
@@ -181,7 +181,7 @@ namespace AlgoTeacher
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 2);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(754, 333, 250, 350);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(717, 192, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(1166, 308);
             this.layoutControl1.TabIndex = 0;
@@ -190,32 +190,32 @@ namespace AlgoTeacher
             // secondStageControl
             // 
             this.secondStageControl.AnswerButtonEnabled = true;
-            this.secondStageControl.Location = new System.Drawing.Point(12, 118);
+            this.secondStageControl.Location = new System.Drawing.Point(1054, 12);
             this.secondStageControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.secondStageControl.Name = "secondStageControl";
-            this.secondStageControl.Size = new System.Drawing.Size(1142, 178);
+            this.secondStageControl.Size = new System.Drawing.Size(100, 284);
             this.secondStageControl.TabIndex = 6;
             // 
             // yesNoQuestionControl
             // 
-            this.yesNoQuestionControl.Location = new System.Drawing.Point(1084, 12);
+            this.yesNoQuestionControl.Location = new System.Drawing.Point(980, 12);
             this.yesNoQuestionControl.MaximumSize = new System.Drawing.Size(262, 300);
             this.yesNoQuestionControl.MinimumSize = new System.Drawing.Size(70, 58);
             this.yesNoQuestionControl.Name = "yesNoQuestionControl";
             this.yesNoQuestionControl.NoButtonEnabled = true;
-            this.yesNoQuestionControl.Size = new System.Drawing.Size(70, 102);
+            this.yesNoQuestionControl.Size = new System.Drawing.Size(70, 284);
             this.yesNoQuestionControl.TabIndex = 5;
             this.yesNoQuestionControl.YesButtonEnabled = true;
             // 
             // questionControl
             // 
             this.questionControl.AnswerButtonEnabled = true;
-            this.questionControl.Location = new System.Drawing.Point(818, 12);
+            this.questionControl.Location = new System.Drawing.Point(751, 12);
             this.questionControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.questionControl.MaximumSize = new System.Drawing.Size(300, 300);
             this.questionControl.MinimumSize = new System.Drawing.Size(80, 102);
             this.questionControl.Name = "questionControl";
-            this.questionControl.Size = new System.Drawing.Size(262, 102);
+            this.questionControl.Size = new System.Drawing.Size(225, 284);
             this.questionControl.TabIndex = 4;
             // 
             // layoutControlGroup1
@@ -240,7 +240,7 @@ namespace AlgoTeacher
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(806, 106);
+            this.layoutControlItem1.Size = new System.Drawing.Size(739, 288);
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextToControlDistance = 0;
@@ -250,9 +250,9 @@ namespace AlgoTeacher
             // 
             this.layoutQuest.Control = this.questionControl;
             this.layoutQuest.CustomizationFormText = "layoutQuest";
-            this.layoutQuest.Location = new System.Drawing.Point(806, 0);
+            this.layoutQuest.Location = new System.Drawing.Point(739, 0);
             this.layoutQuest.Name = "layoutQuest";
-            this.layoutQuest.Size = new System.Drawing.Size(266, 106);
+            this.layoutQuest.Size = new System.Drawing.Size(229, 288);
             this.layoutQuest.Text = "layoutQuest";
             this.layoutQuest.TextSize = new System.Drawing.Size(0, 0);
             this.layoutQuest.TextToControlDistance = 0;
@@ -262,9 +262,9 @@ namespace AlgoTeacher
             // 
             this.layoutYesNo.Control = this.yesNoQuestionControl;
             this.layoutYesNo.CustomizationFormText = "layoutYesNo";
-            this.layoutYesNo.Location = new System.Drawing.Point(1072, 0);
+            this.layoutYesNo.Location = new System.Drawing.Point(968, 0);
             this.layoutYesNo.Name = "layoutYesNo";
-            this.layoutYesNo.Size = new System.Drawing.Size(74, 106);
+            this.layoutYesNo.Size = new System.Drawing.Size(74, 288);
             this.layoutYesNo.Text = "layoutYesNo";
             this.layoutYesNo.TextSize = new System.Drawing.Size(0, 0);
             this.layoutYesNo.TextToControlDistance = 0;
@@ -275,10 +275,10 @@ namespace AlgoTeacher
             // 
             this.layoutSecondStage.Control = this.secondStageControl;
             this.layoutSecondStage.CustomizationFormText = "layoutSecondStage";
-            this.layoutSecondStage.Location = new System.Drawing.Point(0, 106);
+            this.layoutSecondStage.Location = new System.Drawing.Point(1042, 0);
             this.layoutSecondStage.MinSize = new System.Drawing.Size(104, 24);
             this.layoutSecondStage.Name = "layoutSecondStage";
-            this.layoutSecondStage.Size = new System.Drawing.Size(1146, 182);
+            this.layoutSecondStage.Size = new System.Drawing.Size(104, 288);
             this.layoutSecondStage.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutSecondStage.Text = "layoutSecondStage";
             this.layoutSecondStage.TextSize = new System.Drawing.Size(0, 0);
