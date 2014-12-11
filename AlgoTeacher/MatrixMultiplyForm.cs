@@ -34,6 +34,9 @@ namespace AlgoTeacher
         private Matrix _matrix1;
         private Matrix _matrix2;
 
+        private Matrix _matrixRes;
+        public DataTable resTab;
+
         private Thread CaclThread;
 
         private bool pressed = false;
@@ -79,12 +82,6 @@ namespace AlgoTeacher
         private void SetupMatrix()
         {
             // генерация размерности и рандомная генерация значений матриц
-            //int[][] values1 = { new[] { 1, 2, 3 }, new[] { 4, 5, 6 }, new[] { 7, 8, 9 } };
-            //int[][] values2 = { new[] { 9, 8, 7 }, new[] { 6, 5, 4 }, new[] { 3, 2, 1 } };
-
-            // создание матриц
-            //_matrix1 = new Matrix(_rows1, _columns1, values1);
-            //_matrix2 = new Matrix(_rows2, _columns2, values2);
 
             _matrix1 = new Matrix();
             Thread.Sleep(100);
@@ -160,6 +157,56 @@ namespace AlgoTeacher
             gridControl2.Size = new Size(_matrix2.ColumnsCount * 50, _matrix2.RowsCount * 50);
         }
 
+        private void SetupResultMatrix()
+        {
+            // генерация размерности и рандомная генерация значений матриц
+            _matrixRes = new Matrix(_matrix1.RowsCount,_matrix2.ColumnsCount);
+
+             resTab = new DataTable();
+            
+            for (int i = 0; i < _matrixRes.ColumnsCount; i++)
+            {
+                DataColumn col = new DataColumn();
+                resTab.Columns.Add(col);
+            }
+
+            List<int[]> rowlist = new List<int[]>();
+
+            for (int i = 0; i < _matrixRes.RowsCount; i++)
+            {
+                rowlist.Add(_matrixRes.Values[i]);
+            }
+
+            foreach (var intse in rowlist)
+            {
+                DataRow row = resTab.NewRow();
+                for (int i = 0; i < resTab.Columns.Count; i++)
+                {
+                    row[i] = intse[i];
+                }
+                resTab.Rows.Add(row);
+            }    
+            gridControl3.DataSource = resTab;
+
+            // настройка матриц
+            foreach (GridColumn col in gridView3.Columns)
+            {
+                col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
+                col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                col.AppearanceHeader.Options.UseTextOptions = true;
+            }
+
+            foreach (GridColumn col in gridView3.Columns)
+            {
+                col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
+                col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                col.AppearanceHeader.Options.UseTextOptions = true;
+            }
+
+            gridControl3.Size = new Size(_matrixRes.ColumnsCount * 50, _matrixRes.RowsCount * 50);
+            
+        }
+
         //TODO: Проверка ответ (добавить корректный вопрос), если нельзя, то вывести вариант который можно.
         private void FirstQuest(bool answ)
         {
@@ -182,7 +229,8 @@ namespace AlgoTeacher
         private void ThirdQuest()
         {
             pressed = false;
-            SetQuestionText("");
+            SetupResultMatrix();
+            SetQuestionText(" ");
             layoutQuest.Visibility = LayoutVisibility.Always;
             layoutYesNo.Visibility = LayoutVisibility.Never;
 
@@ -224,6 +272,8 @@ namespace AlgoTeacher
             }
         }
 
+
+
         // обработка вычисления.
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
@@ -238,13 +288,19 @@ namespace AlgoTeacher
 
             // TODO: заполнение матрицы ответом (вместо закомментированого)
             //_matrixMultiplyAdapter.FillResultCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
+            ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             //MessageBox.Show("Правильно!")
-             SetQuestionText("");
+             SetQuestionText(" ");
             this.questionControl.CleanAnswer();
             
             pressed = false;
         }
 
+        private void ResultMatrFillCell(int row, int col, string value)
+        {
+            gridView3.SetRowCellValue(row,gridView3.Columns[col],value);
+        }
+        
         public void YesButton_Clicked(object sender, EventArgs e)
         {
             if (quest.CheckAnswer("True"))
@@ -294,6 +350,7 @@ namespace AlgoTeacher
             }
             //TODO: Добавить заполнение матрицы
             //_matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
+            ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
         }
     }
 }
