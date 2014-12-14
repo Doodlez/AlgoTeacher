@@ -65,7 +65,7 @@
             // 
             // ColumnsTextEdit
             // 
-            this.ColumnsTextEdit.Location = new System.Drawing.Point(108, 83);
+            this.ColumnsTextEdit.Location = new System.Drawing.Point(108, 84);
             this.ColumnsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ColumnsTextEdit.MaximumSize = new System.Drawing.Size(0, 39);
             this.ColumnsTextEdit.MinimumSize = new System.Drawing.Size(31, 39);
@@ -79,7 +79,7 @@
             // 
             // RowsTextEdit
             // 
-            this.RowsTextEdit.Location = new System.Drawing.Point(108, 35);
+            this.RowsTextEdit.Location = new System.Drawing.Point(108, 36);
             this.RowsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RowsTextEdit.MaximumSize = new System.Drawing.Size(0, 39);
             this.RowsTextEdit.MinimumSize = new System.Drawing.Size(31, 39);
@@ -95,7 +95,7 @@
             // 
             this.AnswerButton.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AnswerButton.Appearance.Options.UseFont = true;
-            this.AnswerButton.Location = new System.Drawing.Point(12, 126);
+            this.AnswerButton.Location = new System.Drawing.Point(12, 127);
             this.AnswerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AnswerButton.MinimumSize = new System.Drawing.Size(31, 32);
             this.AnswerButton.Name = "AnswerButton";
@@ -115,7 +115,7 @@
             this.emptySpaceItem1,
             this.layoutControlItem2,
             this.layoutControlItem4});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, -1);
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(260, 171);
             this.layoutControlGroup1.Text = "Root";

@@ -46,7 +46,7 @@ namespace AlgoTeacher
         public MatrixMultiplyForm()
         {
             InitializeComponent();
-
+            DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
             // добавление обработчиков
             //var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
             //questionControl.AnswerClicked += answerClickHandler;
@@ -74,14 +74,20 @@ namespace AlgoTeacher
         // функция для установки вопроса из др потока
         public void SetQuestionText(string text)
         {
-            if (QuestionLabel.InvokeRequired)
+            try
             {
-                SetQuestionCallback deleg = new SetQuestionCallback(SetQuestionText);
-                this.Invoke(deleg,new object[]{text});
+                if (QuestionLabel.InvokeRequired)
+                {
+                    SetQuestionCallback deleg = new SetQuestionCallback(SetQuestionText);
+                    this.Invoke(deleg, new object[] { text });
+                }
+                else
+                {
+                    QuestionLabel.Text = text;
+                }
             }
-            else
-            {
-                QuestionLabel.Text = text;
+            catch (Exception ex) {
+                var e = ex;
             }
         }
 
@@ -303,10 +309,21 @@ namespace AlgoTeacher
             pressed = false;
         }
 
-        // TODO: Исправить заполнение матриц!
         private void ResultMatrFillCell(int row, int col, string value)
         {
-            gridView3.SetRowCellValue(row - 1,gridView3.Columns[col - 1],value);
+            try
+            {
+                
+                //gridView3.BeginDataUpdate();
+                gridView3.SetRowCellValue(row - 1, gridView3.Columns[col - 1], value);
+                gridView3.RefreshData();
+                //gridView3.EndDataUpdate();
+                
+            }
+            catch (Exception e)
+            {
+                var ex = e;
+            }
         }
         
         public void YesButton_Clicked(object sender, EventArgs e)
