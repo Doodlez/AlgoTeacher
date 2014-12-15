@@ -30,7 +30,7 @@ namespace AlgoTeacher.Logic
                         resultMatrix.Values[i][j] += matrix1.Values[i][k] * matrix2.Values[k][j];
                     }
 
-                    var currentCoord = new Coordinate(i, j);
+                    var currentCoord = new Coordinate(i+1, j+1);
 
                     if (Coordinate.DoesCoordinateExist(currentCoord, coords))
                     {
