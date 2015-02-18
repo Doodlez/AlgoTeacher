@@ -9,9 +9,12 @@ using AlgoTeacher.Logic;
 using AlgoTeacher.Logic.Quest;
 using DevExpress.Utils;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout.Utils;
 using SpreadsheetGear.Windows.Forms;
 using UserControls;
+using System.Web;
 
 //TODO: Поправить матрицы: выравнивание + лишняя строка
 //TODO: Поправить матрицы :появление лишних столбцов
@@ -57,10 +60,13 @@ namespace AlgoTeacher
             yesNoQuestionControl.NoClicked += noClickHandler;
 
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
-           questionControl.AnswerClicked += answerClickHandler;
+            questionControl.AnswerClicked += answerClickHandler;
 
            var secondStageClickHandler = new SizeQuestionControl.AnswerClickedHandler(SecondStageAnswer_Clicked);
            sizeQuestionControl.AnswerClicked += secondStageClickHandler;
+
+            //var rowCellStyleEventHandler = new SecondStageControl.RowCellStyleEventHandler(SecondStageAnswer_Clicked_2);
+            //secondStageControl.RowCellStyle += rowCellStyleEventHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -362,6 +368,7 @@ namespace AlgoTeacher
 
         public void AnswerButton_Clicked(object sender, EventArgs e)
         {
+
             // Действия при нажатии ответ
             if (!quest.CheckAnswer(questionControl.GetAnswer()))
             //if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
@@ -383,7 +390,7 @@ namespace AlgoTeacher
             }
             MessageBox.Show("Правильно! Молодец!");
             pressed = true;
-            ThirdQuest();
+            //ThirdQuest();
         }
 
         public void FillEventHandler(object sender, FillEvents.FillEventArgs e)
@@ -397,6 +404,11 @@ namespace AlgoTeacher
             }
             //_matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
+        }
+
+        public void HighlightColumn(GridView gridView, int col)
+        {
+            gridView.Columns[col].AppearanceCell.BackColor = Color.Firebrick;
         }
     }
 }

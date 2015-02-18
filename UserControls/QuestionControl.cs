@@ -51,6 +51,7 @@ namespace UserControls
                 OnAnswerClicked(sender, e);
             }
         }
+
         protected virtual void OnAnswerClicked(object sender, EventArgs e)
         {
             // If an event has no subscribers registerd, it will
