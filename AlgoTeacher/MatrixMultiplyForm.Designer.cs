@@ -39,7 +39,7 @@ namespace AlgoTeacher
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.QuestionLabel = new DevExpress.XtraEditors.LabelControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.secondStageControl = new UserControls.SecondStageControl();
+            this.sizeQuestionControl = new UserControls.SizeQuestionControl();
             this.yesNoQuestionControl = new UserControls.YesNoQuestionControl();
             this.questionControl = new UserControls.QuestionControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -174,7 +174,7 @@ namespace AlgoTeacher
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.secondStageControl);
+            this.layoutControl1.Controls.Add(this.sizeQuestionControl);
             this.layoutControl1.Controls.Add(this.yesNoQuestionControl);
             this.layoutControl1.Controls.Add(this.questionControl);
             this.layoutControl1.Controls.Add(this.QuestionLabel);
@@ -187,14 +187,14 @@ namespace AlgoTeacher
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // secondStageControl
+            // sizeQuestionControl
             // 
-            this.secondStageControl.AnswerButtonEnabled = true;
-            this.secondStageControl.Location = new System.Drawing.Point(1054, 12);
-            this.secondStageControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.secondStageControl.Name = "secondStageControl";
-            this.secondStageControl.Size = new System.Drawing.Size(100, 284);
-            this.secondStageControl.TabIndex = 6;
+            this.sizeQuestionControl.AnswerButtonEnabled = true;
+            this.sizeQuestionControl.Location = new System.Drawing.Point(1054, 12);
+            this.sizeQuestionControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sizeQuestionControl.Name = "sizeQuestionControl";
+            this.sizeQuestionControl.Size = new System.Drawing.Size(100, 284);
+            this.sizeQuestionControl.TabIndex = 6;
             // 
             // yesNoQuestionControl
             // 
@@ -273,7 +273,7 @@ namespace AlgoTeacher
             // 
             // layoutSecondStage
             // 
-            this.layoutSecondStage.Control = this.secondStageControl;
+            this.layoutSecondStage.Control = this.sizeQuestionControl;
             this.layoutSecondStage.CustomizationFormText = "layoutSecondStage";
             this.layoutSecondStage.Location = new System.Drawing.Point(1042, 0);
             this.layoutSecondStage.MinSize = new System.Drawing.Size(104, 24);
@@ -346,7 +346,7 @@ namespace AlgoTeacher
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutQuest;
         private DevExpress.XtraLayout.LayoutControlItem layoutYesNo;
-        private UserControls.SecondStageControl secondStageControl;
+        private UserControls.SizeQuestionControl sizeQuestionControl;
         private DevExpress.XtraLayout.LayoutControlItem layoutSecondStage;
     }
 }

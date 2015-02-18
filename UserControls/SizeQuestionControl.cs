@@ -10,7 +10,8 @@ using System.Windows.Forms;
 
 namespace UserControls
 {
-    public partial class SecondStageControl : DevExpress.XtraEditors.XtraUserControl
+    // TODO: В качестве параметров передавать строки для подписи ввода (строки-столбцы, ограничения)
+    public partial class SizeQuestionControl : DevExpress.XtraEditors.XtraUserControl
     {
         public delegate void AnswerClickedHandler(object sender, EventArgs e);
         public event AnswerClickedHandler AnswerClicked;
@@ -18,7 +19,7 @@ namespace UserControls
         private delegate void SetTextCallback(string text1);
         private delegate void SetCleanCallback();
 
-        public SecondStageControl()
+        public SizeQuestionControl()
         {
             InitializeComponent();
         }

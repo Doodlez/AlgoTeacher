@@ -184,11 +184,11 @@
     <Compile Include="QuestionControl.Designer.cs">
       <DependentUpon>QuestionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="SecondStageControl.cs">
+    <Compile Include="SizeQuestionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SecondStageControl.Designer.cs">
-      <DependentUpon>SecondStageControl.cs</DependentUpon>
+    <Compile Include="SizeQuestionControl.Designer.cs">
+      <DependentUpon>SizeQuestionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="YesNoQuestionControl.cs">
       <SubType>UserControl</SubType>
@@ -209,8 +209,8 @@
     <EmbeddedResource Include="QuestionControl.resx">
       <DependentUpon>QuestionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SecondStageControl.resx">
-      <DependentUpon>SecondStageControl.cs</DependentUpon>
+    <EmbeddedResource Include="SizeQuestionControl.resx">
+      <DependentUpon>SizeQuestionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YesNoQuestionControl.resx">
       <DependentUpon>YesNoQuestionControl.cs</DependentUpon>

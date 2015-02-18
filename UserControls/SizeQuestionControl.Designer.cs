@@ -1,6 +1,6 @@
 ﻿namespace UserControls
 {
-    partial class SecondStageControl
+    partial class SizeQuestionControl
     {
         /// <summary> 
         /// Required designer variable.

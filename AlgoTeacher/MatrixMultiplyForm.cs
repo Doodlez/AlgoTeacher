@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using AlgoTeacher.Interface;
 using AlgoTeacher.Logic;
-using AlgoTeacher.Logic.Adapters;
 using AlgoTeacher.Logic.Quest;
 using DevExpress.Utils;
 using DevExpress.XtraGrid.Columns;
@@ -60,8 +59,8 @@ namespace AlgoTeacher
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
            questionControl.AnswerClicked += answerClickHandler;
 
-           var secondStageClickHandler = new SecondStageControl.AnswerClickedHandler(SecondStageAnswer_Clicked);
-           secondStageControl.AnswerClicked += secondStageClickHandler;
+           var secondStageClickHandler = new SizeQuestionControl.AnswerClickedHandler(SecondStageAnswer_Clicked);
+           sizeQuestionControl.AnswerClicked += secondStageClickHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -359,13 +358,13 @@ namespace AlgoTeacher
             }
         }
 
-        //TODO: Реализовать обработку кнопок secondStageControl
+        //TODO: Реализовать обработку кнопок sizeQuestionControl
 
         public void AnswerButton_Clicked(object sender, EventArgs e)
         {
             // Действия при нажатии ответ
             if (!quest.CheckAnswer(questionControl.GetAnswer()))
-            //if (!quest.CheckAnswer(secondStageControl.GetRowsAnswer() + " " + secondStageControl.GetColumnsAnswer()))
+            //if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
             {
                 MessageBox.Show("Не правильно!");
                 return;
@@ -377,7 +376,7 @@ namespace AlgoTeacher
         public void SecondStageAnswer_Clicked(object sender, EventArgs e)
         {
             // Действия при нажатии ответ
-            if (!quest.CheckAnswer(secondStageControl.GetRowsAnswer() + " " + secondStageControl.GetColumnsAnswer()))
+            if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
             {
                 MessageBox.Show("Не правильно!");
                 return;
