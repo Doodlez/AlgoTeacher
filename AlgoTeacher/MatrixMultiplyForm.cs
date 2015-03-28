@@ -16,13 +16,8 @@ using SpreadsheetGear.Windows.Forms;
 using UserControls;
 using System.Web;
 
-//TODO: Поправить матрицы: выравнивание + лишняя строка
-//TODO: Поправить матрицы :появление лишних столбцов
 
 //TODO: добавить функции выделения строки, столбца, ячейки цветом
-
-//TODO: Сохранить настроеный grid как контрол(XtraUserControl).
-
 namespace AlgoTeacher
 {
     public partial class MatrixMultiplyForm : DevExpress.XtraEditors.XtraForm
@@ -64,9 +59,6 @@ namespace AlgoTeacher
 
            var secondStageClickHandler = new SizeQuestionControl.AnswerClickedHandler(SecondStageAnswer_Clicked);
            sizeQuestionControl.AnswerClicked += secondStageClickHandler;
-
-            //var rowCellStyleEventHandler = new SecondStageControl.RowCellStyleEventHandler(SecondStageAnswer_Clicked_2);
-            //secondStageControl.RowCellStyle += rowCellStyleEventHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -81,6 +73,25 @@ namespace AlgoTeacher
             //dataGridView1.Rows[1].Cells[1].Value = 4;
             //dataGridView1.Rows[1].Cells[1].Style.BackColor = Color.Green;
             //dataGridView1.Rows[0].Cells[1].Style.BackColor = Color.Green;
+        }
+
+        private void SetupMatrix()
+        {
+            // генерация размерности и рандомная генерация значений матриц
+
+            _matrix1 = new Matrix();
+            Thread.Sleep(100);
+            _matrix2 = new Matrix();
+
+            matrixGridView1.AddValues(_matrix1.Values, _matrix1.RowsCount, _matrix1.ColumnsCount);
+            matrixGridView2.AddValues(_matrix2.Values, _matrix2.RowsCount, _matrix2.ColumnsCount);
+        }
+
+        private void SetupResultMatrix()
+        {
+            // генерация размерности и рандомная генерация значений матриц
+            _matrixRes = new Matrix(_matrix1.RowsCount, _matrix2.ColumnsCount);
+            matrixGridView3.AddValues(_matrixRes.Values, _matrixRes.RowsCount, _matrixRes.ColumnsCount);
         }
 
         // функция для установки вопроса из др потока
@@ -101,25 +112,6 @@ namespace AlgoTeacher
             catch (Exception ex) {
                 var e = ex;
             }
-        }
-
-        private void SetupMatrix()
-        {
-            // генерация размерности и рандомная генерация значений матриц
-
-            _matrix1 = new Matrix();
-            Thread.Sleep(100);
-            _matrix2 = new Matrix();
-
-            matrixGridView1.AddValues(_matrix1.Values,_matrix1.RowsCount,_matrix1.ColumnsCount);
-            matrixGridView2.AddValues(_matrix2.Values, _matrix2.RowsCount, _matrix2.ColumnsCount);
-        }
-
-        private void SetupResultMatrix()
-        {
-            // генерация размерности и рандомная генерация значений матриц
-            _matrixRes = new Matrix(_matrix1.RowsCount,_matrix2.ColumnsCount);
-            matrixGridView3.AddValues(_matrixRes.Values, _matrixRes.RowsCount, _matrixRes.ColumnsCount);
         }
 
         private void FirstQuest(bool answ)
@@ -202,9 +194,8 @@ namespace AlgoTeacher
                 System.Threading.Thread.Sleep(100);
             }
         
-            //_matrixMultiplyAdapter.FillResultCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
-            //MessageBox.Show("Правильно!")
+            MessageBox.Show("Правильно!");
              SetQuestionText(" ");
 
             this.questionControl.CleanAnswer();
@@ -212,16 +203,13 @@ namespace AlgoTeacher
             pressed = false;
         }
 
-        // TODO: исправит заполнение результата по событию (SetRowCellValue нет у MatrixGridView)
         private void ResultMatrFillCell(int row, int col, string value)
         {
             try
             {
-                //gridView3.BeginDataUpdate();
-                //gridView3.SetRowCellValue(row - 1, gridView3.Columns[col - 1], value);
-                //gridView3.RefreshData();
-                ////gridView3.EndDataUpdate();
-                //matrixGridView3.SetRowCellValue(row - 1, gridView3.Columns[col - 1], value);
+                matrixGridView3[col - 1, row - 1].Value = value;
+                matrixGridView3.Refresh();
+
             }
             catch (Exception e)
             {
@@ -288,7 +276,7 @@ namespace AlgoTeacher
             }
             MessageBox.Show("Правильно! Молодец!");
             pressed = true;
-            //ThirdQuest();
+            ThirdQuest();
         }
 
         public void FillEventHandler(object sender, FillEvents.FillEventArgs e)

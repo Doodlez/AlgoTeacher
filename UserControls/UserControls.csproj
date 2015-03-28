@@ -190,6 +190,12 @@
     <Compile Include="QuestionControl.Designer.cs">
       <DependentUpon>QuestionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionControlBase.Designer.cs">
+      <DependentUpon>QuestionControlBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="SizeQuestionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

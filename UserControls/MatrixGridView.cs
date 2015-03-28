@@ -13,6 +13,9 @@ namespace UserControls
 {
     public partial class MatrixGridView : DataGridView
     {
+        private Color StandartBackgroundColor = Color.White;
+        private Color StandartHighlightColor = Color.Red;
+
         public MatrixGridView()
         {
             InitializeComponent();
@@ -59,6 +62,61 @@ namespace UserControls
             foreach (DataGridViewColumn col in this.Columns)
             {
                 col.Width = 50;
+            }
+        }
+
+        public void HighlightCell(int row, int column, Color color)
+        {
+            this.Rows[row - 1].Cells[column - 1].Style.BackColor = color;
+        }
+
+        public void HighlightRow(int row, Color color)
+        {
+            DataGridViewRow curRow = this.Rows[row - 1];
+            foreach (DataGridViewCell cell in curRow.Cells)
+            {
+                cell.Style.BackColor = color;
+            }
+        }
+
+        public void HighlightColumn(int column, Color color)
+        {
+            foreach (DataGridViewRow row in this.Rows)
+            {
+                row.Cells[column - 1].Style.BackColor = color;
+            }
+        }
+
+        public void HighlightColumn(int column)
+        {
+            foreach (DataGridViewRow row in this.Rows)
+            {
+                row.Cells[column - 1].Style.BackColor = StandartHighlightColor;
+            }
+        }
+
+        public void HighlightCell(int row, int column)
+        {
+            this.Rows[row - 1].Cells[column - 1].Style.BackColor = StandartHighlightColor;
+        }
+
+        public void HighlightRow(int row)
+        {
+            DataGridViewRow curRow = this.Rows[row - 1];
+            foreach (DataGridViewCell cell in curRow.Cells)
+            {
+                cell.Style.BackColor = StandartHighlightColor;
+            }
+        }
+
+        public void ClearHighlight()
+        {
+            foreach (DataGridViewRow row in this.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = StandartBackgroundColor;
+                }
             }
         }
     }
