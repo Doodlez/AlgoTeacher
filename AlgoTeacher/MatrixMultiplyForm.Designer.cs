@@ -30,13 +30,11 @@ namespace AlgoTeacher
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ViewPanel = new DevExpress.XtraEditors.PanelControl();
-            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.QuestionLabel = new DevExpress.XtraEditors.LabelControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.sizeQuestionControl = new UserControls.SizeQuestionControl();
@@ -48,14 +46,11 @@ namespace AlgoTeacher
             this.layoutYesNo = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutSecondStage = new DevExpress.XtraLayout.LayoutControlItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.matrixGridView1 = new UserControls.MatrixGridView(this.components);
+            this.matrixGridView2 = new UserControls.MatrixGridView(this.components);
+            this.matrixGridView3 = new UserControls.MatrixGridView(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).BeginInit();
             this.ViewPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -65,100 +60,22 @@ namespace AlgoTeacher
             ((System.ComponentModel.ISupportInitialize)(this.layoutSecondStage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // ViewPanel
             // 
-            this.ViewPanel.Controls.Add(this.gridControl3);
-            this.ViewPanel.Controls.Add(this.gridControl2);
-            this.ViewPanel.Controls.Add(this.gridControl1);
+            this.ViewPanel.Controls.Add(this.matrixGridView3);
+            this.ViewPanel.Controls.Add(this.matrixGridView2);
+            this.ViewPanel.Controls.Add(this.matrixGridView1);
             this.ViewPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.ViewPanel.Location = new System.Drawing.Point(0, 0);
             this.ViewPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ViewPanel.Name = "ViewPanel";
             this.ViewPanel.Size = new System.Drawing.Size(1170, 243);
             this.ViewPanel.TabIndex = 1;
-            // 
-            // gridControl3
-            // 
-            this.gridControl3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gridControl3.Location = new System.Drawing.Point(783, 26);
-            this.gridControl3.MainView = this.gridView3;
-            this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(150, 150);
-            this.gridControl3.TabIndex = 4;
-            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
-            // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.gridControl3;
-            this.gridView3.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsBehavior.Editable = false;
-            this.gridView3.OptionsSelection.EnableAppearanceFocusedRow = false;
-            this.gridView3.OptionsSelection.EnableAppearanceHideSelection = false;
-            this.gridView3.OptionsView.ShowColumnHeaders = false;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
-            this.gridView3.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView3.OptionsView.ShowIndicator = false;
-            this.gridView3.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView3.RowHeight = 50;
-            this.gridView3.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
-            // 
-            // gridControl2
-            // 
-            this.gridControl2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gridControl2.Location = new System.Drawing.Point(427, 26);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(150, 150);
-            this.gridControl2.TabIndex = 3;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsSelection.EnableAppearanceFocusedRow = false;
-            this.gridView2.OptionsSelection.EnableAppearanceHideSelection = false;
-            this.gridView2.OptionsView.ShowColumnHeaders = false;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            this.gridView2.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView2.OptionsView.ShowIndicator = false;
-            this.gridView2.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView2.RowHeight = 50;
-            this.gridView2.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gridControl1.Location = new System.Drawing.Point(90, 26);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(150, 150);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedRow = false;
-            this.gridView1.OptionsSelection.EnableAppearanceHideSelection = false;
-            this.gridView1.OptionsView.ShowColumnHeaders = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView1.RowHeight = 50;
-            this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
             // 
             // QuestionLabel
             // 
@@ -295,6 +212,123 @@ namespace AlgoTeacher
             this.panelControl1.Size = new System.Drawing.Size(1170, 312);
             this.panelControl1.TabIndex = 4;
             // 
+            // matrixGridView1
+            // 
+            this.matrixGridView1.AllowUserToAddRows = false;
+            this.matrixGridView1.AllowUserToDeleteRows = false;
+            this.matrixGridView1.AllowUserToResizeColumns = false;
+            this.matrixGridView1.AllowUserToResizeRows = false;
+            this.matrixGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.matrixGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.matrixGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.matrixGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.matrixGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.matrixGridView1.ColumnHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 7.8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.matrixGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.matrixGridView1.EnableHeadersVisualStyles = false;
+            this.matrixGridView1.GridColor = System.Drawing.Color.White;
+            this.matrixGridView1.Location = new System.Drawing.Point(23, 27);
+            this.matrixGridView1.Name = "matrixGridView1";
+            this.matrixGridView1.ReadOnly = true;
+            this.matrixGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.matrixGridView1.RowHeadersVisible = false;
+            this.matrixGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.matrixGridView1.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.matrixGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.matrixGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.matrixGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.matrixGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.matrixGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.matrixGridView1.RowTemplate.Height = 50;
+            this.matrixGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.matrixGridView1.Size = new System.Drawing.Size(222, 185);
+            this.matrixGridView1.TabIndex = 6;
+            // 
+            // matrixGridView2
+            // 
+            this.matrixGridView2.AllowUserToAddRows = false;
+            this.matrixGridView2.AllowUserToDeleteRows = false;
+            this.matrixGridView2.AllowUserToResizeColumns = false;
+            this.matrixGridView2.AllowUserToResizeRows = false;
+            this.matrixGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.matrixGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.matrixGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.matrixGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.matrixGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.matrixGridView2.ColumnHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 7.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.matrixGridView2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.matrixGridView2.EnableHeadersVisualStyles = false;
+            this.matrixGridView2.GridColor = System.Drawing.Color.White;
+            this.matrixGridView2.Location = new System.Drawing.Point(334, 27);
+            this.matrixGridView2.Name = "matrixGridView2";
+            this.matrixGridView2.ReadOnly = true;
+            this.matrixGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.matrixGridView2.RowHeadersVisible = false;
+            this.matrixGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.matrixGridView2.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.matrixGridView2.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.matrixGridView2.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.matrixGridView2.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.matrixGridView2.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.matrixGridView2.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.matrixGridView2.RowTemplate.Height = 50;
+            this.matrixGridView2.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.matrixGridView2.Size = new System.Drawing.Size(222, 185);
+            this.matrixGridView2.TabIndex = 7;
+            // 
+            // matrixGridView3
+            // 
+            this.matrixGridView3.AllowUserToAddRows = false;
+            this.matrixGridView3.AllowUserToDeleteRows = false;
+            this.matrixGridView3.AllowUserToResizeColumns = false;
+            this.matrixGridView3.AllowUserToResizeRows = false;
+            this.matrixGridView3.BackgroundColor = System.Drawing.Color.White;
+            this.matrixGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.matrixGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.matrixGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.matrixGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.matrixGridView3.ColumnHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 7.8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.matrixGridView3.DefaultCellStyle = dataGridViewCellStyle1;
+            this.matrixGridView3.EnableHeadersVisualStyles = false;
+            this.matrixGridView3.GridColor = System.Drawing.Color.White;
+            this.matrixGridView3.Location = new System.Drawing.Point(688, 27);
+            this.matrixGridView3.Name = "matrixGridView3";
+            this.matrixGridView3.ReadOnly = true;
+            this.matrixGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.matrixGridView3.RowHeadersVisible = false;
+            this.matrixGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.matrixGridView3.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.matrixGridView3.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.matrixGridView3.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.matrixGridView3.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.matrixGridView3.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.matrixGridView3.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.matrixGridView3.RowTemplate.Height = 50;
+            this.matrixGridView3.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.matrixGridView3.Size = new System.Drawing.Size(222, 185);
+            this.matrixGridView3.TabIndex = 8;
+            // 
             // MatrixMultiplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -309,12 +343,6 @@ namespace AlgoTeacher
             this.Load += new System.EventHandler(this.MatrixMultiplyForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).EndInit();
             this.ViewPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -324,6 +352,9 @@ namespace AlgoTeacher
             ((System.ComponentModel.ISupportInitialize)(this.layoutSecondStage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -331,12 +362,6 @@ namespace AlgoTeacher
         #endregion
 
         private DevExpress.XtraEditors.PanelControl ViewPanel;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.GridControl gridControl3;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.LabelControl QuestionLabel;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
@@ -348,5 +373,8 @@ namespace AlgoTeacher
         private DevExpress.XtraLayout.LayoutControlItem layoutYesNo;
         private UserControls.SizeQuestionControl sizeQuestionControl;
         private DevExpress.XtraLayout.LayoutControlItem layoutSecondStage;
+        private MatrixGridView matrixGridView1;
+        private MatrixGridView matrixGridView3;
+        private MatrixGridView matrixGridView2;
     }
 }

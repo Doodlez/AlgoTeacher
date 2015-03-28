@@ -173,13 +173,13 @@
             this.layoutControlItem4.Text = "Число столбцов";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(93, 16);
             // 
-            // SecondStageControl
+            // SizeQuestionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "SecondStageControl";
+            this.Name = "SizeQuestionControl";
             this.Size = new System.Drawing.Size(281, 170);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

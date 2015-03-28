@@ -74,6 +74,13 @@ namespace AlgoTeacher
             _logic = new MatrixMultiply();
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
+            //dataGridView1.Rows.Add();
+            //dataGridView1.Rows[0].Cells[0].Value = 1;
+            //dataGridView1.Rows[0].Cells[1].Value = 2;
+            //dataGridView1.Rows[1].Cells[0].Value = 3;
+            //dataGridView1.Rows[1].Cells[1].Value = 4;
+            //dataGridView1.Rows[1].Cells[1].Style.BackColor = Color.Green;
+            //dataGridView1.Rows[0].Cells[1].Style.BackColor = Color.Green;
         }
 
         // функция для установки вопроса из др потока
@@ -104,124 +111,15 @@ namespace AlgoTeacher
             Thread.Sleep(100);
             _matrix2 = new Matrix();
 
-            List<int[]> rowlist1 = new List<int[]>();
-            List<int[]> rowlist2 = new List<int[]>();
-
-            for (int i = 0; i < _matrix1.RowsCount; i++)
-            {
-                rowlist1.Add(_matrix1.Values[i]);
-            }
-
-            for (int i = 0; i < _matrix2.RowsCount; i++)
-            {
-                rowlist2.Add(_matrix2.Values[i]);
-            }
-
-            DataTable tab = new DataTable();
-            DataTable tab2 = new DataTable();
-            
-            for (int i = 0; i < _matrix1.ColumnsCount; i++)
-            {
-                DataColumn col = new DataColumn();
-                tab.Columns.Add(col);
-            }
-
-            for (int i = 0; i < _matrix2.ColumnsCount; i++)
-            {
-                DataColumn col = new DataColumn();
-                tab2.Columns.Add(col);
-            }
-
-            foreach (var intse in rowlist1)
-            {
-                DataRow row = tab.NewRow();
-                for (int i = 0; i < tab.Columns.Count; i++)
-                {
-                    row[i] = intse[i];
-                }
-                tab.Rows.Add(row);
-            }
-
-            foreach (var intse in rowlist2)
-            {
-                DataRow row = tab2.NewRow();
-                for (int i = 0; i < tab2.Columns.Count; i++)
-                {
-                    row[i] = intse[i];
-                }
-                tab2.Rows.Add(row);
-            }
-
-            gridControl1.DataSource = tab;
-            gridControl2.DataSource = tab2;
-
-            // настройка матриц
-            foreach (GridColumn col in gridView1.Columns)
-            {
-                col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
-                col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-                col.AppearanceHeader.Options.UseTextOptions = true;
-            }
-
-            foreach (GridColumn col in gridView2.Columns)
-            {
-                col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
-                col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-                col.AppearanceHeader.Options.UseTextOptions = true;
-            }
-
-            gridControl1.Size = new Size(_matrix1.ColumnsCount * 50, _matrix1.RowsCount * 50);
-            gridControl2.Size = new Size(_matrix2.ColumnsCount * 50, _matrix2.RowsCount * 50);
+            matrixGridView1.AddValues(_matrix1.Values,_matrix1.RowsCount,_matrix1.ColumnsCount);
+            matrixGridView2.AddValues(_matrix2.Values, _matrix2.RowsCount, _matrix2.ColumnsCount);
         }
 
         private void SetupResultMatrix()
         {
             // генерация размерности и рандомная генерация значений матриц
             _matrixRes = new Matrix(_matrix1.RowsCount,_matrix2.ColumnsCount);
-
-             resTab = new DataTable();
-            
-            for (int i = 0; i < _matrixRes.ColumnsCount; i++)
-            {
-                DataColumn col = new DataColumn();
-                resTab.Columns.Add(col);
-            }
-
-            List<int[]> rowlist = new List<int[]>();
-
-            for (int i = 0; i < _matrixRes.RowsCount; i++)
-            {
-                rowlist.Add(_matrixRes.Values[i]);
-            }
-
-            foreach (var intse in rowlist)
-            {
-                DataRow row = resTab.NewRow();
-                for (int i = 0; i < resTab.Columns.Count; i++)
-                {
-                    row[i] = intse[i];
-                }
-                resTab.Rows.Add(row);
-            }    
-            gridControl3.DataSource = resTab;
-
-            // настройка матриц
-            foreach (GridColumn col in gridView3.Columns)
-            {
-                col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
-                col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-                col.AppearanceHeader.Options.UseTextOptions = true;
-            }
-
-            foreach (GridColumn col in gridView3.Columns)
-            {
-                col.AppearanceCell.Font = new Font("Arial", 16, FontStyle.Bold);
-                col.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-                col.AppearanceHeader.Options.UseTextOptions = true;
-            }
-
-            gridControl3.Size = new Size(_matrixRes.ColumnsCount * 50, _matrixRes.RowsCount * 50);
-            
+            matrixGridView3.AddValues(_matrixRes.Values, _matrixRes.RowsCount, _matrixRes.ColumnsCount);
         }
 
         private void FirstQuest(bool answ)
@@ -314,16 +212,16 @@ namespace AlgoTeacher
             pressed = false;
         }
 
+        // TODO: исправит заполнение результата по событию (SetRowCellValue нет у MatrixGridView)
         private void ResultMatrFillCell(int row, int col, string value)
         {
             try
             {
-                
                 //gridView3.BeginDataUpdate();
-                gridView3.SetRowCellValue(row - 1, gridView3.Columns[col - 1], value);
-                gridView3.RefreshData();
-                //gridView3.EndDataUpdate();
-                
+                //gridView3.SetRowCellValue(row - 1, gridView3.Columns[col - 1], value);
+                //gridView3.RefreshData();
+                ////gridView3.EndDataUpdate();
+                //matrixGridView3.SetRowCellValue(row - 1, gridView3.Columns[col - 1], value);
             }
             catch (Exception e)
             {
@@ -410,5 +308,19 @@ namespace AlgoTeacher
         {
             gridView.Columns[col].AppearanceCell.BackColor = Color.Firebrick;
         }
+
+        //private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        //{
+        //    GridView View = sender as GridView;
+        //    if (e.RowHandle >= 0)
+        //    {
+        //        string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["Category"]);
+        //        if (category == "Beverages")
+        //        {
+        //            e.Appearance.BackColor = Color.Salmon;
+        //            e.Appearance.BackColor2 = Color.SeaShell;
+        //        }
+        //    }
+        //}
     }
 }
