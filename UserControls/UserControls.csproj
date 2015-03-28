@@ -177,12 +177,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MatrixGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MatrixGridView.Designer.cs">
+      <DependentUpon>MatrixGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="QuestionControl.Designer.cs">
       <DependentUpon>QuestionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionControlBase.Designer.cs">
+      <DependentUpon>QuestionControlBase.cs</DependentUpon>
     </Compile>
     <Compile Include="SizeQuestionControl.cs">
       <SubType>UserControl</SubType>
@@ -196,6 +208,9 @@
     <Compile Include="YesNoQuestionControl.Designer.cs">
       <DependentUpon>YesNoQuestionControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MatrixGridView.resx">
+      <DependentUpon>MatrixGridView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
