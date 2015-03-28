@@ -63,6 +63,7 @@
             this.QuestionLabel.StyleController = this.layoutControl1;
             this.QuestionLabel.TabIndex = 5;
             this.QuestionLabel.Text = "Вопрос";
+            this.QuestionLabel.Click += new System.EventHandler(this.QuestionLabel_Click);
             // 
             // layoutControl1
             // 
