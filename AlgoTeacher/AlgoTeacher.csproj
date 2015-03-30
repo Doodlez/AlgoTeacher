@@ -120,6 +120,36 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\IQuest.cs" />
+    <Compile Include="UserControls\MatrixGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\MatrixGridView.Designer.cs">
+      <DependentUpon>MatrixGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuestionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuestionControl.Designer.cs">
+      <DependentUpon>QuestionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuestionControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuestionControlBase.Designer.cs">
+      <DependentUpon>QuestionControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SizeQuestionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SizeQuestionControl.Designer.cs">
+      <DependentUpon>SizeQuestionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\YesNoQuestionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\YesNoQuestionControl.Designer.cs">
+      <DependentUpon>YesNoQuestionControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="InformationForm.resx">
       <DependentUpon>InformationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +176,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\MatrixGridView.resx">
+      <DependentUpon>MatrixGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuestionControl.resx">
+      <DependentUpon>QuestionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SizeQuestionControl.resx">
+      <DependentUpon>SizeQuestionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\YesNoQuestionControl.resx">
+      <DependentUpon>YesNoQuestionControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,12 +200,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UserControls\UserControls.csproj">
-      <Project>{5B2BF62E-9663-49BF-9AD2-41363895125A}</Project>
-      <Name>UserControls</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mult.jpg" />
