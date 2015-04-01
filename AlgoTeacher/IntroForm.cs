@@ -33,18 +33,20 @@ namespace AlgoTeacher
         private void ButtonYes_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-      
         }
 
         private void ButtonNo_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.No;
-
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void QuestionLabel_Click(object sender, EventArgs e)
+        {
 
         }
     }
