@@ -246,7 +246,6 @@ namespace AlgoTeacher
             // 
             // sizeQuestionControl
             // 
-            this.sizeQuestionControl.AnswerButtonEnabled = true;
             this.sizeQuestionControl.Location = new System.Drawing.Point(1054, 12);
             this.sizeQuestionControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sizeQuestionControl.Name = "sizeQuestionControl";
@@ -259,14 +258,11 @@ namespace AlgoTeacher
             this.yesNoQuestionControl.MaximumSize = new System.Drawing.Size(262, 300);
             this.yesNoQuestionControl.MinimumSize = new System.Drawing.Size(70, 58);
             this.yesNoQuestionControl.Name = "yesNoQuestionControl";
-            this.yesNoQuestionControl.NoButtonEnabled = true;
             this.yesNoQuestionControl.Size = new System.Drawing.Size(70, 284);
             this.yesNoQuestionControl.TabIndex = 5;
-            this.yesNoQuestionControl.YesButtonEnabled = true;
             // 
             // questionControl
             // 
-            this.questionControl.AnswerButtonEnabled = true;
             this.questionControl.Location = new System.Drawing.Point(751, 12);
             this.questionControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.questionControl.MaximumSize = new System.Drawing.Size(300, 300);

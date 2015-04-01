@@ -45,20 +45,10 @@ namespace AlgoTeacher
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
             // добавление обработчиков
-            //var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
-            //questionControl.AnswerClicked += answerClickHandler;
-
-            var yesClickHandler = new YesNoQuestionControl.YesClickedHandler(YesButton_Clicked);
-            yesNoQuestionControl.YesClicked += yesClickHandler;
-
-            var noClickHandler = new YesNoQuestionControl.NoClickedHandler(NoButton_Clicked);
-            yesNoQuestionControl.NoClicked += noClickHandler;
-
-            var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
-            questionControl.AnswerClicked += answerClickHandler;
-
-           var secondStageClickHandler = new SizeQuestionControl.AnswerClickedHandler(SecondStageAnswer_Clicked);
-           sizeQuestionControl.AnswerClicked += secondStageClickHandler;
+            var goodAnswerHandler = new QuestionControlBase.GoodAnswerHandler(GoodAnswer_Send);
+            questionControl.GoodAnswer += goodAnswerHandler;
+            var badAnswerHandler = new QuestionControlBase.BadAnswerHandler(BadAnswer_Send);
+            questionControl.BadAnswer += badAnswerHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -66,19 +56,11 @@ namespace AlgoTeacher
             _logic = new MatrixMultiply();
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
-            //dataGridView1.Rows.Add();
-            //dataGridView1.Rows[0].Cells[0].Value = 1;
-            //dataGridView1.Rows[0].Cells[1].Value = 2;
-            //dataGridView1.Rows[1].Cells[0].Value = 3;
-            //dataGridView1.Rows[1].Cells[1].Value = 4;
-            //dataGridView1.Rows[1].Cells[1].Style.BackColor = Color.Green;
-            //dataGridView1.Rows[0].Cells[1].Style.BackColor = Color.Green;
         }
 
         private void SetupMatrix()
         {
             // генерация размерности и рандомная генерация значений матриц
-
             _matrix1 = new Matrix();
             Thread.Sleep(100);
             _matrix2 = new Matrix();
@@ -198,7 +180,7 @@ namespace AlgoTeacher
             MessageBox.Show("Правильно!");
              SetQuestionText(" ");
 
-            this.questionControl.CleanAnswer();
+            this.questionControl.ClearControl();
             
             pressed = false;
         }
@@ -216,6 +198,17 @@ namespace AlgoTeacher
                 var ex = e;
             }
         }
+        
+        public void GoodAnswer_Send(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BadAnswer_Send(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        /// //////////////////////////////////////////////////
         
         public void YesButton_Clicked(object sender, EventArgs e)
         {
@@ -269,14 +262,14 @@ namespace AlgoTeacher
         public void SecondStageAnswer_Clicked(object sender, EventArgs e)
         {
             // Действия при нажатии ответ
-            if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
-            {
-                MessageBox.Show("Не правильно!");
-                return;
-            }
-            MessageBox.Show("Правильно! Молодец!");
-            pressed = true;
-            ThirdQuest();
+            //if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
+            //{
+            //    MessageBox.Show("Не правильно!");
+            //    return;
+            //}
+            //MessageBox.Show("Правильно! Молодец!");
+            //pressed = true;
+            //ThirdQuest();
         }
 
         public void FillEventHandler(object sender, FillEvents.FillEventArgs e)

@@ -12,12 +12,8 @@ using DevExpress.XtraGrid.Views.Grid;
 namespace UserControls
 {
     // TODO: В качестве параметров передавать строки для подписи ввода (строки-столбцы, ограничения)
-    public partial class SizeQuestionControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class SizeQuestionControl : QuestionControlBase
     {
-        public delegate void AnswerClickedHandler(object sender, EventArgs e);
-        public event AnswerClickedHandler AnswerClicked;
-
-        private delegate void SetTextCallback(string text1);
         private delegate void SetCleanCallback();
 
         public SizeQuestionControl()
@@ -25,47 +21,47 @@ namespace UserControls
             InitializeComponent();
         }
 
-        public bool AnswerButtonEnabled
-        {
-            get { return AnswerButton.Enabled; }
-            set { AnswerButton.Enabled = value;}
-        }
+        //public bool AnswerButtonEnabled
+        //{
+        //    get { return AnswerButton.Enabled; }
+        //    set { AnswerButton.Enabled = value;}
+        //}
 
-        public string GetRowsAnswer()
-        {
-            return RowsTextEdit.Text;
-        }
+        //public string GetRowsAnswer()
+        //{
+        //    return RowsTextEdit.Text;
+        //}
 
-        public string GetColumnsAnswer()
-        {
-            return ColumnsTextEdit.Text;
-        }
+        //public string GetColumnsAnswer()
+        //{
+        //    return ColumnsTextEdit.Text;
+        //}
 
-        public void CleanRows()
-        {
-            if (RowsTextEdit.InvokeRequired)
-            {
-                var d = new SetCleanCallback(CleanRows);
-                Invoke(d);
-            }
-            else
-            {
-                RowsTextEdit.Text = string.Empty;
-            } 
-        }
+        //public void CleanRows()
+        //{
+        //    if (RowsTextEdit.InvokeRequired)
+        //    {
+        //        var d = new SetCleanCallback(CleanRows);
+        //        Invoke(d);
+        //    }
+        //    else
+        //    {
+        //        RowsTextEdit.Text = string.Empty;
+        //    } 
+        //}
 
-        public void CleanColumns()
-        {
-            if (ColumnsTextEdit.InvokeRequired)
-            {
-                var d = new SetCleanCallback(CleanColumns);
-                Invoke(d);
-            }
-            else
-            {
-                ColumnsTextEdit.Text = string.Empty;
-            }
-        }
+        //public void CleanColumns()
+        //{
+        //    if (ColumnsTextEdit.InvokeRequired)
+        //    {
+        //        var d = new SetCleanCallback(CleanColumns);
+        //        Invoke(d);
+        //    }
+        //    else
+        //    {
+        //        ColumnsTextEdit.Text = string.Empty;
+        //    }
+        //}
 
         private void AnswerButton_Click(object sender, EventArgs e)
         {
@@ -79,19 +75,34 @@ namespace UserControls
             }
             else
             {
-                OnAnswerClicked(sender, e);
+                checkAnswer(sender, e);
             }
         }
 
-        protected virtual void OnAnswerClicked(object sender, EventArgs e)
+        public override void ClearControl()
         {
-            // If an event has no subscribers registerd, it will
-            // evaluate to null. The test checks that the value is not
-            // null, ensuring that there are subsribers before
-            // calling the event itself.
-            if (AnswerClicked != null)
+            if (RowsTextEdit.InvokeRequired || ColumnsTextEdit.InvokeRequired)
             {
-                AnswerClicked(sender, e);  
+                var d = new SetCleanCallback(ClearControl);
+                Invoke(d);
+            }
+            else
+            {
+                RowsTextEdit.Text = string.Empty;
+                ColumnsTextEdit.Text = string.Empty;
+            } 
+        }
+
+        // проверка вида "строка, столбец"!!!
+        protected override void checkAnswer(object sender, EventArgs e)
+        {
+            if (string.Concat(RowsTextEdit.Text, ", ", ColumnsTextEdit.Text) == this.expectAnswer)
+            {
+                this.OnGoodAnswered(sender, e);
+            }
+            else
+            {
+                this.OnBadAnswered(sender, e);
             }
         }
     }

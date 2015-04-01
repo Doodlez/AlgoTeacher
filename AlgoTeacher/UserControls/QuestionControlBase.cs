@@ -11,7 +11,7 @@ using System.Windows.Forms;
 // TODO: Если нужно, базовый класс, В РЕАЛИЗАЦИИ...
 namespace UserControls
 {
-    public abstract partial class QuestionControlBase : UserControl
+    public partial class QuestionControlBase : UserControl
     {
         public QuestionControlBase()
         {
@@ -25,7 +25,7 @@ namespace UserControls
         }
 
         // правильный ответ
-        private string expectAnswer;
+        protected string expectAnswer;
 
         public delegate void GoodAnswerHandler(object sender, EventArgs e);
         public delegate void BadAnswerHandler(object sender, EventArgs e);
@@ -33,10 +33,40 @@ namespace UserControls
         public event GoodAnswerHandler GoodAnswer;
         public event BadAnswerHandler BadAnswer;
 
+        protected virtual void OnGoodAnswered(object sender, EventArgs e)
+        {
+            // If an event has no subscribers registerd, it will
+            // evaluate to null. The test checks that the value is not
+            // null, ensuring that there are subsribers before
+            // calling the event itself.
+            if (GoodAnswer != null)
+            {
+                GoodAnswer(sender, e);
+            }
+        }
+
+        protected virtual void OnBadAnswered(object sender, EventArgs e)
+        {
+            // If an event has no subscribers registerd, it will
+            // evaluate to null. The test checks that the value is not
+            // null, ensuring that there are subsribers before
+            // calling the event itself.
+            if (BadAnswer != null)
+            {
+                BadAnswer(sender, e);
+            }
+        }
+
         // очистка формы
-        public abstract void ClearControl();
+        public virtual void ClearControl()
+        {
+            
+        }
 
         // проверка ответа: генерирует одно из событий
-        public abstract void checkAnswer();
+        protected virtual void checkAnswer(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -3,39 +3,16 @@ using System.Windows.Forms;
 
 namespace UserControls
 {
-    public partial class QuestionControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class QuestionControl : QuestionControlBase
     {
-        public delegate void AnswerClickedHandler(object sender, EventArgs e);
-        public event AnswerClickedHandler AnswerClicked;
-
-        private delegate void SetTextCallback(string text1);
         private delegate void SetCleanCallback();
-
-        public bool AnswerButtonEnabled
-        {
-            get { return AnswerButton.Enabled; }
-            set { AnswerButton.Enabled = value;}
-        }
 
         public string GetAnswer()
         {
             return AnswerTextEdit.Text;
         }
 
-        public void CleanAnswer()
-        {
-            if (this.AnswerTextEdit.InvokeRequired)
-            {
-                SetCleanCallback d = new SetCleanCallback(CleanAnswer);
-                this.Invoke(d);
-            }
-            else
-            {
-                AnswerTextEdit.Text = string.Empty;
-            } 
-        }
-
-        public QuestionControl()
+        public QuestionControl() : base ()
         {
             InitializeComponent();
         }
@@ -48,21 +25,33 @@ namespace UserControls
             }
             else
             {
-                OnAnswerClicked(sender, e);
+                checkAnswer(sender, e);
             }
         }
 
-        protected virtual void OnAnswerClicked(object sender, EventArgs e)
+        public override void ClearControl()
         {
-            // If an event has no subscribers registerd, it will
-            // evaluate to null. The test checks that the value is not
-            // null, ensuring that there are subsribers before
-            // calling the event itself.
-            if (AnswerClicked != null)
+            if (this.AnswerTextEdit.InvokeRequired)
             {
-                AnswerClicked(sender, e);  
+                SetCleanCallback d = new SetCleanCallback(ClearControl);
+                this.Invoke(d);
             }
+            else
+            {
+                AnswerTextEdit.Text = string.Empty;
+            } 
         }
 
+        protected override void checkAnswer(object sender, EventArgs e)
+        {
+            if (AnswerTextEdit.Text == this.expectAnswer)
+            {
+                this.OnGoodAnswered(sender, e);
+            }
+            else
+            {
+                this.OnBadAnswered(sender, e);
+            }
+        }
     }
 }
