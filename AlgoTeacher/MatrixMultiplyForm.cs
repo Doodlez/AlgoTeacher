@@ -111,13 +111,27 @@ namespace AlgoTeacher
             }
         }
 
-        private void FirstQuest(bool answ)
+        private void SetQuestControlEventHandler()
         {
-            questionControlBase = new YesNoQuestionControl();
-            questionControlBase.SetAnswer(answ.ToString());
+            var goodAnswerHandler = new QuestionControlBase.GoodAnswerHandler(GoodAnswer_Send);
+            questionControlBase.GoodAnswer += goodAnswerHandler;
+            var badAnswerHandler = new QuestionControlBase.BadAnswerHandler(BadAnswer_Send);
+            questionControlBase.BadAnswer += badAnswerHandler;
+        }
+
+        private void InitQuestComponent()
+        {
             QuestPanel.Controls.Clear();
             QuestPanel.Controls.Add(questionControlBase);
             questionControlBase.Dock = DockStyle.Fill;
+        }
+
+        private void FirstQuest(bool answ)
+        {
+            questionControlBase = new YesNoQuestionControl();
+            SetQuestControlEventHandler();
+            questionControlBase.SetAnswer(answ.ToString());
+            InitQuestComponent();
             pressed = false;
             quest = new YesNoQuest("first", "Можно ли перемножить данные матрицы?", answ);
             QuestionLabel.Text = quest.Question;
@@ -126,9 +140,9 @@ namespace AlgoTeacher
         private void SecondQuest(string answ)
         {
             questionControlBase = new SizeQuestionControl();
-            QuestPanel.Controls.Clear();
-            QuestPanel.Controls.Add(questionControlBase);
-            questionControlBase.Dock = DockStyle.Fill;
+            SetQuestControlEventHandler();
+            questionControlBase.SetAnswer(answ);
+            InitQuestComponent();
             pressed = false;
             quest = new IntegerIntegerValueQuest("second", "Каковы будут размерности данной матрицы?", answ);
             QuestionLabel.Text = quest.Question;
@@ -137,9 +151,8 @@ namespace AlgoTeacher
         private void ThirdQuest()
         {
             questionControlBase = new QuestionControl();
-            QuestPanel.Controls.Clear();
-            QuestPanel.Controls.Add(questionControlBase);
-            questionControlBase.Dock = DockStyle.Fill;
+            SetQuestControlEventHandler();
+            InitQuestComponent();
             pressed = false;
             SetupResultMatrix();
             SetQuestionText(" ");
@@ -171,6 +184,7 @@ namespace AlgoTeacher
             
             SetQuestionText(e.Quest.Question + "Ответ: " + e.Quest.Answer);
             quest = e.Quest;
+            questionControlBase.SetAnswer(e.Quest.Answer);
             while (!pressed)
             {
                 System.Threading.Thread.Sleep(100);
