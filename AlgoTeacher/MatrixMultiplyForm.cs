@@ -39,10 +39,10 @@ namespace AlgoTeacher
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
             // добавление обработчиков
-            var goodAnswerHandler = new QuestionControlBase.GoodAnswerHandler(GoodAnswer_Send);
-            questionControlBase.GoodAnswer += goodAnswerHandler;
-            var badAnswerHandler = new QuestionControlBase.BadAnswerHandler(BadAnswer_Send);
-            questionControlBase.BadAnswer += badAnswerHandler;
+            //var goodAnswerHandler = new QuestionControlBase.GoodAnswerHandler(GoodAnswer_Send);
+            //questionControlBase.GoodAnswer += goodAnswerHandler;
+            //var badAnswerHandler = new QuestionControlBase.BadAnswerHandler(BadAnswer_Send);
+            //questionControlBase.BadAnswer += badAnswerHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -50,7 +50,6 @@ namespace AlgoTeacher
             _logic = new MatrixMultiply();
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
-            // первый вопрос!
         }
 
         private void MatrixMultiplyForm_Load(object sender, EventArgs e)
@@ -68,14 +67,13 @@ namespace AlgoTeacher
             {
                 answ = false;
             }
-
+            // Запуск первого уровня
             FirstQuest(answ);
-            // CaclThread1.Join();          
         }
-
+        
+        // генерация размерности и рандомная генерация значений матриц
         private void SetupMatrix()
         {
-            // генерация размерности и рандомная генерация значений матриц
             _matrix1 = new Matrix();
             Thread.Sleep(100);
             _matrix2 = new Matrix();
@@ -160,8 +158,6 @@ namespace AlgoTeacher
             CaclThread.Start();
         }
 
-        
-
         // запускает в потоке (собственно сам процесс перемножения)
         void RunThird()
         {
@@ -177,7 +173,7 @@ namespace AlgoTeacher
             }
         }
 
-        // обработка вычисления.
+        // обработка вычислений
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
             //MessageBox.Show("Quest works");
@@ -191,14 +187,14 @@ namespace AlgoTeacher
             }
         
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
-            MessageBox.Show("Правильно!");
-             SetQuestionText(" ");
+            SetQuestionText(" ");
 
             this.questionControlBase.ClearControl();
             
             pressed = false;
         }
 
+        // Обработчик заполнения матрицы
         public void FillEventHandler(object sender, FillEvents.FillEventArgs e)
         {
             // добавлено замедление заполнения
@@ -211,6 +207,7 @@ namespace AlgoTeacher
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
         }
 
+        // заполнение результирующей матрицы
         private void ResultMatrFillCell(int row, int col, string value)
         {
             try
@@ -225,77 +222,45 @@ namespace AlgoTeacher
             }
         }
         
+        // обработка правильный ответов
         public void GoodAnswer_Send(object sender, EventArgs e)
         {
-            MessageBox.Show("GOOOOOOOOOOOD");
-            //throw new NotImplementedException();
+            switch (questState)
+            {
+                case 1:
+                    MessageBox.Show("Молодец, ты прав! Переходим к следующему заданию.");
+                    questState = 2;
+                    SecondQuest(_matrix1.RowsCount + ", " + _matrix2.ColumnsCount);
+                    return;
+                case 2:
+                    MessageBox.Show("Правильно! Молодец!");
+                    pressed = true;
+                    questState = 3;
+                    ThirdQuest();
+                    return;
+                case 3:
+                    MessageBox.Show("Правильно! Молодец!");
+                    pressed = true;
+                    return;
+            }
         }
 
+        // Обработка не правильных ответов
         public void BadAnswer_Send(object sender, EventArgs e)
         {
-            MessageBox.Show("FUUUUUUUUUUUUUUUUUUCK");
-            //throw new NotImplementedException();
-        }
-        /// //////////////////////////////////////////////////
-        
-        public void YesButton_Clicked(object sender, EventArgs e)
-        {
-            if (quest.CheckAnswer("True"))
+            switch (questState)
             {
-                MessageBox.Show("Молодец, ты прав! Переходим к следующему заданию.");
-                SecondQuest(_matrix1.RowsCount + " " + _matrix2.ColumnsCount);
-            }
-            else
-            {
-                MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
-                SetupMatrix();
-            }
-        }
-
-        private void NoButton_Clicked(object sender, EventArgs e)
-        {
-            if (quest.CheckAnswer("False"))
-            {
-                MessageBox.Show("Молодец, ты прав! Переходим к следующему заданию.");
-                SetupMatrix();
-                while (_matrix1.ColumnsCount != _matrix2.RowsCount)
-                {
+                case 1:
+                    MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
                     SetupMatrix();
-                }
-                SecondQuest(_matrix1.RowsCount + " " + _matrix2.ColumnsCount);
+                    return;
+                case 2:
+                    MessageBox.Show("Не правильно!");
+                    return;
+                case 3:
+                    MessageBox.Show("Не правильно! Будь внимательнее!");
+                    return;
             }
-            else
-            {
-                MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
-                SetupMatrix();
-            }
-        }
-
-        public void AnswerButton_Clicked(object sender, EventArgs e)
-        {
-
-            // Действия при нажатии ответ
-            //if (!quest.CheckAnswer(questionControlBase.GetAnswer()))
-            ////if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
-            //{
-            //    MessageBox.Show("Не правильно!");
-            //    return;
-            //}
-            //MessageBox.Show("Правильно! Молодец!");
-            //pressed = true;
-        }
-
-        public void SecondStageAnswer_Clicked(object sender, EventArgs e)
-        {
-            // Действия при нажатии ответ
-            //if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
-            //{
-            //    MessageBox.Show("Не правильно!");
-            //    return;
-            //}
-            //MessageBox.Show("Правильно! Молодец!");
-            //pressed = true;
-            //ThirdQuest();
         }
     }
 }
