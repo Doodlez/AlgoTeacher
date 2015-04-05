@@ -29,10 +29,10 @@ namespace UserControls
             InitializeComponent();
         }
 
-        public void AddValues(int[][] values, int rowCount, int colCount)
+        public void AddValues(string[][] values, int rowCount, int colCount)
         {
             this.DataSource = new DataTable();
-            List<int[]> rowlist = new List<int[]>();
+            List<string[]> rowlist = new List<string[]>();
             for (int i = 0; i < rowCount; i++)
             {
                 rowlist.Add(values[i]);
@@ -58,10 +58,10 @@ namespace UserControls
             this.DataSource = tab;
 
             // Resize
-            this.Size = new Size(colCount * 50, rowCount * 50);
+            this.Size = new Size(colCount * 60, rowCount * 50);
             foreach (DataGridViewColumn col in this.Columns)
             {
-                col.Width = 50;
+                col.Width = 60;
             }
         }
 
@@ -118,6 +118,11 @@ namespace UserControls
                     cell.Style.BackColor = StandartBackgroundColor;
                 }
             }
+        }
+
+        private void MatrixGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            this.ClearSelection();
         }
     }
 }

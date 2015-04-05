@@ -36,25 +36,29 @@
             // 
             // TaskComboBox
             // 
-            this.TaskComboBox.Location = new System.Drawing.Point(398, 224);
+            this.TaskComboBox.Location = new System.Drawing.Point(352, 223);
             this.TaskComboBox.Name = "TaskComboBox";
+            this.TaskComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TaskComboBox.Properties.Appearance.Options.UseFont = true;
             this.TaskComboBox.Properties.AutoHeight = false;
             this.TaskComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TaskComboBox.Size = new System.Drawing.Size(180, 30);
+            this.TaskComboBox.Size = new System.Drawing.Size(266, 35);
             this.TaskComboBox.TabIndex = 0;
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelControl1.Location = new System.Drawing.Point(130, 100);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl1.Location = new System.Drawing.Point(67, 98);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(447, 24);
+            this.labelControl1.Size = new System.Drawing.Size(601, 33);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Привет, выбери нужный алогитм и нажми Старт";
             // 
             // StartButton
             // 
+            this.StartButton.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StartButton.Appearance.Options.UseFont = true;
             this.StartButton.Location = new System.Drawing.Point(130, 224);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(100, 30);

@@ -53,8 +53,10 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Enabled = false;
             this.EnableHeadersVisualStyles = false;
             this.GridColor = System.Drawing.Color.White;
+            this.MultiSelect = false;
             this.ReadOnly = true;
             this.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.RowHeadersVisible = false;
@@ -74,6 +76,7 @@
             this.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.RowTemplate.Height = 25;
             this.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.SelectionChanged += new System.EventHandler(this.MatrixGridView_SelectionChanged);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

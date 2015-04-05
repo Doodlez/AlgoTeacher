@@ -8,6 +8,8 @@ using AlgoTeacher.Logic.Quest;
 using DevExpress.XtraLayout.Utils;
 using UserControls;
 
+// TODO: Выделение матриц при вопросах
+// TODO: Поправить переносы строк в вопросах
 
 namespace AlgoTeacher
 {
@@ -17,6 +19,9 @@ namespace AlgoTeacher
 
         private readonly QuestEvents.QuestEventHandler _questHandler;
         private readonly FillEvents.FillEventHandler _fillHandler;
+
+        private bool FirstAlgoStep = true;
+        private int NumberOfFails = 0;
    
         private readonly MatrixMultiply _logic;
         private Matrix _matrix1;
@@ -38,11 +43,6 @@ namespace AlgoTeacher
 
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
-            // добавление обработчиков
-            //var goodAnswerHandler = new QuestionControlBase.GoodAnswerHandler(GoodAnswer_Send);
-            //questionControlBase.GoodAnswer += goodAnswerHandler;
-            //var badAnswerHandler = new QuestionControlBase.BadAnswerHandler(BadAnswer_Send);
-            //questionControlBase.BadAnswer += badAnswerHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -78,15 +78,56 @@ namespace AlgoTeacher
             Thread.Sleep(100);
             _matrix2 = new Matrix();
 
-            matrixGridView1.AddValues(_matrix1.Values, _matrix1.RowsCount, _matrix1.ColumnsCount);
-            matrixGridView2.AddValues(_matrix2.Values, _matrix2.RowsCount, _matrix2.ColumnsCount);
+            matrixGridView1.AddValues(IntToString(_matrix1.Values, _matrix1.RowsCount, _matrix1.ColumnsCount), 
+                _matrix1.RowsCount, _matrix1.ColumnsCount);
+            matrixGridView2.AddValues(IntToString(_matrix2.Values, _matrix2.RowsCount, _matrix2.ColumnsCount), 
+                _matrix2.RowsCount, _matrix2.ColumnsCount);
+        }
+
+        private string[][] IntToString(int[][] values, int rows,int cols)
+        {
+            var res = new string[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                res[i] = new string[cols];
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    res[i][j] = values[i][j].ToString();
+                }
+            }
+
+            return res;
+        }
+
+        private string[][] EmptyStringArray(int rows, int cols)
+        {
+            var res = new string[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                res[i] = new string[cols];
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    res[i][j] = " ";
+                }
+            }
+
+            return res;
         }
 
         private void SetupResultMatrix()
         {
             // генерация размерности и рандомная генерация значений матриц
             _matrixRes = new Matrix(_matrix1.RowsCount, _matrix2.ColumnsCount);
-            matrixGridView3.AddValues(_matrixRes.Values, _matrixRes.RowsCount, _matrixRes.ColumnsCount);
+            matrixGridView3.AddValues(EmptyStringArray(_matrixRes.RowsCount, _matrixRes.ColumnsCount), 
+                _matrixRes.RowsCount, _matrixRes.ColumnsCount);
         }
 
         // функция для установки вопроса из др потока
@@ -176,16 +217,24 @@ namespace AlgoTeacher
         // обработка вычислений
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
-            //MessageBox.Show("Quest works");
-            
-            SetQuestionText(e.Quest.Question + "Ответ: " + e.Quest.Answer);
+            matrixGridView3.ClearHighlight();
+            matrixGridView1.ClearHighlight();
+            matrixGridView2.ClearHighlight();
+            SetQuestionText(e.Quest.Question + "\r\n" + "Ответ: " + e.Quest.Answer);
             quest = e.Quest;
             questionControlBase.SetAnswer(e.Quest.Answer);
+            if (FirstAlgoStep || NumberOfFails > 3)
+            {
+                FirstAlgoStep = false;
+                matrixGridView3.HighlightCell(e.Coord.Y,e.Coord.X);
+                matrixGridView1.HighlightRow(e.Coord.X);
+                matrixGridView2.HighlightColumn(e.Coord.Y);
+            }
             while (!pressed)
             {
                 System.Threading.Thread.Sleep(100);
             }
-        
+            
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             SetQuestionText(" ");
 
@@ -230,6 +279,10 @@ namespace AlgoTeacher
                 case 1:
                     MessageBox.Show("Молодец, ты прав! Переходим к следующему заданию.");
                     questState = 2;
+                    while (_matrix1.ColumnsCount != _matrix2.RowsCount)
+                    {
+                        SetupMatrix();
+                    }
                     SecondQuest(_matrix1.RowsCount + ", " + _matrix2.ColumnsCount);
                     return;
                 case 2:
@@ -259,6 +312,7 @@ namespace AlgoTeacher
                     return;
                 case 3:
                     MessageBox.Show("Не правильно! Будь внимательнее!");
+                    NumberOfFails++;
                     return;
             }
         }

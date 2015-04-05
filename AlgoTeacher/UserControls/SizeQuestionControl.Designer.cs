@@ -59,35 +59,35 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(825, 232, 246, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(321, 170);
+            this.layoutControl1.Size = new System.Drawing.Size(349, 173);
             this.layoutControl1.TabIndex = 9;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // ColumnsTextEdit
             // 
-            this.ColumnsTextEdit.Location = new System.Drawing.Point(108, 84);
+            this.ColumnsTextEdit.Location = new System.Drawing.Point(108, 86);
             this.ColumnsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ColumnsTextEdit.MaximumSize = new System.Drawing.Size(0, 39);
             this.ColumnsTextEdit.MinimumSize = new System.Drawing.Size(35, 39);
             this.ColumnsTextEdit.Name = "ColumnsTextEdit";
-            this.ColumnsTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ColumnsTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ColumnsTextEdit.Properties.Appearance.Options.UseFont = true;
             this.ColumnsTextEdit.Properties.AutoHeight = false;
-            this.ColumnsTextEdit.Size = new System.Drawing.Size(180, 39);
+            this.ColumnsTextEdit.Size = new System.Drawing.Size(229, 39);
             this.ColumnsTextEdit.StyleController = this.layoutControl1;
             this.ColumnsTextEdit.TabIndex = 8;
             // 
             // RowsTextEdit
             // 
-            this.RowsTextEdit.Location = new System.Drawing.Point(108, 36);
+            this.RowsTextEdit.Location = new System.Drawing.Point(108, 38);
             this.RowsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RowsTextEdit.MaximumSize = new System.Drawing.Size(0, 39);
             this.RowsTextEdit.MinimumSize = new System.Drawing.Size(35, 39);
             this.RowsTextEdit.Name = "RowsTextEdit";
-            this.RowsTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RowsTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RowsTextEdit.Properties.Appearance.Options.UseFont = true;
             this.RowsTextEdit.Properties.AutoHeight = false;
-            this.RowsTextEdit.Size = new System.Drawing.Size(180, 39);
+            this.RowsTextEdit.Size = new System.Drawing.Size(229, 39);
             this.RowsTextEdit.StyleController = this.layoutControl1;
             this.RowsTextEdit.TabIndex = 5;
             // 
@@ -95,11 +95,11 @@
             // 
             this.AnswerButton.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AnswerButton.Appearance.Options.UseFont = true;
-            this.AnswerButton.Location = new System.Drawing.Point(12, 127);
+            this.AnswerButton.Location = new System.Drawing.Point(12, 129);
             this.AnswerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AnswerButton.MinimumSize = new System.Drawing.Size(35, 32);
             this.AnswerButton.Name = "AnswerButton";
-            this.AnswerButton.Size = new System.Drawing.Size(276, 32);
+            this.AnswerButton.Size = new System.Drawing.Size(325, 32);
             this.AnswerButton.StyleController = this.layoutControl1;
             this.AnswerButton.TabIndex = 6;
             this.AnswerButton.Text = "Ответ";
@@ -117,7 +117,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(300, 171);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(349, 173);
             this.layoutControlGroup1.Text = "Root";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -126,11 +126,11 @@
             this.layoutControlItem1.Control = this.RowsTextEdit;
             this.layoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.layoutControlItem1.CustomizationFormText = "Число строк";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(0, 48);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(1, 48);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(280, 48);
+            this.layoutControlItem1.Size = new System.Drawing.Size(329, 48);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "Число строк";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 16);
@@ -142,7 +142,7 @@
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem1.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(280, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(329, 26);
             this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -152,11 +152,11 @@
             this.layoutControlItem2.Control = this.AnswerButton;
             this.layoutControlItem2.ControlAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 115);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 117);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(0, 36);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(1, 36);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(280, 36);
+            this.layoutControlItem2.Size = new System.Drawing.Size(329, 36);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -167,9 +167,9 @@
             // 
             this.layoutControlItem4.Control = this.ColumnsTextEdit;
             this.layoutControlItem4.CustomizationFormText = "Число столбцов";
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 74);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(280, 43);
+            this.layoutControlItem4.Size = new System.Drawing.Size(329, 43);
             this.layoutControlItem4.Text = "Число столбцов";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(93, 16);
             // 
@@ -180,7 +180,7 @@
             this.Controls.Add(this.layoutControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SizeQuestionControl";
-            this.Size = new System.Drawing.Size(321, 170);
+            this.Size = new System.Drawing.Size(349, 173);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ColumnsTextEdit.Properties)).EndInit();
