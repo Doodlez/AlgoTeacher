@@ -182,6 +182,9 @@
     <EmbeddedResource Include="UserControls\QuestionControl.resx">
       <DependentUpon>QuestionControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuestionControlBase.resx">
+      <DependentUpon>QuestionControlBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SizeQuestionControl.resx">
       <DependentUpon>SizeQuestionControl.cs</DependentUpon>
     </EmbeddedResource>

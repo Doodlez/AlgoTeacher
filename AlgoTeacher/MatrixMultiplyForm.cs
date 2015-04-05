@@ -1,23 +1,14 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Threading;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using AlgoTeacher.Interface;
 using AlgoTeacher.Logic;
 using AlgoTeacher.Logic.Quest;
-using DevExpress.Utils;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout.Utils;
-using SpreadsheetGear.Windows.Forms;
 using UserControls;
-using System.Web;
 
 
-//TODO: добавить функции выделения строки, столбца, ячейки цветом
 namespace AlgoTeacher
 {
     public partial class MatrixMultiplyForm : DevExpress.XtraEditors.XtraForm
@@ -40,15 +31,18 @@ namespace AlgoTeacher
 
         private IQuest quest;
 
+        private int questState = 1;
+
         public MatrixMultiplyForm()
         {
+
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
             // добавление обработчиков
             var goodAnswerHandler = new QuestionControlBase.GoodAnswerHandler(GoodAnswer_Send);
-            questionControl.GoodAnswer += goodAnswerHandler;
+            questionControlBase.GoodAnswer += goodAnswerHandler;
             var badAnswerHandler = new QuestionControlBase.BadAnswerHandler(BadAnswer_Send);
-            questionControl.BadAnswer += badAnswerHandler;
+            questionControlBase.BadAnswer += badAnswerHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
@@ -56,6 +50,27 @@ namespace AlgoTeacher
             _logic = new MatrixMultiply();
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
+            // первый вопрос!
+        }
+
+        private void MatrixMultiplyForm_Load(object sender, EventArgs e)
+        {
+            SetupMatrix();
+            // запуск квеста про возможность перемножения
+            // нужно передать ответ, можно ли создать.
+            bool answ;
+
+            if (_matrix1.ColumnsCount == _matrix2.RowsCount)
+            {
+                answ = true;
+            }
+            else
+            {
+                answ = false;
+            }
+
+            FirstQuest(answ);
+            // CaclThread1.Join();          
         }
 
         private void SetupMatrix()
@@ -98,56 +113,41 @@ namespace AlgoTeacher
 
         private void FirstQuest(bool answ)
         {
+            questionControlBase = new YesNoQuestionControl();
+            questionControlBase.SetAnswer(answ.ToString());
+            QuestPanel.Controls.Clear();
+            QuestPanel.Controls.Add(questionControlBase);
+            questionControlBase.Dock = DockStyle.Fill;
             pressed = false;
-            layoutQuest.Visibility = LayoutVisibility.Never;
-            layoutYesNo.Visibility = LayoutVisibility.Always;
             quest = new YesNoQuest("first", "Можно ли перемножить данные матрицы?", answ);
             QuestionLabel.Text = quest.Question;
         }
 
         private void SecondQuest(string answ)
         {
+            questionControlBase = new SizeQuestionControl();
+            QuestPanel.Controls.Clear();
+            QuestPanel.Controls.Add(questionControlBase);
+            questionControlBase.Dock = DockStyle.Fill;
             pressed = false;
-            layoutQuest.Visibility = LayoutVisibility.Never;
-            layoutYesNo.Visibility = LayoutVisibility.Never;
-            layoutSecondStage.Visibility = LayoutVisibility.Always;
             quest = new IntegerIntegerValueQuest("second", "Каковы будут размерности данной матрицы?", answ);
             QuestionLabel.Text = quest.Question;
         }
         
-        //TODO: поправить расположение матриц
         private void ThirdQuest()
         {
+            questionControlBase = new QuestionControl();
+            QuestPanel.Controls.Clear();
+            QuestPanel.Controls.Add(questionControlBase);
+            questionControlBase.Dock = DockStyle.Fill;
             pressed = false;
             SetupResultMatrix();
             SetQuestionText(" ");
-            layoutQuest.Visibility = LayoutVisibility.Always;
-            layoutYesNo.Visibility = LayoutVisibility.Never;
-            layoutSecondStage.Visibility = LayoutVisibility.Never;
-
             CaclThread = new Thread(RunThird) { IsBackground = true };
             CaclThread.Start();
         }
 
-        private void MatrixMultiplyForm_Load(object sender, EventArgs e)
-        {
-            SetupMatrix();   
-            // запуск квеста про возможность перемножения
-            // нужно передать ответ, можно ли создать.
-            bool answ;
-
-            if (_matrix1.ColumnsCount == _matrix2.RowsCount)
-            {
-                answ = true;
-            }
-            else
-            {
-                answ = false;
-            }
-
-            FirstQuest(answ);
-           // CaclThread1.Join();          
-        }
+        
 
         // запускает в потоке (собственно сам процесс перемножения)
         void RunThird()
@@ -180,9 +180,21 @@ namespace AlgoTeacher
             MessageBox.Show("Правильно!");
              SetQuestionText(" ");
 
-            this.questionControl.ClearControl();
+            this.questionControlBase.ClearControl();
             
             pressed = false;
+        }
+
+        public void FillEventHandler(object sender, FillEvents.FillEventArgs e)
+        {
+            // добавлено замедление заполнения
+            bool t = true;
+            while (t)
+            {
+                System.Threading.Thread.Sleep(200);
+                t = false;
+            }
+            ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
         }
 
         private void ResultMatrFillCell(int row, int col, string value)
@@ -201,12 +213,14 @@ namespace AlgoTeacher
         
         public void GoodAnswer_Send(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("GOOOOOOOOOOOD");
+            //throw new NotImplementedException();
         }
 
         public void BadAnswer_Send(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("FUUUUUUUUUUUUUUUUUUCK");
+            //throw new NotImplementedException();
         }
         /// //////////////////////////////////////////////////
         
@@ -243,20 +257,18 @@ namespace AlgoTeacher
             }
         }
 
-        //TODO: Реализовать обработку кнопок sizeQuestionControl
-
         public void AnswerButton_Clicked(object sender, EventArgs e)
         {
 
             // Действия при нажатии ответ
-            if (!quest.CheckAnswer(questionControl.GetAnswer()))
-            //if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
-            {
-                MessageBox.Show("Не правильно!");
-                return;
-            }
-            MessageBox.Show("Правильно! Молодец!");
-            pressed = true;
+            //if (!quest.CheckAnswer(questionControlBase.GetAnswer()))
+            ////if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
+            //{
+            //    MessageBox.Show("Не правильно!");
+            //    return;
+            //}
+            //MessageBox.Show("Правильно! Молодец!");
+            //pressed = true;
         }
 
         public void SecondStageAnswer_Clicked(object sender, EventArgs e)
@@ -271,37 +283,5 @@ namespace AlgoTeacher
             //pressed = true;
             //ThirdQuest();
         }
-
-        public void FillEventHandler(object sender, FillEvents.FillEventArgs e)
-        {
-            // добавлено замедление заполнения
-            bool t = true;
-            while (t)
-            {
-                System.Threading.Thread.Sleep(200);
-                t = false;
-            }
-            //_matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
-            ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
-        }
-
-        public void HighlightColumn(GridView gridView, int col)
-        {
-            gridView.Columns[col].AppearanceCell.BackColor = Color.Firebrick;
-        }
-
-        //private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
-        //{
-        //    GridView View = sender as GridView;
-        //    if (e.RowHandle >= 0)
-        //    {
-        //        string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["Category"]);
-        //        if (category == "Beverages")
-        //        {
-        //            e.Appearance.BackColor = Color.Salmon;
-        //            e.Appearance.BackColor2 = Color.SeaShell;
-        //        }
-        //    }
-        //}
     }
 }
