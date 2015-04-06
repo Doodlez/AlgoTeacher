@@ -9,10 +9,10 @@ namespace AlgoTeacher.Logic.Quest
 {
     public class QuestionGenerator
     {
-        public static string MatrixMultQuestion(int x, int y)
+        public static string MatrixMultQuestion(int x, int y, string language)
         {
-            const string address = @"C:\Users\1234\Documents\Диплом\AlgoTeacher\AlgoTeacher\Questions";
-            string[] questions = File.ReadAllLines(address + @"\rus.txt", Encoding.Default);
+            const string address = @"C:\Users\1234\Documents\Диплом\AlgoTeacher\AlgoTeacher\Questions\";
+            string[] questions = File.ReadAllLines(address + language + @"\matrix_mult_form\matrix_questions.txt", Encoding.Default);
 
             var random = new Random();
             var questionNumber = 1 + random.Next() % 5;

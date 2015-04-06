@@ -66,7 +66,7 @@
             this.layoutControlItem5});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(842, 470);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(933, 483);
             this.layoutControlGroup1.Text = "Root";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -74,10 +74,10 @@
             // 
             this.layoutControlItem1.Control = this.QuestionLabel;
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 169);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 174);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(1, 1);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(822, 221);
+            this.layoutControlItem1.Size = new System.Drawing.Size(913, 229);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -86,13 +86,13 @@
             // 
             // QuestionLabel
             // 
-            this.QuestionLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.QuestionLabel.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.QuestionLabel.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.QuestionLabel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.QuestionLabel.Location = new System.Drawing.Point(12, 181);
+            this.QuestionLabel.Location = new System.Drawing.Point(12, 186);
             this.QuestionLabel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.QuestionLabel.Name = "QuestionLabel";
-            this.QuestionLabel.Size = new System.Drawing.Size(818, 217);
+            this.QuestionLabel.Size = new System.Drawing.Size(909, 225);
             this.QuestionLabel.StyleController = this.layoutControl1;
             this.QuestionLabel.TabIndex = 5;
             this.QuestionLabel.Text = "Вопрос";
@@ -108,9 +108,9 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(995, 228, 474, 437);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1127, 173, 474, 437);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(842, 470);
+            this.layoutControl1.Size = new System.Drawing.Size(933, 483);
             this.layoutControl1.TabIndex = 7;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -119,12 +119,14 @@
             this.ExamplePanel.Location = new System.Drawing.Point(12, 12);
             this.ExamplePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ExamplePanel.Name = "ExamplePanel";
-            this.ExamplePanel.Size = new System.Drawing.Size(818, 165);
+            this.ExamplePanel.Size = new System.Drawing.Size(909, 170);
             this.ExamplePanel.TabIndex = 9;
             // 
             // ButtonBack
             // 
-            this.ButtonBack.Location = new System.Drawing.Point(24, 414);
+            this.ButtonBack.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonBack.Appearance.Options.UseFont = true;
+            this.ButtonBack.Location = new System.Drawing.Point(24, 427);
             this.ButtonBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonBack.Name = "ButtonBack";
             this.ButtonBack.Size = new System.Drawing.Size(100, 32);
@@ -135,10 +137,12 @@
             // 
             // ButtonYes
             // 
-            this.ButtonYes.Location = new System.Drawing.Point(422, 414);
+            this.ButtonYes.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonYes.Appearance.Options.UseFont = true;
+            this.ButtonYes.Location = new System.Drawing.Point(245, 427);
             this.ButtonYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonYes.Name = "ButtonYes";
-            this.ButtonYes.Size = new System.Drawing.Size(196, 32);
+            this.ButtonYes.Size = new System.Drawing.Size(300, 32);
             this.ButtonYes.StyleController = this.layoutControl1;
             this.ButtonYes.TabIndex = 7;
             this.ButtonYes.Text = "Да, давай решать задачи";
@@ -146,10 +150,12 @@
             // 
             // ButtonNo
             // 
-            this.ButtonNo.Location = new System.Drawing.Point(622, 414);
+            this.ButtonNo.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonNo.Appearance.Options.UseFont = true;
+            this.ButtonNo.Location = new System.Drawing.Point(549, 427);
             this.ButtonNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonNo.Name = "ButtonNo";
-            this.ButtonNo.Size = new System.Drawing.Size(196, 32);
+            this.ButtonNo.Size = new System.Drawing.Size(360, 32);
             this.ButtonNo.StyleController = this.layoutControl1;
             this.ButtonNo.TabIndex = 6;
             this.ButtonNo.Text = "Не понял, расскажи подробнее";
@@ -163,9 +169,9 @@
             this.layoutControlItem2,
             this.emptySpaceItem1,
             this.layoutControlItem3});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 390);
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 403);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(822, 60);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(913, 60);
             this.layoutControlGroup2.Text = "layoutControlGroup2";
             this.layoutControlGroup2.TextVisible = false;
             // 
@@ -189,11 +195,11 @@
             // 
             this.layoutControlItem2.Control = this.ButtonNo;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(598, 0);
-            this.layoutControlItem2.MaxSize = new System.Drawing.Size(200, 36);
-            this.layoutControlItem2.MinSize = new System.Drawing.Size(200, 36);
+            this.layoutControlItem2.Location = new System.Drawing.Point(525, 0);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(364, 36);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(364, 36);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(200, 36);
+            this.layoutControlItem2.Size = new System.Drawing.Size(364, 36);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -206,7 +212,7 @@
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(104, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(294, 36);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(117, 36);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -214,11 +220,11 @@
             // 
             this.layoutControlItem3.Control = this.ButtonYes;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem3.Location = new System.Drawing.Point(398, 0);
-            this.layoutControlItem3.MaxSize = new System.Drawing.Size(200, 36);
-            this.layoutControlItem3.MinSize = new System.Drawing.Size(200, 36);
+            this.layoutControlItem3.Location = new System.Drawing.Point(221, 0);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(304, 36);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(304, 36);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(200, 36);
+            this.layoutControlItem3.Size = new System.Drawing.Size(304, 36);
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.Text = "layoutControlItem3";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -232,7 +238,7 @@
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(104, 24);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(822, 169);
+            this.layoutControlItem5.Size = new System.Drawing.Size(913, 174);
             this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem5.Text = "layoutControlItem5";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -244,8 +250,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 470);
+            this.ClientSize = new System.Drawing.Size(933, 483);
             this.Controls.Add(this.layoutControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "InformationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

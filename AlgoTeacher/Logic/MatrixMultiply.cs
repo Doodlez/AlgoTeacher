@@ -12,6 +12,12 @@ namespace AlgoTeacher.Logic
     {
         public event QuestEvents.QuestEventHandler questEvent;
         public event FillEvents.FillEventHandler fillEvent;
+        public string _language;
+
+        public MatrixMultiply(string language)
+        {
+            _language = language;
+        }
 
         public Matrix MatrixMult(Matrix matrix1, Matrix matrix2)
         {
@@ -35,7 +41,7 @@ namespace AlgoTeacher.Logic
                     if (Coordinate.DoesCoordinateExist(currentCoord, coords))
                     {
                         var question = new IntegerValueQuest("MatrixQuestion",
-                                                             QuestionGenerator.MatrixMultQuestion(i + 1, j + 1),
+                                                             QuestionGenerator.MatrixMultQuestion(i + 1, j + 1, _language),
                                                              resultMatrix.Values[i][j]);
                         questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
                     }

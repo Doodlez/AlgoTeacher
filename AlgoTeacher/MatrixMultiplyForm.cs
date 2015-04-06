@@ -1,25 +1,18 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Text;
 using System.Threading;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using AlgoTeacher.Interface;
 using AlgoTeacher.Logic;
 using AlgoTeacher.Logic.Quest;
-using DevExpress.Utils;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout.Utils;
-using SpreadsheetGear.Windows.Forms;
 using UserControls;
-using System.Web;
 using System.IO;
 
+// TODO: Выделение матриц при вопросах
+// TODO: Поправить переносы строк в вопросах
 
-//TODO: добавить функции выделения строки, столбца, ячейки цветом
 namespace AlgoTeacher
 {
     public partial class MatrixMultiplyForm : DevExpress.XtraEditors.XtraForm
@@ -28,6 +21,9 @@ namespace AlgoTeacher
 
         private readonly QuestEvents.QuestEventHandler _questHandler;
         private readonly FillEvents.FillEventHandler _fillHandler;
+
+        private bool FirstAlgoStep = true;
+        private int NumberOfFails = 0;
    
         private readonly MatrixMultiply _logic;
         private Matrix _matrix1;
@@ -47,6 +43,10 @@ namespace AlgoTeacher
         private string[] text;
         private string[] buttons_text;
 
+        private int questState = 1;
+
+        private int x, y;
+
         public MatrixMultiplyForm(string language)
         {
             _language = language;
@@ -55,49 +55,92 @@ namespace AlgoTeacher
 
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
-            // добавление обработчиков
-            //var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
-            //questionControl.AnswerClicked += answerClickHandler;
-
-            var yesClickHandler = new YesNoQuestionControl.YesClickedHandler(YesButton_Clicked);
-            yesNoQuestionControl.YesClicked += yesClickHandler;
-            yesNoQuestionControl.SetYesButtonTextLabel(buttons_text[0]);
-
-            var noClickHandler = new YesNoQuestionControl.NoClickedHandler(NoButton_Clicked);
-            yesNoQuestionControl.NoClicked += noClickHandler;
-            yesNoQuestionControl.SetNoButtonTextLabel(buttons_text[1]);
-
-            var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
-            questionControl.AnswerClicked += answerClickHandler;
-
-           var secondStageClickHandler = new SizeQuestionControl.AnswerClickedHandler(SecondStageAnswer_Clicked);
-           sizeQuestionControl.AnswerClicked += secondStageClickHandler;
           
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
 
-            _logic = new MatrixMultiply();
+            _logic = new MatrixMultiply(language);
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
+
         }
 
+        private void MatrixMultiplyForm_Load(object sender, EventArgs e)
+        {
+            SetupMatrix();
+            // запуск квеста про возможность перемножения
+            // нужно передать ответ, можно ли создать.
+            bool answ;
+
+            if (_matrix1.ColumnsCount == _matrix2.RowsCount)
+            {
+                answ = true;
+            }
+            else
+            {
+                answ = false;
+            }
+            // Запуск первого уровня
+            FirstQuest(answ);
+        }
+        
+        // генерация размерности и рандомная генерация значений матриц
         private void SetupMatrix()
         {
-            // генерация размерности и рандомная генерация значений матриц
-
             _matrix1 = new Matrix();
             Thread.Sleep(100);
             _matrix2 = new Matrix();
 
-            matrixGridView1.AddValues(_matrix1.Values, _matrix1.RowsCount, _matrix1.ColumnsCount);
-            matrixGridView2.AddValues(_matrix2.Values, _matrix2.RowsCount, _matrix2.ColumnsCount);
+            matrixGridView1.AddValues(IntToString(_matrix1.Values, _matrix1.RowsCount, _matrix1.ColumnsCount), 
+                _matrix1.RowsCount, _matrix1.ColumnsCount);
+            matrixGridView2.AddValues(IntToString(_matrix2.Values, _matrix2.RowsCount, _matrix2.ColumnsCount), 
+                _matrix2.RowsCount, _matrix2.ColumnsCount);
+        }
+
+        private string[][] IntToString(int[][] values, int rows,int cols)
+        {
+            var res = new string[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                res[i] = new string[cols];
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    res[i][j] = values[i][j].ToString();
+                }
+            }
+
+            return res;
+        }
+
+        private string[][] EmptyStringArray(int rows, int cols)
+        {
+            var res = new string[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                res[i] = new string[cols];
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    res[i][j] = " ";
+                }
+            }
+
+            return res;
         }
 
         private void SetupResultMatrix()
         {
             // генерация размерности и рандомная генерация значений матриц
             _matrixRes = new Matrix(_matrix1.RowsCount, _matrix2.ColumnsCount);
-            matrixGridView3.AddValues(_matrixRes.Values, _matrixRes.RowsCount, _matrixRes.ColumnsCount);
+            matrixGridView3.AddValues(EmptyStringArray(_matrixRes.RowsCount, _matrixRes.ColumnsCount), 
+                _matrixRes.RowsCount, _matrixRes.ColumnsCount);
         }
 
         // функция для установки вопроса из др потока
@@ -120,57 +163,53 @@ namespace AlgoTeacher
             }
         }
 
+        private void SetQuestControlEventHandler()
+        {
+            var goodAnswerHandler = new QuestionControlBase.GoodAnswerHandler(GoodAnswer_Send);
+            questionControlBase.GoodAnswer += goodAnswerHandler;
+            var badAnswerHandler = new QuestionControlBase.BadAnswerHandler(BadAnswer_Send);
+            questionControlBase.BadAnswer += badAnswerHandler;
+        }
+
+        private void InitQuestComponent()
+        {
+            QuestPanel.Controls.Clear();
+            QuestPanel.Controls.Add(questionControlBase);
+            questionControlBase.Dock = DockStyle.Fill;
+        }
+
         private void FirstQuest(bool answ)
         {
+            questionControlBase = new YesNoQuestionControl();
+            SetQuestControlEventHandler();
+            questionControlBase.SetAnswer(answ.ToString());
+            InitQuestComponent();
             pressed = false;
-            layoutQuest.Visibility = LayoutVisibility.Never;
-            layoutYesNo.Visibility = LayoutVisibility.Always;
             quest = new YesNoQuest("first", text[0], answ);
             QuestionLabel.Text = quest.Question;
         }
 
         private void SecondQuest(string answ)
         {
+            questionControlBase = new SizeQuestionControl();
+            SetQuestControlEventHandler();
+            questionControlBase.SetAnswer(answ);
+            InitQuestComponent();
             pressed = false;
-            layoutQuest.Visibility = LayoutVisibility.Never;
-            layoutYesNo.Visibility = LayoutVisibility.Never;
-            layoutSecondStage.Visibility = LayoutVisibility.Always;
             quest = new IntegerIntegerValueQuest("second", text[1], answ);
             QuestionLabel.Text = quest.Question;
         }
         
-        //TODO: поправить расположение матриц
         private void ThirdQuest()
         {
+            questionControlBase = new QuestionControl();
+            SetQuestControlEventHandler();
+            InitQuestComponent();
             pressed = false;
             SetupResultMatrix();
             SetQuestionText(" ");
-            layoutQuest.Visibility = LayoutVisibility.Always;
-            layoutYesNo.Visibility = LayoutVisibility.Never;
-            layoutSecondStage.Visibility = LayoutVisibility.Never;
-
             CaclThread = new Thread(RunThird) { IsBackground = true };
             CaclThread.Start();
-        }
-
-        private void MatrixMultiplyForm_Load(object sender, EventArgs e)
-        {
-            SetupMatrix();   
-            // запуск квеста про возможность перемножения
-            // нужно передать ответ, можно ли создать.
-            bool answ;
-
-            if (_matrix1.ColumnsCount == _matrix2.RowsCount)
-            {
-                answ = true;
-            }
-            else
-            {
-                answ = false;
-            }
-
-            FirstQuest(answ);
-           // CaclThread1.Join();          
         }
 
         // запускает в потоке (собственно сам процесс перемножения)
@@ -188,27 +227,52 @@ namespace AlgoTeacher
             }
         }
 
-        // обработка вычисления.
+        // обработка вычислений
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
-            //MessageBox.Show("Quest works");
-            
-            SetQuestionText(e.Quest.Question + "Ответ: " + e.Quest.Answer);
+            matrixGridView3.ClearHighlight();
+            matrixGridView1.ClearHighlight();
+            matrixGridView2.ClearHighlight();
+            SetQuestionText(e.Quest.Question + "\r\n" + "Ответ: " + e.Quest.Answer);
             quest = e.Quest;
+            questionControlBase.SetAnswer(e.Quest.Answer);
+            x = e.Coord.X;
+            y = e.Coord.Y;
+            if (FirstAlgoStep)
+            {
+                FirstAlgoStep = false;
+                matrixGridView1.HighlightRow(e.Coord.X);
+                matrixGridView2.HighlightColumn(e.Coord.Y);
+            }
+            matrixGridView3.HighlightCell(e.Coord.X, e.Coord.Y);
             while (!pressed)
             {
                 System.Threading.Thread.Sleep(100);
             }
-        
+            
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
-            MessageBox.Show(text[4]);
-             SetQuestionText(" ");
+            //MessageBox.Show(text[4]);
+            SetQuestionText(" ");
 
-            this.questionControl.CleanAnswer();
+            this.questionControlBase.ClearControl();
             
             pressed = false;
         }
 
+        // Обработчик заполнения матрицы
+        public void FillEventHandler(object sender, FillEvents.FillEventArgs e)
+        {
+            // добавлено замедление заполнения
+            bool t = true;
+            while (t)
+            {
+                System.Threading.Thread.Sleep(200);
+                t = false;
+            }
+            ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
+        }
+
+        // заполнение результирующей матрицы
         private void ResultMatrFillCell(int row, int col, string value)
         {
             try
@@ -223,98 +287,56 @@ namespace AlgoTeacher
             }
         }
         
-        public void YesButton_Clicked(object sender, EventArgs e)
+        // обработка правильный ответов
+        public void GoodAnswer_Send(object sender, EventArgs e)
         {
-            if (quest.CheckAnswer("True"))
+            switch (questState)
             {
-                MessageBox.Show(text[5]);
-                SecondQuest(_matrix1.RowsCount + " " + _matrix2.ColumnsCount);
-            }
-            else
-            {
-                MessageBox.Show(text[6]);
-                SetupMatrix();
+                case 1:
+                    MessageBox.Show(text[5]);
+                    questState = 2;
+                    while (_matrix1.ColumnsCount != _matrix2.RowsCount)
+                    {
+                        SetupMatrix();
+                    }
+                    SecondQuest(_matrix1.RowsCount + ", " + _matrix2.ColumnsCount);
+                    return;
+                case 2:
+                    MessageBox.Show("Правильно! Молодец!");
+                    pressed = true;
+                    questState = 3;
+                    ThirdQuest();
+                    return;
+                case 3:
+                    MessageBox.Show("Правильно! Молодец!");
+                    NumberOfFails = 0;
+                    pressed = true;
+                    return;
             }
         }
 
-        private void NoButton_Clicked(object sender, EventArgs e)
+        // Обработка не правильных ответов
+        public void BadAnswer_Send(object sender, EventArgs e)
         {
-            if (quest.CheckAnswer("False"))
+            switch (questState)
             {
-                MessageBox.Show(text[5]);
-                SetupMatrix();
-                while (_matrix1.ColumnsCount != _matrix2.RowsCount)
-                {
+                case 1:
+                    MessageBox.Show(text[6]);
                     SetupMatrix();
-                }
-                SecondQuest(_matrix1.RowsCount + " " + _matrix2.ColumnsCount);
-            }
-            else
-            {
-                MessageBox.Show(text[6]);
-                SetupMatrix();
+                    return;
+                case 2:
+                    MessageBox.Show("Не правильно!");
+                    return;
+                case 3:
+                    MessageBox.Show("Не правильно! Будь внимательнее!");
+                    NumberOfFails++;
+                    if (NumberOfFails > 0)
+                    {
+                        matrixGridView1.HighlightRow(x);
+                        matrixGridView2.HighlightColumn(y);
+                    }
+                    return;
             }
         }
-
-        //TODO: Реализовать обработку кнопок sizeQuestionControl
-
-        public void AnswerButton_Clicked(object sender, EventArgs e)
-        {
-
-            // Действия при нажатии ответ
-            if (!quest.CheckAnswer(questionControl.GetAnswer()))
-            //if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
-            {
-                MessageBox.Show(text[7]);
-                return;
-            }
-            MessageBox.Show(text[8]);
-            pressed = true;
-        }
-
-        public void SecondStageAnswer_Clicked(object sender, EventArgs e)
-        {
-            // Действия при нажатии ответ
-            if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
-            {
-                MessageBox.Show(text[7]);
-                return;
-            }
-            MessageBox.Show(text[8]);
-            pressed = true;
-            ThirdQuest();
-        }
-
-        public void FillEventHandler(object sender, FillEvents.FillEventArgs e)
-        {
-            // добавлено замедление заполнения
-            bool t = true;
-            while (t)
-            {
-                System.Threading.Thread.Sleep(200);
-                t = false;
-            }
-            //_matrixMultiplyAdapter.FillResultCell(e.Coord.X,e.Coord.Y,e.Value);
-            ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
-        }
-
-        public void HighlightColumn(GridView gridView, int col)
-        {
-            gridView.Columns[col].AppearanceCell.BackColor = Color.Firebrick;
-        }
-
-        //private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
-        //{
-        //    GridView View = sender as GridView;
-        //    if (e.RowHandle >= 0)
-        //    {
-        //        string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["Category"]);
-        //        if (category == "Beverages")
-        //        {
-        //            e.Appearance.BackColor = Color.Salmon;
-        //            e.Appearance.BackColor2 = Color.SeaShell;
-        //        }
-        //    }
-        //}
     }
 }

@@ -38,34 +38,23 @@ namespace AlgoTeacher
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ViewPanel = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.QuestionLabel = new DevExpress.XtraEditors.LabelControl();
+            this.QuestPanel = new System.Windows.Forms.Panel();
+            this.questionControlBase = new UserControls.QuestionControlBase();
             this.matrixGridView3 = new UserControls.MatrixGridView(this.components);
             this.matrixGridView2 = new UserControls.MatrixGridView(this.components);
             this.matrixGridView1 = new UserControls.MatrixGridView(this.components);
-            this.QuestionLabel = new DevExpress.XtraEditors.LabelControl();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.sizeQuestionControl = new UserControls.SizeQuestionControl();
-            this.yesNoQuestionControl = new UserControls.YesNoQuestionControl();
-            this.questionControl = new UserControls.QuestionControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutQuest = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutYesNo = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutSecondStage = new DevExpress.XtraLayout.LayoutControlItem();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).BeginInit();
             this.ViewPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.QuestPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-            this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutQuest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutYesNo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutSecondStage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ViewPanel
@@ -77,8 +66,60 @@ namespace AlgoTeacher
             this.ViewPanel.Location = new System.Drawing.Point(0, 0);
             this.ViewPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ViewPanel.Name = "ViewPanel";
-            this.ViewPanel.Size = new System.Drawing.Size(1170, 243);
+            this.ViewPanel.Size = new System.Drawing.Size(1090, 273);
             this.ViewPanel.TabIndex = 1;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.panel1);
+            this.panelControl1.Controls.Add(this.QuestPanel);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 273);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1090, 256);
+            this.panelControl1.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.QuestionLabel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(764, 252);
+            this.panel1.TabIndex = 7;
+            // 
+            // QuestionLabel
+            // 
+            this.QuestionLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.QuestionLabel.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.QuestionLabel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.QuestionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.QuestionLabel.Location = new System.Drawing.Point(0, 0);
+            this.QuestionLabel.Name = "QuestionLabel";
+            this.QuestionLabel.Size = new System.Drawing.Size(764, 252);
+            this.QuestionLabel.TabIndex = 5;
+            this.QuestionLabel.Text = "Вопрос";
+            // 
+            // QuestPanel
+            // 
+            this.QuestPanel.Controls.Add(this.questionControlBase);
+            this.QuestPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.QuestPanel.Location = new System.Drawing.Point(766, 2);
+            this.QuestPanel.Name = "QuestPanel";
+            this.QuestPanel.Size = new System.Drawing.Size(322, 252);
+            this.QuestPanel.TabIndex = 6;
+            // 
+            // questionControlBase
+            // 
+            this.questionControlBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.questionControlBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.questionControlBase.Location = new System.Drawing.Point(0, 0);
+            this.questionControlBase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.questionControlBase.MaximumSize = new System.Drawing.Size(343, 2);
+            this.questionControlBase.MinimumSize = new System.Drawing.Size(228, 102);
+            this.questionControlBase.Name = "questionControlBase";
+            this.questionControlBase.Size = new System.Drawing.Size(322, 102);
+            this.questionControlBase.TabIndex = 4;
             // 
             // matrixGridView3
             // 
@@ -100,9 +141,11 @@ namespace AlgoTeacher
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.matrixGridView3.DefaultCellStyle = dataGridViewCellStyle1;
+            this.matrixGridView3.Enabled = false;
             this.matrixGridView3.EnableHeadersVisualStyles = false;
             this.matrixGridView3.GridColor = System.Drawing.Color.White;
-            this.matrixGridView3.Location = new System.Drawing.Point(688, 27);
+            this.matrixGridView3.Location = new System.Drawing.Point(803, 41);
+            this.matrixGridView3.MultiSelect = false;
             this.matrixGridView3.Name = "matrixGridView3";
             this.matrixGridView3.ReadOnly = true;
             this.matrixGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -146,9 +189,11 @@ namespace AlgoTeacher
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.matrixGridView2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.matrixGridView2.Enabled = false;
             this.matrixGridView2.EnableHeadersVisualStyles = false;
             this.matrixGridView2.GridColor = System.Drawing.Color.White;
-            this.matrixGridView2.Location = new System.Drawing.Point(334, 27);
+            this.matrixGridView2.Location = new System.Drawing.Point(433, 41);
+            this.matrixGridView2.MultiSelect = false;
             this.matrixGridView2.Name = "matrixGridView2";
             this.matrixGridView2.ReadOnly = true;
             this.matrixGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -192,9 +237,11 @@ namespace AlgoTeacher
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.matrixGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.matrixGridView1.Enabled = false;
             this.matrixGridView1.EnableHeadersVisualStyles = false;
             this.matrixGridView1.GridColor = System.Drawing.Color.White;
-            this.matrixGridView1.Location = new System.Drawing.Point(23, 27);
+            this.matrixGridView1.Location = new System.Drawing.Point(70, 41);
+            this.matrixGridView1.MultiSelect = false;
             this.matrixGridView1.Name = "matrixGridView1";
             this.matrixGridView1.ReadOnly = true;
             this.matrixGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -218,148 +265,14 @@ namespace AlgoTeacher
             this.matrixGridView1.Size = new System.Drawing.Size(222, 185);
             this.matrixGridView1.TabIndex = 6;
             // 
-            // QuestionLabel
-            // 
-            this.QuestionLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.QuestionLabel.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.QuestionLabel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.QuestionLabel.Location = new System.Drawing.Point(12, 12);
-            this.QuestionLabel.Name = "QuestionLabel";
-            this.QuestionLabel.Size = new System.Drawing.Size(735, 24);
-            this.QuestionLabel.StyleController = this.layoutControl1;
-            this.QuestionLabel.TabIndex = 3;
-            this.QuestionLabel.Text = "Вопрос";
-            // 
-            // layoutControl1
-            // 
-            this.layoutControl1.Controls.Add(this.sizeQuestionControl);
-            this.layoutControl1.Controls.Add(this.yesNoQuestionControl);
-            this.layoutControl1.Controls.Add(this.questionControl);
-            this.layoutControl1.Controls.Add(this.QuestionLabel);
-            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(2, 2);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(717, 192, 250, 350);
-            this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1166, 308);
-            this.layoutControl1.TabIndex = 0;
-            this.layoutControl1.Text = "layoutControl1";
-            // 
-            // sizeQuestionControl
-            // 
-            this.sizeQuestionControl.AnswerButtonEnabled = true;
-            this.sizeQuestionControl.Location = new System.Drawing.Point(1054, 12);
-            this.sizeQuestionControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sizeQuestionControl.Name = "sizeQuestionControl";
-            this.sizeQuestionControl.Size = new System.Drawing.Size(100, 284);
-            this.sizeQuestionControl.TabIndex = 6;
-            // 
-            // yesNoQuestionControl
-            // 
-            this.yesNoQuestionControl.Location = new System.Drawing.Point(980, 12);
-            this.yesNoQuestionControl.MaximumSize = new System.Drawing.Size(262, 300);
-            this.yesNoQuestionControl.MinimumSize = new System.Drawing.Size(70, 58);
-            this.yesNoQuestionControl.Name = "yesNoQuestionControl";
-            this.yesNoQuestionControl.NoButtonEnabled = true;
-            this.yesNoQuestionControl.Size = new System.Drawing.Size(70, 284);
-            this.yesNoQuestionControl.TabIndex = 5;
-            this.yesNoQuestionControl.YesButtonEnabled = true;
-            // 
-            // questionControl
-            // 
-            this.questionControl.AnswerButtonEnabled = true;
-            this.questionControl.Location = new System.Drawing.Point(751, 12);
-            this.questionControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.questionControl.MaximumSize = new System.Drawing.Size(300, 300);
-            this.questionControl.MinimumSize = new System.Drawing.Size(80, 102);
-            this.questionControl.Name = "questionControl";
-            this.questionControl.Size = new System.Drawing.Size(225, 284);
-            this.questionControl.TabIndex = 4;
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.GroupBordersVisible = false;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutQuest,
-            this.layoutYesNo,
-            this.layoutSecondStage});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1166, 308);
-            this.layoutControlGroup1.Text = "layoutControlGroup1";
-            this.layoutControlGroup1.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.QuestionLabel;
-            this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(739, 288);
-            this.layoutControlItem1.Text = "layoutControlItem1";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextToControlDistance = 0;
-            this.layoutControlItem1.TextVisible = false;
-            // 
-            // layoutQuest
-            // 
-            this.layoutQuest.Control = this.questionControl;
-            this.layoutQuest.CustomizationFormText = "layoutQuest";
-            this.layoutQuest.Location = new System.Drawing.Point(739, 0);
-            this.layoutQuest.Name = "layoutQuest";
-            this.layoutQuest.Size = new System.Drawing.Size(229, 288);
-            this.layoutQuest.Text = "layoutQuest";
-            this.layoutQuest.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutQuest.TextToControlDistance = 0;
-            this.layoutQuest.TextVisible = false;
-            // 
-            // layoutYesNo
-            // 
-            this.layoutYesNo.Control = this.yesNoQuestionControl;
-            this.layoutYesNo.CustomizationFormText = "layoutYesNo";
-            this.layoutYesNo.Location = new System.Drawing.Point(968, 0);
-            this.layoutYesNo.Name = "layoutYesNo";
-            this.layoutYesNo.Size = new System.Drawing.Size(74, 288);
-            this.layoutYesNo.Text = "layoutYesNo";
-            this.layoutYesNo.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutYesNo.TextToControlDistance = 0;
-            this.layoutYesNo.TextVisible = false;
-            this.layoutYesNo.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
-            // 
-            // layoutSecondStage
-            // 
-            this.layoutSecondStage.Control = this.sizeQuestionControl;
-            this.layoutSecondStage.CustomizationFormText = "layoutSecondStage";
-            this.layoutSecondStage.Location = new System.Drawing.Point(1042, 0);
-            this.layoutSecondStage.MinSize = new System.Drawing.Size(104, 24);
-            this.layoutSecondStage.Name = "layoutSecondStage";
-            this.layoutSecondStage.Size = new System.Drawing.Size(104, 288);
-            this.layoutSecondStage.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutSecondStage.Text = "layoutSecondStage";
-            this.layoutSecondStage.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutSecondStage.TextToControlDistance = 0;
-            this.layoutSecondStage.TextVisible = false;
-            this.layoutSecondStage.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.layoutControl1);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(0, 243);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1170, 312);
-            this.panelControl1.TabIndex = 4;
-            // 
             // MatrixMultiplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1170, 555);
+            this.ClientSize = new System.Drawing.Size(1090, 529);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.ViewPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MatrixMultiplyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -367,18 +280,13 @@ namespace AlgoTeacher
             this.Load += new System.EventHandler(this.MatrixMultiplyForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).EndInit();
             this.ViewPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.QuestPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutQuest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutYesNo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutSecondStage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -386,19 +294,13 @@ namespace AlgoTeacher
         #endregion
 
         private DevExpress.XtraEditors.PanelControl ViewPanel;
-        private DevExpress.XtraEditors.LabelControl QuestionLabel;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private YesNoQuestionControl yesNoQuestionControl;
-        private QuestionControl questionControl;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutQuest;
-        private DevExpress.XtraLayout.LayoutControlItem layoutYesNo;
-        private UserControls.SizeQuestionControl sizeQuestionControl;
-        private DevExpress.XtraLayout.LayoutControlItem layoutSecondStage;
         private MatrixGridView matrixGridView1;
         private MatrixGridView matrixGridView3;
         private MatrixGridView matrixGridView2;
+        private QuestionControlBase questionControlBase;
+        private DevExpress.XtraEditors.LabelControl QuestionLabel;
+        private System.Windows.Forms.Panel QuestPanel;
+        private System.Windows.Forms.Panel panel1;
     }
 }
