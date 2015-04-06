@@ -84,6 +84,18 @@
     <Compile Include="IntroForm.Designer.cs">
       <DependentUpon>IntroForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="KnapsackProblemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KnapsackProblemForm.Designer.cs">
+      <DependentUpon>KnapsackProblemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LanguageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LanguageForm.Designer.cs">
+      <DependentUpon>LanguageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logic\Matrix.cs" />
     <Compile Include="Logic\Coordinate.cs" />
     <Compile Include="Logic\MatrixMultiply.cs" />
@@ -125,6 +137,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IntroForm.resx">
       <DependentUpon>IntroForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KnapsackProblemForm.resx">
+      <DependentUpon>KnapsackProblemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguageForm.resx">
+      <DependentUpon>LanguageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

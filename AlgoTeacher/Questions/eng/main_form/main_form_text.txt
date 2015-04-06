@@ -1,0 +1,2 @@
+Hello, choose the algorythm and press "Start" button
+Start

@@ -14,17 +14,28 @@ namespace AlgoTeacher.Logic
 
         private Type _formType;
 
+        private string _language;
+
         private string _introText;
+
+        private string[] _introButtonsText;
+
+        private string[] _infoButtonsText;
+
+        private string[] _infoButtonNoText;
 
         private TaskHelp _help;
 
-        public MyTask(string name, Type formType, string introText, TaskHelp help)
+        public MyTask(string name, Type formType, string langauge, string introText, string[] introButtonsText, string[] infoButtonsText, string[] infoButtonNoText, TaskHelp help)
         {
             Name = name;
             _formType = formType;
+            _language = langauge;
             _introText = introText;
+            _introButtonsText = introButtonsText;
+            _infoButtonsText = infoButtonsText;
+            _infoButtonNoText = infoButtonNoText;
             _help = help;
-
         }
 
         public override string ToString()
@@ -35,13 +46,14 @@ namespace AlgoTeacher.Logic
         // Временное решение
         public void ShowForm()
         {
-            var TaskForm = (Form)Activator.CreateInstance(_formType);
+            object[] args = new object[] {_language};
+            var TaskForm = (Form)Activator.CreateInstance(_formType, args);
             TaskForm.ShowDialog();
         }
 
         public void ShowIntro()
         {
-            IntroForm form = new IntroForm(_introText);
+            IntroForm form = new IntroForm(_introText, _introButtonsText);
             var res = form.ShowDialog();
             switch (res)
             {
@@ -64,7 +76,7 @@ namespace AlgoTeacher.Logic
 
         public void ShowInfo()
         {
-            InformationForm info = new InformationForm(_help);
+            InformationForm info = new InformationForm(_help, _infoButtonsText, _infoButtonNoText);
             var infoRes = info.ShowDialog();
             switch (infoRes)
             {

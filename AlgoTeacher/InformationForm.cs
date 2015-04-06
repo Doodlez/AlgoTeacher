@@ -15,6 +15,8 @@ namespace AlgoTeacher
 {
     public partial class InformationForm : DevExpress.XtraEditors.XtraForm
     {
+        private string[] _buttonNoText;
+
         //1 - первый шаг объяснения
         //2 - второй шаг
         int ModeFlag
@@ -37,10 +39,14 @@ namespace AlgoTeacher
             set;
         }
 
-        public InformationForm(TaskHelp help)
+        public InformationForm(TaskHelp help, string[] buttonsText, string[] buttonNoText)
         {
             InitializeComponent();
             _help = help;
+            this.ButtonYes.Text = buttonsText[0];
+            this.ButtonNo.Text = buttonsText[1];
+            this.ButtonBack.Text = buttonsText[2];
+            _buttonNoText = buttonNoText;
             ModeFlag = 1;
             QuestionLabel.Text = help.Content[0];
         }
@@ -60,19 +66,19 @@ namespace AlgoTeacher
             {
                 this.QuestionLabel.Text = _help.Content[1];
                 //"Объясняю подробнее: надо просто сложить 2 + 2 и получить 4. Теперь-то понятно?"
-                this.ButtonNo.Text = "Нет, нужен пример";
+                this.ButtonNo.Text = _buttonNoText[0];
                 this.ModeFlag = 2;
             }
             else if (ModeFlag == 2)
             {    
                 this.QuestionLabel.Text = _help.Content[2];
                 //"Объясняю подробнее: надо просто сложить 2 + 2 и получить 4. Теперь-то понятно?"
-                this.ButtonNo.Text = "Не понятно";
+                this.ButtonNo.Text = _buttonNoText[1];
                 this.ModeFlag = 3;
             }
             else
             {
-                MessageBox.Show("Всё очень плохо!");
+                MessageBox.Show(_buttonNoText[2]);
                 DialogResult = DialogResult.Cancel;
             }
         }

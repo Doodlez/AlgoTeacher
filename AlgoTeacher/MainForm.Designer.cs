@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.TaskComboBox = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.GreetingControl = new DevExpress.XtraEditors.LabelControl();
             this.StartButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.TaskComboBox.Properties)).BeginInit();
             this.SuspendLayout();
@@ -44,14 +44,13 @@
             this.TaskComboBox.Size = new System.Drawing.Size(180, 30);
             this.TaskComboBox.TabIndex = 0;
             // 
-            // labelControl1
+            // GreetingControl
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelControl1.Location = new System.Drawing.Point(130, 100);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(447, 24);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Привет, выбери нужный алогитм и нажми Старт";
+            this.GreetingControl.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GreetingControl.Location = new System.Drawing.Point(130, 100);
+            this.GreetingControl.Name = "GreetingControl";
+            this.GreetingControl.Size = new System.Drawing.Size(0, 24);
+            this.GreetingControl.TabIndex = 1;
             // 
             // StartButton
             // 
@@ -68,7 +67,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(705, 372);
             this.Controls.Add(this.StartButton);
-            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.GreetingControl);
             this.Controls.Add(this.TaskComboBox);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -83,7 +82,7 @@
         #endregion
 
         private DevExpress.XtraEditors.ComboBoxEdit TaskComboBox;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl GreetingControl;
         private DevExpress.XtraEditors.SimpleButton StartButton;
     }
 }

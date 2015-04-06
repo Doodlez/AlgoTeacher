@@ -35,7 +35,7 @@ namespace AlgoTeacher.Logic
                     if (Coordinate.DoesCoordinateExist(currentCoord, coords))
                     {
                         var question = new IntegerValueQuest("MatrixQuestion",
-                                                             QuestionGenerator.MatrixMultQuestion(i+1, j+1),
+                                                             QuestionGenerator.MatrixMultQuestion(i + 1, j + 1),
                                                              resultMatrix.Values[i][j]);
                         questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
                     }

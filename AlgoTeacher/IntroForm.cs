@@ -19,10 +19,13 @@ namespace AlgoTeacher
             InitializeComponent();
         }
 
-        public IntroForm(string question)
+        public IntroForm(string question, string[] buttonsText)
         {
             InitializeComponent();
             this.QuestionLabel.Text = question;
+            this.ButtonYes.Text = buttonsText[0];
+            this.ButtonNo.Text = buttonsText[1];
+            this.ButtonBack.Text = buttonsText[2];
         }
 
         private void IntroForm_Load(object sender, EventArgs e)

@@ -1,0 +1,5 @@
+Knapsack problem is a situation
+when you need to find the optimum utilization of the backpack
+confinement. The Ones. find a set of objects,
+which would be placed in your backpack and thus would
+the greatest value.

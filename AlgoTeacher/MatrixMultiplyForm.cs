@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ using DevExpress.XtraLayout.Utils;
 using SpreadsheetGear.Windows.Forms;
 using UserControls;
 using System.Web;
+using System.IO;
 
 
 //TODO: добавить функции выделения строки, столбца, ячейки цветом
@@ -40,8 +42,17 @@ namespace AlgoTeacher
 
         private IQuest quest;
 
-        public MatrixMultiplyForm()
+        private string _language;
+        private string path = @"C:\Users\1234\Documents\Диплом\AlgoTeacher\AlgoTeacher\Questions\";
+        private string[] text;
+        private string[] buttons_text;
+
+        public MatrixMultiplyForm(string language)
         {
+            _language = language;
+            text = File.ReadAllLines(path + _language + @"\matrix_mult_form\text.txt", Encoding.Default);
+            buttons_text = File.ReadAllLines(path + _language + @"\matrix_mult_form\buttons_text.txt", Encoding.Default);
+
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
             // добавление обработчиков
@@ -50,9 +61,11 @@ namespace AlgoTeacher
 
             var yesClickHandler = new YesNoQuestionControl.YesClickedHandler(YesButton_Clicked);
             yesNoQuestionControl.YesClicked += yesClickHandler;
+            yesNoQuestionControl.SetYesButtonTextLabel(buttons_text[0]);
 
             var noClickHandler = new YesNoQuestionControl.NoClickedHandler(NoButton_Clicked);
             yesNoQuestionControl.NoClicked += noClickHandler;
+            yesNoQuestionControl.SetNoButtonTextLabel(buttons_text[1]);
 
             var answerClickHandler = new QuestionControl.AnswerClickedHandler(AnswerButton_Clicked);
             questionControl.AnswerClicked += answerClickHandler;
@@ -66,13 +79,6 @@ namespace AlgoTeacher
             _logic = new MatrixMultiply();
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
-            //dataGridView1.Rows.Add();
-            //dataGridView1.Rows[0].Cells[0].Value = 1;
-            //dataGridView1.Rows[0].Cells[1].Value = 2;
-            //dataGridView1.Rows[1].Cells[0].Value = 3;
-            //dataGridView1.Rows[1].Cells[1].Value = 4;
-            //dataGridView1.Rows[1].Cells[1].Style.BackColor = Color.Green;
-            //dataGridView1.Rows[0].Cells[1].Style.BackColor = Color.Green;
         }
 
         private void SetupMatrix()
@@ -119,7 +125,7 @@ namespace AlgoTeacher
             pressed = false;
             layoutQuest.Visibility = LayoutVisibility.Never;
             layoutYesNo.Visibility = LayoutVisibility.Always;
-            quest = new YesNoQuest("first", "Можно ли перемножить данные матрицы?", answ);
+            quest = new YesNoQuest("first", text[0], answ);
             QuestionLabel.Text = quest.Question;
         }
 
@@ -129,7 +135,7 @@ namespace AlgoTeacher
             layoutQuest.Visibility = LayoutVisibility.Never;
             layoutYesNo.Visibility = LayoutVisibility.Never;
             layoutSecondStage.Visibility = LayoutVisibility.Always;
-            quest = new IntegerIntegerValueQuest("second", "Каковы будут размерности данной матрицы?", answ);
+            quest = new IntegerIntegerValueQuest("second", text[1], answ);
             QuestionLabel.Text = quest.Question;
         }
         
@@ -173,11 +179,11 @@ namespace AlgoTeacher
            var res = _logic.MatrixMult(_matrix1, _matrix2);
            if (res == null)
             {
-                MessageBox.Show("Упс, ошибочка. Матрица не считается");
+                MessageBox.Show(text[2]);
             }
             else
             {
-                MessageBox.Show("Молодец, ты справился!");
+                MessageBox.Show(text[3]);
                 DialogResult = DialogResult.Cancel;
             }
         }
@@ -195,7 +201,7 @@ namespace AlgoTeacher
             }
         
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
-            MessageBox.Show("Правильно!");
+            MessageBox.Show(text[4]);
              SetQuestionText(" ");
 
             this.questionControl.CleanAnswer();
@@ -221,12 +227,12 @@ namespace AlgoTeacher
         {
             if (quest.CheckAnswer("True"))
             {
-                MessageBox.Show("Молодец, ты прав! Переходим к следующему заданию.");
+                MessageBox.Show(text[5]);
                 SecondQuest(_matrix1.RowsCount + " " + _matrix2.ColumnsCount);
             }
             else
             {
-                MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
+                MessageBox.Show(text[6]);
                 SetupMatrix();
             }
         }
@@ -235,7 +241,7 @@ namespace AlgoTeacher
         {
             if (quest.CheckAnswer("False"))
             {
-                MessageBox.Show("Молодец, ты прав! Переходим к следующему заданию.");
+                MessageBox.Show(text[5]);
                 SetupMatrix();
                 while (_matrix1.ColumnsCount != _matrix2.RowsCount)
                 {
@@ -245,7 +251,7 @@ namespace AlgoTeacher
             }
             else
             {
-                MessageBox.Show("Неправильный ответ. Попробуй еще раз.\r\nИ повнимательнее!");
+                MessageBox.Show(text[6]);
                 SetupMatrix();
             }
         }
@@ -259,10 +265,10 @@ namespace AlgoTeacher
             if (!quest.CheckAnswer(questionControl.GetAnswer()))
             //if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
             {
-                MessageBox.Show("Не правильно!");
+                MessageBox.Show(text[7]);
                 return;
             }
-            MessageBox.Show("Правильно! Молодец!");
+            MessageBox.Show(text[8]);
             pressed = true;
         }
 
@@ -271,10 +277,10 @@ namespace AlgoTeacher
             // Действия при нажатии ответ
             if (!quest.CheckAnswer(sizeQuestionControl.GetRowsAnswer() + " " + sizeQuestionControl.GetColumnsAnswer()))
             {
-                MessageBox.Show("Не правильно!");
+                MessageBox.Show(text[7]);
                 return;
             }
-            MessageBox.Show("Правильно! Молодец!");
+            MessageBox.Show(text[8]);
             pressed = true;
             ThirdQuest();
         }
