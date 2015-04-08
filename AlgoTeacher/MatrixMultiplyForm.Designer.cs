@@ -46,6 +46,8 @@ namespace AlgoTeacher
             this.matrixGridView3 = new UserControls.MatrixGridView(this.components);
             this.matrixGridView2 = new UserControls.MatrixGridView(this.components);
             this.matrixGridView1 = new UserControls.MatrixGridView(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).BeginInit();
             this.ViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -55,10 +57,14 @@ namespace AlgoTeacher
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ViewPanel
             // 
+            this.ViewPanel.Controls.Add(this.pictureBox2);
+            this.ViewPanel.Controls.Add(this.pictureBox1);
             this.ViewPanel.Controls.Add(this.matrixGridView3);
             this.ViewPanel.Controls.Add(this.matrixGridView2);
             this.ViewPanel.Controls.Add(this.matrixGridView1);
@@ -265,6 +271,26 @@ namespace AlgoTeacher
             this.matrixGridView1.Size = new System.Drawing.Size(222, 185);
             this.matrixGridView1.TabIndex = 6;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AlgoTeacher.Properties.Resources.mult;
+            this.pictureBox1.Location = new System.Drawing.Point(325, 97);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 67);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::AlgoTeacher.Properties.Resources.equal;
+            this.pictureBox2.Location = new System.Drawing.Point(679, 97);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(101, 89);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
             // MatrixMultiplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -287,6 +313,8 @@ namespace AlgoTeacher
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,5 +330,7 @@ namespace AlgoTeacher
         private DevExpress.XtraEditors.LabelControl QuestionLabel;
         private System.Windows.Forms.Panel QuestPanel;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
