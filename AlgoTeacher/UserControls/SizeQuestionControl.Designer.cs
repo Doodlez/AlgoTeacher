@@ -65,7 +65,7 @@
             // 
             // ColumnsTextEdit
             // 
-            this.ColumnsTextEdit.Location = new System.Drawing.Point(108, 86);
+            this.ColumnsTextEdit.Location = new System.Drawing.Point(159, 86);
             this.ColumnsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ColumnsTextEdit.MaximumSize = new System.Drawing.Size(0, 39);
             this.ColumnsTextEdit.MinimumSize = new System.Drawing.Size(35, 39);
@@ -73,13 +73,13 @@
             this.ColumnsTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ColumnsTextEdit.Properties.Appearance.Options.UseFont = true;
             this.ColumnsTextEdit.Properties.AutoHeight = false;
-            this.ColumnsTextEdit.Size = new System.Drawing.Size(229, 39);
+            this.ColumnsTextEdit.Size = new System.Drawing.Size(178, 39);
             this.ColumnsTextEdit.StyleController = this.layoutControl1;
             this.ColumnsTextEdit.TabIndex = 8;
             // 
             // RowsTextEdit
             // 
-            this.RowsTextEdit.Location = new System.Drawing.Point(108, 38);
+            this.RowsTextEdit.Location = new System.Drawing.Point(159, 38);
             this.RowsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RowsTextEdit.MaximumSize = new System.Drawing.Size(0, 39);
             this.RowsTextEdit.MinimumSize = new System.Drawing.Size(35, 39);
@@ -87,7 +87,7 @@
             this.RowsTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RowsTextEdit.Properties.Appearance.Options.UseFont = true;
             this.RowsTextEdit.Properties.AutoHeight = false;
-            this.RowsTextEdit.Size = new System.Drawing.Size(229, 39);
+            this.RowsTextEdit.Size = new System.Drawing.Size(178, 39);
             this.RowsTextEdit.StyleController = this.layoutControl1;
             this.RowsTextEdit.TabIndex = 5;
             // 
@@ -123,6 +123,8 @@
             // 
             // layoutControlItem1
             // 
+            this.layoutControlItem1.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.layoutControlItem1.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem1.Control = this.RowsTextEdit;
             this.layoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.layoutControlItem1.CustomizationFormText = "Число строк";
@@ -133,7 +135,7 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(329, 48);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "Число строк";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 16);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(144, 24);
             // 
             // emptySpaceItem1
             // 
@@ -165,13 +167,15 @@
             // 
             // layoutControlItem4
             // 
+            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem4.Control = this.ColumnsTextEdit;
             this.layoutControlItem4.CustomizationFormText = "Число столбцов";
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 74);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(329, 43);
             this.layoutControlItem4.Text = "Число столбцов";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(93, 16);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(144, 24);
             // 
             // SizeQuestionControl
             // 
