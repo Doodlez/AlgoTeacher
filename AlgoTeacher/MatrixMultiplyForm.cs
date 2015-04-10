@@ -84,6 +84,34 @@ namespace AlgoTeacher
             FirstQuest(answ);
         }
         
+        // Ворой уровень помощи
+        private string GetFormula()
+        {
+            string result = "C" + x.ToString() + y.ToString() + " = ";
+            for (int i = 1; i <= _matrix1.ColumnsCount; i++)
+            {
+                result += "A" + x.ToString() + i.ToString();
+                result += " * ";
+                result += "B" + i.ToString() + y.ToString();
+                if (i != _matrix1.ColumnsCount) result += " + ";
+            }
+            return result;
+        }
+
+        // Третий уровень помощи
+        private string GetExtendedFormula()
+        {
+            string result = "C" + x.ToString() + y.ToString() + " = ";
+            for (int i = 1; i <= _matrix1.ColumnsCount; i++)
+            {
+                result += _matrix1.Values[x - 1][i - 1].ToString();
+                result += " * ";
+                result += _matrix2.Values[i - 1][y - 1].ToString();
+                if (i != _matrix1.ColumnsCount) result += " + ";
+            }
+            return result;
+        }
+
         // генерация размерности и рандомная генерация значений матриц
         private void SetupMatrix()
         {
