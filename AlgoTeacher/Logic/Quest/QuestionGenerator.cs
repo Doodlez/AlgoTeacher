@@ -11,7 +11,7 @@ namespace AlgoTeacher.Logic.Quest
     {
         public static string MatrixMultQuestion(int x, int y, string language)
         {
-            const string address = @"C:\Users\1234\Documents\Диплом\AlgoTeacher\AlgoTeacher\Questions\";
+            const string address = @"..\..\Questions\";
             string[] questions = File.ReadAllLines(address + language + @"\matrix_mult_form\matrix_questions.txt", Encoding.Default);
 
             var random = new Random();

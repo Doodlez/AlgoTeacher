@@ -39,7 +39,7 @@ namespace AlgoTeacher
         private IQuest quest;
 
         private string _language;
-        private string path = @"C:\Users\1234\Documents\Диплом\AlgoTeacher\AlgoTeacher\Questions\";
+        private string path = @"..\..\Questions\";
         private string[] text;
         private string[] buttons_text;
 

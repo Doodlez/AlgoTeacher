@@ -1,6 +1,0 @@
-Thus, the two matrices A and B PxQ size MxN and respectively.
-You multiply if and only if, when number of columns of the
-first array matches the number of rows of the second, i.e. Q=M.
-Every final element of the matrix C will be from sum
-of the products of matrix elements appropriate rows
-of the matrix A and a column of the matrix B.
