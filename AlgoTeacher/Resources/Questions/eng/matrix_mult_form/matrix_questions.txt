@@ -1,0 +1,5 @@
+What is equal to the matrix element coordinates ({0}, {1})?
+Do you think that will be in the matrix at ({0}, {1})?
+Enter the result in cell ({0}, {1}) of the matrix).
+What have you got in the matrix cell at ({0}, {1})?
+Enter your answer at ({0}, {1}), please.
