@@ -46,7 +46,7 @@ namespace AlgoTeacher.Logic
         // Временное решение
         public void ShowForm()
         {
-            object[] args = new object[] {_language};
+            var args = new object[] {_language};
             var TaskForm = (Form)Activator.CreateInstance(_formType, args);
             TaskForm.ShowDialog();
         }

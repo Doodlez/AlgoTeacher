@@ -5,11 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AlgoTeacher.Interface;
 using AlgoTeacher.Logic;
+using AlgoTeacher.Properties;
 
 namespace AlgoTeacher
 {
@@ -21,7 +23,7 @@ namespace AlgoTeacher
         private string _language;
         private LanguageForm _languageForm;
 
-        const string Path = @"C:\Users\1234\Documents\Диплом\AlgoTeacher\AlgoTeacher\Questions\";
+        const string Path = @"..\..\Questions\";
         private string Dir;
 
         public MainForm()
@@ -35,26 +37,7 @@ namespace AlgoTeacher
             _languageForm.ShowDialog();
 
             _language = _languageForm.SelectedLanguage;
-
-            //string introText = File.ReadAllText(Path + _language + @"\intro_form\intro_text.txt", Encoding.Default);
-            //string[] introButtonsText = File.ReadAllLines(Path + _language + @"\intro_form\intro_form_buttons.txt", Encoding.Default);
-            //string[] infoButtonsText = File.ReadAllLines(Path + _language + @"\info_form\info_form_buttons.txt", Encoding.Default);
-            //string[] infoButtonNoText = File.ReadAllLines(Path + _language + @"\info_form\info_form_no_button.txt", Encoding.Default);
-            //List<string> helpsText = new List<string>();
-            //var helpsText1 = File.ReadAllText(Path + _language + @"\helps_text_1.txt", Encoding.Default);
-            //var helpsText2 = File.ReadAllText(Path + _language + @"\helps_text_2.txt", Encoding.Default);
-            //var helpsText3 = File.ReadAllText(Path + _language + @"\helps_text_3.txt", Encoding.Default);
-            //helpsText.Add(helpsText1);
-            //helpsText.Add(helpsText2);
-            //helpsText.Add(helpsText3);
-
-            //TaskHelp testHelp = new TaskHelp("test", helpsText);
             var taskNames = File.ReadAllLines(Path + _language + @"\task_names.txt", Encoding.Default);
-            //MyTask testTask = new MyTask(taskNames[0], typeof(MatrixMultiplyForm), _language, introText, introButtonsText, infoButtonsText, infoButtonNoText, testHelp);
-            //MyTask testTask2 = new MyTask(taskNames[1], typeof(KnapsackProblemForm), _language, introText, introButtonsText, infoButtonsText, infoButtonNoText, testHelp);
-
-            //TaskCollection tasks = new TaskCollection(testTask);
-            //TaskCollection tasks2 = new TaskCollection(testTask2);
 
             TaskComboBox.Properties.Items.Add(taskNames[0]);
             TaskComboBox.Properties.Items.Add(taskNames[1]);

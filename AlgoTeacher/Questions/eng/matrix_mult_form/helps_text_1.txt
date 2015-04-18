@@ -4,3 +4,4 @@ first array matches the number of rows of the second, i.e. Q=M.
 Every final element of the matrix C will be from sum
 of the products of matrix elements appropriate rows
 of the matrix A and a column of the matrix B.
+Understand?
