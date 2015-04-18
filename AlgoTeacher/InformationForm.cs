@@ -39,6 +39,8 @@ namespace AlgoTeacher
             set;
         }
 
+        private int sleepTime = 100;
+
         public InformationForm(TaskHelp help, string[] buttonsText, string[] buttonNoText)
         {
             InitializeComponent();
@@ -78,7 +80,9 @@ namespace AlgoTeacher
             }
             else
             {
-                MessageBox.Show(_buttonNoText[2]);
+                //MessageBox.Show(_buttonNoText[2]);
+                this.QuestionLabel.Text = _buttonNoText[2];
+                System.Threading.Thread.Sleep(sleepTime);
                 DialogResult = DialogResult.Cancel;
             }
         }

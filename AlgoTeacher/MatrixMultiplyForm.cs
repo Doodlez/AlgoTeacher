@@ -10,9 +10,6 @@ using DevExpress.XtraLayout.Utils;
 using UserControls;
 using System.IO;
 
-// TODO: Выделение матриц при вопросах
-// TODO: Поправить переносы строк в вопросах
-
 namespace AlgoTeacher
 {
     public partial class MatrixMultiplyForm : DevExpress.XtraEditors.XtraForm
@@ -46,6 +43,8 @@ namespace AlgoTeacher
         private int questState = 1;
 
         private int x, y;
+
+        private int sleepTime = 100;
 
         public MatrixMultiplyForm(string language)
         {
@@ -330,13 +329,17 @@ namespace AlgoTeacher
                     SecondQuest(_matrix1.RowsCount + ", " + _matrix2.ColumnsCount);
                     return;
                 case 2:
-                    MessageBox.Show("Правильно! Молодец!");
+                    //MessageBox.Show("Правильно! Молодец!"); Проверить
+                    QuestionLabel.Text = "Правильно! Молодец!";
+                    System.Threading.Thread.Sleep(sleepTime);
                     pressed = true;
                     questState = 3;
                     ThirdQuest();
                     return;
                 case 3:
-                    MessageBox.Show("Правильно! Молодец!");
+                    //MessageBox.Show("Правильно! Молодец!");
+                    QuestionLabel.Text = "Правильно! Молодец!";
+                    System.Threading.Thread.Sleep(sleepTime);
                     NumberOfFails = 0;
                     pressed = true;
                     return;
@@ -353,10 +356,16 @@ namespace AlgoTeacher
                     SetupMatrix();
                     return;
                 case 2:
-                    MessageBox.Show("Не правильно!");
+                    //MessageBox.Show("Не правильно!");
+                    QuestionLabel.Text = "Не правильно!";
+                    System.Threading.Thread.Sleep(sleepTime);
+                    QuestionLabel.Text = quest.Question;
                     return;
                 case 3:
-                    MessageBox.Show("Не правильно! Будь внимательнее!");
+                    //MessageBox.Show("Не правильно! Будь внимательнее!");
+                    QuestionLabel.Text = "Не правильно! Будь внимательнее!";
+                    System.Threading.Thread.Sleep(sleepTime);
+                    QuestionLabel.Text = quest.Question;
                     NumberOfFails++;
                     if (NumberOfFails > 0)
                     {
