@@ -19,7 +19,7 @@ namespace AlgoTeacher
         private readonly QuestEvents.QuestEventHandler _questHandler;
         private readonly FillEvents.FillEventHandler _fillHandler;
 
-        private bool FirstAlgoStep = true;
+
         private int NumberOfFails = 0;
    
         private readonly MatrixMultiply _logic;
@@ -44,7 +44,7 @@ namespace AlgoTeacher
 
         private int x, y;
 
-        private int sleepTime = 100;
+        private int sleepTime = 1000;
 
         public MatrixMultiplyForm(string language)
         {
@@ -245,11 +245,13 @@ namespace AlgoTeacher
            var res = _logic.MatrixMult(_matrix1, _matrix2);
            if (res == null)
             {
-                MessageBox.Show(text[2]);
+                //MessageBox.Show(text[2]);
+                ChangeAndAwait(QuestionLabel, text[2], sleepTime);
             }
             else
             {
-                MessageBox.Show(text[3]);
+                //MessageBox.Show(text[3]);
+                ChangeAndAwait(QuestionLabel, text[3], sleepTime);
                 DialogResult = DialogResult.Cancel;
             }
         }
@@ -265,12 +267,6 @@ namespace AlgoTeacher
             questionControlBase.SetAnswer(e.Quest.Answer);
             x = e.Coord.X;
             y = e.Coord.Y;
-            if (FirstAlgoStep)
-            {
-                FirstAlgoStep = false;
-                matrixGridView1.HighlightRow(e.Coord.X);
-                matrixGridView2.HighlightColumn(e.Coord.Y);
-            }
             matrixGridView3.HighlightCell(e.Coord.X, e.Coord.Y);
             while (!pressed)
             {
@@ -320,7 +316,14 @@ namespace AlgoTeacher
             switch (questState)
             {
                 case 1:
-                    MessageBox.Show(text[5]);
+                    //MessageBox.Show(text[5]);
+                    //QuestionLabel.Text = text[5];
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    //Invoke((Action)(() => { QuestionLabel.Text = text[5]; QuestionLabel.Update(); }));
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    ChangeAndAwait(QuestionLabel, text[5], sleepTime);
+                    
+                    pressed = true;
                     questState = 2;
                     while (_matrix1.ColumnsCount != _matrix2.RowsCount)
                     {
@@ -330,16 +333,20 @@ namespace AlgoTeacher
                     return;
                 case 2:
                     //MessageBox.Show("Правильно! Молодец!"); Проверить
-                    QuestionLabel.Text = "Правильно! Молодец!";
-                    System.Threading.Thread.Sleep(sleepTime);
+                    //QuestionLabel.Text = "Правильно! Молодец!";
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    //Invoke((Action)(() => { QuestionLabel.Text = "Правильно! Молодец!"; }));
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
                     pressed = true;
                     questState = 3;
                     ThirdQuest();
                     return;
                 case 3:
                     //MessageBox.Show("Правильно! Молодец!");
-                    QuestionLabel.Text = "Правильно! Молодец!";
-                    System.Threading.Thread.Sleep(sleepTime);
+                    //QuestionLabel.Text = "Правильно! Молодец!";
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
                     NumberOfFails = 0;
                     pressed = true;
                     return;
@@ -352,19 +359,26 @@ namespace AlgoTeacher
             switch (questState)
             {
                 case 1:
-                    MessageBox.Show(text[6]);
+                    //MessageBox.Show(text[6]);
+                    //Invoke((Action)(() => { QuestionLabel.Text = text[6]; }));
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    ChangeAndAwait(QuestionLabel, text[6], sleepTime);
                     SetupMatrix();
                     return;
                 case 2:
                     //MessageBox.Show("Не правильно!");
-                    QuestionLabel.Text = "Не правильно!";
-                    System.Threading.Thread.Sleep(sleepTime);
+                    //QuestionLabel.Text = "Не правильно!";
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    //Invoke((Action)(() => { QuestionLabel.Text = "Не правильно!"; }));
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    ChangeAndAwait(QuestionLabel, "Не правильно!", sleepTime);
                     QuestionLabel.Text = quest.Question;
                     return;
                 case 3:
                     //MessageBox.Show("Не правильно! Будь внимательнее!");
-                    QuestionLabel.Text = "Не правильно! Будь внимательнее!";
-                    System.Threading.Thread.Sleep(sleepTime);
+                    //QuestionLabel.Text = "Не правильно! Будь внимательнее!";
+                    //System.Threading.Thread.Sleep(sleepTime);
+                    ChangeAndAwait(QuestionLabel, "Не правильно! Будь внимательнее!", sleepTime);
                     QuestionLabel.Text = quest.Question;
                     NumberOfFails++;
                     if (NumberOfFails > 0)
@@ -374,6 +388,12 @@ namespace AlgoTeacher
                     }
                     return;
             }
+        }
+
+        private void ChangeAndAwait(Control control, string str, int time)
+        {
+            Invoke((Action)(() => { control.Text = str; control.Update();}));
+            System.Threading.Thread.Sleep(time);
         }
     }
 }
