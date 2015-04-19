@@ -84,29 +84,29 @@ namespace AlgoTeacher
         }
         
         // Ворой уровень помощи
-        private string GetFormula()
+        private string GetFormula(int n)
         {
             string result = "C" + x.ToString() + y.ToString() + " = ";
-            for (int i = 1; i <= _matrix1.ColumnsCount; i++)
+            for (int i = 1; i <= n; i++)
             {
                 result += "A" + x.ToString() + i.ToString();
                 result += " * ";
                 result += "B" + i.ToString() + y.ToString();
-                if (i != _matrix1.ColumnsCount) result += " + ";
+                if (i != n) result += " + ";
             }
             return result;
         }
 
         // Третий уровень помощи
-        private string GetExtendedFormula()
+        private string GetExtendedFormula(Matrix matrix1, Matrix matrix2)
         {
             string result = "C" + x.ToString() + y.ToString() + " = ";
-            for (int i = 1; i <= _matrix1.ColumnsCount; i++)
+            for (int i = 1; i <= matrix1.ColumnsCount; i++)
             {
-                result += _matrix1.Values[x - 1][i - 1].ToString();
+                result += matrix1.Values[x - 1][i - 1].ToString();
                 result += " * ";
-                result += _matrix2.Values[i - 1][y - 1].ToString();
-                if (i != _matrix1.ColumnsCount) result += " + ";
+                result += matrix2.Values[i - 1][y - 1].ToString();
+                if (i != matrix1.ColumnsCount) result += " + ";
             }
             return result;
         }
@@ -245,12 +245,10 @@ namespace AlgoTeacher
            var res = _logic.MatrixMult(_matrix1, _matrix2);
            if (res == null)
             {
-                //MessageBox.Show(text[2]);
                 ChangeAndAwait(QuestionLabel, text[2], sleepTime);
             }
             else
             {
-                //MessageBox.Show(text[3]);
                 ChangeAndAwait(QuestionLabel, text[3], sleepTime);
                 DialogResult = DialogResult.Cancel;
             }
@@ -274,7 +272,6 @@ namespace AlgoTeacher
             }
             
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
-            //MessageBox.Show(text[4]);
             SetQuestionText(" ");
 
             this.questionControlBase.ClearControl();
@@ -316,11 +313,6 @@ namespace AlgoTeacher
             switch (questState)
             {
                 case 1:
-                    //MessageBox.Show(text[5]);
-                    //QuestionLabel.Text = text[5];
-                    //System.Threading.Thread.Sleep(sleepTime);
-                    //Invoke((Action)(() => { QuestionLabel.Text = text[5]; QuestionLabel.Update(); }));
-                    //System.Threading.Thread.Sleep(sleepTime);
                     ChangeAndAwait(QuestionLabel, text[5], sleepTime);
                     
                     pressed = true;
@@ -332,20 +324,12 @@ namespace AlgoTeacher
                     SecondQuest(_matrix1.RowsCount + ", " + _matrix2.ColumnsCount);
                     return;
                 case 2:
-                    //MessageBox.Show("Правильно! Молодец!"); Проверить
-                    //QuestionLabel.Text = "Правильно! Молодец!";
-                    //System.Threading.Thread.Sleep(sleepTime);
-                    //Invoke((Action)(() => { QuestionLabel.Text = "Правильно! Молодец!"; }));
-                    //System.Threading.Thread.Sleep(sleepTime);
                     ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
                     pressed = true;
                     questState = 3;
                     ThirdQuest();
                     return;
                 case 3:
-                    //MessageBox.Show("Правильно! Молодец!");
-                    //QuestionLabel.Text = "Правильно! Молодец!";
-                    //System.Threading.Thread.Sleep(sleepTime);
                     ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
                     NumberOfFails = 0;
                     pressed = true;
@@ -359,32 +343,42 @@ namespace AlgoTeacher
             switch (questState)
             {
                 case 1:
-                    //MessageBox.Show(text[6]);
-                    //Invoke((Action)(() => { QuestionLabel.Text = text[6]; }));
-                    //System.Threading.Thread.Sleep(sleepTime);
                     ChangeAndAwait(QuestionLabel, text[6], sleepTime);
                     SetupMatrix();
                     return;
                 case 2:
-                    //MessageBox.Show("Не правильно!");
-                    //QuestionLabel.Text = "Не правильно!";
-                    //System.Threading.Thread.Sleep(sleepTime);
-                    //Invoke((Action)(() => { QuestionLabel.Text = "Не правильно!"; }));
-                    //System.Threading.Thread.Sleep(sleepTime);
                     ChangeAndAwait(QuestionLabel, "Не правильно!", sleepTime);
+                    questionControlBase.ClearControl();
                     QuestionLabel.Text = quest.Question;
                     return;
                 case 3:
-                    //MessageBox.Show("Не правильно! Будь внимательнее!");
-                    //QuestionLabel.Text = "Не правильно! Будь внимательнее!";
-                    //System.Threading.Thread.Sleep(sleepTime);
                     ChangeAndAwait(QuestionLabel, "Не правильно! Будь внимательнее!", sleepTime);
                     QuestionLabel.Text = quest.Question;
+                    questionControlBase.ClearControl();
                     NumberOfFails++;
                     if (NumberOfFails > 0)
                     {
                         matrixGridView1.HighlightRow(x);
                         matrixGridView2.HighlightColumn(y);
+                    }
+                    if (NumberOfFails == 2)
+                    {
+                        QuestionLabel.Text = "Смотри, чтобы получить элемент " +
+                                             "(" + x.ToString() + "," + y.ToString() + ") \r\n" +
+                                             " воспользуйся формулой: \r\n" + GetFormula(_matrix1.ColumnsCount);
+                        QuestionLabel.Update();
+                    }
+                    if (NumberOfFails == 3)
+                    {
+                        QuestionLabel.Text = "Внимательнее, в данном случае элемент " +
+                                             "(" + x.ToString() + "," + y.ToString() + ") \r\n" +
+                                             " получается следующим образом: \r\n" + GetExtendedFormula(_matrix1,_matrix2);
+                        QuestionLabel.Update();
+                    }
+                    if (NumberOfFails == 4)
+                    {
+                        ChangeAndAwait(QuestionLabel, "Дружок, всё плохо! Посмотри обучение ещё раз.", 2500); 
+                        this.Close();
                     }
                     return;
             }
