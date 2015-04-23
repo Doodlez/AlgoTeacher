@@ -13,7 +13,7 @@ namespace AlgoTeacher
 {
     public partial class LanguageForm : Form
     {
-        public string SelectedLanguage;
+        public string SelectedLanguage = "rus";
 
         public LanguageForm()
         {
