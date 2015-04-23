@@ -1,0 +1,4 @@
+Capacity
+Weight
+Value
+Answer

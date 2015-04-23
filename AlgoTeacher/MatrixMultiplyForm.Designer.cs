@@ -30,6 +30,7 @@ namespace AlgoTeacher
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,9 +40,9 @@ namespace AlgoTeacher
             this.ViewPanel = new DevExpress.XtraEditors.PanelControl();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.matrixGridView3 = new UserControls.MatrixGridView();
-            this.matrixGridView2 = new UserControls.MatrixGridView();
-            this.matrixGridView1 = new UserControls.MatrixGridView();
+            this.matrixGridView3 = new UserControls.MatrixGridView(this.components);
+            this.matrixGridView2 = new UserControls.MatrixGridView(this.components);
+            this.matrixGridView1 = new UserControls.MatrixGridView(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.QuestionLabel = new DevExpress.XtraEditors.LabelControl();
