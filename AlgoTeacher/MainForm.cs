@@ -105,8 +105,11 @@ namespace AlgoTeacher
 
         private void TaskComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            TaskComboBox.Properties.BorderStyle = BorderStyles.NoBorder;
-            TaskComboBox.Properties.Appearance.BorderColor = Color.Empty; 
+            if (TaskComboBox.SelectedIndex >= 0)
+            {
+                TaskComboBox.Properties.BorderStyle = BorderStyles.NoBorder;
+                TaskComboBox.Properties.Appearance.BorderColor = Color.Empty;
+            }
         }
     }
 }
