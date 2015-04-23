@@ -76,6 +76,7 @@
             this.ColumnsTextEdit.Size = new System.Drawing.Size(178, 39);
             this.ColumnsTextEdit.StyleController = this.layoutControl1;
             this.ColumnsTextEdit.TabIndex = 8;
+            this.ColumnsTextEdit.EditValueChanged += new System.EventHandler(this.ColumnsTextEdit_EditValueChanged);
             // 
             // RowsTextEdit
             // 
@@ -90,6 +91,7 @@
             this.RowsTextEdit.Size = new System.Drawing.Size(178, 39);
             this.RowsTextEdit.StyleController = this.layoutControl1;
             this.RowsTextEdit.TabIndex = 5;
+            this.RowsTextEdit.EditValueChanged += new System.EventHandler(this.RowsTextEdit_EditValueChanged);
             // 
             // AnswerButton
             // 

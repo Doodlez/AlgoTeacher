@@ -37,6 +37,11 @@ namespace UserControls
         public override void ClearControl()
         {
         }
+        
+        public override void SetFocus()
+        {
+            YesButton.Focus();
+        }
 
         protected override void checkAnswer(object sender, EventArgs e)
         {

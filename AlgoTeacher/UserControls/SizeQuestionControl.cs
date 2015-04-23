@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 
 namespace UserControls
@@ -21,59 +22,24 @@ namespace UserControls
             InitializeComponent();
         }
 
-        //public bool AnswerButtonEnabled
-        //{
-        //    get { return AnswerButton.Enabled; }
-        //    set { AnswerButton.Enabled = value;}
-        //}
-
-        //public string GetRowsAnswer()
-        //{
-        //    return RowsTextEdit.Text;
-        //}
-
-        //public string GetColumnsAnswer()
-        //{
-        //    return ColumnsTextEdit.Text;
-        //}
-
-        //public void CleanRows()
-        //{
-        //    if (RowsTextEdit.InvokeRequired)
-        //    {
-        //        var d = new SetCleanCallback(CleanRows);
-        //        Invoke(d);
-        //    }
-        //    else
-        //    {
-        //        RowsTextEdit.Text = string.Empty;
-        //    } 
-        //}
-
-        //public void CleanColumns()
-        //{
-        //    if (ColumnsTextEdit.InvokeRequired)
-        //    {
-        //        var d = new SetCleanCallback(CleanColumns);
-        //        Invoke(d);
-        //    }
-        //    else
-        //    {
-        //        ColumnsTextEdit.Text = string.Empty;
-        //    }
-        //}
-
         private void AnswerButton_Click(object sender, EventArgs e)
         {
+            var good = true;
             if (RowsTextEdit.Text.Length == 0)
             {
-                MessageBox.Show("Введите число строк матрицы");
+                RowsTextEdit.Properties.BorderStyle = BorderStyles.Flat;
+                RowsTextEdit.Properties.Appearance.BorderColor = Color.Red;
+                good = false;
             }
-            else if (ColumnsTextEdit.Text.Length == 0)
+            
+            if (ColumnsTextEdit.Text.Length == 0)
             {
-                MessageBox.Show("Введите число столбцов матрицы");
+                ColumnsTextEdit.Properties.BorderStyle = BorderStyles.Flat;
+                ColumnsTextEdit.Properties.Appearance.BorderColor = Color.Red;
+                good = false;
             }
-            else
+
+            if (good)
             {
                 checkAnswer(sender, e);
             }
@@ -93,6 +59,11 @@ namespace UserControls
             } 
         }
 
+        public override void SetFocus()
+        {
+            RowsTextEdit.Focus();
+        }
+
         // проверка вида "строка, столбец"!!!
         protected override void checkAnswer(object sender, EventArgs e)
         {
@@ -103,6 +74,24 @@ namespace UserControls
             else
             {
                 this.OnBadAnswered(sender, e);
+            }
+        }
+
+        private void RowsTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (RowsTextEdit.Text.Length != 0)
+            {
+                RowsTextEdit.Properties.BorderStyle = BorderStyles.NoBorder;
+                RowsTextEdit.Properties.Appearance.BorderColor = Color.Empty;
+            }
+        }
+
+        private void ColumnsTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (ColumnsTextEdit.Text.Length != 0)
+            {
+                ColumnsTextEdit.Properties.BorderStyle = BorderStyles.NoBorder;
+                ColumnsTextEdit.Properties.Appearance.BorderColor = Color.Empty;
             }
         }
     }

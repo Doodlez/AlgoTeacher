@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
 
 namespace AlgoTeacher
 {
     public partial class LanguageForm : Form
     {
-        public string SelectedLanguage;
+        public string SelectedLanguage = "rus";
 
         public LanguageForm()
         {
@@ -31,6 +32,13 @@ namespace AlgoTeacher
 
         private void SelectButton_Click(object sender, EventArgs e)
         {
+            if (LanguageComboBox.SelectedIndex < 0)
+            {
+                LanguageComboBox.Properties.BorderStyle = BorderStyles.Flat;
+                LanguageComboBox.Properties.Appearance.BorderColor = Color.Red;
+                return;
+            }
+
             var language = LanguageComboBox.SelectedItem.ToString();
 
             switch ( language )
@@ -57,5 +65,15 @@ namespace AlgoTeacher
 
             DialogResult = DialogResult.OK;
         }
+
+        private void LanguageComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (LanguageComboBox.SelectedIndex >= 0)
+            {
+                LanguageComboBox.Properties.BorderStyle = BorderStyles.NoBorder;
+                LanguageComboBox.Properties.Appearance.BorderColor = Color.Empty;
+            }
+        }
+
     }
 }

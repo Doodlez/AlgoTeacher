@@ -59,13 +59,18 @@ namespace UserControls
         // очистка формы
         public virtual void ClearControl()
         {
-            
+            throw new NotImplementedException();
         }
 
         // проверка ответа: генерирует одно из событий
         protected virtual void checkAnswer(object sender, EventArgs e)
         {
-            
+            throw new NotImplementedException();
+        }
+
+        public virtual void SetFocus()
+        {
+            throw  new NotImplementedException();
         }
     }
 }

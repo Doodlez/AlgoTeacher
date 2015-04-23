@@ -47,16 +47,21 @@
             // 
             this.LanguageComboBox.Location = new System.Drawing.Point(88, 72);
             this.LanguageComboBox.Name = "LanguageComboBox";
+            this.LanguageComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LanguageComboBox.Properties.Appearance.Options.UseFont = true;
             this.LanguageComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.LanguageComboBox.Size = new System.Drawing.Size(230, 22);
+            this.LanguageComboBox.Size = new System.Drawing.Size(230, 30);
             this.LanguageComboBox.TabIndex = 1;
+            this.LanguageComboBox.EditValueChanged += new System.EventHandler(this.LanguageComboBox_EditValueChanged);
             // 
             // SelectButton
             // 
+            this.SelectButton.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SelectButton.Appearance.Options.UseFont = true;
             this.SelectButton.Location = new System.Drawing.Point(366, 71);
             this.SelectButton.Name = "SelectButton";
-            this.SelectButton.Size = new System.Drawing.Size(100, 23);
+            this.SelectButton.Size = new System.Drawing.Size(102, 31);
             this.SelectButton.TabIndex = 2;
             this.SelectButton.Text = "Select";
             this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
 
 namespace UserControls
 {
@@ -15,13 +17,15 @@ namespace UserControls
         public QuestionControl() : base ()
         {
             InitializeComponent();
+            AnswerTextEdit.Focus();
         }
 
         private void AnswerButton_Click(object sender, EventArgs e)
         {
             if (AnswerTextEdit.Text.Length == 0)
             {
-                MessageBox.Show("Введите ответ");
+                AnswerTextEdit.Properties.BorderStyle = BorderStyles.Flat;
+                AnswerTextEdit.Properties.Appearance.BorderColor = Color.Red;
             }
             else
             {
@@ -51,6 +55,30 @@ namespace UserControls
             else
             {
                 this.OnBadAnswered(sender, e);
+            }
+        }
+
+        public override void SetFocus()
+        {
+
+            if (this.AnswerTextEdit.InvokeRequired)
+            {
+                SetCleanCallback d = new SetCleanCallback(SetFocus);
+                this.Invoke(d);
+            }
+            else
+            {
+                AnswerTextEdit.Focus();
+            } 
+           
+        }
+
+        private void AnswerTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (AnswerTextEdit.Text.Length != 0)
+            {
+                AnswerTextEdit.Properties.BorderStyle = BorderStyles.NoBorder;
+                AnswerTextEdit.Properties.Appearance.BorderColor = Color.Empty;
             }
         }
     }

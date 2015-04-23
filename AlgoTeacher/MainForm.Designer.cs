@@ -45,6 +45,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TaskComboBox.Size = new System.Drawing.Size(266, 35);
             this.TaskComboBox.TabIndex = 0;
+            this.TaskComboBox.SelectedValueChanged += new System.EventHandler(this.TaskComboBox_SelectedValueChanged);
             // 
             // GreetingControl
             // 

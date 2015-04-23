@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using AlgoTeacher.Interface;
 using AlgoTeacher.Logic;
 using AlgoTeacher.Properties;
+using DevExpress.XtraEditors.Controls;
 
 namespace AlgoTeacher
 {
@@ -49,8 +50,16 @@ namespace AlgoTeacher
 
         private void StartButton_Click(object sender, EventArgs e)
         {
+            if (TaskComboBox.SelectedIndex < 0)
+            {
+                // нужно ли выводить сообщение
+                TaskComboBox.Properties.BorderStyle = BorderStyles.Flat;
+                TaskComboBox.Properties.Appearance.BorderColor = Color.Red;
+                return;
+            }
             if (TaskComboBox.Properties.Items.Count != 0)
             {
+                
                 switch (TaskComboBox.SelectedIndex)
                 {
                     case 0:
@@ -91,6 +100,15 @@ namespace AlgoTeacher
                 MyTask selectedTask = testTasks[TaskComboBox.SelectedIndex];
                 selectedTask.ShowIntro();
                 this.Show();
+            }
+        }
+
+        private void TaskComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (TaskComboBox.SelectedIndex >= 0)
+            {
+                TaskComboBox.Properties.BorderStyle = BorderStyles.NoBorder;
+                TaskComboBox.Properties.Appearance.BorderColor = Color.Empty;
             }
         }
     }
