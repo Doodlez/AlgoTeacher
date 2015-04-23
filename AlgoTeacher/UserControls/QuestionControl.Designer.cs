@@ -70,6 +70,7 @@
             this.AnswerTextEdit.Size = new System.Drawing.Size(334, 39);
             this.AnswerTextEdit.StyleController = this.layoutControl1;
             this.AnswerTextEdit.TabIndex = 5;
+            this.AnswerTextEdit.EditValueChanged += new System.EventHandler(this.AnswerTextEdit_EditValueChanged);
             // 
             // AnswerButton
             // 

@@ -266,6 +266,7 @@ namespace AlgoTeacher
             x = e.Coord.X;
             y = e.Coord.Y;
             matrixGridView3.HighlightCell(e.Coord.X, e.Coord.Y);
+            questionControlBase.SetFocus();
             while (!pressed)
             {
                 System.Threading.Thread.Sleep(100);
@@ -322,11 +323,13 @@ namespace AlgoTeacher
                         SetupMatrix();
                     }
                     SecondQuest(_matrix1.RowsCount + ", " + _matrix2.ColumnsCount);
+                    questionControlBase.SetFocus();
                     return;
                 case 2:
                     ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
                     pressed = true;
                     questState = 3;
+                    questionControlBase.SetFocus();
                     ThirdQuest();
                     return;
                 case 3:
@@ -340,6 +343,7 @@ namespace AlgoTeacher
         // Обработка не правильных ответов
         public void BadAnswer_Send(object sender, EventArgs e)
         {
+            questionControlBase.SetFocus();
             switch (questState)
             {
                 case 1:
