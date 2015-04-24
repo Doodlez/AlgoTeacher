@@ -39,6 +39,7 @@
             this.AllowUserToDeleteRows = false;
             this.AllowUserToResizeColumns = false;
             this.AllowUserToResizeRows = false;
+            this.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BackgroundColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;

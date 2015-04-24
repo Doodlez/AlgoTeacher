@@ -393,5 +393,15 @@ namespace AlgoTeacher
             Invoke((Action)(() => { control.Text = str; control.Update();}));
             System.Threading.Thread.Sleep(time);
         }
+
+        private void ViewPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
