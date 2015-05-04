@@ -112,6 +112,7 @@
     <Compile Include="Logic\TaskHelp.cs" />
     <Compile Include="Logic\TaskCollection.cs" />
     <Compile Include="Logic\TaskEvents.cs" />
+    <Compile Include="Logic\TransportTheory.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
