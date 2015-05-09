@@ -38,9 +38,10 @@ namespace AlgoTeacher
 
             _language = _languageForm.SelectedLanguage;
             var taskNames = File.ReadAllLines(Path + _language + @"\task_names.txt", Encoding.Default);
-
             TaskComboBox.Properties.Items.Add(taskNames[0]);
             TaskComboBox.Properties.Items.Add(taskNames[1]);
+            TaskComboBox.Properties.Items.Add(taskNames[2]);
+
 
             var mainFormText = File.ReadAllLines(Path + _language + @"\main_form\main_form_text.txt", Encoding.Default);
             GreetingControl.Text = mainFormText[0];
@@ -59,13 +60,10 @@ namespace AlgoTeacher
             if (TaskComboBox.Properties.Items.Count != 0)
             {
                 var taskNames = File.ReadAllLines(Path + _language + @"\task_names.txt", Encoding.Default);
-                var testTasks = new MyTask[2];
+                var testTasks = new MyTask[3];
                 testTasks[0] = new MyTask("matrix_mult", taskNames[0], typeof(MatrixMultiplyForm), _language);
                 testTasks[1] = new MyTask("knapsack_problem", taskNames[1], typeof(KnapsackProblemForm), _language);
-
-
-                TaskCollection tasks = new TaskCollection(testTasks[0]);
-                TaskCollection tasks2 = new TaskCollection(testTasks[1]);
+                testTasks[2] = new MyTask("transport_task", taskNames[2], typeof(TransportTaskForm), _language);
 
                 var mainFormText = File.ReadAllLines(Path + _language + @"\main_form\main_form_text.txt", Encoding.Default);
                 GreetingControl.Text = mainFormText[0];

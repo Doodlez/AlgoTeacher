@@ -12,7 +12,7 @@ using System.IO;
 
 namespace AlgoTeacher
 {
-    public partial class MatrixMultiplyForm : DevExpress.XtraEditors.XtraForm
+    public partial class TransportTaskForm : DevExpress.XtraEditors.XtraForm
     {
         public delegate void SetQuestionCallback(string text);
 
@@ -46,11 +46,11 @@ namespace AlgoTeacher
 
         private int sleepTime = 1000;
 
-        public MatrixMultiplyForm(string language)
+        public TransportTaskForm(string language)
         {
             _language = language;
-            text = File.ReadAllLines(path + _language + @"\transport_task\text.txt", Encoding.Default);
-            buttons_text = File.ReadAllLines(path + _language + @"\transport_task\buttons_text.txt", Encoding.Default);
+            text = File.ReadAllLines(path + _language + @"\matrix_mult\text.txt", Encoding.Default);
+            buttons_text = File.ReadAllLines(path + _language + @"\matrix_mult\buttons_text.txt", Encoding.Default);
 
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
@@ -64,7 +64,7 @@ namespace AlgoTeacher
 
         }
 
-        private void MatrixMultiplyForm_Load(object sender, EventArgs e)
+        private void TransportTaskForm_Load(object sender, EventArgs e)
         {
             SetupMatrix();
             // запуск квеста про возможность перемножения

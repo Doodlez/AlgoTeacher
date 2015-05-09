@@ -1,0 +1,6 @@
+Let's look at this in more detail -
+if you want to multiply two matrices,
+then you need to iterate sequentially
+and multiply each row of the first matrix
+and each column of the second matrix
+(multiplied element-wise).
