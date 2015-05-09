@@ -69,14 +69,14 @@
             this.Thing1NameLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Thing1NameLabel.Location = new System.Drawing.Point(64, 122);
             this.Thing1NameLabel.Name = "Thing1NameLabel";
-            this.Thing1NameLabel.Size = new System.Drawing.Size(66, 24);
+            this.Thing1NameLabel.Size = new System.Drawing.Size(11, 24);
             this.Thing1NameLabel.TabIndex = 2;
-            this.Thing1NameLabel.Text = "Вещь 1";
+            this.Thing1NameLabel.Text = "1";
             // 
             // Thing1Weight
             // 
             this.Thing1Weight.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Thing1Weight.Location = new System.Drawing.Point(191, 122);
+            this.Thing1Weight.Location = new System.Drawing.Point(124, 122);
             this.Thing1Weight.Name = "Thing1Weight";
             this.Thing1Weight.Size = new System.Drawing.Size(33, 24);
             this.Thing1Weight.TabIndex = 3;
@@ -85,7 +85,7 @@
             // Thing1Value
             // 
             this.Thing1Value.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Thing1Value.Location = new System.Drawing.Point(282, 122);
+            this.Thing1Value.Location = new System.Drawing.Point(215, 122);
             this.Thing1Value.Name = "Thing1Value";
             this.Thing1Value.Size = new System.Drawing.Size(33, 24);
             this.Thing1Value.TabIndex = 4;
@@ -94,7 +94,7 @@
             // Thing2Value
             // 
             this.Thing2Value.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Thing2Value.Location = new System.Drawing.Point(282, 152);
+            this.Thing2Value.Location = new System.Drawing.Point(215, 152);
             this.Thing2Value.Name = "Thing2Value";
             this.Thing2Value.Size = new System.Drawing.Size(33, 24);
             this.Thing2Value.TabIndex = 7;
@@ -103,7 +103,7 @@
             // Thing2Weight
             // 
             this.Thing2Weight.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Thing2Weight.Location = new System.Drawing.Point(191, 152);
+            this.Thing2Weight.Location = new System.Drawing.Point(124, 152);
             this.Thing2Weight.Name = "Thing2Weight";
             this.Thing2Weight.Size = new System.Drawing.Size(33, 24);
             this.Thing2Weight.TabIndex = 6;
@@ -114,14 +114,14 @@
             this.Thing2NameLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Thing2NameLabel.Location = new System.Drawing.Point(64, 152);
             this.Thing2NameLabel.Name = "Thing2NameLabel";
-            this.Thing2NameLabel.Size = new System.Drawing.Size(66, 24);
+            this.Thing2NameLabel.Size = new System.Drawing.Size(11, 24);
             this.Thing2NameLabel.TabIndex = 5;
-            this.Thing2NameLabel.Text = "Вещь 1";
+            this.Thing2NameLabel.Text = "2";
             // 
             // Thing3Value
             // 
             this.Thing3Value.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Thing3Value.Location = new System.Drawing.Point(282, 182);
+            this.Thing3Value.Location = new System.Drawing.Point(215, 182);
             this.Thing3Value.Name = "Thing3Value";
             this.Thing3Value.Size = new System.Drawing.Size(33, 24);
             this.Thing3Value.TabIndex = 10;
@@ -130,7 +130,7 @@
             // Thing3Weight
             // 
             this.Thing3Weight.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Thing3Weight.Location = new System.Drawing.Point(191, 182);
+            this.Thing3Weight.Location = new System.Drawing.Point(124, 182);
             this.Thing3Weight.Name = "Thing3Weight";
             this.Thing3Weight.Size = new System.Drawing.Size(33, 24);
             this.Thing3Weight.TabIndex = 9;
@@ -141,15 +141,15 @@
             this.Thing3NameLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Thing3NameLabel.Location = new System.Drawing.Point(64, 182);
             this.Thing3NameLabel.Name = "Thing3NameLabel";
-            this.Thing3NameLabel.Size = new System.Drawing.Size(66, 24);
+            this.Thing3NameLabel.Size = new System.Drawing.Size(11, 24);
             this.Thing3NameLabel.TabIndex = 8;
-            this.Thing3NameLabel.Text = "Вещь 1";
+            this.Thing3NameLabel.Text = "3";
             // 
             // WeightLabel
             // 
             this.WeightLabel.AutoSize = true;
             this.WeightLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WeightLabel.Location = new System.Drawing.Point(187, 85);
+            this.WeightLabel.Location = new System.Drawing.Point(120, 85);
             this.WeightLabel.Name = "WeightLabel";
             this.WeightLabel.Size = new System.Drawing.Size(42, 24);
             this.WeightLabel.TabIndex = 11;
@@ -158,7 +158,7 @@
             // ValueLabel
             // 
             this.ValueLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ValueLabel.Location = new System.Drawing.Point(263, 85);
+            this.ValueLabel.Location = new System.Drawing.Point(196, 85);
             this.ValueLabel.Name = "ValueLabel";
             this.ValueLabel.Size = new System.Drawing.Size(86, 24);
             this.ValueLabel.TabIndex = 12;
@@ -204,6 +204,7 @@
             this.Controls.Add(this.CapacityNameLabel);
             this.Name = "KnapsackProblemForm";
             this.Text = "KnapsackProblemForm";
+            this.Load += new System.EventHandler(this.KnapsackProblemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AnswerTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
