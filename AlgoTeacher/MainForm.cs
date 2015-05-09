@@ -25,7 +25,6 @@ namespace AlgoTeacher
         private LanguageForm _languageForm;
 
         const string Path = @"..\..\Questions\";
-        private string Dir;
 
         public MainForm()
         {
@@ -59,35 +58,11 @@ namespace AlgoTeacher
             }
             if (TaskComboBox.Properties.Items.Count != 0)
             {
-                
-                switch (TaskComboBox.SelectedIndex)
-                {
-                    case 0:
-                        Dir = "matrix_mult_form";
-                        break;
-
-                    case 1:
-                        Dir = "knapsack_problem_form";
-                        break;
-                }
-
-                string introText = File.ReadAllText(Path + _language + @"\intro_form\" + Dir + @"\intro_text.txt", Encoding.Default);
-                string[] introButtonsText = File.ReadAllLines(Path + _language + @"\intro_form\intro_form_buttons.txt", Encoding.Default);
-                string[] infoButtonsText = File.ReadAllLines(Path + _language + @"\info_form\info_form_buttons.txt", Encoding.Default);
-                string[] infoButtonNoText = File.ReadAllLines(Path + _language + @"\info_form\info_form_no_button.txt", Encoding.Default);
-                List<string> helpsText = new List<string>();
-                var helpsText1 = File.ReadAllText(Path + _language + @"\" + Dir + @"\helps_text_1.txt", Encoding.Default);
-                var helpsText2 = File.ReadAllText(Path + _language + @"\" + Dir + @"\helps_text_2.txt", Encoding.Default);
-                var helpsText3 = File.ReadAllText(Path + _language + @"\" + Dir + @"\helps_text_3.txt", Encoding.Default);
-                helpsText.Add(helpsText1);
-                helpsText.Add(helpsText2);
-                helpsText.Add(helpsText3);
-
-                TaskHelp testHelp = new TaskHelp("test", helpsText);
                 var taskNames = File.ReadAllLines(Path + _language + @"\task_names.txt", Encoding.Default);
                 var testTasks = new MyTask[2];
-                testTasks[0] = new MyTask(taskNames[0], typeof(MatrixMultiplyForm), _language, introText, introButtonsText, infoButtonsText, infoButtonNoText, testHelp);
-                testTasks[1] = new MyTask(taskNames[1], typeof(KnapsackProblemForm), _language, introText, introButtonsText, infoButtonsText, infoButtonNoText, testHelp);
+                testTasks[0] = new MyTask("matrix_mult", taskNames[0], typeof(MatrixMultiplyForm), _language);
+                testTasks[1] = new MyTask("knapsack_problem", taskNames[1], typeof(KnapsackProblemForm), _language);
+
 
                 TaskCollection tasks = new TaskCollection(testTasks[0]);
                 TaskCollection tasks2 = new TaskCollection(testTasks[1]);

@@ -49,8 +49,8 @@ namespace AlgoTeacher
         public MatrixMultiplyForm(string language)
         {
             _language = language;
-            text = File.ReadAllLines(path + _language + @"\matrix_mult_form\text.txt", Encoding.Default);
-            buttons_text = File.ReadAllLines(path + _language + @"\matrix_mult_form\buttons_text.txt", Encoding.Default);
+            text = File.ReadAllLines(path + _language + @"\matrix_mult\text.txt", Encoding.Default);
+            buttons_text = File.ReadAllLines(path + _language + @"\matrix_mult\buttons_text.txt", Encoding.Default);
 
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;

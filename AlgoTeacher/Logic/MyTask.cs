@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,11 @@ namespace AlgoTeacher.Logic
 {
     public class MyTask
     {
+        const string Path = @"..\..\Questions\";
+
         public string Name;
+
+        public string Label;
 
         private Type _formType;
 
@@ -26,21 +31,31 @@ namespace AlgoTeacher.Logic
 
         private TaskHelp _help;
 
-        public MyTask(string name, Type formType, string langauge, string introText, string[] introButtonsText, string[] infoButtonsText, string[] infoButtonNoText, TaskHelp help)
+        public MyTask(string name, string label, Type formType, string langauge)
         {
             Name = name;
+            Label = label;
             _formType = formType;
             _language = langauge;
-            _introText = introText;
-            _introButtonsText = introButtonsText;
-            _infoButtonsText = infoButtonsText;
-            _infoButtonNoText = infoButtonNoText;
-            _help = help;
+            _introText = File.ReadAllText(Path + _language + @"\intro_form\" + Name + @"\intro_text.txt", Encoding.Default); ;
+            _introButtonsText = File.ReadAllLines(Path + _language + @"\intro_form\intro_form_buttons.txt", Encoding.Default);
+            _infoButtonsText = File.ReadAllLines(Path + _language + @"\info_form\info_form_buttons.txt", Encoding.Default);
+            _infoButtonNoText =  File.ReadAllLines(Path + _language + @"\info_form\info_form_no_button.txt", Encoding.Default);
+
+            List<string> helpsText = new List<string>();
+            var helpsText1 = File.ReadAllText(Path + _language + @"\" + Name + @"\helps_text_1.txt", Encoding.Default);
+            var helpsText2 = File.ReadAllText(Path + _language + @"\" + Name + @"\helps_text_2.txt", Encoding.Default);
+            var helpsText3 = File.ReadAllText(Path + _language + @"\" + Name + @"\helps_text_3.txt", Encoding.Default);
+            helpsText.Add(helpsText1);
+            helpsText.Add(helpsText2);
+            helpsText.Add(helpsText3);
+
+            _help = new TaskHelp("test", helpsText);
         }
 
         public override string ToString()
         {
-            return Name;
+            return Label;
         }
 
         // Временное решение

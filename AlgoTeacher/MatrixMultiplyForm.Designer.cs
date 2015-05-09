@@ -324,7 +324,7 @@ namespace AlgoTeacher
             this.questionControlBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.questionControlBase.Location = new System.Drawing.Point(0, 0);
             this.questionControlBase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.questionControlBase.MaximumSize = new System.Drawing.Size(343, 0);
+            this.questionControlBase.MaximumSize = new System.Drawing.Size(343, 2);
             this.questionControlBase.MinimumSize = new System.Drawing.Size(228, 102);
             this.questionControlBase.Name = "questionControlBase";
             this.questionControlBase.Size = new System.Drawing.Size(322, 102);

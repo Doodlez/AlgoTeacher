@@ -25,8 +25,8 @@ namespace AlgoTeacher
             InitializeComponent();
             _language = language;
             _logic = new KnapsackProblem();
-            
-            text = File.ReadAllLines(path + _language + @"\knapsack_problem_form\form_text.txt", Encoding.Default);
+
+            text = File.ReadAllLines(path + _language + @"\knapsack_problem\form_text.txt", Encoding.Default);
             this.CapacityNameLabel.Text = text[0];
             this.WeightLabel.Text = text[1];
             this.ValueLabel.Text = text[2];
