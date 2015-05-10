@@ -207,7 +207,7 @@ namespace AlgoTeacher
 
         private void FirstQuest(bool answ)
         {
-            questionControlBase = new YesNoQuestionControl();
+            questionControlBase = new TwoVariantsQuestionControl();
             SetQuestControlEventHandler();
             questionControlBase.SetAnswer(answ.ToString());
             InitQuestComponent();

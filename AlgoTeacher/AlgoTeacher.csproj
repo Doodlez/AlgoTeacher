@@ -169,11 +169,11 @@
     <Compile Include="UserControls\SizeQuestionControl.Designer.cs">
       <DependentUpon>SizeQuestionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\YesNoQuestionControl.cs">
+    <Compile Include="UserControls\TwoVariantsQuestionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\YesNoQuestionControl.Designer.cs">
-      <DependentUpon>YesNoQuestionControl.cs</DependentUpon>
+    <Compile Include="UserControls\TwoVariantsQuestionControl.Designer.cs">
+      <DependentUpon>TwoVariantsQuestionControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="TransportTaskForm.resx">
       <DependentUpon>TransportTaskForm.cs</DependentUpon>
@@ -217,8 +217,8 @@
     <EmbeddedResource Include="UserControls\SizeQuestionControl.resx">
       <DependentUpon>SizeQuestionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\YesNoQuestionControl.resx">
-      <DependentUpon>YesNoQuestionControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\TwoVariantsQuestionControl.resx">
+      <DependentUpon>TwoVariantsQuestionControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">

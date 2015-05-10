@@ -22,11 +22,10 @@ namespace AlgoTeacher
 
         private int NumberOfFails = 0;
    
-        private readonly MatrixMultiply _logic;
-        private Matrix _matrix1;
-        private Matrix _matrix2;
+        //private readonly MatrixMultiply _logic;
+        //private Matrix _matrix1;
+        //private Matrix _matrix2;
 
-        private Matrix _matrixRes;
         public DataTable resTab;
 
         private Thread CaclThread;
@@ -58,117 +57,31 @@ namespace AlgoTeacher
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
 
-            _logic = new MatrixMultiply(language);
-            _logic.questEvent += _questHandler;
-            _logic.fillEvent += _fillHandler;
+            // TODO: Добавить содание логики + добавление в обработчиков логики
+            //_logic = new MatrixMultiply(language);
+            //_logic.questEvent += _questHandler;
+            //_logic.fillEvent += _fillHandler;
 
         }
 
         private void TransportTaskForm_Load(object sender, EventArgs e)
         {
-            SetupMatrix();
-            // запуск квеста про возможность перемножения
+            // TODO: переделать настройку матрицы, для транспортной задачи
+            //SetupMatrix();
+
+            //TODO: при генерации таблицы нужно подготовить ответ к первому тесту
             // нужно передать ответ, можно ли создать.
-            bool answ;
+            bool answ = false;
 
-            if (_matrix1.ColumnsCount == _matrix2.RowsCount)
-            {
-                answ = true;
-            }
-            else
-            {
-                answ = false;
-            }
             // Запуск первого уровня
-            FirstQuest(answ);
+            Quest1(answ);
         }
-        
-        // Ворой уровень помощи
-        private string GetFormula(int n)
-        {
-            string result = "C" + x.ToString() + y.ToString() + " = ";
-            for (int i = 1; i <= n; i++)
-            {
-                result += "A" + x.ToString() + i.ToString();
-                result += " * ";
-                result += "B" + i.ToString() + y.ToString();
-                if (i != n) result += " + ";
-            }
-            return result;
-        }
-
-        // Третий уровень помощи
-        private string GetExtendedFormula(Matrix matrix1, Matrix matrix2)
-        {
-            string result = "C" + x.ToString() + y.ToString() + " = ";
-            for (int i = 1; i <= matrix1.ColumnsCount; i++)
-            {
-                result += matrix1.Values[x - 1][i - 1].ToString();
-                result += " * ";
-                result += matrix2.Values[i - 1][y - 1].ToString();
-                if (i != matrix1.ColumnsCount) result += " + ";
-            }
-            return result;
-        }
-
-        // генерация размерности и рандомная генерация значений матриц
+      
         private void SetupMatrix()
         {
-            _matrix1 = new Matrix();
-            Thread.Sleep(100);
-            _matrix2 = new Matrix();
-
-            matrixGridView1.AddValues(IntToString(_matrix1.Values, _matrix1.RowsCount, _matrix1.ColumnsCount), 
-                _matrix1.RowsCount, _matrix1.ColumnsCount);
-            matrixGridView2.AddValues(IntToString(_matrix2.Values, _matrix2.RowsCount, _matrix2.ColumnsCount), 
-                _matrix2.RowsCount, _matrix2.ColumnsCount);
+            throw new NotImplementedException("Создание матрицы для транспортной задачи не добавлена");
         }
 
-        private string[][] IntToString(int[][] values, int rows,int cols)
-        {
-            var res = new string[rows][];
-            for (int i = 0; i < rows; i++)
-            {
-                res[i] = new string[cols];
-            }
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    res[i][j] = values[i][j].ToString();
-                }
-            }
-
-            return res;
-        }
-
-        private string[][] EmptyStringArray(int rows, int cols)
-        {
-            var res = new string[rows][];
-            for (int i = 0; i < rows; i++)
-            {
-                res[i] = new string[cols];
-            }
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    res[i][j] = " ";
-                }
-            }
-
-            return res;
-        }
-
-        private void SetupResultMatrix()
-        {
-            // генерация размерности и рандомная генерация значений матриц
-            _matrixRes = new Matrix(_matrix1.RowsCount, _matrix2.ColumnsCount);
-            matrixGridView3.AddValues(EmptyStringArray(_matrixRes.RowsCount, _matrixRes.ColumnsCount), 
-                _matrixRes.RowsCount, _matrixRes.ColumnsCount);
-        }
 
         // функция для установки вопроса из др потока
         public void SetQuestionText(string text)
@@ -205,74 +118,89 @@ namespace AlgoTeacher
             questionControlBase.Dock = DockStyle.Fill;
         }
 
-        private void FirstQuest(bool answ)
+        // TODO: переделать первый квест - замкнутая или нет задача? 
+        private void Quest1(bool answ)
         {
-            questionControlBase = new YesNoQuestionControl();
-            SetQuestControlEventHandler();
-            questionControlBase.SetAnswer(answ.ToString());
-            InitQuestComponent();
-            pressed = false;
-            quest = new YesNoQuest("first", text[0], answ);
-            QuestionLabel.Text = quest.Question;
+            throw new NotImplementedException("Вопрос о запкнутости не реализован");
+            //questionControlBase = new TwoVariantsQuestionControl();
+            //SetQuestControlEventHandler();
+            //questionControlBase.SetAnswer(answ.ToString());
+            //InitQuestComponent();
+            //pressed = false;
+            //quest = new YesNoQuest("first", text[0], answ);
+            //QuestionLabel.Text = quest.Question;
         }
 
-        private void SecondQuest(string answ)
+        // TODO: переделать второй квест - что добавить для замкнутости? 
+        private void Quest2(bool answ)
         {
-            questionControlBase = new SizeQuestionControl();
-            SetQuestControlEventHandler();
-            questionControlBase.SetAnswer(answ);
-            InitQuestComponent();
-            pressed = false;
-            quest = new IntegerIntegerValueQuest("second", text[1], answ);
-            QuestionLabel.Text = quest.Question;
+            throw new NotImplementedException("Вопрос о запкнутости не реализован");
+            //questionControlBase = new TwoVariantsQuestionControl();
+            //SetQuestControlEventHandler();
+            //questionControlBase.SetAnswer(answ.ToString());
+            //InitQuestComponent();
+            //pressed = false;
+            //quest = new YesNoQuest("first", text[0], answ);
+            //QuestionLabel.Text = quest.Question;
         }
-        
-        private void ThirdQuest()
+
+        // TODO: переделать третий квест - Северозападный угол? 
+        private void Quest3()
         {
-            questionControlBase = new QuestionControl();
-            SetQuestControlEventHandler();
-            InitQuestComponent();
-            pressed = false;
-            SetupResultMatrix();
-            SetQuestionText(" ");
-            CaclThread = new Thread(RunThird) { IsBackground = true };
-            CaclThread.Start();
+            throw new NotImplementedException("Вопрос о С-З не добавлен");
+            //questionControlBase = new SizeQuestionControl();
+            //SetQuestControlEventHandler();
+            //questionControlBase.SetAnswer(answ);
+            //InitQuestComponent();
+            //pressed = false;
+            //quest = new IntegerIntegerValueQuest("second", text[1], answ);
+            //QuestionLabel.Text = quest.Question;
+        }
+        // TODO: переделать 4-й квест - Сам алгоритм 
+        private void Quest4()
+        {
+            throw new NotImplementedException("Оставшееся решение транспортной задачи");
+            //questionControlBase = new QuestionControl();
+            //SetQuestControlEventHandler();
+            //InitQuestComponent();
+            //pressed = false;
+            //SetupResultMatrix();
+            //SetQuestionText(" ");
+            //CaclThread = new Thread(RunThird) { IsBackground = true };
+            //CaclThread.Start();
         }
 
         // запускает в потоке (собственно сам процесс перемножения)
         void RunThird()
         {
-           var res = _logic.MatrixMult(_matrix1, _matrix2);
-           if (res == null)
-            {
-                ChangeAndAwait(QuestionLabel, text[2], sleepTime);
-            }
-            else
-            {
-                ChangeAndAwait(QuestionLabel, text[3], sleepTime);
-                DialogResult = DialogResult.Cancel;
-            }
+           //var res = _logic.MatrixMult(_matrix1, _matrix2);
+           //if (res == null)
+           // {
+           //     ChangeAndAwait(QuestionLabel, text[2], sleepTime);
+           // }
+           // else
+           // {
+           //     ChangeAndAwait(QuestionLabel, text[3], sleepTime);
+           //     DialogResult = DialogResult.Cancel;
+           // }
         }
 
+        // TODO: Проверить обработчики, если нужно переделать
         // обработка вычислений
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
-            matrixGridView3.ClearHighlight();
-            matrixGridView1.ClearHighlight();
-            matrixGridView2.ClearHighlight();
             SetQuestionText(e.Quest.Question + "\r\n" + "Ответ: " + e.Quest.Answer);
             quest = e.Quest;
             questionControlBase.SetAnswer(e.Quest.Answer);
             x = e.Coord.X;
             y = e.Coord.Y;
-            matrixGridView3.HighlightCell(e.Coord.X, e.Coord.Y);
             questionControlBase.SetFocus();
             while (!pressed)
             {
                 System.Threading.Thread.Sleep(100);
             }
             
-            ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
+            MatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
             SetQuestionText(" ");
 
             this.questionControlBase.ClearControl();
@@ -290,16 +218,16 @@ namespace AlgoTeacher
                 System.Threading.Thread.Sleep(200);
                 t = false;
             }
-            ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
+            MatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
         }
 
         // заполнение результирующей матрицы
-        private void ResultMatrFillCell(int row, int col, string value)
+        private void MatrFillCell(int row, int col, string value)
         {
             try
             {
-                matrixGridView3[col - 1, row - 1].Value = value;
-                matrixGridView3.Refresh();
+                matrixGridView1[col - 1, row - 1].Value = value;
+                matrixGridView1.Refresh();
 
             }
             catch (Exception e)
@@ -308,6 +236,7 @@ namespace AlgoTeacher
             }
         }
         
+        // TODO: Добавит вызовы квестов
         // обработка правильный ответов
         public void GoodAnswer_Send(object sender, EventArgs e)
         {
@@ -318,11 +247,7 @@ namespace AlgoTeacher
                     
                     pressed = true;
                     questState = 2;
-                    while (_matrix1.ColumnsCount != _matrix2.RowsCount)
-                    {
-                        SetupMatrix();
-                    }
-                    SecondQuest(_matrix1.RowsCount + ", " + _matrix2.ColumnsCount);
+                    //Quest2(...);
                     questionControlBase.SetFocus();
                     return;
                 case 2:
@@ -330,9 +255,16 @@ namespace AlgoTeacher
                     pressed = true;
                     questState = 3;
                     questionControlBase.SetFocus();
-                    ThirdQuest();
+                    //Quest3();
                     return;
                 case 3:
+                    ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
+                    pressed = true;
+                    questState = 4;
+                    questionControlBase.SetFocus();
+                    //Quest4();
+                    return;
+                case 4:
                     ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
                     NumberOfFails = 0;
                     pressed = true;
@@ -340,6 +272,7 @@ namespace AlgoTeacher
             }
         }
 
+        // TODO: ПОправить обработку неправильных ответов
         // Обработка не правильных ответов
         public void BadAnswer_Send(object sender, EventArgs e)
         {
@@ -348,7 +281,7 @@ namespace AlgoTeacher
             {
                 case 1:
                     ChangeAndAwait(QuestionLabel, text[6], sleepTime);
-                    SetupMatrix();
+                    //SetupMatrix();
                     return;
                 case 2:
                     ChangeAndAwait(QuestionLabel, "Не правильно!", sleepTime);
@@ -362,22 +295,38 @@ namespace AlgoTeacher
                     NumberOfFails++;
                     if (NumberOfFails > 0)
                     {
-                        matrixGridView1.HighlightRow(x);
-                        matrixGridView2.HighlightColumn(y);
+                        throw new NotImplementedException("Подсказка 1 не реализована");
                     }
                     if (NumberOfFails == 2)
                     {
-                        QuestionLabel.Text = "Смотри, чтобы получить элемент " +
-                                             "(" + x.ToString() + "," + y.ToString() + ") \r\n" +
-                                             " воспользуйся формулой: \r\n" + GetFormula(_matrix1.ColumnsCount);
-                        QuestionLabel.Update();
+                        throw new NotImplementedException("Подсказка 2 не реализована");
                     }
                     if (NumberOfFails == 3)
                     {
-                        QuestionLabel.Text = "Внимательнее, в данном случае элемент " +
-                                             "(" + x.ToString() + "," + y.ToString() + ") \r\n" +
-                                             " получается следующим образом: \r\n" + GetExtendedFormula(_matrix1,_matrix2);
-                        QuestionLabel.Update();
+                        throw new NotImplementedException("Подсказка 4 не реализована");
+                    }
+                    if (NumberOfFails == 4)
+                    {
+                        ChangeAndAwait(QuestionLabel, "Дружок, всё плохо! Посмотри обучение ещё раз.", 2500); 
+                        this.Close();
+                    }
+                    return;
+                case 4:
+                    ChangeAndAwait(QuestionLabel, "Не правильно! Будь внимательнее!", sleepTime);
+                    QuestionLabel.Text = quest.Question;
+                    questionControlBase.ClearControl();
+                    NumberOfFails++;
+                    if (NumberOfFails > 0)
+                    {
+                        throw new NotImplementedException("Подсказка 1 не реализована");
+                    }
+                    if (NumberOfFails == 2)
+                    {
+                        throw new NotImplementedException("Подсказка 2 не реализована");
+                    }
+                    if (NumberOfFails == 3)
+                    {
+                        throw new NotImplementedException("Подсказка 4 не реализована");
                     }
                     if (NumberOfFails == 4)
                     {
@@ -394,14 +343,23 @@ namespace AlgoTeacher
             System.Threading.Thread.Sleep(time);
         }
 
-        private void ViewPanel_Paint(object sender, PaintEventArgs e)
+        private string[][] IntToString(int[][] values, int rows, int cols)
         {
+            var res = new string[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                res[i] = new string[cols];
+            }
 
-        }
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    res[i][j] = values[i][j].ToString();
+                }
+            }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            return res;
         }
     }
 }
