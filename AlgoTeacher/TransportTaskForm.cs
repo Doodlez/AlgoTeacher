@@ -19,12 +19,11 @@ namespace AlgoTeacher
         private readonly QuestEvents.QuestEventHandler _questHandler;
         private readonly FillEvents.FillEventHandler _fillHandler;
 
-
         private int NumberOfFails = 0;
    
-        //private readonly MatrixMultiply _logic;
-        //private Matrix _matrix1;
-        //private Matrix _matrix2;
+        private readonly TransportTask _logic;
+        private int _numberOfGivers, _numberOfTakers;
+        private Matrix _pricesMatrix;
 
         public DataTable resTab;
 
@@ -77,9 +76,13 @@ namespace AlgoTeacher
             Quest1(answ);
         }
       
-        private void SetupMatrix()
+        private void SetupTransportTask()
         {
-            throw new NotImplementedException("Создание матрицы для транспортной задачи не добавлена");
+            //throw new NotImplementedException("Создание матрицы для транспортной задачи не добавлена");
+            var random = new Random();
+            _numberOfGivers = random.Next(3, 6);
+            _numberOfTakers = random.Next(3, 6);
+            _pricesMatrix = new Matrix(_numberOfGivers, _numberOfTakers, 1, 9);
         }
 
 

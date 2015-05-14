@@ -29,9 +29,9 @@ namespace AlgoTeacher
             set;
         }
 
-        public Matrix()
+        public Matrix(int lowerSizeLimit = 2, int upperSizeLimit = 4, int lowerValueLimit = 0, int upperValueLimit = 9)
         {
-            MakeRandomMatrix();
+            MakeRandomMatrix(lowerSizeLimit, upperSizeLimit, lowerValueLimit, upperValueLimit);
         }
 
         public Matrix(int rows, int columns)
@@ -62,13 +62,13 @@ namespace AlgoTeacher
             }
         }
 
-        private void MakeRandomMatrix()
+        private void MakeRandomMatrix(int lowerSizeLimit = 2, int upperSizeLimit = 4, int lowerValueLimit = 0, int upperValueLimit = 9)
         {
             var random = new Random();
 
-            RowsCount = random.Next(2, 5);
+            RowsCount = random.Next(lowerSizeLimit, upperSizeLimit + 1);
             Thread.Sleep(100);
-            ColumnsCount = random.Next(2, 5);
+            ColumnsCount = random.Next(lowerSizeLimit, upperSizeLimit + 1);
 
             Values = new int[RowsCount][];
 
@@ -77,7 +77,7 @@ namespace AlgoTeacher
                 Values[i] = new int[ColumnsCount];
                 for (var j = 0; j < ColumnsCount; j++)
                 {
-                    Values[i][j] = random.Next(10);
+                    Values[i][j] = random.Next(lowerValueLimit, upperValueLimit + 1);
                 }
             }
         }
