@@ -12,7 +12,7 @@ namespace AlgoTeacher.Logic
         public int NumberOfTakers;
         public int[] NeedsOfGivers;
         public int[] NeedsOfTakers;
-        public int[][] Prices;
+        public Matrix Prices;
         public int[] PotentialsOfGivers;
         public int[] PotentialsOfTakers;
         public bool[] UsedPotentialsOfGivers;
@@ -36,42 +36,54 @@ namespace AlgoTeacher.Logic
         public bool[][] Horizontal;
         public bool[][] Vertical;
 
-        public TransportTask()
+        public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, Matrix pricesMatrix)
         {
-            
+            NumberOfGivers = numberOfGivers;
+            NumberOfTakers = numberOfTakers;
+            NeedsOfGivers = needsOfGivers;
+            NeedsOfTakers = needsOfTakers;
+            Prices = pricesMatrix;
+        }
+
+        public static int[] GetGiversTakers(int lowerLimit, int upperLimit)
+        {
+            int[] result = new int[2];
+            var random = new Random();
+
+            result[0] = random.Next(lowerLimit, upperLimit);
+            result[1] = random.Next(lowerLimit, upperLimit);
+
+            return result;
+        }
+
+        public static int[][] GetRandomNeeds(int givers, int takers)
+        {
+            int[][] result = new int[2][];
+
+            result[0] = new int[givers];
+            result[1] = new int[takers];
+
+            var random = new Random();
+            int giversLimit = 8 - givers;
+            int takersLimit = 8 - takers;
+
+            for (int i = 0; i < givers; i++)
+            {
+                result[0][i] = random.Next(1, giversLimit + 1) * 10;
+                result[1][i] = random.Next(1, takersLimit + 1) * 10;
+            }
+
+            return result;
         }
 
         public int Main() 
         {
-            // Надо получить n, m
-  
-	        for (int i = 1; i <= NumberOfGivers; i++)
-	        {
-		        // получить give[i]   
-	        }
-  
-	        for (int i = 1; i <= NumberOfTakers; i++)
-	        {
-		        // получить take[i]
-	        }
-  
-	        for (int i = 1; i <= NumberOfGivers; i++)
-		        for (int j = 1; j <= NumberOfTakers; j++)
-			        // получить c[i][j]
-    
 	        NorthWest();
   
 	        BestResult = Costs();
   
 	        while(true)
 	        {
-		        // Вывод z
-		        for (int i = 1; i <= NumberOfGivers; i++) {
-			        for (int j = 1; j <= NumberOfTakers; j++) {
-				        // Вывод currentResult[i][j]
-			        }
-		        }
-
 		        Potentials();
     
 		        if (EstimateCheck())
@@ -315,11 +327,11 @@ namespace AlgoTeacher.Logic
         private int Costs() 
         {
 	        int res = 0;
-  
-	        for (int i = 1; i <= NumberOfGivers; i++)
-		        for (int j = 1; j <= NumberOfTakers; j++)
-			        if (Basis[i][j])
-				        res += CurrentResult[i][j] * Prices[i][j];
+
+            for ( int i = 1; i <= NumberOfGivers; i++ )
+                for ( int j = 1; j <= NumberOfTakers; j++ )
+                    if (Basis[i][j])
+                        res += CurrentResult[i][j] * Prices.Values[i - 1][j - 1];
       
 	        return res;
         }
@@ -344,13 +356,13 @@ namespace AlgoTeacher.Logic
 				        {
 					        if (UsedPotentialsOfGivers[i])
 					        {
-						        PotentialsOfTakers[j] = Prices[i][j] - PotentialsOfGivers[i];
+						        PotentialsOfTakers[j] = Prices.Values[i - 1][j - 1] - PotentialsOfGivers[i];
 						        UsedPotentialsOfTakers[j] = true; 
 					        }
 		  
 					        if (UsedPotentialsOfTakers[j])
 					        {
-						        PotentialsOfGivers[i] = Prices[i][j] - PotentialsOfTakers[j];
+						        PotentialsOfGivers[i] = Prices.Values[i - 1][j - 1] - PotentialsOfTakers[j];
 						        UsedPotentialsOfGivers[i] = true;
 					        }
 				        }
@@ -363,7 +375,7 @@ namespace AlgoTeacher.Logic
 		        {
 			        if (!Basis[i][j])
 			        {
-				        S[i][j] = Prices[i][j] - PotentialsOfGivers[i] - PotentialsOfTakers[j];
+				        S[i][j] = Prices.Values[i - 1][j - 1] - PotentialsOfGivers[i] - PotentialsOfTakers[j];
 			        }
 			        else S[i][j] = 0;
 		        }

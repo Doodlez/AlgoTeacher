@@ -23,6 +23,7 @@ namespace AlgoTeacher
    
         private readonly TransportTask _logic;
         private int _numberOfGivers, _numberOfTakers;
+        private int[] _needsOfGivers, _needsOfTakers;
         private Matrix _pricesMatrix;
 
         public DataTable resTab;
@@ -57,7 +58,7 @@ namespace AlgoTeacher
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
 
             // TODO: Добавить содание логики + добавление в обработчиков логики
-            //_logic = new MatrixMultiply(language);
+            _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMatrix);
             //_logic.questEvent += _questHandler;
             //_logic.fillEvent += _fillHandler;
 
@@ -66,11 +67,21 @@ namespace AlgoTeacher
         private void TransportTaskForm_Load(object sender, EventArgs e)
         {
             // TODO: переделать настройку матрицы, для транспортной задачи
-            //SetupMatrix();
+            SetupTransportTask();
 
             //TODO: при генерации таблицы нужно подготовить ответ к первому тесту
-            // нужно передать ответ, можно ли создать.
             bool answ = false;
+
+            int giversSum = 0, takersSum = 0;
+            for (int i = 0; i < _numberOfGivers; i++)
+                giversSum += _needsOfGivers[i];
+            for (int i = 0; i < _numberOfTakers; i++)
+                takersSum += _needsOfTakers[i];
+
+            if (giversSum == takersSum)
+                answ = true;
+            else
+                answ = false;
 
             // Запуск первого уровня
             Quest1(answ);
@@ -78,13 +89,15 @@ namespace AlgoTeacher
       
         private void SetupTransportTask()
         {
-            //throw new NotImplementedException("Создание матрицы для транспортной задачи не добавлена");
             var random = new Random();
-            _numberOfGivers = random.Next(3, 6);
-            _numberOfTakers = random.Next(3, 6);
+            _numberOfGivers = TransportTask.GetGiversTakers(3, 7)[0];
+            _numberOfTakers = TransportTask.GetGiversTakers(3, 7)[1];
+
+            _needsOfGivers = TransportTask.GetRandomNeeds(_numberOfGivers, _numberOfTakers)[0];
+            _needsOfTakers = TransportTask.GetRandomNeeds(_numberOfGivers, _numberOfTakers)[1];
+            
             _pricesMatrix = new Matrix(_numberOfGivers, _numberOfTakers, 1, 9);
         }
-
 
         // функция для установки вопроса из др потока
         public void SetQuestionText(string text)
