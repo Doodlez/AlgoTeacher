@@ -34,6 +34,81 @@ namespace AlgoTeacher
             MakeRandomMatrix(lowerSizeLimit, upperSizeLimit, lowerValueLimit, upperValueLimit);
         }
 
+        public bool AddRow(int[] values, int count)
+        {
+            try
+            {
+                if (count != this.ColumnsCount)
+                {
+                    return false;
+                }
+
+                int[][] temp = Values;
+
+                Values = new int[RowsCount + 1][];
+
+                for (var i = 0; i < RowsCount; i++)
+                {
+                    Values[i] = new int[ColumnsCount];
+
+                    for (var j = 0; j < ColumnsCount; j++)
+                    {
+                        Values[i][j] = temp[i][j];
+                    }
+                }
+                Values[RowsCount] = new int[ColumnsCount];
+                for (var j = 0; j < ColumnsCount; j++)
+                {
+                    Values[RowsCount][j] = values[j];
+                }
+                RowsCount += 1;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool AddColumn(int[] values, int count)
+        {
+            try
+            {
+                if (count != this.RowsCount - 1)
+                {
+                    return false;
+                }
+
+                int[][] temp = Values;
+
+                Values = new int[RowsCount][];
+
+                for (var i = 0; i < RowsCount - 1; i++)
+                {
+                    Values[i] = new int[ColumnsCount + 1];
+
+                    for (var j = 0; j < ColumnsCount; j++)
+                    {
+                        Values[i][j] = temp[i][j];
+                    }
+                    Values[i][ColumnsCount] = values[i];
+                }
+
+                Values[RowsCount - 1] = new int[ColumnsCount + 1];
+                for (var j = 0; j < ColumnsCount; j++)
+                {
+                    Values[RowsCount - 1][j] = temp[RowsCount - 1][j];
+                }
+              
+                ColumnsCount += 1;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public Matrix(int rows, int columns)
         {
             RowsCount = rows;
