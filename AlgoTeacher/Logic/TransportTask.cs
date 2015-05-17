@@ -70,10 +70,14 @@ namespace AlgoTeacher.Logic
             for (int i = 0; i < givers; i++)
             {
                 result[0][i] = random.Next(1, giversLimit + 1) * 10;
+            }
+
+            for (int i = 0; i < takers; i++)
+            {
                 result[1][i] = random.Next(1, takersLimit + 1) * 10;
             }
 
-            return result;
+                return result;
         }
 
         public int Main() 

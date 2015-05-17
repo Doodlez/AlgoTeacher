@@ -89,12 +89,13 @@ namespace AlgoTeacher
       
         private void SetupTransportTask()
         {
-            var random = new Random();
-            _numberOfGivers = TransportTask.GetGiversTakers(3, 7)[0];
-            _numberOfTakers = TransportTask.GetGiversTakers(3, 7)[1];
+            var giversTakers = TransportTask.GetGiversTakers(3, 7);
+            _numberOfGivers = giversTakers[0];
+            _numberOfTakers = giversTakers[1];
 
-            _needsOfGivers = TransportTask.GetRandomNeeds(_numberOfGivers, _numberOfTakers)[0];
-            _needsOfTakers = TransportTask.GetRandomNeeds(_numberOfGivers, _numberOfTakers)[1];
+            var needs = TransportTask.GetRandomNeeds(_numberOfGivers, _numberOfTakers);
+            _needsOfGivers = needs[0];
+            _needsOfTakers = needs[1];
             
             _pricesMatrix = new Matrix(_numberOfGivers, _numberOfTakers, 1, 9);
         }
