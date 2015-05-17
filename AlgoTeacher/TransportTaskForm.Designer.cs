@@ -58,7 +58,7 @@ namespace AlgoTeacher
             this.ViewPanel.Location = new System.Drawing.Point(0, 0);
             this.ViewPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ViewPanel.Name = "ViewPanel";
-            this.ViewPanel.Size = new System.Drawing.Size(1090, 273);
+            this.ViewPanel.Size = new System.Drawing.Size(1090, 325);
             this.ViewPanel.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -69,7 +69,7 @@ namespace AlgoTeacher
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.Controls.Add(this.matrixGridView1, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -132,9 +132,9 @@ namespace AlgoTeacher
             this.panelControl1.Controls.Add(this.panel1);
             this.panelControl1.Controls.Add(this.QuestPanel);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(0, 273);
+            this.panelControl1.Location = new System.Drawing.Point(0, 325);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1090, 256);
+            this.panelControl1.Size = new System.Drawing.Size(1090, 204);
             this.panelControl1.TabIndex = 4;
             // 
             // panel1
@@ -143,7 +143,7 @@ namespace AlgoTeacher
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(764, 252);
+            this.panel1.Size = new System.Drawing.Size(764, 200);
             this.panel1.TabIndex = 7;
             // 
             // QuestionLabel
@@ -154,7 +154,7 @@ namespace AlgoTeacher
             this.QuestionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.QuestionLabel.Location = new System.Drawing.Point(0, 0);
             this.QuestionLabel.Name = "QuestionLabel";
-            this.QuestionLabel.Size = new System.Drawing.Size(764, 252);
+            this.QuestionLabel.Size = new System.Drawing.Size(764, 200);
             this.QuestionLabel.TabIndex = 5;
             this.QuestionLabel.Text = "Вопрос";
             // 
@@ -164,14 +164,14 @@ namespace AlgoTeacher
             this.QuestPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.QuestPanel.Location = new System.Drawing.Point(766, 2);
             this.QuestPanel.Name = "QuestPanel";
-            this.QuestPanel.Size = new System.Drawing.Size(322, 252);
+            this.QuestPanel.Size = new System.Drawing.Size(322, 200);
             this.QuestPanel.TabIndex = 6;
             // 
             // questionControlBase
             // 
             this.questionControlBase.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.questionControlBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.questionControlBase.Location = new System.Drawing.Point(0, 0);
+            this.questionControlBase.Location = new System.Drawing.Point(0, -26);
             this.questionControlBase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.questionControlBase.MaximumSize = new System.Drawing.Size(343, 2);
             this.questionControlBase.MinimumSize = new System.Drawing.Size(228, 102);

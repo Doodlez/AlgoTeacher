@@ -97,6 +97,28 @@ namespace AlgoTeacher
             _needsOfTakers = TransportTask.GetRandomNeeds(_numberOfGivers, _numberOfTakers)[1];
             
             _pricesMatrix = new Matrix(_numberOfGivers, _numberOfTakers, 1, 9);
+            bool war;
+            try
+            {
+                war = _pricesMatrix.AddRow(_needsOfTakers, _numberOfTakers);
+                if (!war)
+                {
+                    MessageBox.Show("Проблема с добавлением строки");
+                    return;
+                }
+                war = _pricesMatrix.AddColumn(_needsOfGivers, _numberOfGivers);
+                if (!war)
+                {
+                    MessageBox.Show("Проблема с добавлением столбца");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            matrixGridView1.AddValues(IntToString(_pricesMatrix.Values, _pricesMatrix.RowsCount, _pricesMatrix.ColumnsCount),
+                _pricesMatrix.RowsCount, _pricesMatrix.ColumnsCount);
         }
 
         // функция для установки вопроса из др потока
