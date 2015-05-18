@@ -72,6 +72,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\CoordinateIntegerValue.cs" />
+    <Compile Include="Logic\Quest\CoordinateIntegerValueQuest.cs" />
     <Compile Include="TransportTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>

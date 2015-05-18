@@ -31,5 +31,28 @@ namespace AlgoTeacher.Logic.Quest
                     return String.Format(questions[4], x, y);
             }
         }
+
+        public static string TransportTaskQuestion(string language)
+        {
+            const string address = @"..\..\Questions\";
+            string[] questions = File.ReadAllLines(address + language + @"\transport_task\transport_questions.txt", Encoding.Default);
+
+            var random = new Random();
+            var questionNumber = 1 + random.Next() % 5;
+
+            switch ( questionNumber )
+            {
+                case 1:
+                    return String.Format(questions[0]);
+                case 2:
+                    return String.Format(questions[1]);
+                case 3:
+                    return String.Format(questions[2]);
+                case 4:
+                    return String.Format(questions[3]);
+                default:
+                    return String.Format(questions[4]);
+            }
+        }
     }
 }

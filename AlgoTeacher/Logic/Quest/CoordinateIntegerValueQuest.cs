@@ -8,13 +8,13 @@ using AlgoTeacher.Interface;
 
 namespace AlgoTeacher.Logic.Quest
 {
-    class DoubleValueQuest :IQuest
+    class CoordinateIntegerValueQuest : IQuest
     {
-        private readonly double _Answer;
+        private readonly CoordinateIntegerValue _Answer;
         private readonly string _Question;
         private readonly string _Name;
 
-        public DoubleValueQuest(string name, string question, double answer)
+        public CoordinateIntegerValueQuest(string name, string question, CoordinateIntegerValue answer)
         {
             _Name = name;
             _Question = question;
@@ -33,16 +33,19 @@ namespace AlgoTeacher.Logic.Quest
 
         public string Answer
         {
-            get { return _Answer.ToString(CultureInfo.InvariantCulture); }
+            get
+            {
+                return _Answer.Coordinate.X.ToString(CultureInfo.InvariantCulture) + "," +
+                       _Answer.Coordinate.Y.ToString(CultureInfo.InvariantCulture) + "," +
+                       _Answer.Value.ToString(CultureInfo.InvariantCulture);
+            }
         }
 
         public bool CheckAnswer(string answer)
         {
             try
             {
-                double value;
-                if (!Double.TryParse(answer, out value)) return false; 
-                return value.Equals(_Answer);
+                return answer.Equals(_Answer);
             }
             catch (Exception)
             {

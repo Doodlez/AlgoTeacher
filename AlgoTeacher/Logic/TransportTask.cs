@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlgoTeacher.Logic.Quest;
 
 namespace AlgoTeacher.Logic
 {
@@ -36,7 +37,11 @@ namespace AlgoTeacher.Logic
         public bool[][] Horizontal;
         public bool[][] Vertical;
 
-        public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, MyMatrix pricesMyMatrix)
+        public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, MyMatrix pricesMatrix)
+        public event QuestEvents.QuestEventHandler questEvent;
+        public string _language;
+
+        public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, Matrix pricesMatrix)
         {
             NumberOfGivers = numberOfGivers;
             NumberOfTakers = numberOfTakers;
@@ -67,17 +72,56 @@ namespace AlgoTeacher.Logic
             int giversLimit = 8 - givers;
             int takersLimit = 8 - takers;
 
+            int giversSum = 0, takersSum = 0;
+
             for (int i = 0; i < givers; i++)
             {
                 result[0][i] = random.Next(1, giversLimit + 1) * 10;
+                giversSum += result[0][i];
             }
 
             for (int i = 0; i < takers; i++)
             {
                 result[1][i] = random.Next(1, takersLimit + 1) * 10;
+                takersSum += result[1][i];
             }
 
-                return result;
+            if (giversSum != takersSum)
+            {
+                int arrayIndex;
+                int abs = Math.Abs(giversSum - takersSum);
+
+                if (giversSum > takersSum)
+                    arrayIndex = 0;
+                else
+                    arrayIndex = 1;
+
+                while (abs > 0)
+                {
+                    int index = MinArrayElement(result[arrayIndex]);
+                    result[arrayIndex][index] -= 10;
+                    abs -= 10;
+                }
+            }
+            
+            return result;
+        }
+
+        private static int MinArrayElement(int[] arr)
+        {
+            int maxValue = int.MinValue;
+            int index = -1;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] > maxValue)
+                {
+                    maxValue = arr[i];
+                    index = i;
+                }
+            }
+
+            return index;
         }
 
         public int Main() 
@@ -317,6 +361,17 @@ namespace AlgoTeacher.Logic
 		        Basis[r][s] = true;
     
 		        CurrentResult[r][s] = min(NeedsOfGivers[r], NeedsOfTakers[s]);
+
+                // TODO: добавить fillEvent
+                // вызываем только тогда, когда значение в базисной клетке больше нуля.
+                if (CurrentResult[r][s] > 0)
+                {
+                    var currentCoord = new Coordinate(r, s);
+                    var question = new CoordinateIntegerValueQuest("Transport question",
+                                                         QuestionGenerator.TransportTaskQuestion(_language),
+                                                         new CoordinateIntegerValue(currentCoord, CurrentResult[r][s]));
+                    questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
+                }
     
 		        NeedsOfGivers[r] -= CurrentResult[r][s];
 		        NeedsOfTakers[s] -= CurrentResult[r][s];

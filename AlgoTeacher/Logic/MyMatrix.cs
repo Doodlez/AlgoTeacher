@@ -29,9 +29,24 @@ namespace AlgoTeacher
             set;
         }
 
-        public MyMatrix(int lowerSizeLimit = 2, int upperSizeLimit = 4, int lowerValueLimit = 0, int upperValueLimit = 9)
+        public MyMatrix()
         {
-            MakeRandomMatrix(lowerSizeLimit, upperSizeLimit, lowerValueLimit, upperValueLimit);
+            var random = new Random();
+
+            RowsCount = random.Next(2, 5);
+            Thread.Sleep(100);
+            ColumnsCount = random.Next(2, 5);
+
+            Values = new int[RowsCount][];
+
+            for ( var i = 0; i < RowsCount; i++ )
+            {
+                Values[i] = new int[ColumnsCount];
+                for ( var j = 0; j < ColumnsCount; j++ )
+                {
+                    Values[i][j] = random.Next(0, 10);
+                }
+            }
         }
 
         public bool AddRow(int[] values, int count)
@@ -137,20 +152,20 @@ namespace AlgoTeacher
             }
         }
 
-        private void MakeRandomMatrix(int lowerSizeLimit = 2, int upperSizeLimit = 4, int lowerValueLimit = 0, int upperValueLimit = 9)
+        public MyMatrix(int rows, int columns, int lowerValueLimit, int upperValueLimit)
         {
             var random = new Random();
 
-            RowsCount = random.Next(lowerSizeLimit, upperSizeLimit + 1);
+            RowsCount = rows;
             Thread.Sleep(100);
-            ColumnsCount = random.Next(lowerSizeLimit, upperSizeLimit + 1);
+            ColumnsCount = columns;
 
             Values = new int[RowsCount][];
 
-            for (var i = 0; i < RowsCount; i++)
+            for ( var i = 0; i < RowsCount; i++ )
             {
                 Values[i] = new int[ColumnsCount];
-                for (var j = 0; j < ColumnsCount; j++)
+                for ( var j = 0; j < ColumnsCount; j++ )
                 {
                     Values[i][j] = random.Next(lowerValueLimit, upperValueLimit + 1);
                 }

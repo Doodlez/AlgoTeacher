@@ -90,7 +90,7 @@ namespace AlgoTeacher
       
         private void SetupTransportTask()
         {
-            var giversTakers = TransportTask.GetGiversTakers(3, 7);
+            var giversTakers = TransportTask.GetGiversTakers(3, 6);
             _numberOfGivers = giversTakers[0];
             _numberOfTakers = giversTakers[1];
 
