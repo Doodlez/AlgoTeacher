@@ -23,10 +23,10 @@ namespace AlgoTeacher
         private int NumberOfFails = 0;
    
         private readonly MatrixMultiply _logic;
-        private Matrix _matrix1;
-        private Matrix _matrix2;
+        private MyMatrix _matrix1;
+        private MyMatrix _matrix2;
 
-        private Matrix _matrixRes;
+        private MyMatrix _myMatrixRes;
         public DataTable resTab;
 
         private Thread CaclThread;
@@ -98,7 +98,7 @@ namespace AlgoTeacher
         }
 
         // Третий уровень помощи
-        private string GetExtendedFormula(Matrix matrix1, Matrix matrix2)
+        private string GetExtendedFormula(MyMatrix matrix1, MyMatrix matrix2)
         {
             string result = "C" + x.ToString() + y.ToString() + " = ";
             for (int i = 1; i <= matrix1.ColumnsCount; i++)
@@ -114,9 +114,9 @@ namespace AlgoTeacher
         // генерация размерности и рандомная генерация значений матриц
         private void SetupMatrix()
         {
-            _matrix1 = new Matrix();
+            _matrix1 = new MyMatrix();
             Thread.Sleep(100);
-            _matrix2 = new Matrix();
+            _matrix2 = new MyMatrix();
 
             matrixGridView1.AddValues(IntToString(_matrix1.Values, _matrix1.RowsCount, _matrix1.ColumnsCount), 
                 _matrix1.RowsCount, _matrix1.ColumnsCount);
@@ -165,9 +165,9 @@ namespace AlgoTeacher
         private void SetupResultMatrix()
         {
             // генерация размерности и рандомная генерация значений матриц
-            _matrixRes = new Matrix(_matrix1.RowsCount, _matrix2.ColumnsCount);
-            matrixGridView3.AddValues(EmptyStringArray(_matrixRes.RowsCount, _matrixRes.ColumnsCount), 
-                _matrixRes.RowsCount, _matrixRes.ColumnsCount);
+            _myMatrixRes = new MyMatrix(_matrix1.RowsCount, _matrix2.ColumnsCount);
+            matrixGridView3.AddValues(EmptyStringArray(_myMatrixRes.RowsCount, _myMatrixRes.ColumnsCount), 
+                _myMatrixRes.RowsCount, _myMatrixRes.ColumnsCount);
         }
 
         // функция для установки вопроса из др потока

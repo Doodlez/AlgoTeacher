@@ -19,14 +19,14 @@ namespace AlgoTeacher.Logic
             _language = language;
         }
 
-        public Matrix MatrixMult(Matrix matrix1, Matrix matrix2)
+        public MyMatrix MatrixMult(MyMatrix matrix1, MyMatrix matrix2)
         {
             if ( matrix1.ColumnsCount != matrix2.RowsCount )
                 return null;
 
             var coords = GetRandomCoords(matrix1.RowsCount, matrix2.ColumnsCount);
 
-            var resultMatrix = new Matrix(matrix1.RowsCount, matrix2.ColumnsCount);
+            var resultMatrix = new MyMatrix(matrix1.RowsCount, matrix2.ColumnsCount);
             for ( var i = 0; i < matrix1.RowsCount; i++ )
             {
                 for ( var j = 0; j < matrix2.ColumnsCount; j++ )

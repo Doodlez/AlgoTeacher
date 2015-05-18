@@ -12,7 +12,7 @@ namespace AlgoTeacher.Logic
         public int NumberOfTakers;
         public int[] NeedsOfGivers;
         public int[] NeedsOfTakers;
-        public Matrix Prices;
+        public MyMatrix PricesMy;
         public int[] PotentialsOfGivers;
         public int[] PotentialsOfTakers;
         public bool[] UsedPotentialsOfGivers;
@@ -36,13 +36,13 @@ namespace AlgoTeacher.Logic
         public bool[][] Horizontal;
         public bool[][] Vertical;
 
-        public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, Matrix pricesMatrix)
+        public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, MyMatrix pricesMyMatrix)
         {
             NumberOfGivers = numberOfGivers;
             NumberOfTakers = numberOfTakers;
             NeedsOfGivers = needsOfGivers;
             NeedsOfTakers = needsOfTakers;
-            Prices = pricesMatrix;
+            PricesMy = pricesMyMatrix;
         }
 
         public static int[] GetGiversTakers(int lowerLimit, int upperLimit)
@@ -335,7 +335,7 @@ namespace AlgoTeacher.Logic
             for ( int i = 1; i <= NumberOfGivers; i++ )
                 for ( int j = 1; j <= NumberOfTakers; j++ )
                     if (Basis[i][j])
-                        res += CurrentResult[i][j] * Prices.Values[i - 1][j - 1];
+                        res += CurrentResult[i][j] * PricesMy.Values[i - 1][j - 1];
       
 	        return res;
         }
@@ -360,13 +360,13 @@ namespace AlgoTeacher.Logic
 				        {
 					        if (UsedPotentialsOfGivers[i])
 					        {
-						        PotentialsOfTakers[j] = Prices.Values[i - 1][j - 1] - PotentialsOfGivers[i];
+						        PotentialsOfTakers[j] = PricesMy.Values[i - 1][j - 1] - PotentialsOfGivers[i];
 						        UsedPotentialsOfTakers[j] = true; 
 					        }
 		  
 					        if (UsedPotentialsOfTakers[j])
 					        {
-						        PotentialsOfGivers[i] = Prices.Values[i - 1][j - 1] - PotentialsOfTakers[j];
+						        PotentialsOfGivers[i] = PricesMy.Values[i - 1][j - 1] - PotentialsOfTakers[j];
 						        UsedPotentialsOfGivers[i] = true;
 					        }
 				        }
@@ -379,7 +379,7 @@ namespace AlgoTeacher.Logic
 		        {
 			        if (!Basis[i][j])
 			        {
-				        S[i][j] = Prices.Values[i - 1][j - 1] - PotentialsOfGivers[i] - PotentialsOfTakers[j];
+				        S[i][j] = PricesMy.Values[i - 1][j - 1] - PotentialsOfGivers[i] - PotentialsOfTakers[j];
 			        }
 			        else S[i][j] = 0;
 		        }
