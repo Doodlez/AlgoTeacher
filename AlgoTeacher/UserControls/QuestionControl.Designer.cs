@@ -68,7 +68,6 @@
             this.AnswerTextEdit.Properties.Appearance.Options.UseFont = true;
             this.AnswerTextEdit.Properties.AutoHeight = false;
             this.AnswerTextEdit.Size = new System.Drawing.Size(334, 39);
-            this.AnswerTextEdit.StyleController = this.layoutControl1;
             this.AnswerTextEdit.TabIndex = 5;
             this.AnswerTextEdit.EditValueChanged += new System.EventHandler(this.AnswerTextEdit_EditValueChanged);
             // 
@@ -81,7 +80,6 @@
             this.AnswerButton.MinimumSize = new System.Drawing.Size(35, 32);
             this.AnswerButton.Name = "AnswerButton";
             this.AnswerButton.Size = new System.Drawing.Size(334, 32);
-            this.AnswerButton.StyleController = this.layoutControl1;
             this.AnswerButton.TabIndex = 6;
             this.AnswerButton.Text = "Ответ";
             this.AnswerButton.Click += new System.EventHandler(this.AnswerButton_Click);
@@ -98,7 +96,6 @@
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(358, 131);
-            this.layoutControlGroup1.Text = "Root";
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -112,9 +109,7 @@
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(338, 43);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextToControlDistance = 0;
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -128,9 +123,7 @@
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(338, 36);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextToControlDistance = 0;
             this.layoutControlItem2.TextVisible = false;
             // 
             // emptySpaceItem1
@@ -143,7 +136,6 @@
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(338, 32);
             this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // QuestionControl

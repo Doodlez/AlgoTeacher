@@ -37,28 +37,28 @@ namespace AlgoTeacher
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ViewPanel = new DevExpress.XtraEditors.PanelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.matrixGridView2 = new UserControls.MatrixGridView(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.matrixGridView1 = new UserControls.MatrixGridView(this.components);
+            this.rotatingLabel1 = new UserControls.RotatingLabel();
+            this.labelControl2 = new UserControls.RotatingLabel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.QuestionLabel = new DevExpress.XtraEditors.LabelControl();
             this.QuestPanel = new System.Windows.Forms.Panel();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.questionControlBase = new UserControls.QuestionControlBase();
-            this.rotatingLabel1 = new UserControls.RotatingLabel();
-            this.matrixGridView2 = new UserControls.MatrixGridView(this.components);
-            this.matrixGridView1 = new UserControls.MatrixGridView(this.components);
-            this.labelControl2 = new UserControls.RotatingLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).BeginInit();
             this.ViewPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.QuestPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ViewPanel
@@ -100,57 +100,6 @@ namespace AlgoTeacher
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1114, 377);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.Location = new System.Drawing.Point(286, 77);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(128, 30);
-            this.labelControl1.TabIndex = 8;
-            this.labelControl1.Text = "Потребители";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.panel1);
-            this.panelControl1.Controls.Add(this.QuestPanel);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(0, 381);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1118, 192);
-            this.panelControl1.TabIndex = 4;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.QuestionLabel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(792, 188);
-            this.panel1.TabIndex = 7;
-            // 
-            // QuestionLabel
-            // 
-            this.QuestionLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.QuestionLabel.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.QuestionLabel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.QuestionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.QuestionLabel.Location = new System.Drawing.Point(0, 0);
-            this.QuestionLabel.Name = "QuestionLabel";
-            this.QuestionLabel.Size = new System.Drawing.Size(792, 188);
-            this.QuestionLabel.TabIndex = 5;
-            this.QuestionLabel.Text = "Вопрос";
-            // 
-            // QuestPanel
-            // 
-            this.QuestPanel.Controls.Add(this.questionControlBase);
-            this.QuestPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.QuestPanel.Location = new System.Drawing.Point(794, 2);
-            this.QuestPanel.Name = "QuestPanel";
-            this.QuestPanel.Size = new System.Drawing.Size(322, 188);
-            this.QuestPanel.TabIndex = 6;
-            // 
             // labelControl3
             // 
             this.labelControl3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -161,17 +110,6 @@ namespace AlgoTeacher
             this.labelControl3.Size = new System.Drawing.Size(128, 30);
             this.labelControl3.TabIndex = 11;
             this.labelControl3.Text = "Потребители";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.Location = new System.Drawing.Point(271, 18);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(157, 30);
-            this.labelControl4.TabIndex = 12;
-            this.labelControl4.Text = "Цены перевозок";
             // 
             // labelControl5
             // 
@@ -184,29 +122,16 @@ namespace AlgoTeacher
             this.labelControl5.TabIndex = 13;
             this.labelControl5.Text = "Базисная матрица";
             // 
-            // questionControlBase
+            // labelControl4
             // 
-            this.questionControlBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.questionControlBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.questionControlBase.Location = new System.Drawing.Point(0, 0);
-            this.questionControlBase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.questionControlBase.MaximumSize = new System.Drawing.Size(343, 2);
-            this.questionControlBase.MinimumSize = new System.Drawing.Size(228, 102);
-            this.questionControlBase.Name = "questionControlBase";
-            this.questionControlBase.Size = new System.Drawing.Size(322, 102);
-            this.questionControlBase.TabIndex = 4;
-            // 
-            // rotatingLabel1
-            // 
-            this.rotatingLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rotatingLabel1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rotatingLabel1.Location = new System.Drawing.Point(664, 149);
-            this.rotatingLabel1.Name = "rotatingLabel1";
-            this.rotatingLabel1.NewText = "Производители";
-            this.rotatingLabel1.RotateAngle = 270;
-            this.rotatingLabel1.Size = new System.Drawing.Size(22, 129);
-            this.rotatingLabel1.TabIndex = 10;
-            this.rotatingLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelControl4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl4.Location = new System.Drawing.Point(271, 18);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(157, 30);
+            this.labelControl4.TabIndex = 12;
+            this.labelControl4.Text = "Цены перевозок";
             // 
             // matrixGridView2
             // 
@@ -256,6 +181,17 @@ namespace AlgoTeacher
             this.matrixGridView2.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.matrixGridView2.Size = new System.Drawing.Size(222, 187);
             this.matrixGridView2.TabIndex = 7;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.Location = new System.Drawing.Point(286, 77);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(128, 30);
+            this.labelControl1.TabIndex = 8;
+            this.labelControl1.Text = "Потребители";
             // 
             // matrixGridView1
             // 
@@ -307,6 +243,18 @@ namespace AlgoTeacher
             this.matrixGridView1.TabIndex = 6;
             this.matrixGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.matrixGridView1_CellContentClick);
             // 
+            // rotatingLabel1
+            // 
+            this.rotatingLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rotatingLabel1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rotatingLabel1.Location = new System.Drawing.Point(664, 149);
+            this.rotatingLabel1.Name = "rotatingLabel1";
+            this.rotatingLabel1.NewText = "Производители";
+            this.rotatingLabel1.RotateAngle = 270;
+            this.rotatingLabel1.Size = new System.Drawing.Size(22, 129);
+            this.rotatingLabel1.TabIndex = 10;
+            this.rotatingLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // labelControl2
             // 
             this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -318,6 +266,58 @@ namespace AlgoTeacher
             this.labelControl2.Size = new System.Drawing.Size(22, 129);
             this.labelControl2.TabIndex = 9;
             this.labelControl2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.panel1);
+            this.panelControl1.Controls.Add(this.QuestPanel);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 381);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1118, 192);
+            this.panelControl1.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.QuestionLabel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(792, 188);
+            this.panel1.TabIndex = 7;
+            // 
+            // QuestionLabel
+            // 
+            this.QuestionLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.QuestionLabel.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.QuestionLabel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.QuestionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.QuestionLabel.Location = new System.Drawing.Point(0, 0);
+            this.QuestionLabel.Name = "QuestionLabel";
+            this.QuestionLabel.Size = new System.Drawing.Size(792, 188);
+            this.QuestionLabel.TabIndex = 5;
+            this.QuestionLabel.Text = "Вопрос";
+            // 
+            // QuestPanel
+            // 
+            this.QuestPanel.Controls.Add(this.questionControlBase);
+            this.QuestPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.QuestPanel.Location = new System.Drawing.Point(794, 2);
+            this.QuestPanel.Name = "QuestPanel";
+            this.QuestPanel.Size = new System.Drawing.Size(322, 188);
+            this.QuestPanel.TabIndex = 6;
+            // 
+            // questionControlBase
+            // 
+            this.questionControlBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.questionControlBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.questionControlBase.Location = new System.Drawing.Point(0, 0);
+            this.questionControlBase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.questionControlBase.MaximumSize = new System.Drawing.Size(343, 2);
+            this.questionControlBase.MinimumSize = new System.Drawing.Size(228, 102);
+            this.questionControlBase.Name = "questionControlBase";
+            this.questionControlBase.Size = new System.Drawing.Size(322, 102);
+            this.questionControlBase.TabIndex = 4;
             // 
             // TransportTaskForm
             // 
@@ -334,12 +334,12 @@ namespace AlgoTeacher
             ((System.ComponentModel.ISupportInitialize)(this.ViewPanel)).EndInit();
             this.ViewPanel.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.QuestPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.matrixGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
