@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,7 @@ namespace AlgoTeacher.Logic
         public bool[][] Vertical;
 
         public event QuestEvents.QuestEventHandler questEvent;
+        public event FillEvents.FillEventHandler fillEvent;
         public string _language;
 
         public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, Matrix pricesMatrix)
@@ -351,9 +353,10 @@ namespace AlgoTeacher.Logic
 	        return false;
         }
 
-        private void NorthWest() 
+        public void NorthWest()
         {
 	        int r = 1, s = 1;
+            int counter = 0;
   
 	        while ((r <= NumberOfGivers) && (s <= NumberOfTakers))
 	        {
@@ -369,7 +372,16 @@ namespace AlgoTeacher.Logic
                     var question = new CoordinateIntegerValueQuest("Transport question",
                                                          QuestionGenerator.TransportTaskQuestion(_language),
                                                          new CoordinateIntegerValue(currentCoord, CurrentResult[r][s]));
-                    questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
+                    if (counter < 3)
+                    {
+                        questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
+                    }
+                    else
+                    {
+                        fillEvent(null, new FillEvents.FillEventArgs(currentCoord, Prices.Values[r][s].ToString(CultureInfo.InvariantCulture)));   
+                    }
+
+                    ++counter;
                 }
     
 		        NeedsOfGivers[r] -= CurrentResult[r][s];
@@ -404,27 +416,71 @@ namespace AlgoTeacher.Logic
   
 	        PotentialsOfGivers[1] = 0;
 	        UsedPotentialsOfGivers[1] = true;
+
+            int counter = 0;
   
 	        while (!PotentialsCheck())
 	        {
 		        for (int i = 1; i <= NumberOfGivers; i++)
-			        for (int j = 1; j <= NumberOfTakers; j++)
-			        {
-				        if (Basis[i][j])
-				        {
-					        if (UsedPotentialsOfGivers[i])
-					        {
-						        PotentialsOfTakers[j] = Prices.Values[i - 1][j - 1] - PotentialsOfGivers[i];
-						        UsedPotentialsOfTakers[j] = true; 
-					        }
-		  
-					        if (UsedPotentialsOfTakers[j])
-					        {
-						        PotentialsOfGivers[i] = Prices.Values[i - 1][j - 1] - PotentialsOfTakers[j];
-						        UsedPotentialsOfGivers[i] = true;
-					        }
-				        }
-			        }
+                {
+                    for ( int j = 1; j <= NumberOfTakers; j++ )
+                    {
+                        if ( Basis[i][j] )
+                        {
+                            if ( UsedPotentialsOfGivers[i] )
+                            {
+                                PotentialsOfTakers[j] = Prices.Values[i - 1][j - 1] - PotentialsOfGivers[i];
+
+                                var question = new IntegerValueQuest("Transport question",
+                                    QuestionGenerator.TransportTaskQuestion(_language),
+                                    PotentialsOfTakers[j]);
+
+                                int x = NumberOfGivers + 1;
+                                int y = j;
+                                var currentCoord = new Coordinate(x, y);
+
+                                if ( counter < 3 )
+                                {
+                                    questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
+                                }
+                                else
+                                {
+                                    fillEvent(null, new FillEvents.FillEventArgs(currentCoord, Prices.Values[x][y].ToString(CultureInfo.InvariantCulture)));
+                                }
+
+                                UsedPotentialsOfTakers[j] = true;
+                                ++counter;
+                            }
+
+                            if ( UsedPotentialsOfTakers[j] )
+                            {
+                                PotentialsOfGivers[i] = Prices.Values[i - 1][j - 1] - PotentialsOfTakers[j];
+
+                                var question = new IntegerValueQuest("Transport question",
+                                    QuestionGenerator.TransportTaskQuestion(_language),
+                                    PotentialsOfGivers[i]);
+
+                                int x = i;
+                                int y = NumberOfTakers + 1;
+                                var currentCoord = new Coordinate(x, y);
+
+                                if ( counter < 3 )
+                                {
+                                    questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));
+                                }
+                                else
+                                {
+                                    fillEvent(null, new FillEvents.FillEventArgs(currentCoord, Prices.Values[x][y].ToString(CultureInfo.InvariantCulture)));
+                                }
+
+                                UsedPotentialsOfGivers[i] = true;
+                                ++counter;
+                            }
+                        }
+                    }   
+		        }
+
+
 	        }
     
 	        for (int i = 1; i <= NumberOfGivers; i++)

@@ -269,7 +269,7 @@ namespace AlgoTeacher
             questionControlBase.SetFocus();
             while (!pressed)
             {
-                System.Threading.Thread.Sleep(100);
+                Thread.Sleep(100);
             }
             
             ResultMatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);

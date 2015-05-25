@@ -59,32 +59,16 @@ namespace AlgoTeacher
 
             // TODO: Добавить содание логики + добавление в обработчиков логики
             _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMatrix);
-            //_logic.questEvent += _questHandler;
-            //_logic.fillEvent += _fillHandler;
-
+            _logic.questEvent += _questHandler;
+            _logic.fillEvent += _fillHandler;
         }
 
         private void TransportTaskForm_Load(object sender, EventArgs e)
         {
-            // TODO: переделать настройку матрицы, для транспортной задачи
             SetupTransportTask();
 
-            //TODO: при генерации таблицы нужно подготовить ответ к первому тесту
-            bool answ = false;
-
-            int giversSum = 0, takersSum = 0;
-            for (int i = 0; i < _numberOfGivers; i++)
-                giversSum += _needsOfGivers[i];
-            for (int i = 0; i < _numberOfTakers; i++)
-                takersSum += _needsOfTakers[i];
-
-            if (giversSum == takersSum)
-                answ = true;
-            else
-                answ = false;
-
             // Запуск первого уровня
-            Quest1(answ);
+            Quest1();
         }
       
         private void SetupTransportTask()
@@ -157,20 +141,23 @@ namespace AlgoTeacher
             questionControlBase.Dock = DockStyle.Fill;
         }
 
-        // TODO: переделать первый квест - замкнутая или нет задача? 
+        // TODO: переделать первый квест - North-West
         private void Quest1(bool answ)
         {
-            throw new NotImplementedException("Вопрос о запкнутости не реализован");
-            //questionControlBase = new TwoVariantsQuestionControl();
-            //SetQuestControlEventHandler();
-            //questionControlBase.SetAnswer(answ.ToString());
-            //InitQuestComponent();
-            //pressed = false;
-            //quest = new YesNoQuest("first", text[0], answ);
-            //QuestionLabel.Text = quest.Question;
+            questionControlBase = new QuestionControlBase();
+            SetQuestControlEventHandler();
+            questionControlBase.SetAnswer(answ.ToString());
+            InitQuestComponent();
+            pressed = false;
+            QuestionLabel.Text = quest.Question;
+            CaclThread = new Thread(RunQuest1)
+            {
+                IsBackground = true
+            };
+            CaclThread.Start();
         }
 
-        // TODO: переделать второй квест - что добавить для замкнутости? 
+        // TODO: переделать второй квест - что добавить для замкнутости?
         private void Quest2(bool answ)
         {
             throw new NotImplementedException("Вопрос о запкнутости не реализован");
@@ -210,18 +197,9 @@ namespace AlgoTeacher
         }
 
         // запускает в потоке (собственно сам процесс перемножения)
-        void RunThird()
+        void RunQuest1()
         {
-           //var res = _logic.MatrixMult(_matrix1, _matrix2);
-           //if (res == null)
-           // {
-           //     ChangeAndAwait(QuestionLabel, text[2], sleepTime);
-           // }
-           // else
-           // {
-           //     ChangeAndAwait(QuestionLabel, text[3], sleepTime);
-           //     DialogResult = DialogResult.Cancel;
-           // }
+            _logic.NorthWest();
         }
 
         // TODO: Проверить обработчики, если нужно переделать
@@ -236,7 +214,7 @@ namespace AlgoTeacher
             questionControlBase.SetFocus();
             while (!pressed)
             {
-                System.Threading.Thread.Sleep(100);
+                Thread.Sleep(100);
             }
             
             MatrFillCell(e.Coord.X, e.Coord.Y, e.Quest.Answer);
@@ -254,7 +232,7 @@ namespace AlgoTeacher
             bool t = true;
             while (t)
             {
-                System.Threading.Thread.Sleep(200);
+                Thread.Sleep(200);
                 t = false;
             }
             MatrFillCell(e.Coord.X, e.Coord.Y, e.Value);
