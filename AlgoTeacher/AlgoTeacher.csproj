@@ -105,7 +105,7 @@
       <DependentUpon>LanguageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic\KnapsackProblem.cs" />
-    <Compile Include="Logic\Matrix.cs" />
+    <Compile Include="Logic\MyMatrix.cs" />
     <Compile Include="Logic\Coordinate.cs" />
     <Compile Include="Logic\MatrixMultiply.cs" />
     <Compile Include="Logic\MyInformation.cs" />
@@ -153,6 +153,7 @@
     <Compile Include="UserControls\MatrixGridView.Designer.cs">
       <DependentUpon>MatrixGridView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MyPainter.cs" />
     <Compile Include="UserControls\QuestionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,6 +177,9 @@
     </Compile>
     <Compile Include="UserControls\TwoVariantsQuestionControl.Designer.cs">
       <DependentUpon>TwoVariantsQuestionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RotatingLabel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="TransportTaskForm.resx">
       <DependentUpon>TransportTaskForm.cs</DependentUpon>

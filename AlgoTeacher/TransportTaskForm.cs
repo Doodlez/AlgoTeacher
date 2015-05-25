@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -24,7 +25,7 @@ namespace AlgoTeacher
         private readonly TransportTask _logic;
         private int _numberOfGivers, _numberOfTakers;
         private int[] _needsOfGivers, _needsOfTakers;
-        private Matrix _pricesMatrix;
+        private MyMatrix _pricesMyMatrix;
 
         public DataTable resTab;
 
@@ -58,9 +59,16 @@ namespace AlgoTeacher
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
 
             // TODO: Добавить содание логики + добавление в обработчиков логики
+<<<<<<< HEAD
             _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMatrix);
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
+=======
+            _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMyMatrix);
+            //_logic.questEvent += _questHandler;
+            //_logic.fillEvent += _fillHandler;
+
+>>>>>>> 21b2d92b3f5879f0db2741d821103958311eaacd
         }
 
         private void TransportTaskForm_Load(object sender, EventArgs e)
@@ -81,17 +89,17 @@ namespace AlgoTeacher
             _needsOfGivers = needs[0];
             _needsOfTakers = needs[1];
             
-            _pricesMatrix = new Matrix(_numberOfGivers, _numberOfTakers, 1, 9);
+            _pricesMyMatrix = new MyMatrix(_numberOfGivers, _numberOfTakers, 1, 9);
             bool war;
             try
             {
-                war = _pricesMatrix.AddRow(_needsOfTakers, _numberOfTakers);
+                war = _pricesMyMatrix.AddRow(_needsOfTakers, _numberOfTakers);
                 if (!war)
                 {
                     MessageBox.Show("Проблема с добавлением строки");
                     return;
                 }
-                war = _pricesMatrix.AddColumn(_needsOfGivers, _numberOfGivers);
+                war = _pricesMyMatrix.AddColumn(_needsOfGivers, _numberOfGivers);
                 if (!war)
                 {
                     MessageBox.Show("Проблема с добавлением столбца");
@@ -102,8 +110,8 @@ namespace AlgoTeacher
             {
                 MessageBox.Show(ex.Message);
             }
-            matrixGridView1.AddValues(IntToString(_pricesMatrix.Values, _pricesMatrix.RowsCount, _pricesMatrix.ColumnsCount),
-                _pricesMatrix.RowsCount, _pricesMatrix.ColumnsCount);
+            matrixGridView1.AddValues(IntToString(_pricesMyMatrix.Values, _pricesMyMatrix.RowsCount, _pricesMyMatrix.ColumnsCount),
+                _pricesMyMatrix.RowsCount, _pricesMyMatrix.ColumnsCount);
         }
 
         // функция для установки вопроса из др потока
@@ -377,6 +385,11 @@ namespace AlgoTeacher
             }
 
             return res;
+        }
+
+        private void matrixGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
