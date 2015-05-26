@@ -49,7 +49,6 @@ namespace AlgoTeacher.Logic
                     {
                         fillEvent(null, new FillEvents.FillEventArgs(currentCoord, resultMatrix.Values[i][j].ToString(CultureInfo.InvariantCulture)));
                     }
-                    
                 }
             }
 
