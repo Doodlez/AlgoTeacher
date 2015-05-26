@@ -59,10 +59,16 @@ namespace AlgoTeacher
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
 
             // TODO: Добавить содание логики + добавление в обработчиков логики
+<<<<<<< HEAD
+            _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMatrix);
+            _logic.questEvent += _questHandler;
+            _logic.fillEvent += _fillHandler;
+=======
             _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMyMatrix);
             //_logic.questEvent += _questHandler;
             //_logic.fillEvent += _fillHandler;
 
+>>>>>>> 21b2d92b3f5879f0db2741d821103958311eaacd
         }
 
         private void TransportTaskForm_Load(object sender, EventArgs e)
