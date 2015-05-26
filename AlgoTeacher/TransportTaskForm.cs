@@ -25,7 +25,7 @@ namespace AlgoTeacher
         private readonly TransportTask _logic;
         private int _numberOfGivers, _numberOfTakers;
         private int[] _needsOfGivers, _needsOfTakers;
-        private MyMatrix _pricesMyMatrix;
+        private MyMatrix _pricesMatrix;
 
         public DataTable resTab;
 
@@ -54,21 +54,16 @@ namespace AlgoTeacher
 
             InitializeComponent();
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
-          
+
             _questHandler = new QuestEvents.QuestEventHandler(QuestEventHandler);
             _fillHandler = new FillEvents.FillEventHandler(FillEventHandler);
 
             // TODO: Добавить содание логики + добавление в обработчиков логики
-<<<<<<< HEAD
+
             _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMatrix);
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
-=======
-            _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMyMatrix);
-            //_logic.questEvent += _questHandler;
-            //_logic.fillEvent += _fillHandler;
 
->>>>>>> 21b2d92b3f5879f0db2741d821103958311eaacd
         }
 
         private void TransportTaskForm_Load(object sender, EventArgs e)
@@ -89,17 +84,17 @@ namespace AlgoTeacher
             _needsOfGivers = needs[0];
             _needsOfTakers = needs[1];
             
-            _pricesMyMatrix = new MyMatrix(_numberOfGivers, _numberOfTakers, 1, 9);
+            _pricesMatrix = new MyMatrix(_numberOfGivers, _numberOfTakers, 1, 9);
             bool war;
             try
             {
-                war = _pricesMyMatrix.AddRow(_needsOfTakers, _numberOfTakers);
+                war = _pricesMatrix.AddRow(_needsOfTakers, _numberOfTakers);
                 if (!war)
                 {
                     MessageBox.Show("Проблема с добавлением строки");
                     return;
                 }
-                war = _pricesMyMatrix.AddColumn(_needsOfGivers, _numberOfGivers);
+                war = _pricesMatrix.AddColumn(_needsOfGivers, _numberOfGivers);
                 if (!war)
                 {
                     MessageBox.Show("Проблема с добавлением столбца");
@@ -110,8 +105,8 @@ namespace AlgoTeacher
             {
                 MessageBox.Show(ex.Message);
             }
-            matrixGridView1.AddValues(IntToString(_pricesMyMatrix.Values, _pricesMyMatrix.RowsCount, _pricesMyMatrix.ColumnsCount),
-                _pricesMyMatrix.RowsCount, _pricesMyMatrix.ColumnsCount);
+            matrixGridView1.AddValues(IntToString(_pricesMatrix.Values, _pricesMatrix.RowsCount, _pricesMatrix.ColumnsCount),
+                _pricesMatrix.RowsCount, _pricesMatrix.ColumnsCount);
         }
 
         // функция для установки вопроса из др потока
@@ -150,11 +145,10 @@ namespace AlgoTeacher
         }
 
         // TODO: переделать первый квест - North-West
-        private void Quest1(bool answ)
+        private void Quest1()
         {
             questionControlBase = new QuestionControlBase();
             SetQuestControlEventHandler();
-            questionControlBase.SetAnswer(answ.ToString());
             InitQuestComponent();
             pressed = false;
             QuestionLabel.Text = quest.Question;
@@ -166,7 +160,7 @@ namespace AlgoTeacher
         }
 
         // TODO: переделать второй квест - что добавить для замкнутости?
-        private void Quest2(bool answ)
+        private void Quest2()
         {
             throw new NotImplementedException("Вопрос о запкнутости не реализован");
             //questionControlBase = new TwoVariantsQuestionControl();
