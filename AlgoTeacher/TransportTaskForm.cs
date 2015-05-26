@@ -63,7 +63,6 @@ namespace AlgoTeacher
             _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMatrix);
             _logic.questEvent += _questHandler;
             _logic.fillEvent += _fillHandler;
-
         }
 
         private void TransportTaskForm_Load(object sender, EventArgs e)
@@ -159,43 +158,33 @@ namespace AlgoTeacher
             CaclThread.Start();
         }
 
-        // TODO: переделать второй квест - что добавить для замкнутости?
+        // TODO: второй квест - ищем элемент с минимальным S
         private void Quest2()
         {
-            throw new NotImplementedException("Вопрос о запкнутости не реализован");
-            //questionControlBase = new TwoVariantsQuestionControl();
-            //SetQuestControlEventHandler();
-            //questionControlBase.SetAnswer(answ.ToString());
-            //InitQuestComponent();
-            //pressed = false;
-            //quest = new YesNoQuest("first", text[0], answ);
-            //QuestionLabel.Text = quest.Question;
+            questionControlBase = new QuestionControlBase();
+            SetQuestControlEventHandler();
+            InitQuestComponent();
+            pressed = false;
+            QuestionLabel.Text = quest.Question;
         }
 
-        // TODO: переделать третий квест - Северозападный угол? 
+        // TODO: ищем элемент, который выкинем из базиса 
         private void Quest3()
         {
-            throw new NotImplementedException("Вопрос о С-З не добавлен");
-            //questionControlBase = new SizeQuestionControl();
-            //SetQuestControlEventHandler();
-            //questionControlBase.SetAnswer(answ);
-            //InitQuestComponent();
-            //pressed = false;
-            //quest = new IntegerIntegerValueQuest("second", text[1], answ);
-            //QuestionLabel.Text = quest.Question;
+            questionControlBase = new QuestionControlBase();
+            SetQuestControlEventHandler();
+            InitQuestComponent();
+            pressed = false;
+            QuestionLabel.Text = quest.Question;
         }
-        // TODO: переделать 4-й квест - Сам алгоритм 
+        // TODO: проверить пересчёт базисных значений 
         private void Quest4()
         {
-            throw new NotImplementedException("Оставшееся решение транспортной задачи");
-            //questionControlBase = new QuestionControl();
-            //SetQuestControlEventHandler();
-            //InitQuestComponent();
-            //pressed = false;
-            //SetupResultMatrix();
-            //SetQuestionText(" ");
-            //CaclThread = new Thread(RunThird) { IsBackground = true };
-            //CaclThread.Start();
+            questionControlBase = new QuestionControlBase();
+            SetQuestControlEventHandler();
+            InitQuestComponent();
+            pressed = false;
+            QuestionLabel.Text = quest.Question;
         }
 
         // запускает в потоке (собственно сам процесс перемножения)
