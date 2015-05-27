@@ -1,6 +1,6 @@
-Let's look at this in more detail -
-if you want to multiply two matrices,
-then you need to iterate sequentially
-and multiply each row of the first matrix
-and each column of the second matrix
-(multiplied element-wise).
+Давай рассмотрим это поподробнее -
+если ты хочешь перемножить две матрицы,
+то тебе последовательно нужно перебрать
+и перемножить каждую строку первой матрицу
+и каждый столбец второй матрицы
+(перемножить поэлементно).

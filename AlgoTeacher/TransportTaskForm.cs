@@ -22,7 +22,7 @@ namespace AlgoTeacher
 
         private int NumberOfFails = 0;
    
-        private readonly TransportTask _logic;
+        private TransportTask _logic;
         private int _numberOfGivers, _numberOfTakers;
         private int[] _needsOfGivers, _needsOfTakers;
         private MyMatrix _pricesMatrix;
@@ -60,15 +60,17 @@ namespace AlgoTeacher
 
             // TODO: Добавить содание логики + добавление в обработчиков логики
 
-            _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMatrix);
-            _logic.questEvent += _questHandler;
-            _logic.fillEvent += _fillHandler;
+            
 
         }
 
         private void TransportTaskForm_Load(object sender, EventArgs e)
         {
             SetupTransportTask();
+
+            _logic = new TransportTask(_numberOfGivers, _numberOfTakers, _needsOfGivers, _needsOfTakers, _pricesMatrix, _language);
+            _logic.questEvent += _questHandler;
+            _logic.fillEvent += _fillHandler;
 
             // Запуск первого уровня
             Quest1();
@@ -147,11 +149,11 @@ namespace AlgoTeacher
         // TODO: переделать первый квест - North-West
         private void Quest1()
         {
-            questionControlBase = new QuestionControlBase();
+            questionControlBase = new CoordinateIntegerQuestionControl();
             SetQuestControlEventHandler();
             InitQuestComponent();
             pressed = false;
-            QuestionLabel.Text = quest.Question;
+            //QuestionLabel.Text = quest.Question;
             CaclThread = new Thread(RunQuest1)
             {
                 IsBackground = true
@@ -245,8 +247,8 @@ namespace AlgoTeacher
         {
             try
             {
-                matrixGridView1[col - 1, row - 1].Value = value;
-                matrixGridView1.Refresh();
+                matrixGridView2[col - 1, row - 1].Value = value;
+                matrixGridView2.Refresh();
 
             }
             catch (Exception e)

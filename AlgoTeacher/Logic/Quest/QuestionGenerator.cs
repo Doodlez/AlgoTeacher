@@ -43,15 +43,15 @@ namespace AlgoTeacher.Logic.Quest
             switch ( questionNumber )
             {
                 case 1:
-                    return String.Format(questions[0]);
+                    return questions[0];
                 case 2:
-                    return String.Format(questions[1]);
+                    return questions[1];
                 case 3:
-                    return String.Format(questions[2]);
+                    return questions[2];
                 case 4:
-                    return String.Format(questions[3]);
+                    return questions[3];
                 default:
-                    return String.Format(questions[4]);
+                    return questions[4];
             }
         }
     }

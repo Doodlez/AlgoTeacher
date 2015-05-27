@@ -1,7 +1,8 @@
-Thus, the two matrices A and B PxQ size MxN and respectively.
-You multiply if and only if, when number of columns of the
-first array matches the number of rows of the second, i.e. Q=M.
-Every final element of the matrix C will be from sum
-of the products of matrix elements appropriate rows
-of the matrix A and a column of the matrix B.
-Understand?
+Итак, две матрицы A и B размера PxQ и MxN соответственно
+можно перемножить тогда и только тогда,
+когда число столбцов первой матрицы совпадает
+с числом строк второй, т.е. Q=M.
+Каждый элемент итоговой матрицы C будет состоять из
+сумм произведения элементов матриц cоответствующей строки
+матрицы A и столбца матрицы B.
+Понятно?

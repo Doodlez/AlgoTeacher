@@ -10,18 +10,20 @@ namespace AlgoTeacher.Logic
 {
     public class TransportTask
     {
+        public const int N = 50;
+
         public int NumberOfGivers;
         public int NumberOfTakers;
-        public int[] NeedsOfGivers;
-        public int[] NeedsOfTakers;
+        public int[] NeedsOfGivers = new int[N];
+        public int[] NeedsOfTakers = new int[N];
         public MyMatrix Prices;
-        public int[] PotentialsOfGivers;
-        public int[] PotentialsOfTakers;
-        public bool[] UsedPotentialsOfGivers;
-        public bool[] UsedPotentialsOfTakers;
-        public int[][] CurrentResult;
-        public bool[][] Basis;
-        public int[][] S;
+        public int[] PotentialsOfGivers = new int[N];
+        public int[] PotentialsOfTakers = new int[N];
+        public bool[] UsedPotentialsOfGivers = new bool[N];
+        public bool[] UsedPotentialsOfTakers = new bool[N];
+        public int[][] CurrentResult = new int[N][];
+        public bool[][] Basis = new bool[N][];
+        public int[][] S = new int[N][];
         public int Row;
         public int Column;
         public int ChangeRow;
@@ -30,25 +32,37 @@ namespace AlgoTeacher.Logic
         public int MinBasis;
         public int BestResult;
         public int MinimalEstimate;
-        public int[] CycleX;
-        public int[] CycleY;
+        public int[] CycleX = new int[N];
+        public int[] CycleY = new int[N];
         public bool GlobalDFS = false;
-        public bool[][] Closed;
-        public int[][] Owner;
-        public bool[][] Horizontal;
-        public bool[][] Vertical;
+        public bool[][] Closed = new bool[N][];
+        public int[][] Owner = new int[N][];
+        public bool[][] Horizontal = new bool[N][];
+        public bool[][] Vertical = new bool[N][];
 
         public event QuestEvents.QuestEventHandler questEvent;
         public event FillEvents.FillEventHandler fillEvent;
         public string _language;
 
-        public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, MyMatrix pricesMatrix)
+        public TransportTask(int numberOfGivers, int numberOfTakers, int[] needsOfGivers, int[] needsOfTakers, MyMatrix pricesMatrix, string langluage)
         {
+            _language = langluage;
             NumberOfGivers = numberOfGivers;
             NumberOfTakers = numberOfTakers;
             NeedsOfGivers = needsOfGivers;
             NeedsOfTakers = needsOfTakers;
             Prices = pricesMatrix;
+
+            for (int i = 0; i < N; i++)
+            {
+                Basis[i] = new bool[N];
+                CurrentResult[i] = new int[N];
+                S[i] = new int[N];
+                Closed[i] = new bool[N];
+                Owner[i] = new int[N];
+                Horizontal[i] = new bool[N];
+                Vertical[i] = new bool[N];
+            }
         }
 
         public static int[] GetGiversTakers(int lowerLimit, int upperLimit)

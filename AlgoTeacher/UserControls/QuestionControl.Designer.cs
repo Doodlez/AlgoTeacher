@@ -68,6 +68,7 @@
             this.AnswerTextEdit.Properties.Appearance.Options.UseFont = true;
             this.AnswerTextEdit.Properties.AutoHeight = false;
             this.AnswerTextEdit.Size = new System.Drawing.Size(334, 39);
+            this.AnswerTextEdit.StyleController = this.layoutControl1;
             this.AnswerTextEdit.TabIndex = 5;
             this.AnswerTextEdit.EditValueChanged += new System.EventHandler(this.AnswerTextEdit_EditValueChanged);
             // 
@@ -80,6 +81,7 @@
             this.AnswerButton.MinimumSize = new System.Drawing.Size(35, 32);
             this.AnswerButton.Name = "AnswerButton";
             this.AnswerButton.Size = new System.Drawing.Size(334, 32);
+            this.AnswerButton.StyleController = this.layoutControl1;
             this.AnswerButton.TabIndex = 6;
             this.AnswerButton.Text = "Ответ";
             this.AnswerButton.Click += new System.EventHandler(this.AnswerButton_Click);

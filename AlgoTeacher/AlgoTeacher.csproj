@@ -147,6 +147,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\CoordinateIntegerQuestionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CoordinateIntegerQuestionControl.Designer.cs">
+      <DependentUpon>CoordinateIntegerQuestionControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MatrixGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -210,6 +216,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CoordinateIntegerQuestionControl.resx">
+      <DependentUpon>CoordinateIntegerQuestionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MatrixGridView.resx">
       <DependentUpon>MatrixGridView.cs</DependentUpon>
