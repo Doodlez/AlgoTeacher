@@ -155,19 +155,44 @@ namespace AlgoTeacher.Logic
 		        }
     
 		        MinimalEstimate = MinEstimate();
-    
-		        GlobalDFS = false;
+
+                var minEstimateCoord = new Coordinate(Row, Column);
+                var minEstimateQuestion = new CoordinateIntegerValueQuest("Transport question",
+                                                     QuestionGenerator.TransportTaskQuestion(_language),
+                                                     new CoordinateIntegerValue(minEstimateCoord, MinimalEstimate));
+                questEvent(null, new QuestEvents.QuestEventArgs(minEstimateQuestion, minEstimateCoord));
+
+                for (int i = 1; i <= NumberOfGivers; i++)
+                {
+                    for (int j = 1; j <= NumberOfTakers; j++)
+                    {
+                        if (i != Row || j != Column)
+                        {
+                            var estimateCoord = new Coordinate(i, j);
+                            fillEvent(null, new FillEvents.FillEventArgs(estimateCoord, MinimalEstimate.ToString(CultureInfo.InvariantCulture)));
+                        }
+                    }
+                }
+
+                GlobalDFS = false;
 		        Closed[Row][Column] = true;
 		        DFS(Row, Column, 1, 1, 1);
 		        Closed[Row][Column] = false;
     
 		        MinBasis = ChooseMinFromBasis(ResultNum);
+
+                var minBasisCoord = new Coordinate(Row, Column);
+                var minBasisQuestion = new CoordinateIntegerValueQuest("Transport question",
+                                                     QuestionGenerator.TransportTaskQuestion(_language),
+                                                     new CoordinateIntegerValue(minBasisCoord, MinBasis));
+                questEvent(null, new QuestEvents.QuestEventArgs(minBasisQuestion, minBasisCoord));
     
 		        Basis[ChangeRow][ChangeColumn] = false;
 		        Basis[Row][Column] = true;
     
 		        CurrentResult[Row][Column] = MinBasis;
-    
+
+	            int counter = 1;
 		        for (int h = 2; h <= ResultNum; h++)
 		        {
 			        int x = CycleX[h];
@@ -178,6 +203,21 @@ namespace AlgoTeacher.Logic
 				        CurrentResult[x][y] += MinBasis;
 			        }
 			        else CurrentResult[x][y] -= MinBasis;
+
+		            var basisCoord = new Coordinate(x, y);
+                    if ( counter < 3 )
+                    {
+                        var basisQuestion = new CoordinateIntegerValueQuest("Transport question",
+                                                             QuestionGenerator.TransportTaskQuestion(_language),
+                                                             new CoordinateIntegerValue(basisCoord, CurrentResult[x][y]));
+                        questEvent(null, new QuestEvents.QuestEventArgs(basisQuestion, basisCoord));
+                    }
+                    else
+                    {
+                        fillEvent(null, new FillEvents.FillEventArgs(basisCoord, CurrentResult[x][y].ToString(CultureInfo.InvariantCulture)));
+                    }
+
+		            ++counter;
 		        }
 
 		        BestResult += MinimalEstimate * MinBasis;
@@ -392,7 +432,7 @@ namespace AlgoTeacher.Logic
                     }
                     else
                     {
-                        fillEvent(null, new FillEvents.FillEventArgs(currentCoord, Prices.Values[r][s].ToString(CultureInfo.InvariantCulture)));   
+                        fillEvent(null, new FillEvents.FillEventArgs(currentCoord, CurrentResult[r][s].ToString(CultureInfo.InvariantCulture)));   
                     }
 
                     ++counter;
@@ -459,7 +499,8 @@ namespace AlgoTeacher.Logic
                                 }
                                 else
                                 {
-                                    fillEvent(null, new FillEvents.FillEventArgs(currentCoord, Prices.Values[x][y].ToString(CultureInfo.InvariantCulture)));
+                                    fillEvent(null, new FillEvents.FillEventArgs(currentCoord, PotentialsOfTakers[j]
+                                        .ToString(CultureInfo.InvariantCulture)));
                                 }
 
                                 UsedPotentialsOfTakers[j] = true;
@@ -484,7 +525,8 @@ namespace AlgoTeacher.Logic
                                 }
                                 else
                                 {
-                                    fillEvent(null, new FillEvents.FillEventArgs(currentCoord, Prices.Values[x][y].ToString(CultureInfo.InvariantCulture)));
+                                    fillEvent(null, new FillEvents.FillEventArgs(currentCoord, PotentialsOfGivers[i].
+                                        ToString(CultureInfo.InvariantCulture)));
                                 }
 
                                 UsedPotentialsOfGivers[i] = true;
@@ -493,21 +535,9 @@ namespace AlgoTeacher.Logic
                         }
                     }   
 		        }
-
-
 	        }
     
-	        for (int i = 1; i <= NumberOfGivers; i++)
-	        {
-		        for (int j = 1; j <= NumberOfTakers; j++)
-		        {
-			        if (!Basis[i][j])
-			        {
-				        S[i][j] = Prices.Values[i - 1][j - 1] - PotentialsOfGivers[i] - PotentialsOfTakers[j];
-			        }
-			        else S[i][j] = 0;
-		        }
-	        }
+	        SValues();
         }
 
         private bool PotentialsCheck()
@@ -521,6 +551,22 @@ namespace AlgoTeacher.Logic
 			        return false;
     
 	        return true;
+        }
+
+        private void SValues()
+        {
+            for ( int i = 1; i <= NumberOfGivers; i++ )
+            {
+                for ( int j = 1; j <= NumberOfTakers; j++ )
+                {
+                    if ( !Basis[i][j] )
+                    {
+                        S[i][j] = Prices.Values[i - 1][j - 1] - PotentialsOfGivers[i] - PotentialsOfTakers[j];
+                    }
+                    else
+                        S[i][j] = 0;
+                }
+            }
         }
 
         private int min(int a, int b) 
