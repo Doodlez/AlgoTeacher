@@ -49,8 +49,17 @@ namespace AlgoTeacher.Logic
             _language = langluage;
             NumberOfGivers = numberOfGivers;
             NumberOfTakers = numberOfTakers;
-            NeedsOfGivers = needsOfGivers;
-            NeedsOfTakers = needsOfTakers;
+
+            for (var i = 1; i <= numberOfGivers; i++)
+            {
+                NeedsOfGivers[i] = needsOfGivers[i - 1];
+            }
+
+            for (var i = 1; i <= numberOfTakers; i++)
+            {
+                NeedsOfTakers[i] = needsOfTakers[i - 1];
+            }
+
             Prices = pricesMatrix;
 
             for (int i = 0; i < N; i++)
@@ -154,12 +163,13 @@ namespace AlgoTeacher.Logic
 		            return BestResult;
 		        }
     
+                // спрашиваем про минимальное значение S
 		        MinimalEstimate = MinEstimate();
 
                 var minEstimateCoord = new Coordinate(Row, Column);
-                var minEstimateQuestion = new CoordinateIntegerValueQuest("Transport question",
+                var minEstimateQuestion = new IntegerValueQuest("Transport question",
                                                      QuestionGenerator.TransportTaskQuestion(_language),
-                                                     new CoordinateIntegerValue(minEstimateCoord, MinimalEstimate));
+                                                     MinimalEstimate);
                 questEvent(null, new QuestEvents.QuestEventArgs(minEstimateQuestion, minEstimateCoord));
 
                 for (int i = 1; i <= NumberOfGivers; i++)
@@ -182,9 +192,9 @@ namespace AlgoTeacher.Logic
 		        MinBasis = ChooseMinFromBasis(ResultNum);
 
                 var minBasisCoord = new Coordinate(Row, Column);
-                var minBasisQuestion = new CoordinateIntegerValueQuest("Transport question",
+                var minBasisQuestion = new IntegerValueQuest("Transport question",
                                                      QuestionGenerator.TransportTaskQuestion(_language),
-                                                     new CoordinateIntegerValue(minBasisCoord, MinBasis));
+                                                     MinBasis);
                 questEvent(null, new QuestEvents.QuestEventArgs(minBasisQuestion, minBasisCoord));
     
 		        Basis[ChangeRow][ChangeColumn] = false;
@@ -207,9 +217,9 @@ namespace AlgoTeacher.Logic
 		            var basisCoord = new Coordinate(x, y);
                     if ( counter < 3 )
                     {
-                        var basisQuestion = new CoordinateIntegerValueQuest("Transport question",
+                        var basisQuestion = new IntegerValueQuest("Transport question",
                                                              QuestionGenerator.TransportTaskQuestion(_language),
-                                                             new CoordinateIntegerValue(basisCoord, CurrentResult[x][y]));
+                                                             CurrentResult[x][y]);
                         questEvent(null, new QuestEvents.QuestEventArgs(basisQuestion, basisCoord));
                     }
                     else
@@ -423,9 +433,9 @@ namespace AlgoTeacher.Logic
                 if (CurrentResult[r][s] > 0)
                 {
                     var currentCoord = new Coordinate(r, s);
-                    var question = new CoordinateIntegerValueQuest("Transport question",
+                    var question = new IntegerValueQuest("Transport question",
                                                          QuestionGenerator.TransportTaskQuestion(_language),
-                                                         new CoordinateIntegerValue(currentCoord, CurrentResult[r][s]));
+                                                         CurrentResult[r][s]);
                     if (counter < 3)
                     {
                         questEvent(null, new QuestEvents.QuestEventArgs(question, currentCoord));

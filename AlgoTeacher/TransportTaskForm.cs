@@ -16,6 +16,7 @@ namespace AlgoTeacher
     public partial class TransportTaskForm : DevExpress.XtraEditors.XtraForm
     {
         public delegate void SetQuestionCallback(string text);
+        private delegate void SetFillMatrCallback(int a, int b, string s);
 
         private readonly QuestEvents.QuestEventHandler _questHandler;
         private readonly FillEvents.FillEventHandler _fillHandler;
@@ -108,6 +109,16 @@ namespace AlgoTeacher
             }
             matrixGridView1.AddValues(IntToString(_pricesMatrix.Values, _pricesMatrix.RowsCount, _pricesMatrix.ColumnsCount),
                 _pricesMatrix.RowsCount, _pricesMatrix.ColumnsCount);
+
+            string[][] emptyStrings;
+            emptyStrings = new string[_numberOfGivers + 1][];
+            for (var i = 0; i < _numberOfGivers + 1; i++)
+            {
+                emptyStrings[i] = new string[_numberOfTakers + 1];
+            }
+
+            matrixGridView2.AddValues(emptyStrings,
+                _numberOfGivers + 1, _numberOfTakers + 1);
         }
 
         // функция для установки вопроса из др потока
@@ -163,11 +174,16 @@ namespace AlgoTeacher
         // TODO: второй квест - ищем элемент с минимальным S
         private void Quest2()
         {
-            questionControlBase = new QuestionControlBase();
+            questionControlBase = new CoordinateIntegerQuestionControl();
             SetQuestControlEventHandler();
             InitQuestComponent();
             pressed = false;
-            QuestionLabel.Text = quest.Question;
+            //QuestionLabel.Text = quest.Question;
+            CaclThread = new Thread(RunQuest2)
+            {
+                IsBackground = true
+            };
+            CaclThread.Start();
         }
 
         // TODO: ищем элемент, который выкинем из базиса 
@@ -193,17 +209,26 @@ namespace AlgoTeacher
         void RunQuest1()
         {
             _logic.NorthWest();
+            Quest2();
+        }
+
+        void RunQuest2()
+        {
+            //_logic.;
+            Quest3();
         }
 
         // TODO: Проверить обработчики, если нужно переделать
         // обработка вычислений
         public void QuestEventHandler(object sender, QuestEvents.QuestEventArgs e)
         {
-            SetQuestionText(e.Quest.Question + "\r\n" + "Ответ: " + e.Quest.Answer);
-            quest = e.Quest;
-            questionControlBase.SetAnswer(e.Quest.Answer);
+            quest = e.Quest;       
             x = e.Coord.X;
             y = e.Coord.Y;
+            SetQuestionText(e.Quest.Question + "\r\n" + "Ответ: " + e.Quest.Answer + "\r\n" + x + " " + y);
+
+            string answ = x + "," + y + "," + e.Quest.Answer;
+            questionControlBase.SetAnswer(answ);
             questionControlBase.SetFocus();
             while (!pressed)
             {
@@ -236,8 +261,18 @@ namespace AlgoTeacher
         {
             try
             {
-                matrixGridView2[col - 1, row - 1].Value = value;
-                matrixGridView2.Refresh();
+
+                if ( matrixGridView2.InvokeRequired )
+                {
+                    SetFillMatrCallback deleg = new SetFillMatrCallback(MatrFillCell);
+                    this.Invoke(deleg, new object[] { row, col, value });
+                }
+                else
+                {
+                    matrixGridView2[col - 1, row - 1].Value = value;
+                    matrixGridView2.Refresh();
+                }
+               
 
             }
             catch (Exception e)
@@ -253,12 +288,11 @@ namespace AlgoTeacher
             switch (questState)
             {
                 case 1:
-                    ChangeAndAwait(QuestionLabel, text[5], sleepTime);
-                    
+                    ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
+                    NumberOfFails = 0;
                     pressed = true;
-                    questState = 2;
-                    //Quest2(...);
-                    questionControlBase.SetFocus();
+                    return;
+                    //questionControlBase.SetFocus();
                     return;
                 case 2:
                     ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);

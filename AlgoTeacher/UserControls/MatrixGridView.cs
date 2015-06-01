@@ -19,7 +19,6 @@ namespace UserControls
         public MatrixGridView()
         {
             InitializeComponent();
-
         }
 
         public MatrixGridView(IContainer container)
