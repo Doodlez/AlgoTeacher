@@ -1,0 +1,85 @@
+\documentclass[14pt]{extarticle} %% Статья, шрифт 14pt
+
+\usepackage[top=20mm,bottom=20mm,left=30mm,right=10mm]{geometry}         %% Поля документа
+
+\usepackage[russian]{babel}      %% Русский язык
+\usepackage[cp1251]{inputenc}    %% Кирилица cp1251
+\usepackage{color} %% это для отображения цвета в коде
+\usepackage{xcolor} %% это для отображения цвета в коде
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{graphicx}
+\graphicspath{{path/}}
+
+%% ниже для кода
+
+\usepackage{listings} %% собственно, это и есть пакет listings
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}} %% это сделает текст заголовка белым
+%% код ниже нарисует серую рамочку вокруг заголовка кода.
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+%\DeclareGraphicsRule{.bmp}{bmp}{}{}
+
+%% Отступ у первого абзаца
+\usepackage{indentfirst}
+
+\renewcommand{\baselinestretch}{1.5} %% Межстрочный интервал 1.5
+
+\usepackage[letterspace=250]{microtype}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\newcommand{\Struct}[1]{%
+{\newpage\centering\sc\lsstyle
+#1
+\addcontentsline{toc}{section}{#1}
+\par}}
+
+\newcommand{\StructNoToc}[1]{%
+{\newpage\centering\sc\lsstyle
+#1
+\par}}
+
+%\renewcommand{\refname}{{}}
+
+\newcommand{\bibauthor}[1]{\textbf{#1}}
+\newcommand{\bibtitle}[1]{\textit{#1}}
+
+
+\begin{document}
+
+\lstset{ 
+language=[Sharp]C,                 % выбор языка для подсветки (здесь это С шарп)
+inputencoding=cp1251, 
+extendedchars=\true,
+basicstyle=\small\sffamily, % размер и начертание шрифта для подсветки кода
+numbers=left,               % где поставить нумерацию строк (слева\справа)
+numberstyle=\tiny,           % размер шрифта для номеров строк
+stepnumber=1,                   % размер шага между двумя номерами строк
+numbersep=5pt,                % как далеко отстоят номера строк от подсвечиваемого кода
+backgroundcolor=\color{white}, % цвет фона подсветки - используем \usepackage{color}
+showspaces=false,            % показывать или нет пробелы специальными отступами
+showstringspaces=false,      % показывать или нет пробелы в строках
+showtabs=false,             % показывать или нет табуляцию в строках
+frame=single,              % рисовать рамку вокруг кода
+tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
+captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+breaklines=true,           % автоматически переносить строки (да\нет)
+breakatwhitespace=false, % переносить строки только если есть пробел
+escapeinside={\%*}{*)}   % если нужно добавить комментарии в коде
+}
+
+\input{1.tex}
+\input{2.tex}
+%%\input{3.tex}
+%%\input{4.tex}
+\input{5.tex}
+\input{6.tex}
+\input{7.tex}
+\input{8.tex}
+%%\input{9.tex}
+\end{document}

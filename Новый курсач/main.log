@@ -1,0 +1,625 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.8)  8 JUN 2015 13:35
+entering extended mode
+**C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый*курсач/ma
+in.tex
+
+("C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый курсач/ma
+in.tex"
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 68 languages loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\extsizes\extarticle.cls"
+Document Class: extarticle 1996/10/08 v1.0 Non Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\extsizes\size14.clo"
+File: size14.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\exscale.sty"
+Package: exscale 2007/10/29 v2.1h Standard LaTeX package exscale
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 52.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+\big@size=\dimen102
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen103
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen104
+\Gm@wd@mp=\dimen105
+\Gm@odd@mp=\dimen106
+\Gm@even@mp=\dimen107
+\Gm@layoutwidth=\dimen108
+\Gm@layoutheight=\dimen109
+\Gm@layouthoffset=\dimen110
+\Gm@layoutvoffset=\dimen111
+\Gm@dimlist=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\babel\babel.sty"
+Package: babel 2014/09/25 3.9l The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\babel-russian\russianb.ldf"
+Language: russian 2014/06/02 1.3c Russian support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\babel\babel.def"
+File: babel.def 2014/09/25 3.9l Babel common definitions
+\babel@savecnt=\count90
+\U@D=\dimen112
+)
+
+Package babel Warning: No Cyrillic font encoding has been loaded so far.
+(babel)                A font encoding should be declared before babel.
+(babel)                Default `T2A' encoding will be loaded  on input line 111
+.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2aenc.def"
+File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
+)
+
+Package babel Warning: No input encoding specified for Russian language on inpu
+t line 146.
+
+Package babel Info: Making " an active character on input line 147.
+)) ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2014/04/30 v1.2b Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\cp1251.def"
+File: cp1251.def 1999/11/16 v1.0d Input encoding file
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 137.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count91
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip43
+\LTright=\skip44
+\LTpre=\skip45
+\LTpost=\skip46
+\LTchunksize=\count92
+\LTcapwidth=\dimen113
+\LT@head=\box26
+\LT@firsthead=\box27
+\LT@foot=\box28
+\LT@lastfoot=\box29
+\LT@cols=\count93
+\LT@rows=\count94
+\c@LT@tables=\count95
+\c@LT@chunks=\count96
+\LT@p@ftn=\toks18
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count97
+\lst@gtempboxa=\box30
+\lst@token=\toks19
+\lst@length=\count98
+\lst@currlwidth=\dimen116
+\lst@column=\count99
+\lst@pos=\count100
+\lst@lostspace=\dimen117
+\lst@width=\dimen118
+\lst@newlines=\count101
+\lst@lineno=\count102
+\lst@maxwidth=\dimen119
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+\c@lstnumber=\count103
+\lst@skipnumbers=\count104
+\lst@framebox=\box31
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2014/09/06 1.5e listings configuration
+))
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen120
+\captionmargin@=\dimen121
+\captionwidth=\dimen122
+\caption@tempdima=\dimen123
+\caption@indent=\dimen124
+\caption@parindent=\dimen125
+\caption@hangindent=\dimen126
+)
+\c@ContinuedFloat=\count105
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\ltcaption.sty"
+Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\microtype.sty"
+Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
+\MT@toks=\toks20
+\MT@count=\count106
+LaTeX Info: Redefining \textls on input line 766.
+\MT@outer@kern=\dimen127
+LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
+\MT@listname@count=\count107
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\microtype-pdftex.def"
+File: microtype-pdftex.def 2013/05/23 v2.5a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 915.
+LaTeX Info: Redefining \lslig on input line 915.
+\MT@outer@space=\skip47
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\microtype.cfg"
+File: microtype.cfg 2013/05/23 v2.5a microtype main configuration file (RS)
+))
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\ma
+in.aux"
+LaTeX Font Info:    Try loading font information for T2A+cmr on input line 3.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
+File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+)
+
+LaTeX Warning: Label `some-code' multiply defined.
+
+
+LaTeX Warning: Label `some-code' multiply defined.
+
+
+LaTeX Warning: Label `some-code' multiply defined.
+
+
+LaTeX Warning: Label `some-code' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 500.484pt, 28.45274pt)
+* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=681.15898pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-54.36449pt
+* \headheight=14.0pt
+* \headsep=25.0pt
+* \topskip=14.0pt
+* \footskip=30.0pt
+* \marginparwidth=24.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=12.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count108
+\scratchdimen=\dimen128
+\scratchbox=\box32
+\nofMPsegments=\count109
+\nofMParguments=\count110
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count111
+\MPscratchDim=\dimen129
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
+\everyMPtoPDFconversion=\toks22
+)
+\c@lstlisting=\count114
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Info: Redefining \microtypecontext on input line 53.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-cmr.cfg"
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\1.
+tex"
+Underfull \hbox (badness 10000) in paragraph at lines 53--55
+ 
+ []
+
+)
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\2.
+tex" [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\ma
+in.toc"
+LaTeX Font Info:    External font `cmex7' loaded for size
+(Font)              <7> on input line 4.
+
+Overfull \hbox (3.45068pt too wide) in paragraph at lines 14--14
+ [] []\T2A/cmr/bx/n/14.4 �������� ��-��-���-��� ����-����-�� ��-��-�� ���-����-
+��� ���-����� []  
+ []
+
+)
+\tf@toc=\write3
+)
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\5.
+tex" [2] [3] [4])
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\6.
+tex" [5] <path/structure.png, id=22, 361.35pt x 240.9pt>
+File: path/structure.png Graphic file (type png)
+
+<use path/structure.png>
+Package pdftex.def Info: path/structure.png used on input line 13.
+(pdftex.def)             Requested size: 369.88582pt x 246.59326pt.
+ [6 <C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый курсач
+/path/structure.png>] [7]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 37.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <14.4> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
+ [8]
+Overfull \hbox (6.0pt too wide) in paragraph at lines 47--47
+[][][][][][][] 
+ []
+
+LaTeX Font Info:    Try loading font information for T2A+cmss on input line 47.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmss.fd"
+File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `cmss' (encoding: T2A).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\cp1251.def"
+File: cp1251.def 1999/11/16 v1.0d Input encoding file
+)
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 55.
+
+LaTeX Font Info:    No file OMScmss.fd. on input line 55.
+
+
+LaTeX Font Warning: Font shape `OMS/cmss/m/it' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textasteriskcentered' on input line 55.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 69--69
+[][][][][][][] 
+ []
+
+[10] ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\cp1251.def"
+File: cp1251.def 1999/11/16 v1.0d Input encoding file
+) [11]
+Overfull \hbox (6.0pt too wide) in paragraph at lines 93--93
+[][][][][][][] 
+ []
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\cp1251.def"
+File: cp1251.def 1999/11/16 v1.0d Input encoding file
+) [12]
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--130
+
+ []
+
+[13]
+Overfull \hbox (6.0pt too wide) in paragraph at lines 133--133
+[][][][][][][] 
+ []
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\cp1251.def"
+File: cp1251.def 1999/11/16 v1.0d Input encoding file
+)
+Overfull \hbox (6.0pt too wide) in paragraph at lines 142--142
+[][][][][][][] 
+ []
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\cp1251.def"
+File: cp1251.def 1999/11/16 v1.0d Input encoding file
+) [14] [15]
+[16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
+
+ []
+
+[19] [20]
+Overfull \hbox (7.08626pt too wide) in paragraph at lines 310--312
+[]\T2A/cmr/m/n/14.4 (-20) ��� ���-�-��-���-����� � ����-��-��-��-��� ���-�� ��-
+����-��-���� ��-��-��� questEvent().
+ []
+
+[21] <path/choose_algo.png, id=84, 720.6925pt x 414.54875pt>
+File: path/choose_algo.png Graphic file (type png)
+
+<use path/choose_algo.png>
+Package pdftex.def Info: path/choose_algo.png used on input line 326.
+(pdftex.def)             Requested size: 369.88582pt x 212.75806pt.
+ <path/hello.png, id=85, 879.285pt x 440.64626pt>
+File: path/hello.png Graphic file (type png)
+
+<use path/hello.png>
+Package pdftex.def Info: path/hello.png used on input line 334.
+(pdftex.def)             Requested size: 369.88582pt x 185.35928pt.
+ [22 <C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый курса�
+�/path/choose_algo.png (PNG copy)> <C:/Users/Admin/Desktop/BackUpРабота/C
+ursWork/Новый курсач/path/hello.png (PNG copy)>] <path/explain_1.png
+, id=89, 968.61874pt x 529.98pt>
+File: path/explain_1.png Graphic file (type png)
+ <use path/explain_1.png>
+Package pdftex.def Info: path/explain_1.png used on input line 343.
+(pdftex.def)             Requested size: 369.88582pt x 202.38107pt.
+
+<path/matrix_multiply.png, id=90, 1112.155pt x 576.1525pt>
+File: path/matrix_multiply.png Graphic file (type png)
+
+<use path/matrix_multiply.png>
+Package pdftex.def Info: path/matrix_multiply.png used on input line 355.
+(pdftex.def)             Requested size: 369.88582pt x 191.61664pt.
+ [23 <C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый курса�
+�/path/explain_1.png (PNG copy)>]
+<path/stage_2.png, id=94, 1112.155pt x 584.1825pt>
+File: path/stage_2.png Graphic file (type png)
+ <use path/stage_2.png>
+Package pdftex.def Info: path/stage_2.png used on input line 365.
+(pdftex.def)             Requested size: 341.43306pt x 179.34756pt.
+
+<path/stage_2_right.png, id=95, 664.28175pt x 349.305pt>
+File: path/stage_2_right.png Graphic file (type png)
+
+<use path/stage_2_right.png>
+Package pdftex.def Info: path/stage_2_right.png used on input line 373.
+(pdftex.def)             Requested size: 341.43306pt x 179.54497pt.
+ [24 <C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый курса�
+�/path/matrix_multiply.png (PNG copy)> <C:/Users/Admin/Desktop/BackUpРабот
+а/CursWork/Новый курсач/path/stage_2.png (PNG copy)>] <path/stage_3
+_1.png, id=99, 1112.155pt x 584.1825pt>
+File: path/stage_3_1.png Graphic file (type png)
+
+<use path/stage_3_1.png>
+Package pdftex.def Info: path/stage_3_1.png used on input line 382.
+(pdftex.def)             Requested size: 341.43306pt x 179.34756pt.
+ <path/stage_3_2.png, id=100, 1112.155pt x 584.1825pt>
+File: path/stage_3_2.png Graphic file (type png)
+
+<use path/stage_3_2.png>
+Package pdftex.def Info: path/stage_3_2.png used on input line 390.
+(pdftex.def)             Requested size: 341.43306pt x 179.34756pt.
+ [25 <C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый курса�
+�/path/stage_2_right.png> <C:/Users/Admin/Desktop/BackUpРабота/CursWork/�
+�овый курсач/path/stage_3_1.png (PNG copy)>]
+<path/stage_3_3.png, id=106, 1112.155pt x 584.1825pt>
+File: path/stage_3_3.png Graphic file (type png)
+ <use path/stage_3_3.png>
+Package pdftex.def Info: path/stage_3_3.png used on input line 398.
+(pdftex.def)             Requested size: 341.43306pt x 179.34756pt.
+
+<path/stage_3_4.png, id=107, 1112.155pt x 584.1825pt>
+File: path/stage_3_4.png Graphic file (type png)
+ <use path/stage_3_4.png>
+Package pdftex.def Info: path/stage_3_4.png used on input line 406.
+(pdftex.def)             Requested size: 341.43306pt x 179.34756pt.
+
+[26 <C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый курсач
+/path/stage_3_2.png (PNG copy)> <C:/Users/Admin/Desktop/BackUpРабота/Curs
+Work/Новый курсач/path/stage_3_3.png (PNG copy)>]
+<path/stage_3_res.png, id=111, 1327.96124pt x 585.18625pt>
+File: path/stage_3_res.png Graphic file (type png)
+
+<use path/stage_3_res.png>
+Package pdftex.def Info: path/stage_3_res.png used on input line 414.
+(pdftex.def)             Requested size: 341.43306pt x 150.45721pt.
+)
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\7.
+tex" [27 <C:/Users/Admin/Desktop/BackUpРабота/CursWork/Новый кур�
+�ач/path/stage_3_4.png (PNG copy)> <C:/Users/Admin/Desktop/BackUpРабота
+/CursWork/Новый курсач/path/stage_3_res.png (PNG copy)>] [28])
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\8.
+tex" [29]) [30]
+("C:\Users\Admin\Desktop\BackUpРабота\CursWork\Новый курсач\ma
+in.aux")
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 7444 strings out of 493705
+ 114995 string characters out of 3144570
+ 256312 words of memory out of 3000000
+ 10523 multiletter control sequences out of 15000+200000
+ 22169 words of font info for 92 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 36i,6n,40p,872b,1297s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/cm-super/sfbx1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/cm-super/sfbx1728.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/c
+m-super/sfbx2074.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/s
+fcc1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0600.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1440.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfsi1200.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/cm-super/sfss1200.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/cm-super/sfsx1200.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/cm-super/sfti0600.pfb>
+Output written on main.pdf (30 pages, 1151937 bytes).
+PDF statistics:
+ 166 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 24637 words of extra memory for PDF output out of 24883 (max. 10000000)
+
