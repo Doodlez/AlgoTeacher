@@ -159,7 +159,7 @@
     <Compile Include="UserControls\MatrixGridView.Designer.cs">
       <DependentUpon>MatrixGridView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MyPainter.cs" />
+    <Compile Include="UserControls\MyLabelControlPainter.cs" />
     <Compile Include="UserControls\QuestionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -76,7 +76,6 @@
             this.Controls.Add(this.LanguageLabel);
             this.Name = "LanguageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LanguageForm";
             this.Load += new System.EventHandler(this.LanguageForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LanguageComboBox.Properties)).EndInit();
             this.ResumeLayout(false);

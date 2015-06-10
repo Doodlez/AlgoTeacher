@@ -76,7 +76,7 @@
             this.Controls.Add(this.TaskComboBox);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Главное меню";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TaskComboBox.Properties)).EndInit();
             this.ResumeLayout(false);

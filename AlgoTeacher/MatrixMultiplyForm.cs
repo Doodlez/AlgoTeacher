@@ -329,6 +329,8 @@ namespace AlgoTeacher
                     ChangeAndAwait(QuestionLabel, "Правильно! Молодец!", sleepTime);
                     pressed = true;
                     questState = 3;
+                    matrixGridView3.Visible = true;
+                    pictureBox2.Visible = true;
                     questionControlBase.SetFocus();
                     ThirdQuest();
                     return;

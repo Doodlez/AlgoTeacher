@@ -12,7 +12,7 @@ using System.Drawing.Drawing2D;
 
 namespace UserControls
 {
-    public class MyPainter : LabelControlPainter
+    public class MyLabelControlPainter : LabelControlPainter
     {
         protected override void DrawContent(ControlGraphicsInfoArgs info)
         {
