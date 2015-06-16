@@ -16,6 +16,7 @@ namespace AlgoTeacher
     public partial class TransportTaskForm : DevExpress.XtraEditors.XtraForm
     {
         public delegate void SetQuestionCallback(string text);
+        public delegate void SetCallback();
         private delegate void SetFillMatrCallback(int a, int b, string s);
 
         private readonly QuestEvents.QuestEventHandler _questHandler;
@@ -151,9 +152,17 @@ namespace AlgoTeacher
 
         private void InitQuestComponent()
         {
-            QuestPanel.Controls.Clear();
-            QuestPanel.Controls.Add(questionControlBase);
-            questionControlBase.Dock = DockStyle.Fill;
+            if (QuestPanel.InvokeRequired || questionControlBase.InvokeRequired)
+            {
+                SetCallback deleg = new SetCallback(InitQuestComponent);
+                this.Invoke(deleg, new object[] {});
+            }
+            else 
+            {
+                QuestPanel.Controls.Clear();
+                QuestPanel.Controls.Add(questionControlBase);
+                questionControlBase.Dock = DockStyle.Fill;
+            }
         }
 
         // TODO: переделать первый квест - North-West
